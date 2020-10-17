@@ -19,15 +19,11 @@ public class TeleportTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (uiInteractAction.GetStateDown(hand))
-        {
-            if (!upSideDown)
-            {
+        if (uiInteractAction.GetStateDown(hand)) {
+            if (!upSideDown) {
                 player.transform.position += Vector3.up * 100;
                 upSideDown = true;
-            }
-            else
-            {
+            } else {
                 player.transform.position += Vector3.down * 100;
                 upSideDown = false;
             }
