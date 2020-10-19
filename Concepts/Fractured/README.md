@@ -13,12 +13,16 @@ Two Dimensions. Whatever you bring from one dimension will change in the other(d
 Microwave goes  one way
 
 
+## Tasks
 
-## Puzzles
+### Task 1
+Unlock the case that will contain the dimension hoping watch. This will be a brief introduction to snap zones
 
-### Puzzle 1
-Teleportation watch is locked in the case and you have to find they key
-Getting the watch jumps you to the other world and you can't jump back
+### Task 2
+You will be immediately transported to the upside down and will have to collect a corruption sample in order to analyze it and be able to jump between dimensions
 
-### Puzzle 2
-Harvest corruption energy to power the watch so you can jump between worlds
+### Task 3
+You will have to create a concoction to help seal the rift. Using the dimension jumpings ability to modify chemicals
+
+### Task 4
+You must jump between dimensions to keep the machine going. The machine will have a Simon says type panel where it will display the pattern and you must jump dimensions and run to the other control panel and type it in.
