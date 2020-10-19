@@ -1,11 +1,28 @@
 # Fractured
 
+## Basic Conecpt
+Our game spans across 2 dimensions the player will have to jump across in 
+order to help close the rift that has caused this dilemma. Every Item you bring across with you will change
+in some way (An example of this would be Chemical A would turn to Chemical B). The player will have to do 
+multiple tasks in order to seal the rift. The ultimate task will invole the player jumping across dimensions
+to keep the  machine sealing the dimensions in sync. 
+To aid the player there will be a watch that can peak into the other dimension giving 
+the player a preview of what they may be jumping into.
+
 ## Why VR
 We want to use VR for the interactive experience that it offers the player.
 
 We want to create a world that the player can physically interact with, physically pouring one chemical into the other, throwing random objects round the room, physically moving from space to space.
 
 All these interactions are significantly enhanced as an experience when you put the player into a Virtual Reality that they themselves physically interact with.
+
+## Why Two Worlds
+We want to make the player think outside the box in their problem solving skills.
+
+Any object the player carries into the other world will change state. It will become corrupted like the world around it. 
+
+The worlds will also be visually different from each other. The first world will be a clean lab environment, while the 
+second world will be corrupted full of spores and decaying as a whole.
 
 ## Rules
 Two Dimensions. Whatever you bring from one dimension will change in the other(different ways of change).Microwave negates change
