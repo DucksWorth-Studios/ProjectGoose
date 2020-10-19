@@ -26,3 +26,26 @@ You will have to create a concoction to help seal the rift. Using the dimension 
 
 ### Task 4
 You must jump between dimensions to keep the machine going. The machine will have a Simon says type panel where it will display the pattern and you must jump dimensions and run to the other control panel and type it in.
+
+### Task 3 Explaination
+World One:  Chemical Yellow     Chemical Red
+
+World Two:  Nothing
+
+Objective: Make Pink
+
+
+
+Step 1: Mix Yellow and Red Becomes Orange
+
+Step 2: Jump to  world Two: Orange becomes Blue
+
+Step 3: Jump back to world one place orange into Microwave
+
+Step 4: Jump to world 2 take orange out of microwave.
+
+Step 5: Jump to world 1 orange is now blue.
+
+Step 6: Mix red and blue.
+
+Step 7: Youve made Pink.
