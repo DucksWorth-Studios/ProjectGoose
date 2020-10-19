@@ -1,5 +1,12 @@
 # Fractured
 
+## Why VR
+We want to use VR for the interactive experience that it offers the player.
+
+We want to create a world that the player can physically interact with, physically pouring one chemical into the other, throwing random objects round the room, physically moving from space to space.
+
+All these interactions are significantly enhanced as an experience when you put the player into a Virtual Reality that they themselves physically interact with.
+
 ## Rules
 Two Dimensions. Whatever you bring from one dimension will change in the other(different ways of change).Microwave negates change
 
