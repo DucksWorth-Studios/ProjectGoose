@@ -9,7 +9,7 @@
 ### 2. Rendering in VR
 * Optimise the rendering workflow as much as possible as rendering is the key bottleneck in VR
 * Good technicues to use to optimise rendering are:
-	- [Batching](https://docs.unity3d.com/Manual/DrawCallBatching.html): Batching used shared Matriealise to reduce work on the GPU by minimising the cost of context switching 
+	- [Batching](https://docs.unity3d.com/Manual/DrawCallBatching.html): Batching uses shared Materials to reduce work on the GPU by minimising the cost of context switching 
 	for each draw cell (i.e. chaninge shaders, textures)
 	
   - [GPU Instancing](https://docs.unity3d.com/Manual/GPUInstancing.html): Useful for drawing multiple copies of the same mesh (i.e. beakers and test tubes)
@@ -63,9 +63,9 @@
 * Let the player drive the experience. Let them experience the game at their own pace
 * Enagage as many senses as possible, good use of haptic feedback from controller and good use of audio
 * Vary the tone of the game - if you want a player to be blown away by a big space, have them walk through a small corridor first
-* Fulfull a fantasy
+* Fulfill a fantasy
 * Make the game memorable
 
 ## Resources
-https://learn.unity.com/tutorial/vr-best-practice
-https://www.youtube.com/watch?v=DrPa0dJT6dQ&feature=youtu.be&t=1633
+- https://learn.unity.com/tutorial/vr-best-practice
+- https://www.youtube.com/watch?v=DrPa0dJT6dQ&feature=youtu.be&t=1633
