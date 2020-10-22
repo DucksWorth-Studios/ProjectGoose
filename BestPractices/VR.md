@@ -45,6 +45,17 @@
   user’s latest orientation to the most recent rendered frame.
     - Developers should never rely on this technique in place of optimization as this technique does cause positional and animation judder.
 
+### 3. Motion-to-Photon Latency
+- Minimizing motion-to-photon latency is the key to giving the user the impression of presence
+- It is recommended to target 20 milliseconds or less motion-to-photon latency for any input made via VR hardware to be reflected on the HMD’s screen. This includes the handling of HMD rotation and position as well as VR controller rotation and position.
+- Avoid handling input in FixedUpdate as this callback does not necessarily get called once per frame and may incur increased input latency.
+- Tracked poses may potentially be handled twice, once in Update() and again in onBeforeRender(). Any additional handling that occurs in onBeforeRender() should be very lightweight or can result in serious input latency.
+
+### 4. Platform Specific Recommendations
+- [RenderDoc](https://renderdoc.org/): RenderDoc is a stand-alone graphics debugging tool that allows you to do frame captures of your application running on PC or on Android.
+- [SteamVR Frame Timings](https://developer.valvesoftware.com/wiki/SteamVR/Frame_Timing): This view shows CPU and GPU timings associated with SteamVR and is a great tool to monitor which frames are heavier to render, as well as the implications of reprojection in your VR project.
+- [fpsVR](https://store.steampowered.com/app/908520/fpsVR/): fpsVR is a utility application for SteamVR that show VR session's performance counters in SteamVR Overlay window inside VR
+
 ## General Notes on creating a good VR Experience
 
 * Make the player the key part in the story, not just an observer
