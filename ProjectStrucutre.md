@@ -38,13 +38,15 @@
 
 ## Scene Hierarchy Strucutre
 
-* Management
+* Management - Empty Objects that contain scripts
 * GUI
 * Cameras
 * Lights
 * World
 	* Terrain
 	* Props
+	* VR - Teleportation Plane & Teleportation Points
+* Player
 * _Dynamic
 
 
