@@ -1,1 +1,1 @@
-# VR-Template
+# Project Goose (a.k.a Remedy)
