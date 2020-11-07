@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Color previousColor = Color.white;
+
+    public void switchColour(Color color)
     {
-        
+        //get current material
+        Material material = GetComponent<Renderer>().material;
+
+        // if new color is not equal old one change
+        if (color != previousColor)
+        {
+            //mix current and new by 50% to form a new color
+            material.color = Color.Lerp(material.color, color, 0.5f);
+            //set as previous
+            previousColor = color;
+        }
+
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        //print(collision.gameObject.tag);
+    }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+}
 }
