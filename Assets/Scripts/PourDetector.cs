@@ -16,22 +16,39 @@ public class PourDetector : MonoBehaviour
     {
 
     }
+    /// <summary>
+    /// Author: Tomas
+    /// Used to create the Stream from stream Class. When object goes below the titlt angle
+    /// </summary>
     private void StartPour()
     {
 
     }
-
+    /// <summary>
+    /// Authro:Tomas
+    /// Used to end the stream when object goes above the tiltangle
+    /// </summary>
     private void EndPour()
     {
 
     }
 
+    /// <summary>
+    /// Autho: Tomas
+    /// Used to calculate if the item is to begin pouring or not
+    /// </summary>
+    
     private bool CalculatePourAngle()
     {
+        return false;
+    }
 
-
+    /// <summary>
+    /// Used to create the Stream from the stream class.
+    /// </summary>
+    /// <returns></returns>
     private Stream CreateStream()
     {
-
+        return null;
     }
 }
