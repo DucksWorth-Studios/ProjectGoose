@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vrtemplate.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Cameron\\Documents\\DKIT_Project4\\VR-Template\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Coding Projects\\Unity\\ProjectGoose\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "VR-Template [Testing]"
