@@ -14,7 +14,22 @@ public class PourDetector : MonoBehaviour
 
     private void Update()
     {
+        //are we at a valid angle to begin?
+        bool pourCheck = CalculatePourAngle();
 
+        if (isPouring != pourCheck)
+        {
+            isPouring = pourCheck;
+
+            if (isPouring)
+            {
+                StartPour();
+            }
+            else
+            {
+                EndPour();
+            }
+        }
     }
     /// <summary>
     /// Author: Tomas
@@ -22,7 +37,9 @@ public class PourDetector : MonoBehaviour
     /// </summary>
     private void StartPour()
     {
-
+        //Create a new Stream
+        currentStream = CreateStream();
+        currentStream.Begin();
     }
     /// <summary>
     /// Authro:Tomas
@@ -30,17 +47,27 @@ public class PourDetector : MonoBehaviour
     /// </summary>
     private void EndPour()
     {
-
+        //End streeam and destroy
+        currentStream.End();
+        currentStream = null;
     }
 
     /// <summary>
     /// Autho: Tomas
     /// Used to calculate if the item is to begin pouring or not
     /// </summary>
-    
     private bool CalculatePourAngle()
     {
-        return false;
+        //Is the angle past the tipping point?
+        float angle = transform.forward.y * Mathf.Rad2Deg;
+        if (angle < pourThreshold)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /// <summary>
@@ -49,6 +76,8 @@ public class PourDetector : MonoBehaviour
     /// <returns></returns>
     private Stream CreateStream()
     {
-        return null;
+        //generate a stream object
+        GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
+        return streamObject.GetComponent<Stream>();
     }
 }
