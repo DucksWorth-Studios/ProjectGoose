@@ -5,7 +5,11 @@ using UnityEngine;
 public class ColorChange : MonoBehaviour
 {
     private Color previousColor = Color.white;
-
+    private void Awake()
+    {
+        //Renderer mat = GetComponent<Renderer>();
+        //mat.material.color = Color.blue;
+    }
     public void switchColour(Color color)
     {
         //get current material
@@ -32,4 +36,4 @@ public class ColorChange : MonoBehaviour
 
     }
 }
-}
+
