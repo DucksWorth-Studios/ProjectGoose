@@ -19,17 +19,24 @@ public class Stream : MonoBehaviour
     {
 
     }
-
+    /// <summary>
+    /// Begins and initializes the Stream.
+    /// </summary>
     public void Begin()
     {
 
     }
-
+    /// <summary>
+    /// While the stream is active calculate the distance to the object below and slowly extend the stream down till it collides
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator BeginPour()
     {
         return null;
     }
-
+    /// <summary>
+    /// Ends stream coming from the tip of the object. the begining of stream will slowly fall down to end point creating a drop effect
+    /// </summary>
     public void End()
     {
 
