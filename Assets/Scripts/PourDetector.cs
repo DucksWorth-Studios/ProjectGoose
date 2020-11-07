@@ -59,7 +59,7 @@ public class PourDetector : MonoBehaviour
     private bool CalculatePourAngle()
     {
         //Is the angle past the tipping point?
-        float angle = transform.forward.y * Mathf.Rad2Deg;
+        float angle = transform.up.y * Mathf.Rad2Deg;
         if (angle < pourThreshold)
         {
             return true;
