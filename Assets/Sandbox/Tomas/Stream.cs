@@ -10,8 +10,14 @@ public class Stream : MonoBehaviour
     private Coroutine pourRoutine = null;
     private Vector3 targetPosition = Vector3.zero;
 
+    //Used for color mixing
+    private GameObject gameObjectCollide = null;
+    private Color chemicalColor = Color.red;
+
     private void Awake()
     {
+        //chemicalColor = GetComponent<Material>().color;
+
         lineRenderer = GetComponent<LineRenderer>();
 
         splashParticle = GetComponentInChildren<ParticleSystem>();
@@ -93,6 +99,12 @@ public class Stream : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         //Generate Ray
         Physics.Raycast(ray, out hit, 2.0f);
+        //set the object
+        if (hit.collider.gameObject.tag == "ground")
+        {
+            gameObjectCollide = hit.collider.gameObject;
+        }
+
         //if it hits valid collider set it as end point
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
 
@@ -145,8 +157,15 @@ public class Stream : MonoBehaviour
             splashParticle.gameObject.transform.position = targetPosition;
             //is the object hitting the target?
             bool isHitting = HasReachedPosition(1, targetPosition);
+
+
             //activate the splash effect
             splashParticle.gameObject.SetActive(isHitting);
+            //Change color when we hit
+            if (gameObjectCollide != null && gameObjectCollide.tag == "ground" && isHitting)
+            {
+                gameObjectCollide.GetComponent<ColorChange>().switchColour(chemicalColor);
+            }
             yield return null;
         }
 
