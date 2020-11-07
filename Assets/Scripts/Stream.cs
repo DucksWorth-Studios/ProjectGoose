@@ -12,34 +12,59 @@ public class Stream : MonoBehaviour
 
     private void Awake()
     {
+        lineRenderer = GetComponent<LineRenderer>();
 
+        splashParticle = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
     {
+        //Set begining and end of line renderer
+        MoveToPosition(0, transform.position);
 
+        MoveToPosition(1, transform.position);
     }
+
     /// <summary>
     /// Begins and initializes the Stream.
     /// </summary>
     public void Begin()
     {
-
+        //Start the routines for pour and particle
+        StartCoroutine(UpdateParticle());
+        pourRoutine = StartCoroutine(BeginPour());
     }
+
     /// <summary>
     /// While the stream is active calculate the distance to the object below and slowly extend the stream down till it collides
     /// </summary>
     /// <returns></returns>
     private IEnumerator BeginPour()
     {
-        return null;
+        //While object is active
+        while (gameObject.activeSelf)
+        {
+            //find object below
+            targetPosition = FindEndpoint();
+            //Begining of line to the origin point
+            MoveToPosition(0, transform.position);
+
+            //End of line animate to object bellow
+            AnimateToPosition(1, targetPosition);
+
+            yield return null;
+        }
     }
+
     /// <summary>
     /// Stop the pouring and begin the ending routine
     /// </summary>
     public void End()
     {
-
+        //End pouring
+        StopCoroutine(pourRoutine);
+        //begin the end routine
+        pourRoutine = StartCoroutine(EndPour());
     }
 
     /// <summary>
@@ -47,7 +72,15 @@ public class Stream : MonoBehaviour
     /// </summary>
     private IEnumerator EndPour()
     {
-        return null;
+        //while we have not reached the end position
+        while (!HasReachedPosition(0, targetPosition))
+        {
+            //Move start down slowly away from origin
+            AnimateToPosition(0, targetPosition);
+            AnimateToPosition(0, targetPosition);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 
     /// <summary>
@@ -56,7 +89,14 @@ public class Stream : MonoBehaviour
     /// <returns></returns>
     private Vector3 FindEndpoint()
     {
-        return Vector3.zero;
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, Vector3.down);
+        //Generate Ray
+        Physics.Raycast(ray, out hit, 2.0f);
+        //if it hits valid collider set it as end point
+        Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
+
+        return endPoint;
     }
 
     /// <summary>
@@ -66,7 +106,8 @@ public class Stream : MonoBehaviour
     /// <param name="targetPosition"> Where to move to</param>
     private void MoveToPosition(int index, Vector3 targetPosition)
     {
-       
+        //Take in the index of the line and move to a specified position
+        lineRenderer.SetPosition(index, targetPosition);
     }
 
     /// <summary>
@@ -76,7 +117,9 @@ public class Stream : MonoBehaviour
     /// <param name="targetPosition"> Where to animate to</param>
     private void AnimateToPosition(int index, Vector3 targetPosition)
     {
-
+        Vector3 currentPoint = lineRenderer.GetPosition(index);
+        Vector3 newPosition = Vector3.MoveTowards(currentPoint, targetPosition, Time.deltaTime * 1.75f);
+        lineRenderer.SetPosition(index, newPosition);
     }
     /// <summary>
     /// Has the start or end of the stream reached the target
@@ -86,7 +129,10 @@ public class Stream : MonoBehaviour
     /// <returns>True or False</returns>
     private bool HasReachedPosition(int index, Vector3 targetPosition)
     {
-        return false;
+        //Check has it reached the target
+        Vector3 currentPosition = lineRenderer.GetPosition(index);
+
+        return currentPosition == targetPosition;
     }
 
     /// <summary>
@@ -94,6 +140,15 @@ public class Stream : MonoBehaviour
     /// </summary>
     private IEnumerator UpdateParticle()
     {
-        return null;
+        while (gameObject.activeSelf)
+        {
+            splashParticle.gameObject.transform.position = targetPosition;
+            //is the object hitting the target?
+            bool isHitting = HasReachedPosition(1, targetPosition);
+            //activate the splash effect
+            splashParticle.gameObject.SetActive(isHitting);
+            yield return null;
+        }
+
     }
 }
