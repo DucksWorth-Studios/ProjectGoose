@@ -1,27 +1,24 @@
 {
-   "alias_info" : {},
-   "bindings" : {
-      "/actions/default" : {
-         "chords" : [],
-         "haptics" : [],
-         "poses" : [],
-         "skeleton" : [],
-         "sources" : [
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/headsetonhead"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/head/proximity"
+  "bindings": {
+    "/actions/default": {
+      "chords": [],
+      "poses": [],
+      "haptics": [],
+      "sources": [
+        {
+          "inputs" : {
+            "click" : {
+              "output" : "/actions/default/in/headsetonhead"
             }
-         ]
-      }
-   },
-   "controller_type" : "vive_pro",
-   "description" : "",
-   "name" : "vive_pro defaults",
-   "options" : {},
-   "simulated_actions" : []
+          },
+          "mode" : "button",
+          "path" : "/user/head/proximity"
+        }
+      ],
+      "skeleton": []
+    }
+  },
+  "controller_type": "vive_pro",
+  "description": "",
+  "name": "vive_pro defaults"
 }

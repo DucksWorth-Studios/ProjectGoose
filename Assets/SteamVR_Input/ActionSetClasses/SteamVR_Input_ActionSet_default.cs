@@ -17,22 +17,6 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_default : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Boolean InteractUI
-        {
-            get
-            {
-                return SteamVR_Actions.default_InteractUI;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean Teleport
-        {
-            get
-            {
-                return SteamVR_Actions.default_Teleport;
-            }
-        }
-        
         public virtual SteamVR_Action_Boolean GrabPinch
         {
             get
@@ -105,11 +89,43 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 TouchPad
+        public virtual SteamVR_Action_Vector2 MoveUp
         {
             get
             {
-                return SteamVR_Actions.default_TouchPad;
+                return SteamVR_Actions.default_MoveUp;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean DimensionJump
+        {
+            get
+            {
+                return SteamVR_Actions.default_DimensionJump;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Teleport
+        {
+            get
+            {
+                return SteamVR_Actions.default_Teleport;
+            }
+        }
+        
+        public virtual SteamVR_Action_Single StartLaser
+        {
+            get
+            {
+                return SteamVR_Actions.default_StartLaser;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PullObject
+        {
+            get
+            {
+                return SteamVR_Actions.default_PullObject;
             }
         }
         
