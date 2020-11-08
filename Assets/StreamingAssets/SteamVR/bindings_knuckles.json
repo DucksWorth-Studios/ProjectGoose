@@ -132,73 +132,12 @@
             },
             {
                "inputs" : {
-                  "force" : {
-                     "output" : "/actions/default/in/squeeze"
-                  }
-               },
-               "mode" : "force_sensor",
-               "path" : "/user/hand/right/input/grip"
-            },
-            {
-               "inputs" : {
                   "click" : {
                      "output" : "/actions/default/in/teleport"
                   }
                },
                "mode" : "button",
                "path" : "/user/hand/left/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/pullobject"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/teleport"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "north" : {
-                     "output" : "/actions/default/in/teleport"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "deadzone_pct" : "25",
-                  "overlap_pct" : "30",
-                  "sub_mode" : "touch"
-               },
-               "path" : "/user/hand/right/input/thumbstick"
-            },
-            {
-               "inputs" : {
-                  "east" : {
-                     "output" : "/actions/default/in/snapturnright"
-                  },
-                  "south" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "west" : {
-                     "output" : "/actions/default/in/snapturnleft"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "deadzone_pct" : "85",
-                  "overlap_pct" : "0",
-                  "sub_mode" : "touch"
-               },
-               "path" : "/user/hand/right/input/thumbstick"
             },
             {
                "inputs" : {
@@ -216,19 +155,6 @@
             {
                "inputs" : {
                   "grab" : {
-                     "output" : "/actions/default/in/grabgrip"
-                  }
-               },
-               "mode" : "grab",
-               "parameters" : {
-                  "force_hold_threshold" : "0.02",
-                  "force_release_threshold" : "0.01"
-               },
-               "path" : "/user/hand/right/input/grip"
-            },
-            {
-               "inputs" : {
-                  "grab" : {
                      "output" : "/actions/default/in/grabpinch"
                   }
                },
@@ -238,19 +164,6 @@
                   "force_release_threshold" : "0.01"
                },
                "path" : "/user/hand/left/input/pinch"
-            },
-            {
-               "inputs" : {
-                  "grab" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "grab",
-               "parameters" : {
-                  "force_hold_threshold" : "0.02",
-                  "force_release_threshold" : "0.01"
-               },
-               "path" : "/user/hand/right/input/pinch"
             },
             {
                "inputs" : {
@@ -264,7 +177,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/dimesntionjump"
+                     "output" : "/actions/default/in/dimensionjump"
                   }
                },
                "mode" : "button",
@@ -273,29 +186,11 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/dimesntionjump"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/b"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/dimesntionjump"
+                     "output" : "/actions/default/in/dimensionjump"
                   }
                },
                "mode" : "button",
                "path" : "/user/hand/left/input/a"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/dimesntionjump"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/a"
             },
             {
                "inputs" : {
@@ -308,35 +203,84 @@
             },
             {
                "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/dimensionjump"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/dimensionjump"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/b"
+            },
+            {
+               "inputs" : {
+                  "force" : {
+                     "output" : "/actions/default/in/squeeze"
+                  }
+               },
+               "mode" : "force_sensor",
+               "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "grab" : {
+                     "output" : "/actions/default/in/grabgrip"
+                  }
+               },
+               "mode" : "grab",
+               "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "grab" : {
+                     "output" : "/actions/default/in/grabpinch"
+                  }
+               },
+               "mode" : "grab",
+               "path" : "/user/hand/right/input/pinch"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/default/in/moveup"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/teleport"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/pullobject"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
                   "pull" : {
                      "output" : "/actions/default/in/startlaser"
                   }
                },
                "mode" : "trigger",
                "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "east" : {
-                     "output" : "/actions/default/in/snapturnright"
-                  },
-                  "south" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "west" : {
-                     "output" : "/actions/default/in/snapturnleft"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "sub_mode" : "touch"
-               },
-               "path" : "/user/hand/left/input/thumbstick"
-            },
-            {
-               "inputs" : {},
-               "mode" : "none",
-               "path" : "/user/hand/right/input/thumbstick"
             }
          ]
       },
