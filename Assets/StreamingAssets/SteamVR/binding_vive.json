@@ -4,7 +4,17 @@
       "chords": [],
       "poses": [],
       "haptics": [],
-      "sources": [],
+      "sources": [
+        {
+          "inputs" : {
+            "click" : {
+              "output" : "/actions/default/in/headsetonhead"
+            }
+          },
+          "mode" : "button",
+          "path" : "/user/head/proximity"
+        }
+      ],
       "skeleton": []
     }
   },
