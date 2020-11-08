@@ -2,7 +2,12 @@
   "bindings": {
     "/actions/mixedreality": {
       "chords": [],
-      "poses": [],
+      "poses": [
+        {
+          "output": "/actions/mixedreality/in/ExternalCamera",
+          "path": "/user/camera/pose/raw"
+        }
+      ],
       "haptics": [],
       "sources": [],
       "skeleton": []
