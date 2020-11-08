@@ -317,8 +317,14 @@
             },
             {
                "inputs" : {
+                  "east" : {
+                     "output" : "/actions/default/in/snapturnright"
+                  },
                   "south" : {
                      "output" : "/actions/default/in/teleport"
+                  },
+                  "west" : {
+                     "output" : "/actions/default/in/snapturnleft"
                   }
                },
                "mode" : "dpad",
@@ -377,8 +383,8 @@
    },
    "category" : "steamvr_input",
    "controller_type" : "knuckles",
-   "description" : "The default mixed movement binding for Valve Knuckles",
-   "name" : "knuckles_default",
+   "description" : "The default binding for mixed movement on Valve Knuckles",
+   "name" : "knuckles_mixed",
    "options" : {},
    "simulated_actions" : []
 }
