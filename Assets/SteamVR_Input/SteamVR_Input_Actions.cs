@@ -37,7 +37,7 @@ namespace Valve.VR
         
         private static SteamVR_Action_Vector2 p_default_MoveUp;
         
-        private static SteamVR_Action_Boolean p_default_DimesntionJump;
+        private static SteamVR_Action_Boolean p_default_DimensionJump;
         
         private static SteamVR_Action_Boolean p_default_Teleport;
         
@@ -127,11 +127,11 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_DimesntionJump
+        public static SteamVR_Action_Boolean default_DimensionJump
         {
             get
             {
-                return SteamVR_Actions.p_default_DimesntionJump.GetCopy<SteamVR_Action_Boolean>();
+                return SteamVR_Actions.p_default_DimensionJump.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -180,7 +180,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_MoveUp,
-                    SteamVR_Actions.default_DimesntionJump,
+                    SteamVR_Actions.default_DimensionJump,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_StartLaser,
                     SteamVR_Actions.default_PullObject,
@@ -196,7 +196,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_MoveUp,
-                    SteamVR_Actions.default_DimesntionJump,
+                    SteamVR_Actions.default_DimensionJump,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_StartLaser,
                     SteamVR_Actions.default_PullObject};
@@ -212,7 +212,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_HeadsetOnHead,
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
-                    SteamVR_Actions.default_DimesntionJump,
+                    SteamVR_Actions.default_DimensionJump,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_PullObject};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
@@ -232,7 +232,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_MoveUp,
-                    SteamVR_Actions.default_DimesntionJump,
+                    SteamVR_Actions.default_DimensionJump,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_StartLaser,
                     SteamVR_Actions.default_PullObject};
@@ -250,7 +250,7 @@ namespace Valve.VR
             SteamVR_Actions.p_default_SnapTurnLeft = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnLeft")));
             SteamVR_Actions.p_default_SnapTurnRight = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnRight")));
             SteamVR_Actions.p_default_MoveUp = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/default/in/MoveUp")));
-            SteamVR_Actions.p_default_DimesntionJump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DimesntionJump")));
+            SteamVR_Actions.p_default_DimensionJump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DimensionJump")));
             SteamVR_Actions.p_default_Teleport = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/Teleport")));
             SteamVR_Actions.p_default_StartLaser = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/default/in/StartLaser")));
             SteamVR_Actions.p_default_PullObject = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PullObject")));

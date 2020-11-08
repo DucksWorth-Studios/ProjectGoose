@@ -97,11 +97,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean DimesntionJump
+        public virtual SteamVR_Action_Boolean DimensionJump
         {
             get
             {
-                return SteamVR_Actions.default_DimesntionJump;
+                return SteamVR_Actions.default_DimensionJump;
             }
         }
         
