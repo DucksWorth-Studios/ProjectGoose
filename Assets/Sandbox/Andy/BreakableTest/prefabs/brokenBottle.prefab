@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5692335438294973236}
   - component: {fileID: 1068753399340074467}
   - component: {fileID: 6307121305503178102}
-  - component: {fileID: 63350907743898546}
   m_Layer: 0
   m_Name: brokenBottle
   m_TagString: Untagged
@@ -95,19 +94,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7207757321447294210, guid: 62e17ea5aca4d7142bc8325a5953a153, type: 3}
---- !u!54 &63350907743898546
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355751335098802930}
-  serializedVersion: 2
-  m_Mass: 0.7
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
