@@ -47,7 +47,7 @@
       "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/DimesntionJump",
+      "name": "/actions/default/in/DimensionJump",
       "type": "boolean",
       "requirement": "mandatory"
     },
@@ -134,8 +134,17 @@
   "localization": [
     {
       "language_tag": "en_US",
+      "/actions/default/in/GrabGrip": "Grab Grip",
+      "/actions/default/in/GrabPinch": "Grab Pinch",
+      "/actions/default/in/HeadsetOnHead": "Headset on head (proximity sensor)",
+      "/actions/default/in/Pose": "Pose",
+      "/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
+      "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
+      "/actions/default/out/Haptic": "Haptic",
+      "/actions/default/in/SnapTurnLeft": "Snap Turn (Left)",
+      "/actions/default/in/SnapTurnRight": "Snap Turn (Right)",
       "/actions/default/in/MoveUp": "Move Forward",
-      "/actions/default/in/DimesntionJump": "Dimension Jump",
+      "/actions/default/in/DimensionJump": "Dimension Jump",
       "/actions/default/in/Teleport": "Teleport",
       "/actions/default/in/StartLaser": "Activate Laser Beam",
       "/actions/default/in/PullObject": "Pull Object Towards Player"
