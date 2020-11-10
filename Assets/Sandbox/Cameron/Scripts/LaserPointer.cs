@@ -28,7 +28,15 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLength();
+        if (startLaser.axis > 0.1f)
+        {
+            lineRenderer.enabled = true;
+            UpdateLength();
+        }
+        else
+        {
+            lineRenderer.enabled = false;
+        }
     }
 
     private void UpdateLength()
