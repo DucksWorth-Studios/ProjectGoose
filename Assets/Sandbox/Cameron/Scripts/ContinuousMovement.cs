@@ -11,6 +11,9 @@ public class ContinuousMovement : MonoBehaviour
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        
+        if (input == null)
+            Debug.LogError("ContinuousMovement.cs is missing input", this);
     }
 
     // Update is called once per frame
