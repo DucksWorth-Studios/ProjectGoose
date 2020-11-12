@@ -8,13 +8,12 @@ using UnityEngine;
 /// </summary>
 public class EventManager : MonoBehaviour
 {
-    void Start()
+    public static EventManager instance;
+
+    private void Awake()
     {
-        
+        //Creates a singleton
+        instance = this;
     }
 
-    void Update()
-    {
-        
-    }
 }
