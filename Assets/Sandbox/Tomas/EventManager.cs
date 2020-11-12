@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
@@ -16,4 +17,18 @@ public class EventManager : MonoBehaviour
         instance = this;
     }
 
+
+    //This is a model for an event we can use ?.invoke to call our events but for debug reasons this allows quick access
+    public event Action onTestEventCall;
+    public void testEventCall()
+    {
+        if(onTestEventCall != null)
+        {
+            onTestEventCall();
+        }
+        else
+        {
+            Debug.Log("testEventCall is Null");
+        }
+    }
 }
