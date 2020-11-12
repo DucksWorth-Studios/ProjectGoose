@@ -16,19 +16,34 @@ public class EventManager : MonoBehaviour
         //Creates a singleton
         instance = this;
     }
+    //All events stored here
+    public event Action OnTestEventCall;
+    public event Action<String> OnTestEventCallParam;
 
-
-    //This is a model for an event we can use ?.invoke to call our events but for debug reasons this allows quick access
-    public event Action onTestEventCall;
-    public void testEventCall()
+    //This is a model for an event
+    public void TestEventCall()
     {
-        if(onTestEventCall != null)
+        // we can use ?.invoke to call our events but for debug reasons this allows quick access
+        if (OnTestEventCall != null)
         {
-            onTestEventCall();
+            OnTestEventCall();
         }
         else
         {
             Debug.Log("testEventCall is Null");
+        }
+    }
+
+    //Simple Demo of Passing Params
+    public void TestEventCallParam(String test)
+    {
+        if (OnTestEventCall != null)
+        {
+            OnTestEventCallParam(test);
+        }
+        else
+        {
+            Debug.Log("testEventCallParam is Null");
         }
     }
 }
