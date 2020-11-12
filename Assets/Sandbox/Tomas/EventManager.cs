@@ -18,7 +18,7 @@ public class EventManager : MonoBehaviour
     }
     //All events stored here
     public event Action OnTestEventCall;
-    public event Action<String> OnTestEventCallParam;
+    public event Action<Color> OnTestEventCallParam;
 
     //This is a model for an event
     public void TestEventCall()
@@ -35,11 +35,11 @@ public class EventManager : MonoBehaviour
     }
 
     //Simple Demo of Passing Params
-    public void TestEventCallParam(String test)
+    public void TestEventCallParam(Color color)
     {
         if (OnTestEventCall != null)
         {
-            OnTestEventCallParam(test);
+            OnTestEventCallParam(color);
         }
         else
         {
