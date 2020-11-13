@@ -3,6 +3,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
+        "Unity.PerformanceTesting",
         "GameAssembly"
     ],
     "includePlatforms": [],
