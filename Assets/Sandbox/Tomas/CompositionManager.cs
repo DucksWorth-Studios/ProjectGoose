@@ -18,6 +18,16 @@ public class CompositionManager : MonoBehaviour
 
     }
 
+    public void mixChemical(Color chemicalAdditive)
+    {
+
+    }
+
+    public void timeShiftChange()
+    {
+
+    }
+
     void Update()
     {
 
