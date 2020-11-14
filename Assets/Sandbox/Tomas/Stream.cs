@@ -100,9 +100,12 @@ public class Stream : MonoBehaviour
         //Generate Ray
         Physics.Raycast(ray, out hit, 2.0f);
         //set the object
-        if (hit.collider.gameObject.tag == "ground")
+        if (hit.collider.gameObject.tag == "Chemical")
         {
+            print("Hello");
             gameObjectCollide = hit.collider.gameObject;
+            print("Oh No");
+            print(gameObjectCollide.name);
         }
 
         //if it hits valid collider set it as end point
@@ -162,7 +165,7 @@ public class Stream : MonoBehaviour
             //activate the splash effect
             splashParticle.gameObject.SetActive(isHitting);
             //Change color when we hit
-            if (gameObjectCollide != null && gameObjectCollide.tag == "ground" && isHitting)
+            if (gameObjectCollide != null  && isHitting)
             {
                 gameObjectCollide.GetComponent<ColorChange>().switchColour(chemicalColor);
             }

@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - ground
   - changeAble
+  - Chemical
   layers:
   - Default
   - TransparentFX
