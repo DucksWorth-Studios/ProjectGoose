@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110002612119618830}
+  - component: {fileID: 4168602763558628521}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Untagged
@@ -29,9 +30,26 @@ Transform:
   m_Children:
   - {fileID: 5113891000606210260}
   - {fileID: 5134468866849140788}
+  - {fileID: 8470062342673974529}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4168602763558628521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c7141524be9544b9a2004087689817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pourThreshold: 35
+  origin: {fileID: 8470062342673974529}
+  streamPrefab: {fileID: 5238570228697279498, guid: 687fe5b6c1388c34882009636030b3c7,
+    type: 3}
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +61,7 @@ GameObject:
   - component: {fileID: 5113891000606210260}
   - component: {fileID: 5817217901635984032}
   - component: {fileID: 8732795192850355258}
+  - component: {fileID: 6815903622259662029}
   m_Layer: 0
   m_Name: Tube
   m_TagString: Untagged
@@ -111,6 +130,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6815903622259662029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917117418977307877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033565555, y: 0.033565547, z: 0.12387622}
+  m_Center: {x: 9.313225e-10, y: 0, z: -0.0004693492}
 --- !u!1 &7846898505065448406
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,9 +154,11 @@ GameObject:
   - component: {fileID: 5134468866849140788}
   - component: {fileID: 2577474089656087284}
   - component: {fileID: 8710918317072108127}
+  - component: {fileID: 7483628877676040935}
+  - component: {fileID: 2179529101818589918}
   m_Layer: 0
   m_Name: Contents
-  m_TagString: Untagged
+  m_TagString: Chemical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,3 +224,58 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7483628877676040935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846898505065448406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019999985, y: 0.019999996, z: 0.11159002}
+  m_Center: {x: 0, y: 2.0872027e-16, z: -0.021948788}
+--- !u!114 &2179529101818589918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846898505065448406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fdd05e231bd6941994e0ca91f64e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8986872239109865134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8470062342673974529}
+  m_Layer: 0
+  m_Name: origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8470062342673974529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986872239109865134}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.93, z: 0}
+  m_LocalScale: {x: 6.6024027, y: 6.6024027, z: 6.6024027}
+  m_Children: []
+  m_Father: {fileID: 2110002612119618830}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
