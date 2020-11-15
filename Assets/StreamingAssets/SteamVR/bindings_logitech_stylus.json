@@ -1,83 +1,73 @@
 {
   "bindings": {
-    "/actions/default" : {
-      "chords" : [],
-      "haptics" : [
+    "/actions/default": {
+      "chords": [],
+      "poses": [
         {
-          "output" : "/actions/default/out/haptic",
-          "path" : "/user/hand/left/output/haptic"
+          "output": "/actions/default/in/pose",
+          "path": "/user/hand/left/pose/raw"
         },
         {
-          "output" : "/actions/default/out/haptic",
-          "path" : "/user/hand/right/output/haptic"
+          "output": "/actions/default/in/pose",
+          "path": "/user/hand/right/pose/raw"
         }
       ],
-      "poses" : [
+      "haptics": [
         {
-          "output" : "/actions/default/in/pose",
-          "path" : "/user/hand/left/pose/raw"
+          "output": "/actions/default/out/haptic",
+          "path": "/user/hand/left/output/haptic"
         },
         {
-          "output" : "/actions/default/in/pose",
-          "path" : "/user/hand/right/pose/raw"
+          "output": "/actions/default/out/haptic",
+          "path": "/user/hand/right/output/haptic"
         }
       ],
       "sources": [
         {
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/interactui"
-            }
-          },
+          "path": "/user/hand/left/input/grip",
           "mode": "button",
-          "path": "/user/hand/left/input/primary"
-        },
-        {
+          "parameters": {},
           "inputs": {
             "click": {
               "output": "/actions/default/in/grabgrip"
             }
-          },
-          "mode": "button",
-          "path": "/user/hand/left/input/grip"
+          }
         },
         {
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/grabpinch"
-            }
-          },
+          "path": "/user/hand/left/input/primary",
           "mode": "button",
           "parameters": {
             "click_activate_threshold": "0.75",
             "click_deactivate_threshold": "0.7",
             "force_input": "value"
           },
-          "path": "/user/hand/left/input/primary"
-        },
-        {
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/interactui"
-            }
-          },
-          "mode": "button",
-          "path": "/user/hand/right/input/primary"
-        },
-        {
           "inputs": {
             "click": {
               "output": "/actions/default/in/grabpinch"
             }
-          },
+          }
+        },
+        {
+          "path": "/user/hand/right/input/primary",
           "mode": "button",
           "parameters": {
             "click_activate_threshold": "0.75",
             "click_deactivate_threshold": "0.7"
           },
-          "path": "/user/hand/right/input/primary"
+          "inputs": {
+            "click": {
+              "output": "/actions/default/in/grabpinch"
+            }
+          }
         },
         {
+          "path": "/user/hand/left/input/touchstrip",
+          "mode": "dpad",
+          "parameters": {
+            "deadzone_pct": "90",
+            "overlap_pct": "15",
+            "sub_mode": "click"
+          },
           "inputs": {
             "center": {
               "output": "/actions/default/in/teleport"
@@ -94,16 +84,16 @@
             "west": {
               "output": "/actions/default/in/snapturnleft"
             }
-          },
+          }
+        },
+        {
+          "path": "/user/hand/right/input/touchstrip",
           "mode": "dpad",
           "parameters": {
             "deadzone_pct": "90",
             "overlap_pct": "15",
             "sub_mode": "click"
           },
-          "path": "/user/hand/left/input/touchstrip"
-        },
-        {
           "inputs": {
             "center": {
               "output": "/actions/default/in/teleport"
@@ -120,43 +110,40 @@
             "west": {
               "output": "/actions/default/in/snapturnleft"
             }
-          },
-          "mode": "dpad",
-          "parameters": {
-            "deadzone_pct": "90",
-            "overlap_pct": "15",
-            "sub_mode": "click"
-          },
-          "path": "/user/hand/right/input/touchstrip"
+          }
         },
         {
+          "path": "/user/hand/right/input/grip",
+          "mode": "button",
+          "parameters": {},
           "inputs": {
             "click": {
               "output": "/actions/default/in/grabgrip"
             }
-          },
-          "mode": "button",
-          "path": "/user/hand/right/input/grip"
+          }
         },
         {
+          "path": "/user/hand/left/input/tip",
+          "mode": "trigger",
+          "parameters": {},
           "inputs": {
             "pull": {
               "output": "/actions/default/in/squeeze"
             }
-          },
-          "mode": "trigger",
-          "path": "/user/hand/left/input/tip"
+          }
         },
         {
+          "path": "/user/hand/right/input/tip",
+          "mode": "trigger",
+          "parameters": {},
           "inputs": {
             "pull": {
               "output": "/actions/default/in/squeeze"
             }
-          },
-          "mode": "trigger",
-          "path": "/user/hand/right/input/tip"
+          }
         }
-      ]
+      ],
+      "skeleton": []
     }
   },
   "controller_type": "vive_controller",
