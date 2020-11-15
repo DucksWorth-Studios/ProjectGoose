@@ -10,7 +10,7 @@ public class CompositionManager : MonoBehaviour
     private void Awake()
     {
         //Allows access to material
-        currentMaterial = GetComponent<Material>();
+        currentMaterial = GetComponent<Renderer>().material;
         //Make sure composition matches what its set to.
         currentColor = currentMaterial.color;
         //Save what it is currenty/ Wont trigger if they match later
@@ -36,11 +36,26 @@ public class CompositionManager : MonoBehaviour
 
     public void timeShiftChange()
     {
+        float hue;
+        float saturation;
+        float brightness;
 
+        Color.RGBToHSV(currentColor,out hue,out saturation,out brightness);
+        print("Hue: " + hue);
+        hue += 0.5f;
+        hue = hue % 1f;
+        print("Hue: " + hue);
+        Color boi = Color.HSVToRGB(hue,saturation,brightness);
+
+        currentMaterial.color = boi;
+        print("Hello");
     }
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            timeShiftChange();
+        }
     }
 }
