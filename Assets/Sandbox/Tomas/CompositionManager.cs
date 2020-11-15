@@ -27,7 +27,8 @@ public class CompositionManager : MonoBehaviour
         if(chemicalAdditive != previousColor)
         {
             //Mix the chemicals by 50%
-            currentMaterial.color = Color.Lerp(chemicalAdditive,currentColor,0.5f);
+            currentColor = Color.Lerp(chemicalAdditive,currentColor,0.5f);
+            currentMaterial.color = currentColor;
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
         }
