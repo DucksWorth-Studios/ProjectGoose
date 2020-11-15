@@ -20,15 +20,13 @@ MonoBehaviour:
   inputUpdateMode: 2
   poseUpdateMode: 8
   activateFirstActionSetOnStart: 1
-  editorAppKey: game.ducksworth.project-goose
+  editorAppKey: application.generated.unity.vrtemplate.exe
   autoEnableVR: 1
   legacyMixedRealityCamera: 1
   mixedRealityCameraPose:
-    actionPath: /actions/default/in/Pose
-    needsReinit: 0
+    actionPath: /actions//in/ExternalCamera
+    needsReinit: 1
   mixedRealityCameraInputSource: 11
   mixedRealityActionSetAutoEnable: 1
-  previewHandLeft: {fileID: 1000013348574242, guid: 638779290bce1af49b356f33dcc6fccf,
-    type: 3}
-  previewHandRight: {fileID: 1000010304998954, guid: 6def53d002137b747aec0b29551e0e25,
-    type: 3}
+  previewHandLeft: {fileID: 0}
+  previewHandRight: {fileID: 0}
