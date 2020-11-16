@@ -36,6 +36,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
     // Move the player up or down depending on the dimension they are in
     public void DimensionJump()
     {
+        EventManager.instance.TimeJump();
         if (!upSideDown) {
             transform.position += Vector3.up * 100;
             upSideDown = true;

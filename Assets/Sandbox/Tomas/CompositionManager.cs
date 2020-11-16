@@ -18,6 +18,8 @@ public class CompositionManager : MonoBehaviour
         currentMaterial.color = currentColor;
         //Save what it is currenty/ Wont trigger if they match later
         previousColor = currentColor;
+
+        EventManager.instance.OnTimeJump += timeShiftChange;
     }
 
     void Start()
