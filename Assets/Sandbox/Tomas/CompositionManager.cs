@@ -41,15 +41,21 @@ public class CompositionManager : MonoBehaviour
         float brightness;
 
         Color.RGBToHSV(currentColor,out hue,out saturation,out brightness);
-        print("Hue: " + hue);
         hue += 0.5f;
         hue = hue % 1f;
-        print("Hue: " + hue);
         Color boi = Color.HSVToRGB(hue,saturation,brightness);
 
         currentMaterial.color = boi;
-        print("Hello");
     }
+
+
+    public void callColorChange(GameObject otherVial)
+    {
+        //GameObject will be validated before this method is called
+        //Take the second vial and mix it using the mix chemicalMethod.
+        otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
+    }
+
 
     void Update()
     {
