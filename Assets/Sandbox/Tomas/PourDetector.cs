@@ -78,6 +78,10 @@ public class PourDetector : MonoBehaviour
     {
         //generate a stream object
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
+        //Get The compositionManager
+        CompositionManager compositionmanager = GetComponentInChildren<CompositionManager>();
+        //Set in the stream. This is needed to detect and change the composition
+        streamObject.GetComponent<Stream>().setCompositionManager(compositionmanager);
         return streamObject.GetComponent<Stream>();
     }
 }

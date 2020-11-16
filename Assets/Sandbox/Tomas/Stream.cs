@@ -12,7 +12,7 @@ public class Stream : MonoBehaviour
 
     //Used for color mixing
     private GameObject gameObjectCollide = null;
-    private Color chemicalColor = Color.red;
+    private CompositionManager compositionManager = null;
 
     private void Awake()
     {
@@ -21,6 +21,15 @@ public class Stream : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         splashParticle = GetComponentInChildren<ParticleSystem>();
+    }
+    /// <summary>
+    /// Author: Tomas
+    /// Use this to reference the composition
+    /// </summary>
+    /// <param name="compositionManager">The objects compositionManager</param>
+    public void setCompositionManager(CompositionManager compositionManager)
+    {
+        this.compositionManager = compositionManager; 
     }
 
     private void Start()
@@ -167,7 +176,8 @@ public class Stream : MonoBehaviour
             //Change color when we hit
             if (gameObjectCollide != null  && isHitting)
             {
-                gameObjectCollide.GetComponent<ColorChange>().switchColour(chemicalColor);
+                compositionManager.callColorChange(gameObjectCollide);
+                //gameObjectCollide.GetComponent<ColorChange>().switchColour(chemicalColor);
             }
             yield return null;
         }
