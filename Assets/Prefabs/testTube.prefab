@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 2577474089656087284}
   - component: {fileID: 8710918317072108127}
   - component: {fileID: 7483628877676040935}
-  - component: {fileID: 2179529101818589918}
+  - component: {fileID: 6556756402260595651}
   m_Layer: 0
   m_Name: Contents
   m_TagString: Chemical
@@ -237,7 +237,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999985, y: 0.019999996, z: 0.11159002}
   m_Center: {x: 0, y: 2.0872027e-16, z: -0.021948788}
---- !u!114 &2179529101818589918
+--- !u!114 &6556756402260595651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,9 +246,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7846898505065448406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fdd05e231bd6941994e0ca91f64e82, type: 3}
+  m_Script: {fileID: 11500000, guid: dc207b89988c86e49a9cc59cb39e55e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8986872239109865134
 GameObject:
   m_ObjectHideFlags: 0
