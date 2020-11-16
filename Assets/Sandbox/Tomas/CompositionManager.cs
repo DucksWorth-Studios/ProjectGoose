@@ -7,8 +7,11 @@ public class CompositionManager : MonoBehaviour
     public Color currentColor = Color.white;
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
+    private Valve.VR.InteractionSystem.Interactable interactable = null;
     private void Awake()
     {
+        //Get the interactable component
+        interactable = GetComponentInParent<Valve.VR.InteractionSystem.Interactable>();
         //Allows access to material
         currentMaterial = GetComponent<Renderer>().material;
         //Make sure composition matches what its set to.
@@ -36,22 +39,26 @@ public class CompositionManager : MonoBehaviour
 
     public void timeShiftChange()
     {
-        //Values to modify
-        float hue;
-        float saturation;
-        float brightness;
+        //Only will trigger if attached to hand
+        if(interactable.attachedToHand != null)
+        {
+            //Values to modify
+            float hue;
+            float saturation;
+            float brightness;
 
-        //Get the Hue Saturation and Brightness
-        Color.RGBToHSV(currentColor,out hue,out saturation,out brightness);
-        //Modifying the hue by 0.5 will change its color to opposite
-        hue += 0.5f;
-        //Bring it back in range of 0-1
-        hue = hue % 1f;
-        //Recreate the Color
-        Color changedColor = Color.HSVToRGB(hue,saturation,brightness);
+            //Get the Hue Saturation and Brightness
+            Color.RGBToHSV(currentColor, out hue, out saturation, out brightness);
+            //Modifying the hue by 0.5 will change its color to opposite
+            hue += 0.5f;
+            //Bring it back in range of 0-1
+            hue = hue % 1f;
+            //Recreate the Color
+            Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
 
-        //Set as current
-        currentMaterial.color = changedColor;
+            //Set as current
+            currentMaterial.color = changedColor;
+        }
     }
 
 
@@ -65,10 +72,6 @@ public class CompositionManager : MonoBehaviour
 
     void Update()
     {
-        //Debug call to force a change
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            timeShiftChange();
-        }
+
     }
 }
