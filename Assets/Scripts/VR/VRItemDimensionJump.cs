@@ -30,6 +30,15 @@ public class VRItemDimensionJump : MonoBehaviour
                                                    & ~Hand.AttachmentFlags.DetachOthers
                                                    & ~Hand.AttachmentFlags.VelocityMovement;
     
+    // region Properties
+
+    public bool IsAttached
+    {
+        set => attached = value;
+    }
+
+    // endregion Properties
+    
     void Awake()
     {
         interactable = this.GetComponent<Interactable>();
