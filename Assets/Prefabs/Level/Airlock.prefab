@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5239351393452691116, guid: 12d78ea78f27d4046b068869958d29b7,
         type: 3}
       propertyPath: m_Name
-      value: Cieling_4way
+      value: Cieling
       objectReference: {fileID: 0}
     - target: {fileID: 5239351393452921484, guid: 12d78ea78f27d4046b068869958d29b7,
         type: 3}
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 1782590810285173871, guid: c1cd461120d6ae742a443cad5b0e5afc,
         type: 3}
       propertyPath: m_Name
-      value: floor_straight
+      value: floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1cd461120d6ae742a443cad5b0e5afc, type: 3}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 2040028181945014715, guid: 145548faf3fee674e9707056b4028b63,
         type: 3}
       propertyPath: m_Name
-      value: corridor_wildEnd (2)
+      value: Left_Side_Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145548faf3fee674e9707056b4028b63, type: 3}
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 5290438648382197623, guid: 488379ebe49e1314eae09d2089c88208,
         type: 3}
       propertyPath: m_Name
-      value: corridor_Door
+      value: Doorway
       objectReference: {fileID: 0}
     - target: {fileID: 5290438648382493527, guid: 488379ebe49e1314eae09d2089c88208,
         type: 3}
@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 5290438648382493527, guid: 488379ebe49e1314eae09d2089c88208,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2895311
+      value: 1.3139033
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488379ebe49e1314eae09d2089c88208, type: 3}
@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 2040028181945014715, guid: 145548faf3fee674e9707056b4028b63,
         type: 3}
       propertyPath: m_Name
-      value: corridor_wildEnd
+      value: Back_Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145548faf3fee674e9707056b4028b63, type: 3}
@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 2040028181945014715, guid: 145548faf3fee674e9707056b4028b63,
         type: 3}
       propertyPath: m_Name
-      value: corridor_wildEnd (1)
+      value: Right_Side_Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145548faf3fee674e9707056b4028b63, type: 3}
