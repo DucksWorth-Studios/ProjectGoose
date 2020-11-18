@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2110002612119618830}
   - component: {fileID: 4168602763558628521}
+  - component: {fileID: 6004038962769222599}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Untagged
@@ -50,6 +51,58 @@ MonoBehaviour:
   origin: {fileID: 8470062342673974529}
   streamPrefab: {fileID: 5238570228697279498, guid: 687fe5b6c1388c34882009636030b3c7,
     type: 3}
+--- !u!114 &6004038962769222599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 0
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +208,7 @@ GameObject:
   - component: {fileID: 2577474089656087284}
   - component: {fileID: 8710918317072108127}
   - component: {fileID: 7483628877676040935}
-  - component: {fileID: 2179529101818589918}
+  - component: {fileID: 6556756402260595651}
   m_Layer: 0
   m_Name: Contents
   m_TagString: Chemical
@@ -237,7 +290,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999985, y: 0.019999996, z: 0.11159002}
   m_Center: {x: 0, y: 2.0872027e-16, z: -0.021948788}
---- !u!114 &2179529101818589918
+--- !u!114 &6556756402260595651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,9 +299,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7846898505065448406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fdd05e231bd6941994e0ca91f64e82, type: 3}
+  m_Script: {fileID: 11500000, guid: dc207b89988c86e49a9cc59cb39e55e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8986872239109865134
 GameObject:
   m_ObjectHideFlags: 0

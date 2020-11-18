@@ -19,6 +19,7 @@ public class EventManager : MonoBehaviour
     //All events stored here
     public event Action OnTestEventCall;
     public event Action<Color> OnTestEventCallParam;
+    public event Action OnTimeJump;
 
     //This is a model for an event
     public void TestEventCall()
@@ -44,6 +45,19 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("testEventCallParam is Null");
+        }
+    }
+
+
+    public void TimeJump()
+    {
+        if(OnTimeJump != null)
+        {
+            OnTimeJump();
+        }
+        else
+        {
+            Debug.Log("Time Jump is Null");
         }
     }
 }

@@ -10,8 +10,13 @@ public class PourDetector : MonoBehaviour
 
     private bool isPouring = false;
     private Stream currentStream = null;
+    private CompositionManager compositionManager = null;
 
-
+    private void Awake()
+    {
+        //Get Composition Manager. Will be used generating streams
+        compositionManager = GetComponentInChildren<CompositionManager>();
+    }
     private void Update()
     {
         //are we at a valid angle to begin?
@@ -78,6 +83,8 @@ public class PourDetector : MonoBehaviour
     {
         //generate a stream object
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
+        //Set in the stream. This is needed to detect and change the composition
+        streamObject.GetComponent<Stream>().setCompositionManager(compositionManager);
         return streamObject.GetComponent<Stream>();
     }
 }
