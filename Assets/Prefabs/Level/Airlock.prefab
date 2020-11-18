@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5239351393452691116, guid: 12d78ea78f27d4046b068869958d29b7,
         type: 3}
       propertyPath: m_Name
-      value: Cieling
+      value: Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 5239351393452921484, guid: 12d78ea78f27d4046b068869958d29b7,
         type: 3}
