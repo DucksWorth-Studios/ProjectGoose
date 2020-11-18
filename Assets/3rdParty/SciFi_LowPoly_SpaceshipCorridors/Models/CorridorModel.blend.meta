@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: e837ede741e134e4e842a234733796e8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arch_double
+    100002: arch_oneway
+    100004: Arch_open
+    100006: Camera
+    100008: Cieling_4way
+    100010: corridor_AccessShaft
+    100012: corridor_Door
+    100014: Corridor_handrails
+    100016: corridor_wildEnd
+    100018: Corridor_WildEndBland
+    100020: Corridor_Window
+    100022: //RootNode
+    100024: Cube.000
+    100026: Cube.003
+    100028: Cube.005
+    100030: Cube.008
+    100032: Door_Right_Mustard
+    100034: Door_Right_Orange
+    100036: Door_Right_Purple
+    100038: Door_Right_Teal
+    100040: DoorLeft_Mustard
+    100042: DoorLeft_Orange
+    100044: DoorLeft_Purple
+    100046: DoorLeft_Teal
+    100048: DoorSignage_1
+    100050: DoorSignage_10
+    100052: DoorSignage_11
+    100054: DoorSignage_12
+    100056: DoorSignage_13
+    100058: DoorSignage_14
+    100060: DoorSignage_15
+    100062: DoorSignage_2
+    100064: DoorSignage_3
+    100066: DoorSignage_4
+    100068: DoorSignage_5
+    100070: DoorSignage_6
+    100072: DoorSignage_7
+    100074: DoorSignage_8
+    100076: DoorSignage_9
+    100078: DoorSignage_Blank
+    100080: floor_22.5
+    100082: floor_45
+    100084: Floor_90
+    100086: floor_open
+    100088: floor_straight
+    100090: wallCorridor Bend_22.5
+    100092: wallCorridor Bend_45
+    100094: wallCorridor Bend_90
+    100096: wallCorridor_straight
+    100098: panel_doorSign
+    100100: panel_flat
+    100102: panel_greeblies
+    100104: panel_soft
+    100106: prop_fireExtinguisher
+    100108: prop_GenericCase
+    100110: prop_Locker
+    100112: prop_medicalCase
+    400000: arch_double
+    400002: arch_oneway
+    400004: Arch_open
+    400006: Camera
+    400008: Cieling_4way
+    400010: corridor_AccessShaft
+    400012: corridor_Door
+    400014: Corridor_handrails
+    400016: corridor_wildEnd
+    400018: Corridor_WildEndBland
+    400020: Corridor_Window
+    400022: //RootNode
+    400024: Cube.000
+    400026: Cube.003
+    400028: Cube.005
+    400030: Cube.008
+    400032: Door_Right_Mustard
+    400034: Door_Right_Orange
+    400036: Door_Right_Purple
+    400038: Door_Right_Teal
+    400040: DoorLeft_Mustard
+    400042: DoorLeft_Orange
+    400044: DoorLeft_Purple
+    400046: DoorLeft_Teal
+    400048: DoorSignage_1
+    400050: DoorSignage_10
+    400052: DoorSignage_11
+    400054: DoorSignage_12
+    400056: DoorSignage_13
+    400058: DoorSignage_14
+    400060: DoorSignage_15
+    400062: DoorSignage_2
+    400064: DoorSignage_3
+    400066: DoorSignage_4
+    400068: DoorSignage_5
+    400070: DoorSignage_6
+    400072: DoorSignage_7
+    400074: DoorSignage_8
+    400076: DoorSignage_9
+    400078: DoorSignage_Blank
+    400080: floor_22.5
+    400082: floor_45
+    400084: Floor_90
+    400086: floor_open
+    400088: floor_straight
+    400090: wallCorridor Bend_22.5
+    400092: wallCorridor Bend_45
+    400094: wallCorridor Bend_90
+    400096: wallCorridor_straight
+    400098: panel_doorSign
+    400100: panel_flat
+    400102: panel_greeblies
+    400104: panel_soft
+    400106: prop_fireExtinguisher
+    400108: prop_GenericCase
+    400110: prop_Locker
+    400112: prop_medicalCase
+    2000000: Camera
+    2100000: Ship Interiors
+    2100002: StripLight
+    2100004: MainLight
+    2100006: DoorSigns
+    2300000: arch_double
+    2300002: arch_oneway
+    2300004: Arch_open
+    2300006: Cieling_4way
+    2300008: corridor_AccessShaft
+    2300010: corridor_Door
+    2300012: Corridor_handrails
+    2300014: corridor_wildEnd
+    2300016: Corridor_WildEndBland
+    2300018: Corridor_Window
+    2300020: Cube.000
+    2300022: Cube.003
+    2300024: Cube.005
+    2300026: Cube.008
+    2300028: Door_Right_Mustard
+    2300030: Door_Right_Orange
+    2300032: Door_Right_Purple
+    2300034: Door_Right_Teal
+    2300036: DoorLeft_Mustard
+    2300038: DoorLeft_Orange
+    2300040: DoorLeft_Purple
+    2300042: DoorLeft_Teal
+    2300044: DoorSignage_1
+    2300046: DoorSignage_10
+    2300048: DoorSignage_11
+    2300050: DoorSignage_12
+    2300052: DoorSignage_13
+    2300054: DoorSignage_14
+    2300056: DoorSignage_15
+    2300058: DoorSignage_2
+    2300060: DoorSignage_3
+    2300062: DoorSignage_4
+    2300064: DoorSignage_5
+    2300066: DoorSignage_6
+    2300068: DoorSignage_7
+    2300070: DoorSignage_8
+    2300072: DoorSignage_9
+    2300074: DoorSignage_Blank
+    2300076: floor_22.5
+    2300078: floor_45
+    2300080: Floor_90
+    2300082: floor_open
+    2300084: floor_straight
+    2300086: wallCorridor Bend_22.5
+    2300088: wallCorridor Bend_45
+    2300090: wallCorridor Bend_90
+    2300092: wallCorridor_straight
+    2300094: panel_doorSign
+    2300096: panel_flat
+    2300098: panel_greeblies
+    2300100: panel_soft
+    2300102: prop_fireExtinguisher
+    2300104: prop_GenericCase
+    2300106: prop_Locker
+    2300108: prop_medicalCase
+    3300000: arch_double
+    3300002: arch_oneway
+    3300004: Arch_open
+    3300006: Cieling_4way
+    3300008: corridor_AccessShaft
+    3300010: corridor_Door
+    3300012: Corridor_handrails
+    3300014: corridor_wildEnd
+    3300016: Corridor_WildEndBland
+    3300018: Corridor_Window
+    3300020: Cube.000
+    3300022: Cube.003
+    3300024: Cube.005
+    3300026: Cube.008
+    3300028: Door_Right_Mustard
+    3300030: Door_Right_Orange
+    3300032: Door_Right_Purple
+    3300034: Door_Right_Teal
+    3300036: DoorLeft_Mustard
+    3300038: DoorLeft_Orange
+    3300040: DoorLeft_Purple
+    3300042: DoorLeft_Teal
+    3300044: DoorSignage_1
+    3300046: DoorSignage_10
+    3300048: DoorSignage_11
+    3300050: DoorSignage_12
+    3300052: DoorSignage_13
+    3300054: DoorSignage_14
+    3300056: DoorSignage_15
+    3300058: DoorSignage_2
+    3300060: DoorSignage_3
+    3300062: DoorSignage_4
+    3300064: DoorSignage_5
+    3300066: DoorSignage_6
+    3300068: DoorSignage_7
+    3300070: DoorSignage_8
+    3300072: DoorSignage_9
+    3300074: DoorSignage_Blank
+    3300076: floor_22.5
+    3300078: floor_45
+    3300080: Floor_90
+    3300082: floor_open
+    3300084: floor_straight
+    3300086: wallCorridor Bend_22.5
+    3300088: wallCorridor Bend_45
+    3300090: wallCorridor Bend_90
+    3300092: wallCorridor_straight
+    3300094: panel_doorSign
+    3300096: panel_flat
+    3300098: panel_greeblies
+    3300100: panel_soft
+    3300102: prop_fireExtinguisher
+    3300104: prop_GenericCase
+    3300106: prop_Locker
+    3300108: prop_medicalCase
+    4300000: Corridor_handrails
+    4300002: floor_straight
+    4300004: Cube.005
+    4300006: wallCorridor_straight
+    4300008: Cube.000
+    4300010: Cube.003
+    4300012: Cieling_4way
+    4300014: arch_oneway
+    4300016: Cube.008
+    4300018: corridor_wildEnd
+    4300020: floor_open
+    4300022: wallCorridor Bend_90
+    4300024: wallCorridor Bend_22.5
+    4300026: wallCorridor Bend_45
+    4300028: floor_45
+    4300030: arch_double
+    4300032: Arch_open
+    4300034: Corridor_WildEndBland
+    4300036: Corridor_Window
+    4300038: corridor_Door
+    4300040: DoorLeft_Orange
+    4300042: Door_Right_Orange
+    4300044: floor_22.5
+    4300046: DoorSignage_1
+    4300048: DoorLeft_Mustard
+    4300050: Door_Right_Mustard
+    4300052: DoorLeft_Purple
+    4300054: Door_Right_Purple
+    4300056: DoorLeft_Teal
+    4300058: Door_Right_Teal
+    4300060: Floor_90
+    4300062: DoorSignage_2
+    4300064: DoorSignage_3
+    4300066: DoorSignage_4
+    4300068: DoorSignage_5
+    4300070: DoorSignage_6
+    4300072: DoorSignage_7
+    4300074: DoorSignage_8
+    4300076: DoorSignage_9
+    4300078: DoorSignage_10
+    4300080: DoorSignage_11
+    4300082: DoorSignage_12
+    4300084: DoorSignage_13
+    4300086: DoorSignage_14
+    4300088: DoorSignage_15
+    4300090: DoorSignage_Blank
+    4300092: corridor_AccessShaft
+    4300094: panel_doorSign
+    4300096: panel_flat
+    4300098: panel_greeblies
+    4300100: prop_Locker
+    4300102: prop_GenericCase
+    4300104: prop_medicalCase
+    4300106: prop_fireExtinguisher
+    4300108: panel_soft
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorSigns
+    second: {fileID: 2100000, guid: d22be3aa5dd765643a9f169f9af8919a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainLight
+    second: {fileID: 2100000, guid: b144e7fc78aacd6409910867b98f2680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ship Interiors
+    second: {fileID: 2100000, guid: 23445366a0fed3a4c9867760c5e70d87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StripLight
+    second: {fileID: 2100000, guid: bcb355c851a87a7429306a1576935c2d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
