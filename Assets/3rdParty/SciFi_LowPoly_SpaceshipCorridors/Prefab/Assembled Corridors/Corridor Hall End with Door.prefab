@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9212095471589666455}
   m_Layer: 0
-  m_Name: Hallway end with door
+  m_Name: Corridor Hall End with Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5695589132860186681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4388299111582848307}
   - {fileID: 3971087960909401449}
