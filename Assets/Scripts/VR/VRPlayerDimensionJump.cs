@@ -8,8 +8,12 @@ using Valve.VR;
 public class VRPlayerDimensionJump : MonoBehaviour
 {
     public SteamVR_Action_Boolean dimensionJumpAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("DimensionJump");
+
+    [Tooltip("The points the player will be randomly sent to when the teleport to the past")]
+    public GameObject[] teleportPlanes;
     
     private bool upSideDown;
+    private Vector3 originalLocation;
 
     // region Properties
     
@@ -38,11 +42,19 @@ public class VRPlayerDimensionJump : MonoBehaviour
     {
         EventManager.instance.TimeJump();
         if (!upSideDown) {
-            transform.position += Vector3.up * 100;
+            // Teleport to the past
+            originalLocation = transform.position;
+            transform.position = PickRandomPointToJumpTo();
             upSideDown = true;
         } else {
-            transform.position += Vector3.down * 100;
+            // Teleport to the future
+            transform.position = originalLocation;
             upSideDown = false;
         }
+    }
+
+    public Vector3 PickRandomPointToJumpTo()
+    {
+        return teleportPlanes[Random.Range(0, teleportPlanes.Length)].transform.position;
     }
 }
