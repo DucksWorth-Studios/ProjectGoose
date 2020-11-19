@@ -67,6 +67,7 @@ public class CompositionManager : MonoBehaviour
 
             //Set as current
             currentMaterial.color = changedColor;
+            currentColor = changedColor;
         }
     }
 
