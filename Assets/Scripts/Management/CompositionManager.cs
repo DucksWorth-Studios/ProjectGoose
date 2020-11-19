@@ -12,6 +12,7 @@ public class CompositionManager : MonoBehaviour
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
+    public bool debugHold = false;
     private void Awake()
     {
         //Get the interactable component
@@ -46,7 +47,7 @@ public class CompositionManager : MonoBehaviour
     public void timeShiftChange()
     {
         //Only will trigger if attached to hand
-        if(interactable.attachedToHand != null)
+        if(interactable.attachedToHand != null || debugHold)
         {
             //Values to modify
             float hue;
