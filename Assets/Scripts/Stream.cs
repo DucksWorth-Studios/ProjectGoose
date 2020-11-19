@@ -19,7 +19,6 @@ public class Stream : MonoBehaviour
         //chemicalColor = GetComponent<Material>().color;
 
         lineRenderer = GetComponent<LineRenderer>();
-
         splashParticle = GetComponentInChildren<ParticleSystem>();
     }
     /// <summary>
@@ -29,7 +28,9 @@ public class Stream : MonoBehaviour
     /// <param name="compositionManager">The objects compositionManager</param>
     public void setCompositionManager(CompositionManager compositionManager)
     {
-        this.compositionManager = compositionManager; 
+        this.compositionManager = compositionManager;
+        //Set the linerenderer color
+        lineRenderer.material.color = compositionManager.currentColor;
     }
 
     private void Start()
@@ -111,10 +112,7 @@ public class Stream : MonoBehaviour
         //set the object
         if (hit.collider.gameObject.tag == "Chemical")
         {
-            print("Hello");
             gameObjectCollide = hit.collider.gameObject;
-            print("Oh No");
-            print(gameObjectCollide.name);
         }
 
         //if it hits valid collider set it as end point
