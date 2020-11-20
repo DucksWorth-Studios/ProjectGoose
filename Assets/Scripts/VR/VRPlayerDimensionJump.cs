@@ -10,7 +10,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
     public SteamVR_Action_Boolean dimensionJumpAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("DimensionJump");
 
     [Tooltip("The points the player will be randomly sent to when the teleport to the past")]
-    public GameObject[] teleportPlanes;
+    public GameObject[] teleportPoints;
     
     private bool upSideDown;
     private Vector3 originalLocation;
@@ -55,6 +55,6 @@ public class VRPlayerDimensionJump : MonoBehaviour
 
     public Vector3 PickRandomPointToJumpTo()
     {
-        return teleportPlanes[Random.Range(0, teleportPlanes.Length)].transform.position;
+        return teleportPoints[Random.Range(0, teleportPoints.Length)].transform.position;
     }
 }
