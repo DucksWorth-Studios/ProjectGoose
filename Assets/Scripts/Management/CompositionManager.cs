@@ -12,7 +12,7 @@ public class CompositionManager : MonoBehaviour
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
-    public bool debugHold = true;
+    public bool debugHold = false;
     private void Awake()
     {
         //Get the interactable component
