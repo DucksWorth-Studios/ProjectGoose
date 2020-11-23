@@ -3,21 +3,12 @@ using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// Author: Cameron Scholes
-/// This will switch between two objects depending on whether the player is in the future or the past
+/// This will allow interactables to attach to the hand without being switched when dimesnion jumping
 /// </summary>
 
 [RequireComponent( typeof( Interactable ) )]
-public class VRItemDimensionJump : MonoBehaviour
+public class VRItemAttachment : MonoBehaviour
 {
-    [Tooltip("The item to be rendered in the present")]
-    public GameObject normalObject;
-    
-    [Tooltip("The iterm to be rendered in the past")]
-    public GameObject agedObject;
-
-    [Tooltip("Enable if the item starts in the past")]
-    public bool inFuture;
-    
     [Tooltip("If enabled, the item will teleport back to its original location when detached from from the playes ahdn")]
     public bool teleportBackToOrigin;
     
@@ -42,35 +33,7 @@ public class VRItemDimensionJump : MonoBehaviour
     void Start()
     {
         interactable = this.GetComponent<Interactable>();
-        EventManager.instance.OnTimeJump += TimeJump;
-        SetActiveObject();
-    }
-
-    /// <summary>
-    /// OnTimeJump event listener
-    /// Only changes object state if the object is being held
-    /// </summary>
-    private void TimeJump()
-    {
-        // If the current object isn't attached to a hand, return, not currently being moved
-        if (!attached) return;
-        
-        inFuture = !inFuture;
-        SetActiveObject();
-    }
-
-    /// <summary>
-    /// Swaps the active object depending on the given state
-    /// </summary>
-    private void SetActiveObject() {
-        if (!inFuture) {
-            agedObject.SetActive(false);
-            normalObject.SetActive(true);
-        } else {
-            agedObject.SetActive(true);
-            normalObject.SetActive(false);
-        }
-    }
+    }    
     
     /// <summary>
     /// Called every Update() while a Hand is hovering over this object
