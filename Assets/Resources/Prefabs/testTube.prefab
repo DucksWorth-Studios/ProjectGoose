@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2110002612119618830}
   - component: {fileID: 4168602763558628521}
   - component: {fileID: 6004038962769222599}
+  - component: {fileID: 2451660038751635075}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Untagged
@@ -103,6 +104,22 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &2451660038751635075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec4af5131b31094096fbf441a57f9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalObject: {fileID: 1586371660606939060}
+  agedObject: {fileID: 1586371660606939060}
+  inFuture: 0
+  teleportBackToOrigin: 0
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor: {r: 1, g: 1, b: 1, a: 1}
+  debugHold: 0
 --- !u!1 &8986872239109865134
 GameObject:
   m_ObjectHideFlags: 0
