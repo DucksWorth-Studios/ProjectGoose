@@ -20,7 +20,7 @@ public class TestEventAction : MonoBehaviour
         //Call the two test events
         if(Input.GetKey(KeyCode.D))
         {
-            EventManager.instance.TestEventCall();
+            EventManager.instance.TimeJump();
         }
 
         if (Input.GetKey(KeyCode.S))

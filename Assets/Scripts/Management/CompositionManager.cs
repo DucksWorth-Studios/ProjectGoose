@@ -12,7 +12,7 @@ public class CompositionManager : MonoBehaviour
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
-    public bool debugHold = false;
+    public bool debugHold = true;
     private void Awake()
     {
         //Get the interactable component
@@ -22,7 +22,7 @@ public class CompositionManager : MonoBehaviour
         currentMaterial = GetComponent<Renderer>().material;
 
         //Make sure composition matches what its set to.
-        currentMaterial.color = currentColor;
+        currentMaterial.SetColor("_BaseColor", currentColor);
 
         //Save what it is currenty/ Wont trigger if they match later
         previousColor = currentColor;
@@ -37,7 +37,7 @@ public class CompositionManager : MonoBehaviour
         {
             //Mix the chemicals by 50%
             currentColor = Color.Lerp(chemicalAdditive,currentColor,0.5f);
-            currentMaterial.color = currentColor;
+            currentMaterial.SetColor("_BaseColor", currentColor);
 
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
@@ -67,7 +67,7 @@ public class CompositionManager : MonoBehaviour
             Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
 
             //Set as current
-            currentMaterial.color = changedColor;
+            currentMaterial.SetColor("_BaseColor", changedColor);
             currentColor = changedColor;
         }
     }
@@ -79,7 +79,6 @@ public class CompositionManager : MonoBehaviour
         //Take the second vial and mix it using the mix chemicalMethod.
         otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
     }
-
 
     void Update()
     {
