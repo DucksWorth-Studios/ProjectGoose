@@ -13,7 +13,7 @@ public class CompositionManager : MonoBehaviour
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
     public bool debugHold = false;
-    private void Awake()
+    private void Start()
     {
         //Get the interactable component
         interactable = GetComponentInParent<Valve.VR.InteractionSystem.Interactable>();

@@ -39,7 +39,7 @@ public class VRItemDimensionJump : MonoBehaviour
 
     // endregion Properties
     
-    void Awake()
+    void Start()
     {
         interactable = this.GetComponent<Interactable>();
         EventManager.instance.OnTimeJump += TimeJump;
