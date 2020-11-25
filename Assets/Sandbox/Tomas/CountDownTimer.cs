@@ -17,6 +17,21 @@ public class CountDownTimer : MonoBehaviour
     {
         timeRemaining = timeAllowed;
         //Events To Subscribe To
+        EventManager.instance.OnTimeJump += timeJumpListener;
+    }
+
+    private void timeJumpListener()
+    {
+        if(isCountingDown)
+        {
+            isCountingDown = false;
+            isCountingUp = true;
+        }
+        else if(isCountingUp)
+        {
+            isCountingDown = true;
+            isCountingUp = false;
+        }
     }
 
     private void CountDown()
@@ -40,7 +55,9 @@ public class CountDownTimer : MonoBehaviour
         }
         else
         {
-            isCountingUp = false;
+            timeRemaining = timeAllowed;
+            //Cant  Do this otherwise will break
+            //isCountingUp = false;
             //Send Event For Menu Bar Full Sound
         }
     }
