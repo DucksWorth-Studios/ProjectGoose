@@ -23,14 +23,14 @@ public class TestEventAction : MonoBehaviour
             EventManager.instance.TestEventCall();
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            EventManager.instance.TestEventCallParam(Color.black);
+            EventManager.instance.TimeJump();
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            EventManager.instance.TestEventCallParam(Color.blue);
+            EventManager.instance.TimeJump();
         }
     }
 }
