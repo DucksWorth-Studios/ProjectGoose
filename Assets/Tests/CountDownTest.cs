@@ -4,25 +4,62 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+public class CountDownTest
 {
-    public class CountDownTest
-    {
+    private GameObject timerObject;
+    private CountDownTimer timerScript;
         // A Test behaves as an ordinary method
-        [Test]
-        public void CountDownTestSimplePasses()
-        {
-            // Use the Assert class to test conditions
-        }
+    [OneTimeSetUp]
+    public void CountDownTestSetUp()
+    {
+        MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/_EventManager"));
+        timerObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Timer Prefab"));
+        timerScript = timerObject.GetComponent<CountDownTimer>();
+    }
 
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
-        [UnityTest]
-        public IEnumerator CountDownTestWithEnumeratorPasses()
-        {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
-        }
+        
+    [UnityTest,Order(0)]
+    public IEnumerator CountDownWithoutEvent()
+    {
+            //Nothing Happens
+        yield return new WaitForSeconds(2f);
+        Assert.AreEqual(20f,timerScript.getRemainingTime());
+    }
+
+
+    [UnityTest, Order(1)]
+    public IEnumerator CountDownJumpForwardAndBack()
+    {
+        EventManager.instance.TimeJump();
+        yield return new WaitForSeconds(10f);
+        EventManager.instance.TimeJump();
+        yield return new WaitForSeconds(11f);
+        Assert.AreEqual(20f, timerScript.getRemainingTime());
+    }
+
+    [UnityTest, Order(3)]
+    public IEnumerator CountDownIsLessThanAllowed()
+    {
+        EventManager.instance.TimeJump();
+        yield return new WaitForSeconds(2f);
+        Assert.Greater(20f,timerScript.getRemainingTime());
+    }
+
+    [UnityTest, Order(4)]
+    public IEnumerator CountDownIsMoreThanZero()
+    {
+        EventManager.instance.TimeJump();
+        yield return new WaitForSeconds(0.1f);
+        Assert.Greater(timerScript.getRemainingTime(), 0f);
+    }
+
+    [UnityTest, Order(5)]
+    public IEnumerator CountDownGameOver()
+    {
+        //Nothing Happens
+        EventManager.instance.TimeJump();
+        yield return new WaitForSeconds(21f);
+        Assert.AreEqual(true, timerScript.isGameOver);
     }
 }
+
