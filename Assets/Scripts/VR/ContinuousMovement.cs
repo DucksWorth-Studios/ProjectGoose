@@ -2,15 +2,19 @@
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
+/// <summary>
+/// Author: Cameron Scholes
+/// Script for taking joystick input to move the VR player
+/// </summary>
 public class ContinuousMovement : MonoBehaviour
 {
     public SteamVR_Action_Vector2 input;
     public float speed = 1;
-    private CharacterController _characterController;
+    private CharacterController characterController;
 
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         
         if (input == null)
             Debug.LogError("ContinuousMovement.cs is missing input", this);
@@ -25,13 +29,13 @@ public class ContinuousMovement : MonoBehaviour
             Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(input.axis.x, 0, input.axis.y));
             // First line is movement based on where the headset is. ProjectOnPlane ensures that all movement is horizontal
             // Second line is adding gravity
-            _characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up) 
+            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up) 
                                       - new Vector3(0, 9.81f, 0) * Time.deltaTime);
         }
         else
         {
             Vector3 direction = Player.instance.hmdTransform.localPosition;
-            _characterController.center = new Vector3(direction.x, _characterController.center.y, direction.z);
+            characterController.center = new Vector3(direction.x, characterController.center.y, direction.z);
         }
     }
 }
