@@ -21,12 +21,28 @@ public class CountDownTimer : MonoBehaviour
 
     private void CountDown()
     {
-
+        if(timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            isCountingDown = false;
+            //Send Event For Game Over
+        }
     }
 
     private void CountUp()
     {
-    
+        if(timeRemaining < timeAllowed)
+        {
+            timeRemaining += Time.deltaTime;
+        }
+        else
+        {
+            isCountingUp = false;
+            //Send Event For Menu Bar Full Sound
+        }
     }
     // Update is called once per frame
     void Update()
@@ -43,5 +59,6 @@ public class CountDownTimer : MonoBehaviour
         {
             //Do Nothing
         }
+        print(timeRemaining);
     }
 }
