@@ -14,6 +14,11 @@ public class CountDownTimer : MonoBehaviour
     {
         print("HERE");
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        print("Out");
+    }
     // Update is called once per frame
     void Update()
     {
