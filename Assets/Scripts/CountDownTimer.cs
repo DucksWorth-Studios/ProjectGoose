@@ -8,11 +8,11 @@ using UnityEngine;
 public class CountDownTimer : MonoBehaviour
 {
     public float timeAllowed;
-    public bool testBool;
-    private float timeRemaining;
+    public bool isGameOver = false;
+
     private bool isCountingDown = true;
     private bool isCountingUp = false;
-    private bool isGameOver = false;
+    private float timeRemaining;
     void Start()
     {
         timeRemaining = timeAllowed;
@@ -43,6 +43,7 @@ public class CountDownTimer : MonoBehaviour
         else
         {
             isCountingDown = false;
+            isGameOver = true;
             //Send Event For Game Over
         }
     }
@@ -61,6 +62,12 @@ public class CountDownTimer : MonoBehaviour
             //Send Event For Menu Bar Full Sound
         }
     }
+
+    public float getRemainingTime()
+    {
+        return this.timeRemaining;
+    }
+
     // Update is called once per frame
     void Update()
     {
