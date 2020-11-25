@@ -10,8 +10,9 @@ public class CountDownTimer : MonoBehaviour
     public float timeAllowed;
     public bool isGameOver = false;
 
-    private bool isCountingDown = true;
+    private bool isCountingDown = false;
     private bool isCountingUp = false;
+    private bool hasReachedNormal = true;
     private float timeRemaining;
     void Start()
     {
@@ -26,8 +27,9 @@ public class CountDownTimer : MonoBehaviour
         {
             isCountingDown = false;
             isCountingUp = true;
+            hasReachedNormal = false;
         }
-        else if(isCountingUp)
+        else if(isCountingUp || hasReachedNormal)
         {
             isCountingDown = true;
             isCountingUp = false;
@@ -57,8 +59,8 @@ public class CountDownTimer : MonoBehaviour
         else
         {
             timeRemaining = timeAllowed;
-            //Cant  Do this otherwise will break
-            //isCountingUp = false;
+            hasReachedNormal = true;
+            isCountingUp = false;
             //Send Event For Menu Bar Full Sound
         }
     }
@@ -74,15 +76,18 @@ public class CountDownTimer : MonoBehaviour
         if(isCountingDown)
         {
             CountDown();
+            print("Down" + timeRemaining);
         }
         else if(isCountingUp)
         {
+            //print("Up");
             CountUp();
+            print("Up"+timeRemaining);
         }
         else
         {
             //Do Nothing
         }
-        print(timeRemaining);
+        
     }
 }
