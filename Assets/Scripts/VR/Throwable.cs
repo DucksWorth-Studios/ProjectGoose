@@ -60,6 +60,9 @@ public class Throwable : MonoBehaviour
     [HideInInspector]
     public Interactable interactable;
 
+    private float initMass;
+    private float altMass;
+
 
     //-------------------------------------------------
     protected virtual void Awake()
@@ -70,13 +73,29 @@ public class Throwable : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.maxAngularVelocity = 50.0f;
         rigidbody.useGravity = awakeEnableGravity;
+
+        VRItemDimensionJump djScript = interactable.GetComponent<VRItemDimensionJump>();
+
+        if (djScript == null) return;
+        if (!djScript.inFuture)
+        {
+	        initMass = djScript.normalObjectMass;
+	        altMass = djScript.agedObjectMass;
+        }
+        else
+        {
+	        initMass = djScript.agedObjectMass;
+	        altMass = djScript.normalObjectMass;
+        }
+
+        rigidbody.mass = initMass;
 	}
 
 
     //-------------------------------------------------
     protected virtual void OnHandHoverBegin( Hand hand )
 	{
-		bool showHint = false;
+		// bool showHint = false;
 
         // "Catch" the throwable by holding down the interaction button instead of pressing it.
         // Only do this if the throwable is moving faster than the prescribed threshold speed,
@@ -92,15 +111,17 @@ public class Throwable : MonoBehaviour
 				if (rigidbody.velocity.magnitude >= catchingThreshold)
 				{
 					hand.AttachObject( gameObject, bestGrabType, attachmentFlags );
-					showHint = false;
+					// showHint = false;
 				}
 			}
 		}
 
+        /*
 		if ( showHint )
 		{
             hand.ShowGrabHint();
 		}
+		*/
 	}
 
 
