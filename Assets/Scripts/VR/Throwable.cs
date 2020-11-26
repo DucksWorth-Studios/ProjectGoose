@@ -5,7 +5,7 @@ using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// Author: Cameron Scholes
-/// Modifed version of the Steam VR Interaction System
+/// Modified version of the Steam VR Interaction System
 /// This script will calculate the velocity of thrown game objects
 /// </summary>
 
@@ -36,7 +36,7 @@ public class Throwable : MonoBehaviour
     public AnimationCurve scaleReleaseVelocityCurve = AnimationCurve.EaseInOut(0.0f, 0.1f, 1.0f, 1.0f);
 
     [Tooltip( "When detaching the object, should it return to its original parent?" )]
-	public bool restoreOriginalParent = false;
+	public bool restoreOriginalParent;
 	
 	[Tooltip( "If enabled, gravity will be enabled when the level starts" )]
 	public bool awakeEnableGravity;
@@ -46,11 +46,7 @@ public class Throwable : MonoBehaviour
 	
 
 	protected VelocityEstimator velocityEstimator;
-    protected bool attached = false;
-    protected float attachTime;
-    protected Vector3 attachPosition;
-    protected Quaternion attachRotation;
-    protected Transform attachEaseInTransform;
+    protected bool attached;
 
 	public UnityEvent onPickUp;
     public UnityEvent onDetachFromHand;
@@ -130,8 +126,6 @@ public class Throwable : MonoBehaviour
     //-------------------------------------------------
     protected virtual void OnAttachedToHand( Hand hand )
 	{
-        //Debug.Log("<b>[SteamVR Interaction]</b> Pickup: " + hand.GetGrabStarting().ToString());
-
         hadInterpolation = this.rigidbody.interpolation;
 
         attached = true;
@@ -144,10 +138,6 @@ public class Throwable : MonoBehaviour
 
         if (velocityEstimator != null)
 	        velocityEstimator.BeginEstimatingVelocity();
-
-		attachTime = Time.time;
-		attachPosition = transform.position;
-		attachRotation = transform.rotation;
 
 	}
 
@@ -269,6 +259,14 @@ public class Throwable : MonoBehaviour
         if (velocityEstimator != null)
             velocityEstimator.FinishEstimatingVelocity();
 	}
+
+    public bool ToggleGravity()
+    {
+	    bool gravity = rigidbody.useGravity;
+	    
+	    rigidbody.useGravity = !gravity;
+	    return !gravity;
+    }
 }
 
 public enum ReleaseStyle
