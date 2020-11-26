@@ -51,13 +51,6 @@ public class EventManager : MonoBehaviour
 
     public void TimeJump()
     {
-        if(OnTimeJump != null)
-        {
-            OnTimeJump();
-        }
-        else
-        {
-            Debug.Log("Time Jump is Null");
-        }
+        OnTimeJump?.Invoke();
     }
 }
