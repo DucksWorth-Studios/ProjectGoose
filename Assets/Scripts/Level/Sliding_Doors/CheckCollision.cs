@@ -14,9 +14,9 @@ public class CheckCollision : MonoBehaviour
     /// If the collider is a player object, the open doors method in the parent script will be called
     /// </summary>
     /// <param name="collision">The collider object that enters this collider</param>
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
             transform.GetComponentInParent<SlidingDoors>().OpenDoors();
     }
 
@@ -24,9 +24,9 @@ public class CheckCollision : MonoBehaviour
     /// Checks if any other collider has exited this collider
     /// If the collider is a player object, the close doors method in the parent script will be called</summary>
     /// <param name="collision">The collider object that exits this collider</param>
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
             transform.GetComponentInParent<SlidingDoors>().CloseDoors();
     }
 }
