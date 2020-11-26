@@ -105,6 +105,18 @@ public class Throwable : MonoBehaviour
 	    jumped = !jumped;
     }
 
+    //Only to be used for Unit Testing
+    public void Attach()
+    {
+	    attached = true;
+    }
+    
+    //Only to be used for Unit Testing
+    public void Detach()
+    {
+	    attached = false;
+	    rigidbody.useGravity = detatchEnableGravity;
+    }
 
     //-------------------------------------------------
     protected virtual void OnHandHoverBegin( Hand hand )
