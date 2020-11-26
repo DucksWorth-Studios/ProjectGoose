@@ -20,6 +20,7 @@ public class EventManager : MonoBehaviour
     public event Action OnTestEventCall;
     public event Action<Color> OnTestEventCallParam;
     public event Action OnTimeJump;
+    public event Action OnNegatorItemJump;
 
     //This is a model for an event
     public void TestEventCall()
@@ -54,6 +55,18 @@ public class EventManager : MonoBehaviour
         if(OnTimeJump != null)
         {
             OnTimeJump();
+        }
+        else
+        {
+            Debug.Log("Time Jump is Null");
+        }
+    }
+
+    public void NegatorItemJump()
+    {
+        if (OnNegatorItemJump != null)
+        {
+            OnNegatorItemJump();
         }
         else
         {
