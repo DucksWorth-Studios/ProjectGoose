@@ -30,7 +30,10 @@ public class NegatorTests
         senderScript = sender.GetComponent<NegatorSender>();
         senderScript.reciever = receiver;
 
-
+        //Camera camera = MonoBehaviour.Instantiate(Resources.Load<Camera>("Prefabs/Main Camera"));
+        //camera.transform.position = new Vector3(10, 0, 0);
+        ////camera.transform.rotation.eulerAngles = new Vector3(0,-80,0);
+        //MonoBehaviour.Instantiate(Resources.Load<Light>("Prefabs/Directional Light"));
 
         objectOne = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/testObject"));
         objectTwo = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/testObject"));
@@ -47,6 +50,7 @@ public class NegatorTests
     public IEnumerator NegatorTestsWithNothing()
     {
         //Do nothing
+        EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
         //Reciever should be empty
         bool isFree = recieverScript.isNotOccupied();
@@ -58,6 +62,8 @@ public class NegatorTests
     {
         objectOne.transform.position = new Vector3(0,0,0.4f);
         objectTwo.transform.position = new Vector3(0, 0, -0.4f);
+
+        yield return new WaitForSeconds(2f);
         EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
         //Reciever should be empty
@@ -68,11 +74,14 @@ public class NegatorTests
     [UnityTest, Order(2)]
     public IEnumerator NegatorTestsSendOneObject()
     {
+
+
         //Get One out of Way
-        objectOne.transform.position = new Vector3(0, 0, 5f);
+        objectOne.transform.position = new Vector3(0, 0, 20f);
         //Put into Sender
         objectTwo.transform.position = new Vector3(0, 0, -0.4f);
         //Send
+        yield return new WaitForSeconds(2f);
         EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
         //item should now be in Reciever
@@ -85,6 +94,7 @@ public class NegatorTests
     {
         //Put in Sender
         objectOne.transform.position = new Vector3(0, 0, 0.4f);
+        yield return new WaitForSeconds(2f);
         //call Event
         EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
@@ -93,7 +103,7 @@ public class NegatorTests
         Assert.AreEqual(newPos, objectOne.transform.position);
     }
 
-    [UnityTest, Order(3)]
+    [UnityTest, Order(4)]
     public IEnumerator NegatorTestsSendSecond()
     {
         //Get out of Way
@@ -101,6 +111,8 @@ public class NegatorTests
         //Put in Sender
         objectOne.transform.position = new Vector3(0, 0, 0.4f);
         //call Event
+        yield return new WaitForSeconds(2f);
+
         EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
         //Should Change
