@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Author: Tomas
+/// Negator is a way to avoid the corruption from time travel. This will be used for the negator microwave machine.
+/// Takes in one object at a time and transports it to the reciever. 
+/// </summary>
 public class NegatorSender : MonoBehaviour
 {
     public GameObject reciever;
@@ -13,7 +17,7 @@ public class NegatorSender : MonoBehaviour
     {
 
     }
-
+    //Find the difference
     void Start()
     {
         //Find difference between the two zones
@@ -26,7 +30,7 @@ public class NegatorSender : MonoBehaviour
         EventManager.instance.OnNegatorItemJump += SendObject;
     }
 
-
+    //Send to the reciever via the difference
     private void SendObject()
     {
         bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
@@ -36,11 +40,12 @@ public class NegatorSender : MonoBehaviour
         }
     }
 
+    //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
     {
         entityCount++;
     }
-
+    //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
     {
         entityCount--;
@@ -49,7 +54,7 @@ public class NegatorSender : MonoBehaviour
             objectInZone = null;
         }
     }
-
+    //if nothing has been set sset it as sendable object. If it is null and there us something there set it as sendable
     private void OnTriggerStay(Collider other)
     {
         if(entityCount == 0)
@@ -60,16 +65,6 @@ public class NegatorSender : MonoBehaviour
         {
             objectInZone = other.gameObject;
         }
-    }
-
-    private bool isObjectInZone()
-    {
-        return false;
-    }
-
-    private bool AreMultipleObjectsInZone()
-    {
-        return false;
     }
     // Update is called once per frame
     void Update()
