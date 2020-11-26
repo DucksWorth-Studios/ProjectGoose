@@ -25,5 +25,12 @@ public class SlidingDoors : MonoBehaviour
         animator.SetBool("Open_Doors", true);
     }
 
-    
+    /// <summary>
+    /// Called when the player exits the child collision box
+    /// Will play the close doors animation
+    /// </summary>
+    public void CloseDoors()
+    {
+        animator.SetBool("Open_Doors", false);
+    }
 }
