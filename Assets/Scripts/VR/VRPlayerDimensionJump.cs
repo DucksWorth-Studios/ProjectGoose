@@ -29,6 +29,9 @@ public class VRPlayerDimensionJump : MonoBehaviour
         // Ensure Steam VR action has being assigned
         if (dimensionJumpAction == null)
             Debug.LogError("VRPlayerDimensionJump is missing dimensionJumpAction.", this);
+        
+        if (teleportPoints.Length == 0)
+            Debug.LogError("VRPlayerDimensionJump is missing teleport point(s)", this);
     }
     
     void Update()

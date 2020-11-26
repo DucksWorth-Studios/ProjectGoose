@@ -12,8 +12,14 @@ public class VRItemDimensionJump : MonoBehaviour
     [Tooltip("The item to be rendered in the present")]
     public GameObject normalObject;
     
+    [Tooltip("The desired rigidbody mass of the normal object")]
+    public float normalObjectMass = 1;
+    
     [Tooltip("The iterm to be rendered in the past")]
     public GameObject agedObject;
+    
+    [Tooltip("The desired rigidbody mass of the aged object")]
+    public float agedObjectMass = 1;
 
     [Tooltip("Enable if the item starts in the past")]
     public bool inFuture;
