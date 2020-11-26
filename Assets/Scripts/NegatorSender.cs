@@ -74,9 +74,9 @@ public class NegatorSender : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            SendObject();
-        }
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    SendObject();
+        //}
     }
 }
