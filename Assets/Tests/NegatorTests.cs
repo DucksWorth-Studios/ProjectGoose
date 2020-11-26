@@ -65,16 +65,46 @@ public class NegatorTests
         Assert.IsTrue(isFree);
     }
 
-    //[UnityTest, Order(1)]
+    [UnityTest, Order(2)]
     public IEnumerator NegatorTestsSendOneObject()
     {
+        //Get One out of Way
         objectOne.transform.position = new Vector3(0, 0, 5f);
-        objectOne.transform.position = new Vector3(0, 0, -0.4f);
+        //Put into Sender
+        objectTwo.transform.position = new Vector3(0, 0, -0.4f);
+        //Send
         EventManager.instance.NegatorItemJump();
         yield return new WaitForSeconds(2f);
-        //Reciever should be empty
+        //item should now be in Reciever
         Vector3 newPos = new Vector3(0,0,9.6f);
-        Assert.AreEqual();
+        Assert.AreEqual(newPos,objectTwo.transform.position);
     }
 
+    [UnityTest, Order(3)]
+    public IEnumerator NegatorTestsDontAllowWhileObjectInReciever()
+    {
+        //Put in Sender
+        objectOne.transform.position = new Vector3(0, 0, 0.4f);
+        //call Event
+        EventManager.instance.NegatorItemJump();
+        yield return new WaitForSeconds(2f);
+        //Shouldnt Change
+        Vector3 newPos = new Vector3(0, 0, 0.4f);
+        Assert.AreEqual(newPos, objectOne.transform.position);
+    }
+
+    [UnityTest, Order(3)]
+    public IEnumerator NegatorTestsSendSecond()
+    {
+        //Get out of Way
+        objectTwo.transform.position = new Vector3(0, 0, 5f);
+        //Put in Sender
+        objectOne.transform.position = new Vector3(0, 0, 0.4f);
+        //call Event
+        EventManager.instance.NegatorItemJump();
+        yield return new WaitForSeconds(2f);
+        //Should Change
+        Vector3 newPos = new Vector3(0, 0, 10.4f);
+        Assert.AreEqual(newPos, objectOne.transform.position);
+    }
 }
