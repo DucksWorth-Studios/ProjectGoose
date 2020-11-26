@@ -8,6 +8,12 @@ public class NegatorSender : MonoBehaviour
     private Vector3 positionDifference;
     private GameObject objectInZone;
     private int entityCount = 0;
+
+    private void Awake()
+    {
+
+    }
+
     void Start()
     {
         //Find difference between the two zones
@@ -17,9 +23,7 @@ public class NegatorSender : MonoBehaviour
           recieverPos.x - senderPos.x,
           recieverPos.y - senderPos.y,
           recieverPos.z - senderPos.z);
-
-
-
+        EventManager.instance.OnNegatorItemJump += SendObject;
     }
 
 
