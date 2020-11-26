@@ -62,6 +62,8 @@ public class Throwable : MonoBehaviour
 
     private float initMass;
     private float altMass;
+    private bool jumped;
+    private VRItemDimensionJump djScript;
 
 
     //-------------------------------------------------
@@ -74,9 +76,12 @@ public class Throwable : MonoBehaviour
         rigidbody.maxAngularVelocity = 50.0f;
         rigidbody.useGravity = awakeEnableGravity;
 
-        VRItemDimensionJump djScript = interactable.GetComponent<VRItemDimensionJump>();
+        djScript = interactable.GetComponent<VRItemDimensionJump>();
 
         if (djScript == null) return;
+        
+        EventManager.instance.OnTimeJump += OnTimeJump;
+        
         if (!djScript.inFuture)
         {
 	        initMass = djScript.normalObjectMass;
@@ -90,6 +95,15 @@ public class Throwable : MonoBehaviour
 
         rigidbody.mass = initMass;
 	}
+
+    private void OnTimeJump()
+    {
+	    if (!attached) return;
+	    
+	    rigidbody.mass = jumped ? initMass : altMass;
+
+	    jumped = !jumped;
+    }
 
 
     //-------------------------------------------------
