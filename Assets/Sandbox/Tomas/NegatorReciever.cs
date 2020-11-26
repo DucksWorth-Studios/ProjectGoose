@@ -20,7 +20,7 @@ public class NegatorReciever : MonoBehaviour
     {
         entityCount--;
     }
-    public bool isOccupied()
+    public bool isNotOccupied()
     {
         return entityCount == 0;
     }
