@@ -25,7 +25,11 @@ public class NegatorSender : MonoBehaviour
 
     private void SendObject()
     {
-
+        bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
+        if(objectInZone != null && entityCount == 1 && isRecieverReady)
+        {
+            objectInZone.transform.position += positionDifference;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +70,9 @@ public class NegatorSender : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            SendObject();
+        }
     }
 }
