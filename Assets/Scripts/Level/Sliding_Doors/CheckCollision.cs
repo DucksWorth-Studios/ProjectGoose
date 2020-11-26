@@ -19,4 +19,10 @@ public class CheckCollision : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             transform.GetComponentInParent<SlidingDoors>().OpenDoors();
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            transform.GetComponentInParent<SlidingDoors>().CloseDoors();
+    }
 }
