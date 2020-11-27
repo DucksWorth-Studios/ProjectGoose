@@ -22,7 +22,7 @@ public class SnapZonePermenant : MonoBehaviour
         if(objectToSnap == other.gameObject)
         {
             isSnapped = true;
-            
+            objectToSnap.transform.rotation = Quaternion.Euler(rotation);
             //Send event
             //Disable Interactable;
         }
