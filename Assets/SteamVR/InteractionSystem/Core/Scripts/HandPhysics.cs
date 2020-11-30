@@ -195,9 +195,11 @@ namespace Valve.VR.InteractionSystem
 
             hand.mainRenderModel.transform.rotation = offsetRotation;
 
-            Vector3 offsetPosition = handCollider.transform.TransformPoint(wristToArmature.inverse.MultiplyPoint3x4(Vector3.zero));
-
-            hand.mainRenderModel.transform.position = offsetPosition;
+            // This is the code the causes the hand model to jitter.
+            // Thanks to this reddit post, it is gone forever
+            // https://www.reddit.com/r/learnVRdev/comments/f6xm4g/steamvr_unity_handcolliderleftright_lags_behind/fotsctj?utm_source=share&utm_medium=web2x&context=3
+            // Vector3 offsetPosition = handCollider.transform.TransformPoint(wristToArmature.inverse.MultiplyPoint3x4(Vector3.zero));
+            // hand.mainRenderModel.transform.position = offsetPosition;
 
             /*
             Vector3 wristPointInArmatureSpace = transform.InverseTransformPoint(handCollider.transform.position);

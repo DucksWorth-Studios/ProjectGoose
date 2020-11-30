@@ -9,6 +9,7 @@ TagManager:
   - ground
   - changeAble
   - Chemical
+  - Vial
   layers:
   - Default
   - TransparentFX
