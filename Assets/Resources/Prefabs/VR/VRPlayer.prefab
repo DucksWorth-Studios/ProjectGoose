@@ -341,7 +341,7 @@ MonoBehaviour:
   input:
     actionPath: /actions/default/in/MoveUp
     needsReinit: 0
-  speed: 1
+  speed: 2.5
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
