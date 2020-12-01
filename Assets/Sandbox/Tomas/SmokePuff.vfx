@@ -23,7 +23,7 @@ MonoBehaviour:
     x: 939
     y: -133
     width: 428
-    height: 1739
+    height: 1870
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1031,13 +1031,13 @@ VisualEffectResource:
         - m_ExpressionIndex: 9
           m_Value: -0.2
         - m_ExpressionIndex: 10
-          m_Value: -0.2
+          m_Value: -0.1
         - m_ExpressionIndex: 11
           m_Value: 0.2
         - m_ExpressionIndex: 12
           m_Value: 0.2
         - m_ExpressionIndex: 13
-          m_Value: 1
+          m_Value: 0.2
         - m_ExpressionIndex: 18
           m_Value: 0
         - m_ExpressionIndex: 19
@@ -1953,7 +1953,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614633}
-  m_UIPosition: {x: 940, y: 708}
+  m_UIPosition: {x: 940, y: 839}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614653}
   - {fileID: 8926484042661614655}
-  m_UIPosition: {x: 939, y: 1131}
+  m_UIPosition: {x: 939, y: 1262}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -2316,7 +2316,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Position, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":-0.20000000298023225,"y":-0.20000000298023225,"z":0.0}}'
+      m_SerializableObject: '{"position":{"x":-0.10000000149011612,"y":-0.20000000298023225,"z":0.0}}'
     m_Space: 0
   m_Property:
     name: A
@@ -2498,7 +2498,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Position, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.20000000298023225,"y":0.20000000298023225,"z":1.0}}'
+      m_SerializableObject: '{"position":{"x":0.20000000298023225,"y":0.20000000298023225,"z":0.20000000298023225}}'
     m_Space: 0
   m_Property:
     name: B
