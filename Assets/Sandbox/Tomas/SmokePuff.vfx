@@ -15,13 +15,15 @@ MonoBehaviour:
   groupInfos: []
   stickyNoteInfos: []
   systemInfos: []
-  categories: []
+  categories:
+  - name: new category
+    collapsed: 0
   uiBounds:
     serializedVersion: 2
-    x: 939
-    y: -133
-    width: 428
-    height: 1739
+    x: 876
+    y: -298
+    width: 491
+    height: 1904
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1027,15 +1029,15 @@ VisualEffectResource:
         - m_ExpressionIndex: 8
           m_Value: 0
         - m_ExpressionIndex: 9
-          m_Value: -0.5
+          m_Value: -0.2
         - m_ExpressionIndex: 10
-          m_Value: -0.5
+          m_Value: -0.2
         - m_ExpressionIndex: 11
-          m_Value: 0.5
+          m_Value: 0.2
         - m_ExpressionIndex: 12
-          m_Value: 0.5
+          m_Value: 0.2
         - m_ExpressionIndex: 13
-          m_Value: 0
+          m_Value: 1
         - m_ExpressionIndex: 18
           m_Value: 0
         - m_ExpressionIndex: 19
@@ -1110,8 +1112,8 @@ VisualEffectResource:
               inWeight: 0
               outWeight: 0
             - serializedVersion: 3
-              time: 0.1995247
-              value: 1.0003566
+              time: 0.1976021
+              value: 0.20034969
               inSlope: 0
               outSlope: 0
               tangentMode: 0
@@ -2314,7 +2316,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Position, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":-0.5,"y":-0.5,"z":0.0}}'
+      m_SerializableObject: '{"position":{"x":-0.20000000298023225,"y":-0.20000000298023225,"z":0.0}}'
     m_Space: 0
   m_Property:
     name: A
@@ -2496,7 +2498,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Position, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.5,"y":0.5,"z":0.0}}'
+      m_SerializableObject: '{"position":{"x":0.20000000298023225,"y":0.20000000298023225,"z":1.0}}'
     m_Space: 0
   m_Property:
     name: B
@@ -3477,7 +3479,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.19952470064163209,"value":1.0003565549850464,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.19760209321975709,"value":0.20034968852996827,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
