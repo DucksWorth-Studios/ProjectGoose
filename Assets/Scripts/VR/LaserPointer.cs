@@ -1,8 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 
+/// <summary>
+/// Author: Cameron Scholes
+/// The laser pointer method of interacting with objects
+/// </summary>
+
+[RequireComponent(typeof(LineRenderer))]
 public class LaserPointer : MonoBehaviour
 {
     // Single is the name Vector1
@@ -11,7 +15,8 @@ public class LaserPointer : MonoBehaviour
     
     public float defaultLength = 3.0f;
 
-    private LineRenderer lineRenderer = null;
+    private LineRenderer lineRenderer;
+    private LaserPonterReciever lastHit;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +26,14 @@ public class LaserPointer : MonoBehaviour
         
         if (pullObject == null)
             Debug.LogError("LaserPointer is missing PullObject.", this);
-        
+
         lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startLaser.axis > 0.1f)
+        if (startLaser.axis > 0.25f)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -36,22 +41,39 @@ public class LaserPointer : MonoBehaviour
         else
         {
             lineRenderer.enabled = false;
+            RayExit();
         }
     }
 
     private void UpdateLength()
     {
+        // Calculate the start of the line render
         lineRenderer.SetPosition(0, transform.position);
+        
+        // Calculate the end of the line render
         lineRenderer.SetPosition(1, CalculateEnd());
     }
     
     private Vector3 CalculateEnd()
     {
         RaycastHit hit = CreateForwardRaycast();
-        Vector3 endPosition = DefaultEnd(defaultLength);
+        Vector3 endPosition;
 
         if (hit.collider)
+        {
             endPosition = hit.point;
+            lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
+
+            if (pullObject.state)
+                lastHit.Click();
+            else
+                lastHit.HitByRay();
+        }
+        else
+        {
+            endPosition = DefaultEnd(defaultLength);
+            RayExit();
+        }
         
         return endPosition;
     }
@@ -69,5 +91,13 @@ public class LaserPointer : MonoBehaviour
     private Vector3 DefaultEnd(float length)
     {
         return transform.position + (transform.forward * length);
+    }
+
+    private void RayExit()
+    {
+        if (!lastHit) return;
+        
+        lastHit.RayExit();
+        lastHit = null;
     }
 }
