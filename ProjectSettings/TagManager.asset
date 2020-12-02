@@ -10,6 +10,7 @@ TagManager:
   - changeAble
   - Chemical
   - Vial
+  - RightHand
   layers:
   - Default
   - TransparentFX
