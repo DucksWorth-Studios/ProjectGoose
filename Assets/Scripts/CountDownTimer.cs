@@ -17,9 +17,11 @@ public class CountDownTimer : MonoBehaviour
     private bool hasReachedNormal = true;
     private float timeRemaining;
     private Image timerBar;
+    private Text textbox;
     void Start()
     {
         timerBar = countDownObject.GetComponent<Image>();
+        textbox = textObject.GetComponent<Text>();
         timeRemaining = timeAllowed;
         //Events To Subscribe To
         EventManager.instance.OnTimeJump += timeJumpListener;
@@ -92,16 +94,14 @@ public class CountDownTimer : MonoBehaviour
         {
             //Do Nothing
         }
-        changeBar();
+        changeUI();
     }
 
-    private void changeText()
-    {
-        
-    }
 
-    private void changeBar()
+
+    private void changeUI()
     {
         timerBar.fillAmount = timeRemaining / timeAllowed;
+        textbox.text = "" + Mathf.Round(timeRemaining);
     }
 }
