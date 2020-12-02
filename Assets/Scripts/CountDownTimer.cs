@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /// <summary>
 /// Author: Tomas
 /// Used to manage the CountDown of the 
@@ -9,13 +10,16 @@ public class CountDownTimer : MonoBehaviour
 {
     public float timeAllowed;
     public bool isGameOver = false;
-
+    public GameObject countDownObject;
+    public GameObject textObject;
     private bool isCountingDown = false;
     private bool isCountingUp = false;
     private bool hasReachedNormal = true;
     private float timeRemaining;
+    private Image timerBar;
     void Start()
     {
+        timerBar = countDownObject.GetComponent<Image>();
         timeRemaining = timeAllowed;
         //Events To Subscribe To
         EventManager.instance.OnTimeJump += timeJumpListener;
@@ -88,6 +92,16 @@ public class CountDownTimer : MonoBehaviour
         {
             //Do Nothing
         }
+        changeBar();
+    }
+
+    private void changeText()
+    {
         
+    }
+
+    private void changeBar()
+    {
+        timerBar.fillAmount = timeRemaining / timeAllowed;
     }
 }
