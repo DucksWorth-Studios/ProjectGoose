@@ -1036,8 +1036,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1384439363630920181}
   - component: {fileID: 4878548081162130242}
+  - component: {fileID: 2126430920048501537}
+  - component: {fileID: 6239428442203453036}
   m_Layer: 0
-  m_Name: PrefabWothMenu
+  m_Name: WatchWithMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1102,6 +1104,32 @@ MonoBehaviour:
   isGameOver: 0
   countDownObject: {fileID: 7217849934242419401}
   textObject: {fileID: 1577346238075281852}
+--- !u!114 &2126430920048501537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764659987511618383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1204f076ff0b4fe4a8f9cf668a9e9be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 6990797982121088906}
+--- !u!65 &6239428442203453036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764659987511618383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.113176, y: 10.286997, z: 17.27773}
+  m_Center: {x: 0.7791734, y: -2.2586532, z: -2.1336696}
 --- !u!1 &1830832440048543942
 GameObject:
   m_ObjectHideFlags: 0
