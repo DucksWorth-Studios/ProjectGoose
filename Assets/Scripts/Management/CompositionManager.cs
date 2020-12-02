@@ -9,12 +9,15 @@ using UnityEngine;
 public class CompositionManager : MonoBehaviour
 {
     public Color currentColor = Color.white;
+    public GameObject puffEffect;
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
     public bool debugHold = false;
     private void Start()
     {
+        puffEffect.SetActive(false);
+
         //Get the interactable component
         interactable = GetComponentInParent<Valve.VR.InteractionSystem.Interactable>();
 
@@ -33,14 +36,18 @@ public class CompositionManager : MonoBehaviour
 
     public void mixChemical(Color chemicalAdditive)
     {
-        if(chemicalAdditive != previousColor)
+        
+        if (chemicalAdditive != previousColor)
         {
+            puffEffect.SetActive(false);
             //Mix the chemicals by 50%
             currentColor = Color.Lerp(chemicalAdditive,currentColor,0.5f);
             currentMaterial.color = currentColor;
 
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
+            puffEffect.SetActive(true);
+            print("Hello");
         }
     }
 
