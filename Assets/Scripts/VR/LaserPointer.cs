@@ -64,10 +64,11 @@ public class LaserPointer : MonoBehaviour
             endPosition = hit.point;
             lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
-            if (pullObject.state)
-                lastHit.Click();
-            else
-                lastHit.HitByRay();
+            if (lastHit != null)
+                if (pullObject.state)
+                    lastHit.Click();
+                else
+                    lastHit.HitByRay();
         }
         else
         {
