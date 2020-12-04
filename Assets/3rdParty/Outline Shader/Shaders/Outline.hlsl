@@ -1,3 +1,4 @@
+// https://alexanderameye.github.io/outlineshader
 TEXTURE2D(_CameraDepthTexture);
 SAMPLER(sampler_CameraDepthTexture);
 float4 _CameraDepthTexture_TexelSize;
