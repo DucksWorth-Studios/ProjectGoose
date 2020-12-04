@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Telescope 1
-    second: {fileID: 2100000, guid: 26735edc195211f49a495adf4ad59cf9, type: 2}
+    second: {fileID: 2100000, guid: c46361ed342cd7446982e2e92d8bfb46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Telescope 2
-    second: {fileID: 2100000, guid: 74d18c3f16eff644c9e305b2f0f6224a, type: 2}
+    second: {fileID: 2100000, guid: c46361ed342cd7446982e2e92d8bfb46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Test Tubes
-    second: {fileID: 2100000, guid: a75b26b93b8015a47ba2cdee820d96d3, type: 2}
+    second: {fileID: 2100000, guid: c183ab13f74c14149b411445453549c2, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
