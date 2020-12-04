@@ -7,8 +7,15 @@
 public class SmokeRing : MonoBehaviour
 {
     public GameObject smokePrefab;
+    
+    [Tooltip("The number of fog effect prefabs to spawn")]
     public int spawnLimit = 5;
+    
+    [Tooltip("The initial size of the spawn radius")]
     public float spawnRadius = 5;
+    
+    [Tooltip("The limit for how small the fianll fog radius should be")]
+    public float spawnRadiusLimit = 1;
 
     
     private int initialSpawnLimit;
@@ -44,7 +51,7 @@ public class SmokeRing : MonoBehaviour
 
     void ShrinkFogArea()
     {
-        if (spawnRadius > 1)
+        if (spawnRadius > spawnRadiusLimit)
         {
             spawnRadius -= 1;
             MoveObjects();
