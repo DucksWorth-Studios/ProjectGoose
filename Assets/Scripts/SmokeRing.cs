@@ -47,11 +47,12 @@ public class SmokeRing : MonoBehaviour
         if (spawnRadius > 1)
         {
             spawnRadius -= 1;
-
-            Destroy();
-            Reset();
-        } else
+            MoveObjects();
+        } 
+        else
+        {
             CancelInvoke("ShrinkFogArea");
+        }
     }
     void Destroy()
     {
@@ -80,6 +81,20 @@ public class SmokeRing : MonoBehaviour
             GameObject ob = Instantiate(smokePrefab, transform, true);
             ob.transform.position = new Vector3(x, localPosition.y, z);
             spawned[i] = ob;
+        }
+    }
+    
+    private void MoveObjects()
+    {
+        for (int i = 0; i < spawnLimit; i++)
+        {
+            Vector3 localPosition = transform.position;
+            
+            float theta = i * 2 * Mathf.PI / spawnLimit;
+            float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
+            float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
+  
+            spawned[i].transform.position = new Vector3(x, localPosition.y, z);
         }
     }
 }
