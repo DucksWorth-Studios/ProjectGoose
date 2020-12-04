@@ -7,8 +7,8 @@ public class RingSpawnTest : MonoBehaviour
     public GameObject objectToSpawn;
     public int spawnLimit = 5;
     public float spawnRadius = 5;
-    
 
+    private GameObject[] spawned;
     private int initialSpawnLimit;
     private float initialSpawnRadius;
     
@@ -21,13 +21,22 @@ public class RingSpawnTest : MonoBehaviour
     {
         // TODO: This is just for testing and should be removed
         if (initialSpawnLimit != spawnLimit)
-            Reset();
+            Destroy();
         else if (initialSpawnRadius != spawnRadius)
-            Reset();
+            Destroy();
     }
 
+    void Destroy()
+    {
+        foreach (GameObject ob in spawned)
+            Destroy(ob);
+        
+        Reset();
+    }
+    
     void Reset()
     {
+        spawned = new GameObject[spawnLimit];
         initialSpawnLimit = spawnLimit;
         initialSpawnRadius = spawnRadius;
 
@@ -45,7 +54,8 @@ public class RingSpawnTest : MonoBehaviour
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
   
             GameObject ob = Instantiate(objectToSpawn, transform, true);
-            ob.transform.position = new Vector3(x, 0, z);  
+            ob.transform.position = new Vector3(x, 0, z);
+            spawned[i] = ob;
         }
     }
 }
