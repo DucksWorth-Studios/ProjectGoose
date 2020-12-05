@@ -9,9 +9,11 @@ using Valve.VR;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserPointer : MonoBehaviour
 {
-    // Single is the name Vector1
+#if UNITY_INCLUDE_TESTS
+#else 
     public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");
     public SteamVR_Action_Boolean pullObject = SteamVR_Input.GetBooleanAction("PullObject");
+#endif
     
     public float defaultLength = 3.0f;
 
@@ -24,11 +26,17 @@ public class LaserPointer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    #if UNITY_INCLUDE_TESTS
+        Debug.Log("Test mode");
+    #else
+        Debug.Log("Normal mode");
+        
         if (startLaser == null)
             Debug.LogError("LaserPointer is missing StartLaser.", this);
         
         if (pullObject == null)
             Debug.LogError("LaserPointer is missing PullObject.", this);
+    #endif
 
         lineRenderer = GetComponent<LineRenderer>();
     }
@@ -36,7 +44,11 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    #if UNITY_INCLUDE_TESTS
+        if (turnOnLaser)
+    #else
         if (startLaser.axis > 0.25f || turnOnLaser)
+    #endif
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -67,7 +79,11 @@ public class LaserPointer : MonoBehaviour
             endPosition = hit.point;
             lastHit = hit.transform.GetComponent<LaserPointerReciever>(); // TODO: Is there a less expensive method
 
+        #if UNITY_INCLUDE_TESTS
+            if (clickOnObject)
+        #else
             if (pullObject.state || clickOnObject)
+        #endif
                 lastHit.Click();
             else
                 lastHit.HitByRay();
