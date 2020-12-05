@@ -16,7 +16,10 @@ public class LaserPointer : MonoBehaviour
     public float defaultLength = 3.0f;
 
     private LineRenderer lineRenderer;
-    private LaserPonterReciever lastHit;
+    private LaserPointerReciever lastHit;
+
+    [HideInInspector] public bool turnOnLaser;
+    [HideInInspector] public bool clickOnObject;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,7 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startLaser.axis > 0.25f)
+        if (startLaser.axis > 0.25f || turnOnLaser)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -62,9 +65,9 @@ public class LaserPointer : MonoBehaviour
         if (hit.collider)
         {
             endPosition = hit.point;
-            lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
+            lastHit = hit.transform.GetComponent<LaserPointerReciever>(); // TODO: Is there a less expensive method
 
-            if (pullObject.state)
+            if (pullObject.state || clickOnObject)
                 lastHit.Click();
             else
                 lastHit.HitByRay();
