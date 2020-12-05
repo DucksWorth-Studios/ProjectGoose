@@ -3,7 +3,17 @@ guid: b5b8e18e54b576e42a29d9b44700fc40
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clipboard Metal
+    second: {fileID: 2100000, guid: c4279ba530eb59b49a8b0538bff10cad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clipboard Wood
+    second: {fileID: 2100000, guid: 5bab1eddfa21a384eb69399763dc33db, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
