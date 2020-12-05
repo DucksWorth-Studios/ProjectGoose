@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class LaserPonterReciever : MonoBehaviour
+public class LaserPointerReciever : MonoBehaviour
 {
     public Color defaultColour = Color.white;
     public Color hitColour = Color.red;
