@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 447954}
   - component: {fileID: 11465950}
   - component: {fileID: 5039375908250026514}
-  - component: {fileID: 3338999096902437311}
   - component: {fileID: 4103733844086958551}
   - component: {fileID: 1040974718556140777}
   m_Layer: 8
@@ -295,19 +294,6 @@ MonoBehaviour:
     actionPath: /actions/default/in/DimensionJump
     needsReinit: 0
   teleportPoints: []
---- !u!114 &3338999096902437311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213374512458dc941b027f30d431c4c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showController: 1
 --- !u!143 &4103733844086958551
 CharacterController:
   m_ObjectHideFlags: 0
