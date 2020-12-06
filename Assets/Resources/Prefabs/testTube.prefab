@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor: {r: 1, g: 0.06132078, b: 0.9003255, a: 1}
-  puffEffect: {fileID: 0}
+  puffEffect: {fileID: 8979454299987645689}
   debugHold: 0
 --- !u!1 &8979454299987645689
 GameObject:
