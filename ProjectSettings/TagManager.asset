@@ -11,6 +11,7 @@ TagManager:
   - Chemical
   - Vial
   - RightHand
+  - PersistantCloud
   layers:
   - Default
   - TransparentFX
