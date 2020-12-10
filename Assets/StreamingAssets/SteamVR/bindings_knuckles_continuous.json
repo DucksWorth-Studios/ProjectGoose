@@ -36,15 +36,6 @@
            }
          },
          {
-           "path": "/user/hand/left/input/trackpad",
-           "mode": "button",
-           "inputs": {
-             "click": {
-               "output": "/actions/default/in/teleport"
-             }
-           }
-         },
-         {
            "path": "/user/hand/left/input/grip",
            "mode": "grab",
            "parameters": {
@@ -155,15 +146,6 @@
            }
          },
          {
-           "path": "/user/hand/right/input/trackpad",
-           "mode": "button",
-           "inputs": {
-             "click": {
-               "output": "/actions/default/in/teleport"
-             }
-           }
-         },
-         {
            "path": "/user/hand/right/input/trigger",
            "mode": "trigger",
            "inputs": {
@@ -185,9 +167,6 @@
              "east": {
                "output": "/actions/default/in/snapturnright"
              },
-             "south": {
-               "output": "/actions/default/in/teleport"
-             },
              "west": {
                "output": "/actions/default/in/snapturnleft"
              }
@@ -208,8 +187,8 @@
    },
    "category" : "steamvr_input",
    "controller_type" : "knuckles",
-   "description" : "The default binding for Valve Knuckles",
-   "name" : "Knuckles Default",
+   "description" : "The continuous movement binding for Valve Knuckles",
+   "name" : "Knuckles Continuous",
    "options" : {},
    "simulated_actions" : []
 }

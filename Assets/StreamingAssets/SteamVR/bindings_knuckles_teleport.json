@@ -36,15 +36,6 @@
            }
          },
          {
-           "path": "/user/hand/left/input/trackpad",
-           "mode": "button",
-           "inputs": {
-             "click": {
-               "output": "/actions/default/in/teleport"
-             }
-           }
-         },
-         {
            "path": "/user/hand/left/input/grip",
            "mode": "grab",
            "parameters": {
@@ -67,15 +58,6 @@
            "inputs": {
              "grab": {
                "output": "/actions/default/in/grabpinch"
-             }
-           }
-         },
-         {
-           "path": "/user/hand/left/input/thumbstick",
-           "mode": "joystick",
-           "inputs": {
-             "position": {
-               "output": "/actions/default/in/moveup"
              }
            }
          },
@@ -155,15 +137,6 @@
            }
          },
          {
-           "path": "/user/hand/right/input/trackpad",
-           "mode": "button",
-           "inputs": {
-             "click": {
-               "output": "/actions/default/in/teleport"
-             }
-           }
-         },
-         {
            "path": "/user/hand/right/input/trigger",
            "mode": "trigger",
            "inputs": {
@@ -177,6 +150,42 @@
          },
          {
            "path": "/user/hand/right/input/thumbstick",
+           "mode": "dpad",
+           "parameters": {
+             "sub_mode": "touch"
+           },
+           "inputs": {
+             "east": {
+               "output": "/actions/default/in/snapturnright"
+             },
+             "south": {
+               "output": "/actions/default/in/teleport"
+             },
+             "west": {
+               "output": "/actions/default/in/snapturnleft"
+             }
+           }
+         },
+         {
+           "path": "/user/hand/left/input/trackpad",
+           "mode": "trackpad",
+           "inputs": {
+             "touch": {
+               "output": "/actions/default/in/teleport"
+             }
+           }
+         },
+         {
+           "path": "/user/hand/right/input/trackpad",
+           "mode": "trackpad",
+           "inputs": {
+             "touch": {
+               "output": "/actions/default/in/teleport"
+             }
+           }
+         },
+         {
+           "path": "/user/hand/left/input/thumbstick",
            "mode": "dpad",
            "parameters": {
              "sub_mode": "touch"
@@ -208,8 +217,8 @@
    },
    "category" : "steamvr_input",
    "controller_type" : "knuckles",
-   "description" : "The default binding for Valve Knuckles",
-   "name" : "Knuckles Default",
+   "description" : "The teleport binding for Valve Knuckles",
+   "name" : "Knuckles Teleport",
    "options" : {},
    "simulated_actions" : []
 }

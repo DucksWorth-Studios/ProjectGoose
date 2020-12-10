@@ -44,7 +44,7 @@
     {
       "name": "/actions/default/in/MoveUp",
       "type": "vector2",
-      "requirement": "mandatory"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/default/in/DimensionJump",
@@ -54,7 +54,7 @@
     {
       "name": "/actions/default/in/Teleport",
       "type": "boolean",
-      "requirement": "mandatory"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/default/in/StartLaser",
