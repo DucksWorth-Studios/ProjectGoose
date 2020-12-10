@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
     public event Action<Color> OnTestEventCallParam;
     public event Action OnTimeJump;
     public event Action OnNegatorItemJump;
-
+    public event Action<Sound> OnPlaySound;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -66,4 +66,18 @@ public class EventManager : MonoBehaviour
             Debug.Log("Time Jump is Null");
         }
     }
+
+    public void PlaySound(Sound audio)
+    {
+        
+        if (OnPlaySound != null)
+        {
+            OnPlaySound(audio);
+        }
+        else
+        {
+            Debug.Log("PlaySound is Null");
+        }
+    }
 }
+
