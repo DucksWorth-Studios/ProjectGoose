@@ -10,6 +10,7 @@ public class CompositionManager : MonoBehaviour
 {
     public Color currentColor = Color.white;
     public GameObject puffEffect;
+    public GameObject cloud;
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
@@ -47,7 +48,10 @@ public class CompositionManager : MonoBehaviour
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
             puffEffect.SetActive(true);
-            print("Hello");
+            if(debugHold)
+            {
+                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+            }
         }
     }
 
