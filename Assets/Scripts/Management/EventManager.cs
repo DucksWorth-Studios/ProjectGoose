@@ -22,6 +22,8 @@ public class EventManager : MonoBehaviour
     public event Action OnTimeJump;
     public event Action OnNegatorItemJump;
     public event Action<Sound> OnPlaySound;
+    public event Action OnLoseGame;
+    public event Action OnWinGame;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -77,6 +79,30 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("PlaySound is Null");
+        }
+    }
+
+    public void LoseGame()
+    {
+        if (OnLoseGame != null)
+        {
+            OnLoseGame();
+        }
+        else
+        {
+            Debug.Log("LoseGame is Null");
+        }
+    }
+
+    public void WinGame()
+    {
+        if (OnWinGame != null)
+        {
+            OnWinGame();
+        }
+        else
+        {
+            Debug.Log("WinGame is Null");
         }
     }
 }
