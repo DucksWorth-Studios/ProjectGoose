@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class CloudDanger : MonoBehaviour
 {
-    public bool IsPlayerInCloud = false;
-    private bool isGameOver = false;
     public float timeToSurvive = 15;
-    public float timeRemaining;
+    private float timeRemaining;
+    private bool IsPlayerInCloud = false;
+    private bool isGameOver = false;
+    
     void Start()
     {
         timeRemaining = timeToSurvive;
