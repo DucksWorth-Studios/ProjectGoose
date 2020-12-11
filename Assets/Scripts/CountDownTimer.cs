@@ -53,6 +53,7 @@ public class CountDownTimer : MonoBehaviour
             isCountingDown = false;
             isGameOver = true;
             //Send Event For Game Over
+            EventManager.instance.LoseGame();
         }
     }
 
