@@ -7,11 +7,11 @@ public class CloudDanger : MonoBehaviour
 {
     public bool IsPlayerInCloud = false;
     private bool isGameOver = false;
-    public float timeTosurvive;
+    public float timeToSurvive = 15;
     public float timeRemaining;
     void Start()
     {
-        
+        timeRemaining = timeToSurvive;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +45,14 @@ public class CloudDanger : MonoBehaviour
 
     private void resetCountDown()
     {
-        throw new NotImplementedException();
+        if (timeRemaining < timeToSurvive)
+        {
+            timeRemaining += Time.deltaTime;
+        }
+        else
+        {
+            timeRemaining = timeToSurvive;
+        }
     }
 
     private void startCountdown()
@@ -53,10 +60,13 @@ public class CloudDanger : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
+            //Modify Player vision
         }
         else
         {
-
+            isGameOver = true;
+            //Call Events
+            EventManager.instance.LoseGame();
         }
     }
 }
