@@ -92,6 +92,14 @@
       "binding_url": "bindings_vive_controller.json"
     },
     {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller_continuous.json"
+    },
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller_teleport.json"
+    },
+    {
       "controller_type": "oculus_touch",
       "binding_url": "bindings_oculus_touch.json"
     },
