@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 3338999096902437311}
   - component: {fileID: 4103733844086958551}
   - component: {fileID: 1040974718556140777}
+  - component: {fileID: 4619465599001838581}
   m_Layer: 8
   m_Name: VRPlayer
   m_TagString: Player
@@ -342,6 +343,65 @@ MonoBehaviour:
     actionPath: /actions/default/in/MoveUp
     needsReinit: 0
   speed: 2.5
+--- !u!114 &4619465599001838581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccba21bf9c3f1a4bb0e13f698731c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6138914625227778416, guid: cc0210386cfeb1c49b3114ddbd0bf4ce,
+    type: 3}
+  spawnLimit: 10
+  spawnRadius: 20
+  spawnRadiusLimit: 1
+  spawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: -0
+      outSlope: 1.6666666
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4
+      value: 10
+      inSlope: 1.6666666
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 10
+      inSlope: -0
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
