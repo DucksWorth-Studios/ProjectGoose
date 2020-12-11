@@ -47,6 +47,8 @@ namespace Valve.VR
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
+        private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
+        
         public static SteamVR_Action_Boolean default_GrabPinch
         {
             get
@@ -167,6 +169,14 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Pose mixedreality_ExternalCamera
+        {
+            get
+            {
+                return SteamVR_Actions.p_mixedreality_ExternalCamera.GetCopy<SteamVR_Action_Pose>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -184,7 +194,8 @@ namespace Valve.VR
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_StartLaser,
                     SteamVR_Actions.default_PullObject,
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.mixedreality_ExternalCamera};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_GrabPinch,
                     SteamVR_Actions.default_GrabGrip,
@@ -199,13 +210,15 @@ namespace Valve.VR
                     SteamVR_Actions.default_DimensionJump,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_StartLaser,
-                    SteamVR_Actions.default_PullObject};
+                    SteamVR_Actions.default_PullObject,
+                    SteamVR_Actions.mixedreality_ExternalCamera};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
                     SteamVR_Actions.default_Haptic};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
-                    SteamVR_Actions.default_Pose};
+                    SteamVR_Actions.default_Pose,
+                    SteamVR_Actions.mixedreality_ExternalCamera};
             Valve.VR.SteamVR_Input.actionsBoolean = new Valve.VR.SteamVR_Action_Boolean[] {
                     SteamVR_Actions.default_GrabPinch,
                     SteamVR_Actions.default_GrabGrip,
@@ -255,6 +268,7 @@ namespace Valve.VR
             SteamVR_Actions.p_default_StartLaser = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/default/in/StartLaser")));
             SteamVR_Actions.p_default_PullObject = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PullObject")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
+            SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
         }
     }
 }
