@@ -69,12 +69,21 @@
     {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
+    },
+    {
+      "name": "/actions/mixedreality/in/ExternalCamera",
+      "type": "pose",
+      "requirement": "optional"
     }
   ],
   "action_sets": [
     {
       "name": "/actions/default",
       "usage": "leftright"
+    },
+    {
+      "name": "/actions/mixedreality",
+      "usage": "single"
     }
   ],
   "default_bindings": [
