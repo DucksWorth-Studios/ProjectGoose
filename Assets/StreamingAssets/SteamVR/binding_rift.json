@@ -1,24 +1,27 @@
 {
-  "bindings": {
-    "/actions/default": {
-      "chords": [],
-      "poses": [],
-      "haptics": [],
-      "sources": [
-        {
-          "inputs" : {
-            "click" : {
-              "output" : "/actions/default/in/headsetonhead"
+   "alias_info" : {},
+   "bindings" : {
+      "/actions/default" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
+         "sources" : [
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/headsetonhead"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/head/proximity"
             }
-          },
-          "mode" : "button",
-          "path" : "/user/head/proximity"
-        }
-      ],
-      "skeleton": []
-    }
-  },
-  "controller_type": "rift",
-  "description": "",
-  "name": "rift defaults"
+         ]
+      }
+   },
+   "controller_type" : "rift",
+   "description" : "",
+   "name" : "rift defaults",
+   "options" : {},
+   "simulated_actions" : []
 }

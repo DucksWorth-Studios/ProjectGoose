@@ -1,0 +1,168 @@
+{
+   "action_manifest_version" : 0,
+   "alias_info" : {},
+   "app_key" : "application.generated.unity.projectgoose.exe",
+   "bindings" : {
+      "/actions/default": {
+         "chords": [],
+         "poses": [
+            {
+               "output": "/actions/default/in/pose",
+               "path": "/user/hand/left/pose/raw"
+            },
+            {
+               "output": "/actions/default/in/pose",
+               "path": "/user/hand/right/pose/raw"
+            }
+         ],
+         "haptics": [
+            {
+               "output": "/actions/default/out/haptic",
+               "path": "/user/hand/left/output/haptic"
+            },
+            {
+               "output": "/actions/default/out/haptic",
+               "path": "/user/hand/right/output/haptic"
+            }
+         ],
+         "sources": [
+            {
+               "path": "/user/hand/left/input/grip",
+               "mode": "button",
+               "parameters": {
+                  "click_activate_threshold": "0.05",
+                  "click_deactivate_threshold": "0",
+                  "force_input": "force"
+               },
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/grabgrip"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/left/input/trigger",
+               "mode": "button",
+               "parameters": {
+                  "click_activate_threshold": "0.75",
+                  "click_deactivate_threshold": "0.7",
+                  "force_input": "value"
+               },
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/grabpinch"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/right/input/trigger",
+               "mode": "button",
+               "parameters": {
+                  "click_activate_threshold": "0.75",
+                  "click_deactivate_threshold": "0.7"
+               },
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/grabpinch"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/right/input/trackpad",
+               "mode": "dpad",
+               "parameters": {
+                  "deadzone_pct": "90",
+                  "overlap_pct": "15",
+                  "sub_mode": "click"
+               },
+               "inputs": {
+                  "east": {
+                     "output": "/actions/default/in/snapturnright"
+                  },
+                  "west": {
+                     "output": "/actions/default/in/snapturnleft"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/right/input/grip",
+               "mode": "button",
+               "parameters": {
+                  "click_activate_threshold": "0.05",
+                  "click_deactivate_threshold": "0",
+                  "force_input": "force"
+               },
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/grabgrip"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/left/input/trigger",
+               "mode": "trigger",
+               "inputs": {
+                  "pull": {
+                     "output": "/actions/default/in/squeeze"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/right/input/trigger",
+               "mode": "trigger",
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/pullobject"
+                  },
+                  "pull": {
+                     "output": "/actions/default/in/startlaser"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/left/input/trackpad",
+               "mode": "trackpad",
+               "inputs": {
+                  "position": {
+                     "output": "/actions/default/in/moveup"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/left/input/application_menu",
+               "mode": "button",
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/dimensionjump"
+                  }
+               }
+            },
+            {
+               "path": "/user/hand/right/input/application_menu",
+               "mode": "button",
+               "inputs": {
+                  "click": {
+                     "output": "/actions/default/in/dimensionjump"
+                  }
+               }
+            }
+         ],
+         "skeleton": [
+            {
+               "output": "/actions/default/in/skeletonlefthand",
+               "path": "/user/hand/left/input/skeleton/left"
+            },
+            {
+               "output": "/actions/default/in/skeletonrighthand",
+               "path": "/user/hand/right/input/skeleton/right"
+            }
+         ]
+      }
+   },
+   "category" : "steamvr_input",
+   "controller_type" : "vive_controller",
+   "description" : "The continuous movement binding for Vive wands",
+   "name" : "Vive Continuous",
+   "options" : {},
+   "simulated_actions" : []
+}

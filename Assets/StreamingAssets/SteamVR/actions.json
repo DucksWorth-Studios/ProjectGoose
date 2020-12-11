@@ -44,7 +44,7 @@
     {
       "name": "/actions/default/in/MoveUp",
       "type": "vector2",
-      "requirement": "mandatory"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/default/in/DimensionJump",
@@ -54,7 +54,7 @@
     {
       "name": "/actions/default/in/Teleport",
       "type": "boolean",
-      "requirement": "mandatory"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/default/in/StartLaser",
@@ -69,11 +69,20 @@
     {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
+    },
+    {
+      "name": "/actions/mixedreality/in/ExternalCamera",
+      "type": "pose",
+      "requirement": "optional"
     }
   ],
   "action_sets": [
     {
       "name": "/actions/default",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/mixedreality",
       "usage": "single"
     }
   ],
@@ -83,12 +92,36 @@
       "binding_url": "bindings_vive_controller.json"
     },
     {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller_continuous.json"
+    },
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller_teleport.json"
+    },
+    {
       "controller_type": "oculus_touch",
       "binding_url": "bindings_oculus_touch.json"
     },
     {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch_continuous.json"
+    },
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch_teleport.json"
+    },
+    {
       "controller_type": "knuckles",
       "binding_url": "bindings_knuckles.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles_continuous.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles_teleport.json"
     },
     {
       "controller_type": "holographic_controller",
