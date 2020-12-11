@@ -13,8 +13,10 @@ public class CloudDanger : MonoBehaviour
     void Start()
     {
         timeRemaining = timeToSurvive;
+        removeAfterTime();
     }
 
+    //If Player enters start countdown
     private void OnTriggerEnter(Collider other)
     {
         if (IsPlayerInCloud == false && other.gameObject.tag == "Player")
@@ -23,6 +25,7 @@ public class CloudDanger : MonoBehaviour
         }
     }
 
+    //If player exits dont countdown
     private void OnTriggerExit(Collider other)
     {
         if(IsPlayerInCloud && other.gameObject.tag == "Player")
@@ -44,6 +47,7 @@ public class CloudDanger : MonoBehaviour
         }
     }
 
+    //Reset the countdown
     private void resetCountDown()
     {
         if (timeRemaining < timeToSurvive)
@@ -56,6 +60,7 @@ public class CloudDanger : MonoBehaviour
         }
     }
 
+    //Countdown to game over
     private void startCountdown()
     {
         if (timeRemaining > 0)
@@ -69,5 +74,16 @@ public class CloudDanger : MonoBehaviour
             //Call Events
             EventManager.instance.LoseGame();
         }
+    }
+
+    //Remove the VFX after 30 seconds
+    private void removeAfterTime()
+    {
+        Destroy(this.transform.gameObject, 30);
+    }
+    //Will be used in future feature
+    private void removeAllClouds()
+    {
+        Destroy(this.transform.gameObject);
     }
 }
