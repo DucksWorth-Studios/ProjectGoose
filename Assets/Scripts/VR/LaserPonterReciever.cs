@@ -25,8 +25,12 @@ public class LaserPonterReciever : MonoBehaviour
         meshRenderer.material.color = defaultColour;
     }
 
-    public void Click()
+    public void Click(Transform handLocation)
     {
         meshRenderer.material.color = clickColour;
+        
+        transform.position = handLocation.position;
+        
+        RayExit();
     }
 }

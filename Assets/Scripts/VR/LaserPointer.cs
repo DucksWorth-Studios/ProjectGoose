@@ -66,7 +66,7 @@ public class LaserPointer : MonoBehaviour
 
             if (lastHit != null)
                 if (pullObject.state)
-                    lastHit.Click();
+                    lastHit.Click(transform);
                 else
                     lastHit.HitByRay();
         }
