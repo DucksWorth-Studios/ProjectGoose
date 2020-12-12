@@ -19,6 +19,7 @@ public class SmokeRing : MonoBehaviour
     [Tooltip("The limit for how small the fianll fog radius should be")]
     public float spawnRadiusLimit = 1;
     
+    [Tooltip("Time is spawn radius, value is spawned effects.")]
     public AnimationCurve spawnCurve = AnimationCurve.Linear(0, 10, 20, 5);
 
     private int initialSpawnLimit;
@@ -62,11 +63,11 @@ public class SmokeRing : MonoBehaviour
             int difference = lastSpwanCount - Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius));
             spawnLimit -= difference;
 
-            Debug.Log("Difference: " + difference);
+            // Debug.Log("Difference: " + difference);
 
             for (int i = 0; i < difference; i++)
             {
-                Debug.Log("Removed");
+                // Debug.Log("Removed");
                 Destroy(spawned[0]);
                 spawned.RemoveAt(0);
             }
