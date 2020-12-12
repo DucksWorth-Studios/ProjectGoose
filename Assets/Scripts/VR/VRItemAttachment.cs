@@ -26,13 +26,14 @@ public class VRItemAttachment : MonoBehaviour
     public bool IsAttached
     {
         set => attached = value;
+        get => attached;
     }
 
     // endregion Properties
     
     void Start()
     {
-        interactable = this.GetComponent<Interactable>();
+        interactable = GetComponent<Interactable>();
     }    
     
     /// <summary>
@@ -43,7 +44,7 @@ public class VRItemAttachment : MonoBehaviour
     private void HandHoverUpdate( Hand hand )
     {
         GrabTypes startingGrabType = hand.GetGrabStarting();
-        bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
+        bool isGrabEnding = hand.IsGrabEnding(gameObject);
 
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
