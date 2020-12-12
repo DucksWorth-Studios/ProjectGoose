@@ -23,9 +23,6 @@ public class VRItemDimensionJump : MonoBehaviour
 
     [Tooltip("Enable if the item starts in the past")]
     public bool inFuture;
-    
-    [Tooltip("If enabled, the item will teleport back to its original location when detached from from the playes ahdn")]
-    public bool teleportBackToOrigin;
 
     [HideInInspector]
     public VRItemAttachment attachScript;
