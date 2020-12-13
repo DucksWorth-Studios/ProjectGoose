@@ -12,10 +12,12 @@ public class ItemHolder : MonoBehaviour
     {
         KeepObjectInZone();
         //Set as not interactable
+        objectToHold.GetComponent<Valve.VR.InteractionSystem.Interactable>().enabled = false;
     }
     public void setInteractable()
     {
         //set interactable
+        objectToHold.GetComponent<Valve.VR.InteractionSystem.Interactable>().enabled = true;
     }
 
     private void OnTriggerExit(Collider other)
