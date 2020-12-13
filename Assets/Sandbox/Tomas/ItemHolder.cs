@@ -37,13 +37,16 @@ public class ItemHolder : MonoBehaviour
     //Ensures Object stays in zone.
     private void KeepObjectInZone()
     {
-        if(objectToHold.transform.position != this.transform.position)
+        if(objectToHold != null)
         {
-            objectToHold.transform.position = this.transform.position;
-        }
-        if(objectToHold.transform.rotation != this.transform.rotation)
-        {
-            objectToHold.transform.rotation = this.transform.rotation;
+            if (objectToHold.transform.position != this.transform.position)
+            {
+                objectToHold.transform.position = this.transform.position;
+            }
+            if (objectToHold.transform.rotation != this.transform.rotation)
+            {
+                objectToHold.transform.rotation = this.transform.rotation;
+            }
         }
     }
 }
