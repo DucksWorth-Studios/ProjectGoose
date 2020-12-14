@@ -22,7 +22,7 @@ public class CabinetDrawer : MonoBehaviour
             GetComponent<Rigidbody>().velocity = cross * Multiplier;
     }
 
-    protected virtual void HandOverUpdate(Hand hand)
+    protected virtual void HandHoverUpdate(Hand hand)
     {
         GrabTypes grab = hand.GetGrabStarting();
 
