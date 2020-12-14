@@ -16,16 +16,14 @@ public class ItemHolder : MonoBehaviour
         //Set to SnapZones
         KeepObjectInZone();
         //Set as not interactable not currently working
-        objectToHold.GetComponent<Valve.VR.InteractionSystem.Interactable>().enabled = false;
-        objectToHold.GetComponent<VRItemAttachment>().enabled = false;
+        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = false;
     }
 
     //Allow Pickup
     public void setInteractable()
     {
         //set interactable
-        objectToHold.GetComponent<Valve.VR.InteractionSystem.Interactable>().enabled = true;
-        objectToHold.GetComponent<VRItemAttachment>().enabled = true;
+        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = true;
         keepHolding = false;
     }
     //Unset object from zone if meets criteria
