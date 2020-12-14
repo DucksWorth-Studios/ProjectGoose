@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1582187125617221493}
   - component: {fileID: 6689542686500274129}
   - component: {fileID: 9101237291737400040}
+  - component: {fileID: 8714008049649953446}
   m_Layer: 0
   m_Name: HalfLifeBox
   m_TagString: Untagged
@@ -263,6 +264,20 @@ MonoBehaviour:
   elementZone: {fileID: 8505543669838869750}
   lockIndicator: {fileID: 130422728081666931}
   amount: {fileID: 7039835261422301510}
+--- !u!114 &8714008049649953446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500605298170122537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b46f4ebf90414489370d2e1ee9dcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportBackToOrigin: 0
+  attachmentEnabled: 1
 --- !u!1 &4920922098977924492
 GameObject:
   m_ObjectHideFlags: 0

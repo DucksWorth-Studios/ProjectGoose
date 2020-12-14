@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8143991461951311431}
   - component: {fileID: 1314148183899112489}
   - component: {fileID: 6566181874358379661}
+  - component: {fileID: 279431487}
   m_Layer: 0
   m_Name: HalfLifeLid
   m_TagString: Untagged
@@ -146,3 +147,17 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &279431487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989452569500158581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b46f4ebf90414489370d2e1ee9dcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportBackToOrigin: 0
+  attachmentEnabled: 1
