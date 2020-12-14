@@ -7,7 +7,7 @@ public class CabinetDrawer : MonoBehaviour
 {
     private bool holdingHandle;
     private Vector3 cross;
-    private const float Multiplier = 10;
+    private const float Multiplier = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class CabinetDrawer : MonoBehaviour
         if(grab != GrabTypes.None)
         {
             holdingHandle = true;
-            cross = CalculatePullForce(hand);
+            hand.AttachObject(gameObject, grab, Hand.AttachmentFlags.DetachOthers);
         }
         else
         {
@@ -48,5 +48,15 @@ public class CabinetDrawer : MonoBehaviour
         Vector3 force = hand.transform.position - transform.position;
 
         return Vector3.Cross(pullDirection, force);
+    }
+
+    protected virtual void HandAttachedUpdate(Hand hand)
+    {
+        if(hand.IsGrabEnding(this.gameObject))
+        {
+            hand.DetachObject(gameObject);
+        }
+
+        cross = CalculatePullForce(hand);
     }
 }
