@@ -9,8 +9,11 @@ using Valve.VR.InteractionSystem;
 [RequireComponent( typeof( Interactable ) )]
 public class VRItemAttachment : MonoBehaviour
 {
-    [Tooltip("If enabled, the item will teleport back to its original location when detached from from the playes ahdn")]
+    [Tooltip("If enabled, the item will teleport back to its original location when detached from from the players hand")]
     public bool teleportBackToOrigin;
+
+    [Tooltip("If false, the player won't be able to pick up the item")]
+    public bool attachmentEnabled = true;
     
     private Interactable interactable;
     private bool attached;
@@ -26,13 +29,14 @@ public class VRItemAttachment : MonoBehaviour
     public bool IsAttached
     {
         set => attached = value;
+        get => attached;
     }
 
     // endregion Properties
     
     void Start()
     {
-        interactable = this.GetComponent<Interactable>();
+        interactable = GetComponent<Interactable>();
     }    
     
     /// <summary>
@@ -42,8 +46,10 @@ public class VRItemAttachment : MonoBehaviour
     /// <param name="hand">The hand that is currently hovering over the object</param>
     private void HandHoverUpdate( Hand hand )
     {
+        if (!attachmentEnabled) return;
+        
         GrabTypes startingGrabType = hand.GetGrabStarting();
-        bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
+        bool isGrabEnding = hand.IsGrabEnding(gameObject);
 
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {

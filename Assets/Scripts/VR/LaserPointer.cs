@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// Author: Cameron Scholes
@@ -17,6 +18,7 @@ public class LaserPointer : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private LaserPonterReciever lastHit;
+    private Hand thisHand;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class LaserPointer : MonoBehaviour
             Debug.LogError("LaserPointer is missing PullObject.", this);
 
         lineRenderer = GetComponent<LineRenderer>();
+        thisHand = GetComponent<Hand>();
     }
 
     // Update is called once per frame
@@ -66,7 +69,7 @@ public class LaserPointer : MonoBehaviour
 
             if (lastHit != null)
                 if (pullObject.state)
-                    lastHit.Click();
+                    lastHit.Click(transform, thisHand);
                 else
                     lastHit.HitByRay();
         }

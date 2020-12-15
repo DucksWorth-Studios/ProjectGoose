@@ -34,7 +34,7 @@ public class VRItemDimensionJumpTest
     [UnityTest, Order(2)]
     public IEnumerator JumpToFutureWithItem()
     {
-        jumpScript.IsAttached = true;
+        jumpScript.attachScript.IsAttached = true;
         EventManager.instance.TimeJump();
 
         // A UnityTest must return an IEnumerator
@@ -49,7 +49,7 @@ public class VRItemDimensionJumpTest
     [UnityTest, Order(3)]
     public IEnumerator JumpFromFutureWithoutHoldingItem()
     {
-        jumpScript.IsAttached = false;
+        jumpScript.attachScript.IsAttached = false;
         EventManager.instance.TimeJump();
 
         // A UnityTest must return an IEnumerator
@@ -64,7 +64,7 @@ public class VRItemDimensionJumpTest
     [UnityTest, Order(4)]
     public IEnumerator JumpToPresentWithItem()
     {
-        jumpScript.IsAttached = true;
+        jumpScript.attachScript.IsAttached = true;
         EventManager.instance.TimeJump();
 
         // A UnityTest must return an IEnumerator
