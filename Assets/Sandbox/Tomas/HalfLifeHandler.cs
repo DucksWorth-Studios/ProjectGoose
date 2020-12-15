@@ -13,17 +13,13 @@ public class HalfLifeHandler : MonoBehaviour
     public GameObject lidZone;
     public GameObject elementZone;
     public Image lockIndicator;
-    public Text amount;
+    public Text textbox;
 
-    private float amountCurrently;
     private bool IsInPast = true;
     void Start()
     {
-        if(amountToGet != 0)
-        {
-
-            EventManager.instance.OnTimeJump += detectChange;
-        }
+        //Add To Events
+        EventManager.instance.OnTimeJump += detectChange;     
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
@@ -34,6 +30,7 @@ public class HalfLifeHandler : MonoBehaviour
         lockIndicator.color = new Color(0,1,0);
     }
 
+    //If going in direction either half or double the amount
     private void detectChange()
     {
         if(IsInPast)
@@ -45,23 +42,40 @@ public class HalfLifeHandler : MonoBehaviour
         else
         {
             //Is Going Back
-            IsInPast = false;
+            IsInPast = true;
             setHalfLife(2f);
         }
     }
 
-    //Half Life will either double or half
+    //Set The amount
     private void setHalfLife(float Multiplier)
     {
-
+        amountOfElement = amountOfElement * Multiplier;
+        detectResult();
+        setAmount();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Set the Indicator Amount
+    private void setAmount()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        textbox.text = "" + amountOfElement;
+    }
+
+    //detect if we reach required amount
+    private void detectResult()
+    {
+        if(amountOfElement == amountToGet)
         {
             unLockObjects();
         }
     }
+
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.O))
+    //    {
+    //        EventManager.instance.TimeJump();
+    //    }
+    //}
 }
