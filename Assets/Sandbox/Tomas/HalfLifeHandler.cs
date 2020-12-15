@@ -8,13 +8,22 @@ using UnityEngine.UI;
 /// </summary>
 public class HalfLifeHandler : MonoBehaviour
 {
+    public float amountOfElement;
+    public float amountToGet;
     public GameObject lidZone;
     public GameObject elementZone;
     public Image lockIndicator;
     public Text amount;
+
+    private float amountCurrently;
+    private bool IsInPast = true;
     void Start()
     {
-        
+        if(amountToGet != 0)
+        {
+
+            EventManager.instance.OnTimeJump += detectChange;
+        }
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
@@ -27,7 +36,18 @@ public class HalfLifeHandler : MonoBehaviour
 
     private void detectChange()
     {
-
+        if(IsInPast)
+        {
+            //Is Going to Future
+            IsInPast = false;
+            setHalfLife(0.5f);
+        }
+        else
+        {
+            //Is Going Back
+            IsInPast = false;
+            setHalfLife(2f);
+        }
     }
 
     //Half Life will either double or half
