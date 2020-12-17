@@ -95,12 +95,15 @@ public class CompositionManager : MonoBehaviour
     private bool detectIfWithinWinBounds()
     {
         bool isWithinRange = false;
+
+        //Check if All Within Range 
         bool isWithinRed = currentColor.r >= minCompositiionColor.r && currentColor.r <= maxCompositionColor.r;
 
         bool isWithinGreen = currentColor.g >= minCompositiionColor.g && currentColor.g <= maxCompositionColor.g;
 
         bool isWithinBlue = currentColor.b >= minCompositiionColor.b && currentColor.b <= maxCompositionColor.b;
 
+        //If so return true and send event to declare we got it.
         if (isWithinRed && isWithinGreen && isWithinBlue)
         {
             isWithinRange = true;
@@ -111,9 +114,17 @@ public class CompositionManager : MonoBehaviour
         return isWithinRange;
     }
 
-    private bool detectIfToxic(bool isWinner)
+    private void detectIfToxic(bool isWinner)
     {
-        return false;
+        if(!isWinner)
+        {
+            //If not a composition theres a chance it could be toxic if so generate the cloud
+            int x = Random.Range(0, 1000);
+            if(x % 4 == 0)
+            {
+                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+            }
+        }
     }
 
     public void callColorChange(GameObject otherVial)
