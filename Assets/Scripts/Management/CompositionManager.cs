@@ -48,10 +48,13 @@ public class CompositionManager : MonoBehaviour
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
             puffEffect.SetActive(true);
-            if(debugHold)
-            {
-                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
-            }
+
+            detectIfWithinWinBounds(currentColor);
+            detectIfToxic(currentColor);
+            //if(debugHold)
+            //{
+            //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+            //}
         }
     }
 
@@ -76,6 +79,9 @@ public class CompositionManager : MonoBehaviour
 
             //Recreate the Color
             Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
+            
+            //Detect if we got the mixture
+            detectIfWithinWinBounds(changedColor);
 
             //Set as current
             currentMaterial.color = changedColor;
@@ -83,6 +89,15 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
+    private bool detectIfWithinWinBounds(Color color)
+    {
+        return false;
+    }
+
+    private bool detectIfToxic(Color color)
+    {
+        return false;
+    }
 
     public void callColorChange(GameObject otherVial)
     {
