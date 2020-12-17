@@ -16,6 +16,8 @@ public class CompositionManager : MonoBehaviour
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
+    private bool ISComposition = false;
+    private bool HasElement = false;
     public bool debugHold = false;
     private void Start()
     {
@@ -108,9 +110,13 @@ public class CompositionManager : MonoBehaviour
         {
             isWithinRange = true;
             //Send Event
+            ISComposition = true;
             Debug.Log("Composition Correct");
         }
-
+        if(!isWithinRange && ISComposition)
+        {
+            ISComposition = false;
+        }
         return isWithinRange;
     }
 
@@ -134,6 +140,17 @@ public class CompositionManager : MonoBehaviour
         otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Element" && ISComposition)
+        {
+            HasElement = true;
+            //Send Event 
+
+            //Get rid of Object
+            Destroy(collision.gameObject);
+        }
+    }
 
     void Update()
     {
