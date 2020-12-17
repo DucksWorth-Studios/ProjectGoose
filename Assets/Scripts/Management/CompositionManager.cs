@@ -9,6 +9,8 @@ using UnityEngine;
 public class CompositionManager : MonoBehaviour
 {
     public Color currentColor = Color.white;
+    public static Color minCompositiionColor = new Color(0.8f,0,0.3f);
+    public static Color maxCompositionColor = new Color(1f,0.3f,0.6f);
     public GameObject puffEffect;
     public GameObject cloud;
     private Color previousColor = Color.white;
@@ -49,8 +51,9 @@ public class CompositionManager : MonoBehaviour
             previousColor = chemicalAdditive;
             puffEffect.SetActive(true);
 
-            detectIfWithinWinBounds(currentColor);
-            detectIfToxic(currentColor);
+            bool HasReachedGoal = detectIfWithinWinBounds();
+            detectIfToxic(HasReachedGoal);
+
             //if(debugHold)
             //{
             //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
@@ -81,7 +84,7 @@ public class CompositionManager : MonoBehaviour
             Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
             
             //Detect if we got the mixture
-            detectIfWithinWinBounds(changedColor);
+            detectIfWithinWinBounds();
 
             //Set as current
             currentMaterial.color = changedColor;
@@ -89,12 +92,26 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
-    private bool detectIfWithinWinBounds(Color color)
+    private bool detectIfWithinWinBounds()
     {
-        return false;
+        bool isWithinRange = false;
+        bool isWithinRed = currentColor.r >= minCompositiionColor.r && currentColor.r <= maxCompositionColor.r;
+
+        bool isWithinGreen = currentColor.g >= minCompositiionColor.g && currentColor.g <= maxCompositionColor.g;
+
+        bool isWithinBlue = currentColor.b >= minCompositiionColor.b && currentColor.b <= maxCompositionColor.b;
+
+        if (isWithinRed && isWithinGreen && isWithinBlue)
+        {
+            isWithinRange = true;
+            //Send Event
+            Debug.Log("Composition Correct");
+        }
+
+        return isWithinRange;
     }
 
-    private bool detectIfToxic(Color color)
+    private bool detectIfToxic(bool isWinner)
     {
         return false;
     }
