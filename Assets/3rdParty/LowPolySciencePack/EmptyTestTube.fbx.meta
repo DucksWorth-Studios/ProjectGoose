@@ -3,7 +3,12 @@ guid: 1274c1dc6905d6f478e6dba114f38a02
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Test Tubes
+    second: {fileID: 2100000, guid: c183ab13f74c14149b411445453549c2, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
