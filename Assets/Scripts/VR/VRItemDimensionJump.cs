@@ -41,7 +41,7 @@ public class VRItemDimensionJump : MonoBehaviour
     private void TimeJump()
     {
         // If the current object isn't attached to a hand, return, not currently being moved
-        if (!attachScript.IsAttached) return;
+        if (attachScript != null && !attachScript.IsAttached) return;
         
         inFuture = !inFuture;
         SetActiveObject();
