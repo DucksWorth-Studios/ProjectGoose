@@ -9,31 +9,24 @@ public class LaserPonterReciever : MonoBehaviour
     public Color clickColour = Color.green;
 
     private MeshRenderer meshRenderer;
-    private VRItemAttachment attachScript;
-    private Interactable interactable;
     
-    private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags 
-                                                   & ~Hand.AttachmentFlags.SnapOnAttach
-                                                   & ~Hand.AttachmentFlags.DetachOthers
-                                                   & ~Hand.AttachmentFlags.VelocityMovement;
 
-    private Hand hand;
+    // Speed the interactable will move towards the hand
+    private float speed = 2;
+    private Vector3 handTarget;
+    private bool movingTowardsHand;
 
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        attachScript = GetComponentInParent<VRItemAttachment>();
-        interactable = GetComponentInParent<Interactable>();
         meshRenderer.material.color = defaultColour;
     }
 
-    // void Update()
-    // {
-    //     if (!attachScript.IsAttached) return;
-    //     
-    //     if (hand.IsGrabEnding(gameObject))
-    //         RayExit();
-    // }
+    void Update()
+    {
+        if (movingTowardsHand)
+            MoveTowardsHand();
+    }
 
     public void HitByRay()
     {
@@ -42,26 +35,26 @@ public class LaserPonterReciever : MonoBehaviour
     
     public void RayExit()
     {
-        Debug.Log("RayExit: " + name);
+        // Debug.Log("RayExit: " + name);
         meshRenderer.material.color = defaultColour;
-        
-        if (!hand) return;
-        
-        hand.DetachObject(gameObject);
-        attachScript.IsAttached = false;
-        
-        hand.HoverUnlock(interactable);
     }
 
-    public void Click(Transform handLocation, Hand hand)
+    public void Click(Transform handLocation)
     {
-        this.hand = hand;
         meshRenderer.material.color = clickColour;
         
-        hand.HoverLock(interactable);
+        handTarget = handLocation.position;
+        movingTowardsHand = true;
+    }
+
+    private void MoveTowardsHand()
+    {
+        // Move our position a step closer to the target.
+        float step =  speed * Time.deltaTime; // calculate distance to move
+        transform.position = Vector3.MoveTowards(transform.position, handTarget, step);
         
-        transform.position = handLocation.position;
-        hand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
-        attachScript.IsAttached = true;
+        // Check if the position of the intractable and hand are relatively the same
+        if (Vector3.Distance(transform.position, handTarget) < 0.001f)
+            movingTowardsHand = false;
     }
 }

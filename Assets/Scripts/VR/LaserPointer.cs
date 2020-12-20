@@ -18,10 +18,8 @@ public class LaserPointer : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private LaserPonterReciever lastHit;
-    private Hand thisHand;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (startLaser == null)
             Debug.LogError("LaserPointer is missing StartLaser.", this);
@@ -30,10 +28,8 @@ public class LaserPointer : MonoBehaviour
             Debug.LogError("LaserPointer is missing PullObject.", this);
 
         lineRenderer = GetComponent<LineRenderer>();
-        thisHand = GetComponent<Hand>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (startLaser.axis > 0.25f)
@@ -45,6 +41,9 @@ public class LaserPointer : MonoBehaviour
         {
             lineRenderer.enabled = false;
             RayExit();
+            
+            // if (lastHit)
+            //     thisHand.DetachObject(lastHit.gameObject);
         }
     }
 
@@ -69,7 +68,7 @@ public class LaserPointer : MonoBehaviour
 
             if (lastHit != null)
                 if (pullObject.state)
-                    lastHit.Click(transform, thisHand);
+                    lastHit.Click(transform);
                 else
                     lastHit.HitByRay();
         }
