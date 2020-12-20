@@ -9,11 +9,15 @@ using UnityEngine;
 public class CompositionManager : MonoBehaviour
 {
     public Color currentColor = Color.white;
+    public static Color minCompositiionColor = new Color(0.8f,0,0.3f);
+    public static Color maxCompositionColor = new Color(1f,0.3f,0.6f);
     public GameObject puffEffect;
     public GameObject cloud;
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
+    private bool ISComposition = false;
+    private bool HasElement = false;
     public bool debugHold = false;
     private void Start()
     {
@@ -48,10 +52,14 @@ public class CompositionManager : MonoBehaviour
             //Ensures only changed once else it will continuesly chnage the material until it becomes the additive
             previousColor = chemicalAdditive;
             puffEffect.SetActive(true);
-            if(debugHold)
-            {
-                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
-            }
+
+            bool HasReachedGoal = detectIfWithinWinBounds();
+            detectIfToxic(HasReachedGoal);
+
+            //if(debugHold)
+            //{
+            //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+            //}
         }
     }
 
@@ -76,6 +84,9 @@ public class CompositionManager : MonoBehaviour
 
             //Recreate the Color
             Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
+            
+            //Detect if we got the mixture
+            detectIfWithinWinBounds();
 
             //Set as current
             currentMaterial.color = changedColor;
@@ -83,6 +94,44 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
+    private bool detectIfWithinWinBounds()
+    {
+        bool isWithinRange = false;
+
+        //Check if All Within Range 
+        bool isWithinRed = currentColor.r >= minCompositiionColor.r && currentColor.r <= maxCompositionColor.r;
+
+        bool isWithinGreen = currentColor.g >= minCompositiionColor.g && currentColor.g <= maxCompositionColor.g;
+
+        bool isWithinBlue = currentColor.b >= minCompositiionColor.b && currentColor.b <= maxCompositionColor.b;
+
+        //If so return true and send event to declare we got it.
+        if (isWithinRed && isWithinGreen && isWithinBlue)
+        {
+            isWithinRange = true;
+            //Send Event
+            ISComposition = true;
+            Debug.Log("Composition Correct");
+        }
+        if(!isWithinRange && ISComposition)
+        {
+            ISComposition = false;
+        }
+        return isWithinRange;
+    }
+
+    private void detectIfToxic(bool isWinner)
+    {
+        if(!isWinner)
+        {
+            //If not a composition theres a chance it could be toxic if so generate the cloud
+            int x = Random.Range(0, 1000);
+            if(x % 4 == 0)
+            {
+                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+            }
+        }
+    }
 
     public void callColorChange(GameObject otherVial)
     {
@@ -91,6 +140,17 @@ public class CompositionManager : MonoBehaviour
         otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Element" && ISComposition)
+        {
+            HasElement = true;
+            //Send Event 
+
+            //Get rid of Object
+            Destroy(collision.gameObject);
+        }
+    }
 
     void Update()
     {
