@@ -9,12 +9,14 @@ using Valve.VR;
 /// </summary>
 public class FadeCamera : MonoBehaviour
 {
-    private float _fadeDuration = 0.1f;
+    public Texture texture;
+    private float fadeDuration = 0.1f;
+    private Color fadeColor = Color.white;
  
     private void Start()
     {
         FadeToWhite();
-        Invoke("FadeFromWhite", _fadeDuration);
+        Invoke("FadeFromWhite", fadeDuration);
     }
     private void FadeToWhite()
     {
@@ -22,19 +24,29 @@ public class FadeCamera : MonoBehaviour
         //set start color
         SteamVR_Fade.View(Color.clear, 0f);
         //set and start fade to
-        SteamVR_Fade.View(Color.white, _fadeDuration);
+        SteamVR_Fade.View(fadeColor, fadeDuration);
     }
     private void FadeFromWhite()
     {
         // Debug.Log("FadeFromWhite");
         //set start color
-        SteamVR_Fade.View(Color.white, 0f);
+        SteamVR_Fade.View(fadeColor, 0f);
         //set and start fade to
-        SteamVR_Fade.View(Color.clear, _fadeDuration);
+        SteamVR_Fade.View(Color.clear, fadeDuration);
     }
  
     public void OnTriggerEnter(Collider other)
     {
+        // ulong handle = OpenVR.k_ulOverlayHandleInvalid;
+        // var overlay = OpenVR.Overlay;
+        //
+        // var tex = new Texture_t();
+        // tex.handle = texture.GetNativeTexturePtr();
+        // tex.eType = SteamVR.instance.textureType;
+        // tex.eColorSpace = EColorSpace.Auto;
+        // overlay.SetOverlayTexture(handle, ref tex);
+        
+        
         // Debug.Log("TriggerEnter: VRCamera");
         FadeToWhite();
     }
