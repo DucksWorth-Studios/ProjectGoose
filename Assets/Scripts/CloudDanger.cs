@@ -18,7 +18,7 @@ public class CloudDanger : MonoBehaviour
     }
     void Start()
     {
-        EventManager.instance.OnRemoveClouds += OnRemoveCloudsEvent;
+        EventManager.instance.OnButtonPress += OnRemoveCloudsEvent;
         timeRemaining = timeToSurvive;
         StartCoroutine(afterTimePass(27));
     }
@@ -95,9 +95,12 @@ public class CloudDanger : MonoBehaviour
     }
 
     //Used for Fan to Blow out smoke
-    private void OnRemoveCloudsEvent()
+    private void OnRemoveCloudsEvent(ButtonEnum buttonPress)
     {
-        StopCoroutine(afterTimePass(27));
-        StartCoroutine(afterTimePass(0));
+        if(buttonPress == ButtonEnum.CLOUDREMOVE)
+        {
+            StopCoroutine(afterTimePass(27));
+            StartCoroutine(afterTimePass(0));
+        }
     }
 }

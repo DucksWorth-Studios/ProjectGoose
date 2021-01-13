@@ -24,7 +24,7 @@ public class EventManager : MonoBehaviour
     public event Action<Sound> OnPlaySound;
     public event Action OnLoseGame;
     public event Action OnWinGame;
-    public event Action OnRemoveClouds;
+    public event Action<ButtonEnum> OnButtonPress;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -107,15 +107,15 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void RemoveClouds()
+    public void PressButton(ButtonEnum buttonToPress)
     {
-        if (OnRemoveClouds != null)
+        if (OnButtonPress != null)
         {
-            OnRemoveClouds();
+            OnButtonPress(buttonToPress);
         }
         else
         {
-            Debug.Log("OnRemoveClouds is Null");
+            Debug.Log("OnButtonPress is Null");
         }
     }
 }
