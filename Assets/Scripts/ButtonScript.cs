@@ -13,6 +13,7 @@ public class ButtonScript : MonoBehaviour
     public ButtonEnum buttonToPress;
     public void OnPress(Hand hand)
     {
+        //SOUND play button click sound
         EventManager.instance.PressButton(buttonToPress);
     }
 }
