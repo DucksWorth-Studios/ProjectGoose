@@ -15,6 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            this.transform.position += new Vector3(0,0,0.1f);        }
+            EventManager.instance.RemoveClouds();
+        }
     }
 }
