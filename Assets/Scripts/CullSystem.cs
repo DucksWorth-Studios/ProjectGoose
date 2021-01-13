@@ -24,8 +24,7 @@ public class CullSystem : MonoBehaviour
     private void SwitchLevelVisibility()
     {
         inFuture = !inFuture;
-        Debug.Log("inFuture: " + inFuture);
-        Debug.Log("!inFuture: " + !inFuture);
+        
         foreach (GameObject asset in futureLevelAssets)
                 asset.SetActive(inFuture);
             
