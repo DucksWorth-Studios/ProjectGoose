@@ -24,6 +24,7 @@ public class EventManager : MonoBehaviour
     public event Action<Sound> OnPlaySound;
     public event Action OnLoseGame;
     public event Action OnWinGame;
+    public event Action<ButtonEnum> OnButtonPress;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -103,6 +104,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("WinGame is Null");
+        }
+    }
+
+    public void PressButton(ButtonEnum buttonToPress)
+    {
+        if (OnButtonPress != null)
+        {
+            OnButtonPress(buttonToPress);
+        }
+        else
+        {
+            Debug.Log("OnButtonPress is Null");
         }
     }
 }
