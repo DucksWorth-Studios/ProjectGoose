@@ -101,6 +101,8 @@ public class CloudDanger : MonoBehaviour
         {
             StopCoroutine(afterTimePass(27));
             StartCoroutine(afterTimePass(0));
+            //Remove Event So No Errors Occur
+            EventManager.instance.OnButtonPress -= OnRemoveCloudsEvent;
         }
     }
 }
