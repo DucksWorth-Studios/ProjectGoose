@@ -49,7 +49,6 @@ public class SmokeRing : MonoBehaviour
         {
             // Player has just jumped to the future
             Reset();
-            // TODO: Chnage this to be based on watch timer
             InvokeRepeating("ShrinkFogArea", 1, 1);
         }
     }
@@ -62,8 +61,6 @@ public class SmokeRing : MonoBehaviour
 
             int difference = lastSpwanCount - Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius));
             spawnLimit -= difference;
-
-            // Debug.Log("Difference: " + difference);
 
             for (int i = 0; i < difference; i++)
             {

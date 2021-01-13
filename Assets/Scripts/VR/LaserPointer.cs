@@ -41,9 +41,6 @@ public class LaserPointer : MonoBehaviour
         {
             lineRenderer.enabled = false;
             RayExit();
-            
-            // if (lastHit)
-            //     thisHand.DetachObject(lastHit.gameObject);
         }
     }
 
