@@ -13,26 +13,20 @@ public class SnapZonePermenant : MonoBehaviour
     [Tooltip("The Rotation object should stay in")]
     public Vector3 rotation;
     //string eventToCall might be used to differentiate events
-    private bool isSnapped;
-    void Start()
-    {
-    }
+    private bool isSnapped = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(objectToSnap == other.gameObject)
+        if (objectToSnap == other.gameObject)
         {
             isSnapped = true;
             objectToSnap.transform.rotation = Quaternion.Euler(rotation);
-            //Send event
-            //Disable Interactable;
-        }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if(isSnapped)
-        {
+            objectToSnap.GetComponent<VRItemAttachment>().attachmentEnabled = false;
             objectToSnap.transform.position = this.transform.position;
+
+            //Send event
+
         }
     }
 }
+
