@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CloudDanger : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class CloudDanger : MonoBehaviour
     private float timeRemaining;
     private bool IsPlayerInCloud = false;
     private bool isGameOver = false;
-    
+    private VisualEffect cloud;
+    private void Awake()
+    {
+        cloud = GetComponent<VisualEffect>();
+    }
     void Start()
     {
         timeRemaining = timeToSurvive;
-        removeAfterTime();
+        StartCoroutine(afterTimePass(27));
     }
 
     //If Player enters start countdown
@@ -75,15 +80,22 @@ public class CloudDanger : MonoBehaviour
             EventManager.instance.LoseGame();
         }
     }
-
-    //Remove the VFX after 30 seconds
-    private void removeAfterTime()
+    //Used to Stop the cloud after 30 seconds
+    IEnumerator afterTimePass(float timeBefore)
     {
-        Destroy(this.transform.gameObject, 30);
-    }
-    //Will be used in future feature
-    private void removeAllClouds()
-    {
+        //Wait then set rate to 0 this tapers off the effect
+        yield return new WaitForSeconds(timeBefore);
+        cloud.SetInt("Rate",0);
+        //Destory object
+        yield return new WaitForSeconds(3);
         Destroy(this.transform.gameObject);
+
+    }
+
+    //Used for Fan to Blow out smoke
+    private void OnRemoveCloudsEvent()
+    {
+        StopCoroutine(afterTimePass(27));
+        StartCoroutine(afterTimePass(0));
     }
 }
