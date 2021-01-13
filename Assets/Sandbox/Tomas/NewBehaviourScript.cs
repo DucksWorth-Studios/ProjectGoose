@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            //EventManager.instance.RemoveClouds();
+            EventManager.instance.SnappedItem(Snap.USB);
         }
     }
 }
