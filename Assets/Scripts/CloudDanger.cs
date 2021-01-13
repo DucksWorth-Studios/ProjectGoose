@@ -13,10 +13,12 @@ public class CloudDanger : MonoBehaviour
     private VisualEffect cloud;
     private void Awake()
     {
+        
         cloud = GetComponent<VisualEffect>();
     }
     void Start()
     {
+        EventManager.instance.OnRemoveClouds += OnRemoveCloudsEvent;
         timeRemaining = timeToSurvive;
         StartCoroutine(afterTimePass(27));
     }

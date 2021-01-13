@@ -24,6 +24,7 @@ public class EventManager : MonoBehaviour
     public event Action<Sound> OnPlaySound;
     public event Action OnLoseGame;
     public event Action OnWinGame;
+    public event Action OnRemoveClouds;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -103,6 +104,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("WinGame is Null");
+        }
+    }
+
+    public void RemoveClouds()
+    {
+        if (OnRemoveClouds != null)
+        {
+            OnRemoveClouds();
+        }
+        else
+        {
+            Debug.Log("OnRemoveClouds is Null");
         }
     }
 }
