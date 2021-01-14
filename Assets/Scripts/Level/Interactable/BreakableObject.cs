@@ -45,13 +45,15 @@ public class BreakableObject : MonoBehaviour
         {
             var pieces = newObject.GetComponentsInChildren<Rigidbody>();
 
-            Vector3 direction = this.transform.position - collision.transform.position;
-            direction.y = 0;
+            var player = GameObject.FindGameObjectWithTag("Player"); //Need player position to create a direction vector
+
+            Vector3 direction = this.transform.position - player.transform.position;
+            direction.y = 0; // Don't care about height
             direction.Normalize(); // Return the direction at which the object was travelling on collision
 
             foreach(Rigidbody rigidbody in pieces)
             {
-                rigidbody.AddForce(direction * 2, ForceMode.Impulse);
+                rigidbody.AddForce(collision.relativeVelocity.magnitude * direction, ForceMode.Impulse);
             }
         }
 
