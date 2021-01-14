@@ -16,6 +16,7 @@ public class NewBehaviourScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.O))
         {
             EventManager.instance.SnappedItem(Snap.USB);
+            print("Fuck");
         }
     }
 }
