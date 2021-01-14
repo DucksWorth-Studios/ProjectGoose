@@ -53,7 +53,7 @@ public class BreakableObject : MonoBehaviour
 
             foreach(Rigidbody rigidbody in pieces)
             {
-                rigidbody.AddForce(collision.relativeVelocity.magnitude * direction, ForceMode.Impulse);
+                rigidbody.AddForce(direction * (collision.relativeVelocity.magnitude / 2), ForceMode.Impulse);
             }
         }
 
