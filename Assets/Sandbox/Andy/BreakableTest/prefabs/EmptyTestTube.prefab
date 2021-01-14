@@ -196,7 +196,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   restoreOriginalParent: 0
-  awakeEnableGravity: 0
+  awakeEnableGravity: 1
   detatchEnableGravity: 1
   onPickUp:
     m_PersistentCalls:
