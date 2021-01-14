@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5365140759637875085}
   - component: {fileID: 4153967438150346255}
   - component: {fileID: 4295783097612921400}
-  - component: {fileID: 770639078571265711}
   - component: {fileID: 80105751354620140}
+  - component: {fileID: 8529284710557285951}
   m_Layer: 0
   m_Name: EmptyTestTube
   m_TagString: Untagged
@@ -208,21 +208,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &770639078571265711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5300338741338905673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f389a04e31f9946a75b62083c1aa46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyedObject: {fileID: 4436332391114374812, guid: c7728f8edffd1a2458e51a0c6bc2c34e,
-    type: 3}
-  BreakingVelocity: 2
 --- !u!64 &80105751354620140
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -237,3 +222,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 1274c1dc6905d6f478e6dba114f38a02, type: 3}
+--- !u!114 &8529284710557285951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300338741338905673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2792bf6fa366c4f9f3a93ebfe21e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokenPrefab: {fileID: 4436332391114374812, guid: c7728f8edffd1a2458e51a0c6bc2c34e,
+    type: 3}
+  breakingVelocity: 2
+  isShatterable: 1

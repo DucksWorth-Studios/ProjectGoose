@@ -15,6 +15,9 @@ public class BreakableObject : MonoBehaviour
     [Tooltip("The magnitude of the velocity that is needed for the object to break")]
     public float breakingVelocity = 2;
 
+    [Tooltip("Set to true if the broken object has multiple pieces. Will define if a force will be applied to each piece on collision to make the breaking more realistic")]
+    public bool isShatterable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +36,25 @@ public class BreakableObject : MonoBehaviour
     /// <param name="collision">The object this object is colliding with</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.relativeVelocity.magnitude > breakingVelocity)
+        if (collision.relativeVelocity.magnitude < breakingVelocity)
+            return;
+
+        var newObject = Instantiate(brokenPrefab, transform.position, transform.rotation);
+
+        if(isShatterable)
         {
-            Instantiate(brokenPrefab, transform.position, transform.rotation);
-            Destroy(gameObject);
+            var pieces = newObject.GetComponentsInChildren<Rigidbody>();
+
+            Vector3 direction = this.transform.position - collision.transform.position;
+            direction.y = 0;
+            direction.Normalize(); // Return the direction at which the object was travelling on collision
+
+            foreach(Rigidbody rigidbody in pieces)
+            {
+                rigidbody.AddForce(direction * 2, ForceMode.Impulse);
+            }
         }
+
+        Destroy(gameObject);
     }
 }
