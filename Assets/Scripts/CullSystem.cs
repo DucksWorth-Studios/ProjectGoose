@@ -8,7 +8,7 @@ public class CullSystem : MonoBehaviour
     public GameObject[] presentLevelAssets;
     public GameObject[] futureLevelAssets;
 
-    private bool inFuture;
+    private bool inFuture = true;
 
     private void Start()
     {
@@ -19,6 +19,7 @@ public class CullSystem : MonoBehaviour
             Debug.LogError("Future Level Assets missing for Cull System");
 
         EventManager.instance.OnTimeJump += SwitchLevelVisibility;
+        SwitchLevelVisibility();
     }
 
     private void SwitchLevelVisibility()
