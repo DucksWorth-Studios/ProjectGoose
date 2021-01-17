@@ -25,6 +25,7 @@ public class EventManager : MonoBehaviour
     public event Action OnLoseGame;
     public event Action OnWinGame;
     public event Action<ButtonEnum> OnButtonPress;
+    public event Action<Snap> OnItemSnap;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -116,6 +117,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("OnButtonPress is Null");
+        }
+    }
+
+    public void SnappedItem(Snap itemSnapped)
+    {
+        if (OnItemSnap != null)
+        {
+            OnItemSnap(itemSnapped);
+        }
+        else
+        {
+            Debug.Log("OnItemSnap is Null");
         }
     }
 }

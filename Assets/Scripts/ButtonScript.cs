@@ -10,6 +10,7 @@ public enum ButtonEnum { CLOUDREMOVE };
 /// </summary>
 public class ButtonScript : MonoBehaviour
 {
+    [Tooltip("What Button Is Being Pressed")]
     public ButtonEnum buttonToPress;
     public void OnPress(Hand hand)
     {
