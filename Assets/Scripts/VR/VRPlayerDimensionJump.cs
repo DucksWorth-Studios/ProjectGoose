@@ -56,7 +56,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
         }
     }
 
-    public Vector3 PickRandomPointToJumpTo()
+    private Vector3 PickRandomPointToJumpTo()
     {
         return teleportPoints[Random.Range(0, teleportPoints.Length)].transform.position;
     }
