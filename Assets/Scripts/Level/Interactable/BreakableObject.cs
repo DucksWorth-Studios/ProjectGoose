@@ -7,6 +7,7 @@ using UnityEngine;
 /// Component that will be added to objects that can be broken
 /// </summary>
 [RequireComponent(typeof(Throwable))]
+[RequireComponent(typeof(AudioSource))]
 public class BreakableObject : MonoBehaviour
 {
     [Tooltip("The prefab containing the broken object. This object should have rigidbody and collision components on each mesh in prefab")]
@@ -18,17 +19,7 @@ public class BreakableObject : MonoBehaviour
     [Tooltip("Set to true if the broken object has multiple pieces. Will define if a force will be applied to each piece on collision to make the breaking more realistic")]
     public bool isShatterable = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioClip clip;
 
     /// <summary>
     /// Called when this object collides with another object. If the collision force is large enough the object will spawn the broken object and destroy this one.
@@ -56,6 +47,11 @@ public class BreakableObject : MonoBehaviour
                 rigidbody.AddForce(direction * (collision.relativeVelocity.magnitude / 2), ForceMode.Impulse);
             }
         }
+
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        else
+            Debug.LogError("No Audio CLip Provided");
 
         Destroy(gameObject);
     }
