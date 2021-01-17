@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Levels/LabCompound.unity
+    guid: e6b14f1526d575f43ad237097430a845
+  m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: cede9c50d2fdba54e883cb3a81a1c3b0,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 79f502ae07c038b40b09cf8181253d85,
+      type: 2}
