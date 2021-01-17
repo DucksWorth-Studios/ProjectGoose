@@ -7,7 +7,12 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EventManager.instance.OnWinGame += DebugWin;
+    }
+
+    private void DebugWin()
+    {
+        print("Winner Winner Chicken Dinner");
     }
 
     // Update is called once per frame

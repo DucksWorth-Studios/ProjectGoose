@@ -152,6 +152,14 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
+    public void IsPerfectCompositionDrunk()
+    {
+        if(ISComposition && HasElement)
+        {
+            EventManager.instance.WinGame();
+        }
+    }
+
     void Update()
     {
 
