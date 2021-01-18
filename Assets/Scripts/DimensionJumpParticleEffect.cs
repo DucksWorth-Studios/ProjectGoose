@@ -17,6 +17,8 @@ public class DimensionJumpParticleEffect : MonoBehaviour
     [Tooltip("The amount of time the effect should play for")]
     private float effectPlayTime = 3f;
 
+    private bool isParticleActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,4 +35,10 @@ public class DimensionJumpParticleEffect : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// Sets a bool to allow the code to change the opactiy of the particle effect.
+    /// </summary>
+    private void StartParticles()
+        => isParticleActive = true;
 }
