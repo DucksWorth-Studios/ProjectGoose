@@ -11,13 +11,12 @@ public class DimensionJumpParticleEffect : MonoBehaviour
 {
     private VisualEffect particleEffect;
 
-    [Tooltip("The rate at which the alpha changes in the particle effect")]
-    private float alphaChangeRate = 0.15f;
-
     [Tooltip("The amount of time the effect should play for")]
-    private float effectPlayTime = 3f;
+    private float effectPlayTime = 2f;
 
     private bool isParticleActive = false;
+
+    private float startTime = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,20 @@ public class DimensionJumpParticleEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isParticleActive)
+        {
+            if (startTime == -1)
+            {
+                startTime = Time.time;
+                particleEffect.SendEvent("OnStartPlay");
+            }
+            else if(startTime + effectPlayTime <= Time.time)
+            {
+                particleEffect.SendEvent("OnStopParticle");
+                isParticleActive = false;
+                startTime = -1;
+            }
+        }
     }
 
     /// <summary>
