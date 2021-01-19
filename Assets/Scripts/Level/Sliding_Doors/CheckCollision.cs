@@ -17,7 +17,10 @@ public class CheckCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
+        {
             transform.GetComponentInParent<SlidingDoors>().OpenDoors();
+            EventManager.instance.PlaySound(Sound.DoorSound);
+        }
     }
 
     /// <summary>
@@ -28,5 +31,6 @@ public class CheckCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
             transform.GetComponentInParent<SlidingDoors>().CloseDoors();
+            
     }
 }
