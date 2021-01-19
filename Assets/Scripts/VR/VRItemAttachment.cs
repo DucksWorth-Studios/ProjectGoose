@@ -68,6 +68,7 @@ public class VRItemAttachment : MonoBehaviour
 
             // Attach this object to the hand
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
+            EventManager.instance.PlaySound(Sound.ItemPickUp);
             attached = true;
         }
         else if (isGrabEnding)
