@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,36 +12,53 @@ public class SettingsManager : MonoBehaviour
     public static SettingsManager instance;
     
     public TMP_Dropdown resolutionDropdown;
-    public string currentResolution;
-    private bool fullscreen;
-
-    public bool Fullscreen
-    {
-        get => fullscreen;
-        set
-        {
-            fullscreen = value;
-            Screen.fullScreen = value;
-            Debug.Log("Fullscreen: " + value);
-        }
-    }
+    public TMP_Dropdown fullscreenDropdown;
+    public TMP_Dropdown shadowQualityDropdown;
+    public TMP_Dropdown anisotropicFilteringDropdown;
+    private int currentResolution;
 
     void Start()
     {
         instance = this;
-        currentResolution = Screen.currentResolution.ToString();
-        fullscreen = Screen.fullScreen;
+        
         resolutionDropdown.AddOptions(GetResolutionsDropdownData());
+        resolutionDropdown.SetValueWithoutNotify(currentResolution);
+        
+        // Debug.Log(Screen.fullScreenMode);
+        // fullscreenDropdown.SetValueWithoutNotify(Screen.fullScreenMode);
+        
+        shadowQualityDropdown.AddOptions(GetDropdownData(Enum.GetNames(typeof(ShadowQuality))));
+        anisotropicFilteringDropdown.AddOptions(GetDropdownData(Enum.GetNames(typeof(AnisotropicFiltering))));
     }
 
     List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
     {
         List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
-        foreach (Resolution res in Screen.resolutions)
+        string currentResString = Screen.currentResolution.ToString();
+        
+        for (int i = 0; i < Screen.resolutions.Length; i++)
         {
-            options.Add(new TMP_Dropdown.OptionData(res.ToString()));
+            string res = Screen.resolutions[i].ToString();
+            options.Add(new TMP_Dropdown.OptionData(res));
+
+            if (res == currentResString)
+                currentResolution = i;
         }
 
+        Debug.Log(currentResString);
         return options;
     }
+    
+    List<TMP_Dropdown.OptionData> GetDropdownData(string[] optionNames)
+    {
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+        
+        foreach (string option in optionNames)
+        {
+            options.Add(new TMP_Dropdown.OptionData(option));
+        }
+        
+        return options;
+    }
+    
 }
