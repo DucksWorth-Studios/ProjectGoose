@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+/// <summary>
+/// Author: Cameron Scholes
+/// References: https://github.com/Acimaz/open-project-1
+/// </summary>
 public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager instance;
     
-    public string[] resolutions;
+    public TMP_Dropdown resolutionDropdown;
     public string currentResolution;
     private bool fullscreen;
 
@@ -26,19 +30,17 @@ public class SettingsManager : MonoBehaviour
         instance = this;
         currentResolution = Screen.currentResolution.ToString();
         fullscreen = Screen.fullScreen;
-        PopulateResolutionsList();
+        resolutionDropdown.AddOptions(GetResolutionsDropdownData());
     }
 
-    private void PopulateResolutionsList()
+    List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
     {
-        Resolution[] ress = Screen.resolutions;
-        resolutions = new string[ress.Length];
-        
-        for(int i = 0; i < ress.Length; i++)
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+        foreach (Resolution res in Screen.resolutions)
         {
-            resolutions[i] = ress[i].ToString();
+            options.Add(new TMP_Dropdown.OptionData(res.ToString()));
         }
 
-        Debug.Log(resolutions);
+        return options;
     }
 }
