@@ -14,12 +14,14 @@ public class CheckCollision : MonoBehaviour
     /// If the collider is a player object, the open doors method in the parent script will be called
     /// </summary>
     /// <param name="collision">The collider object that enters this collider</param>
+    /// 
+    public Sound soundToPlay;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             transform.GetComponentInParent<SlidingDoors>().OpenDoors();
-            EventManager.instance.PlaySound(Sound.DoorSound);
+            EventManager.instance.PlaySound(soundToPlay);
         }
     }
 
