@@ -5,7 +5,7 @@ using UnityEngine;
 /// Author tomas
 /// The Enum will contain variables for all listening objects
 /// </summary>
-public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk };
+public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk, Teleport, ItemPickUp, USB };
 /// <summary>
 /// Author: Tomas
 /// Will be attached to Enviromental objects To Listen for events to play.
