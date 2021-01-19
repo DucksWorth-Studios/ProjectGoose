@@ -128,7 +128,7 @@ public class CompositionManager : MonoBehaviour
             int x = Random.Range(0, 1000);
             if(x % 4 == 0)
             {
-                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
+                Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity);
             }
         }
     }

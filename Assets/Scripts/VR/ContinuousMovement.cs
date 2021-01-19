@@ -11,7 +11,7 @@ public class ContinuousMovement : MonoBehaviour
     public SteamVR_Action_Vector2 input;
     public float speed = 2.5f;
     private CharacterController characterController;
-
+    private bool walking = false;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -30,11 +30,31 @@ public class ContinuousMovement : MonoBehaviour
             // Second line is adding gravity
             characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up) 
                                       - new Vector3(0, 9.81f, 0) * Time.deltaTime);
+            startWalk();
         }
         else
         {
             Vector3 direction = Player.instance.hmdTransform.localPosition;
             characterController.center = new Vector3(direction.x, characterController.center.y, direction.z);
+            stopWalk();
+        }
+    }
+
+    private void startWalk()
+    {
+        if(!walking)
+        {
+            walking = true;
+            EventManager.instance.PlaySound(Sound.Walk);
+        }
+    }
+
+    private void stopWalk()
+    {
+        if (walking)
+        {
+            walking = false;
+            EventManager.instance.StopSound(Sound.Walk);
         }
     }
 }

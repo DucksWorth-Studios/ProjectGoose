@@ -22,6 +22,7 @@ public class EventManager : MonoBehaviour
     public event Action OnTimeJump;
     public event Action OnNegatorItemJump;
     public event Action<Sound> OnPlaySound;
+    public event Action<Sound> OnStopSound;
     public event Action OnLoseGame;
     public event Action OnWinGame;
     public event Action<ButtonEnum> OnButtonPress;
@@ -81,6 +82,19 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("PlaySound is Null");
+        }
+    }
+
+    public void StopSound(Sound audio)
+    {
+
+        if (OnStopSound != null)
+        {
+            OnStopSound(audio);
+        }
+        else
+        {
+            Debug.Log("OnStopSound is Null");
         }
     }
 
