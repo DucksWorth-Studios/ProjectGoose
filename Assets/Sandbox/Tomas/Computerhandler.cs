@@ -27,6 +27,7 @@ public class Computerhandler : MonoBehaviour
             print("Hello");
             loadingScreen.gameObject.SetActive(true);
             //SOUND
+            EventManager.instance.PlaySound(Sound.USB);
         }
     }
 
