@@ -5,7 +5,7 @@ using UnityEngine;
 /// Author tomas
 /// The Enum will contain variables for all listening objects
 /// </summary>
-public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock };
+public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk };
 /// <summary>
 /// Author: Tomas
 /// Will be attached to Enviromental objects To Listen for events to play.
@@ -25,6 +25,7 @@ public class SoundListener : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.loop = loop;
         EventManager.instance.OnPlaySound += PlayElement;
+        EventManager.instance.OnStopSound += StopElement;
     }
     // Sound will be played when correct enum is send with the OnPlaySound Event
     private void PlayElement(Sound soundToPlay)
