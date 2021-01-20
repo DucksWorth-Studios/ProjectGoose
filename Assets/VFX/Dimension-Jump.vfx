@@ -12,15 +12,139 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01270efd3285ea4a9d6c555cb0a8027, type: 3}
   m_Name: VFXUI
   m_EditorClassIdentifier: 
-  groupInfos: []
+  groupInfos:
+  - title: Small Sphere particles
+    position:
+      serializedVersion: 2
+      x: 158
+      y: -1180
+      width: 947
+      height: 1899
+    contents:
+    - model: {fileID: 8926484042661615034}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615036}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615038}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615049}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615060}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615073}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615063}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615065}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615068}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615069}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615071}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615209}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615213}
+      id: 0
+      isStickyNote: 0
+  - title: Lightning
+    position:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 100
+      height: 100
+    contents:
+    - model: {fileID: 8926484042661615086}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615088}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615090}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615101}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615112}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615114}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615190}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615117}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615119}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615139}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615142}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615145}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615156}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615157}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615158}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615160}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615162}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615182}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615185}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615186}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615188}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615211}
+      id: 0
+      isStickyNote: 0
+    - model: {fileID: 8926484042661615215}
+      id: 0
+      isStickyNote: 0
   stickyNoteInfos: []
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 551
-    y: -1077
-    width: 2059
-    height: 2239
+    x: 158
+    y: -1180
+    width: 2477
+    height: 2367
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -47,7 +171,6 @@ MonoBehaviour:
   - {fileID: 8926484042661615145}
   - {fileID: 8926484042661615160}
   - {fileID: 8926484042661615182}
-  - {fileID: 8926484042661615205}
   - {fileID: 8926484042661615209}
   - {fileID: 8926484042661615211}
   - {fileID: 8926484042661615213}
@@ -56,21 +179,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 114340500867371532}
-  m_ParameterInfo:
-  - name: effect_alpha
-    path: effect_alpha
-    tooltip: 
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: 0
-    max: 1
-    enumValues: []
-    descendantCount: 0
+  m_ParameterInfo: []
   m_ImportDependencies: []
   m_GraphVersion: 6
   m_ResourceVersion: 1
@@ -113,7 +222,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615036}
-  m_UIPosition: {x: 768.40594, y: -763.32935}
+  m_UIPosition: {x: 400, y: -807}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -209,7 +318,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615049}
   - {fileID: 8926484042661615060}
   - {fileID: 8926484042661615073}
-  m_UIPosition: {x: 768.78864, y: -458.7572}
+  m_UIPosition: {x: 401, y: -503}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1038,7 +1147,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 771, y: 45}
+  m_UIPosition: {x: 403, y: 1}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -1076,7 +1185,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615068}
   - {fileID: 8926484042661615069}
   - {fileID: 8926484042661615071}
-  m_UIPosition: {x: 771, y: 195}
+  m_UIPosition: {x: 403, y: 151}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5224,80 +5333,6 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330e0fca1717dde4aaa144f48232aa64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UIIgnoredErrors: []
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
-  m_UISuperCollapsed: 0
-  m_InputSlots: []
-  m_OutputSlots:
-  - {fileID: 8926484042661615206}
-  m_ExposedName: effect_alpha
-  m_Exposed: 1
-  m_Order: 0
-  m_Category: 
-  m_Min:
-    m_Type:
-      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-    m_SerializableObject: 0
-  m_Max:
-    m_Type:
-      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-    m_SerializableObject: 1
-  m_IsOutput: 0
-  m_EnumValues: []
-  m_ValueFilter: 1
-  m_Tooltip: 
-  m_Nodes: []
---- !u!114 &8926484042661615206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f780aa281814f9842a7c076d436932e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UIIgnoredErrors: []
-  m_Parent: {fileID: 0}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615206}
-  m_MasterData:
-    m_Owner: {fileID: 8926484042661615205}
-    m_Value:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    m_Space: 2147483647
-  m_Property:
-    name: o
-    m_serializedType:
-      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-  m_Direction: 1
-  m_LinkedSlots: []
 --- !u!114 &8926484042661615209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,7 +5348,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 551, y: -1077}
+  m_UIPosition: {x: 183, y: -1121}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -5414,7 +5449,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1009, y: -1060}
+  m_UIPosition: {x: 656, y: -1104}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
