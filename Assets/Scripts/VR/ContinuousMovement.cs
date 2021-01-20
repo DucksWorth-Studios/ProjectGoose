@@ -12,10 +12,11 @@ public class ContinuousMovement : MonoBehaviour
     public float speed = 2.5f;
     private CharacterController characterController;
     private bool walking = false;
+    private bool InPast = true;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        
+        EventManager.instance.OnTimeJump += trackPosition;
         if (input == null)
             Debug.LogError("ContinuousMovement.cs is missing input", this);
     }
@@ -39,13 +40,23 @@ public class ContinuousMovement : MonoBehaviour
             stopWalk();
         }
     }
-
+    private void trackPosition()
+    {
+        if(InPast)
+        {
+            InPast = false;
+        }
+        else
+        {
+            InPast = true;
+        }
+    }
     private void startWalk()
     {
         if(!walking)
         {
             walking = true;
-            EventManager.instance.PlaySound(Sound.Walk);
+            EventManager.instance.PlayOneSound(Sound.Walk,InPast);
         }
     }
 
