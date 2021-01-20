@@ -15,6 +15,7 @@ public class InverseSounds : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         EventManager.instance.OnPlayOneSound += PlaySound;
+        EventManager.instance.OnStopSound += StopSound;
     }
 
     private void PlaySound(Sound sound,bool firstSound)
@@ -32,6 +33,14 @@ public class InverseSounds : MonoBehaviour
                 source.clip = clipTwo;
                 source.Play();
             }
+        }
+    }
+
+    private void StopSound(Sound sound)
+    {
+        if (sound == soundToPlay)
+        {
+            source.Stop();
         }
     }
 }
