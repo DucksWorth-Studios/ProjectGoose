@@ -21,15 +21,19 @@ public class SettingsManager : MonoBehaviour
     public TMP_Dropdown fullscreenDropdown;
     public TMP_Dropdown shadowQualityDropdown;
     public TMP_Dropdown anisotropicFilteringDropdown;
-    public Button applyBtn;
-    public Button saveBtn;
-    public Button closeBtn;
+    public Slider antiAliasingSlider;
+    public Slider shadowDistanceSlider;
+    public TextMeshProUGUI antiAliasingText;
+    public TextMeshProUGUI shadowDistanceText;
+    public TextMeshProUGUI saveText;
+    
     private int currentResolution;
     private string settingsFile = "Settings.dat";
 
     void Start()
     {
         instance = this;
+        settingsData = new SettingsData();
         
         // Resolution Setup
         resolutionDropdown.AddOptions(GetResolutionsDropdownData());
@@ -44,6 +48,69 @@ public class SettingsManager : MonoBehaviour
         fullscreenDropdown.SetValueWithoutNotify(settingsData.fullScreenMode);
         
         Load();
+    }
+
+    private void UpdateUI()
+    {
+        UpdateCurrentResolutionIndex();
+        resolutionDropdown.SetValueWithoutNotify(currentResolution);
+
+        fullscreenDropdown.SetValueWithoutNotify(settingsData.fullScreenMode);
+        shadowQualityDropdown.SetValueWithoutNotify(settingsData.shadowQuality);
+        shadowDistanceSlider.SetValueWithoutNotify(settingsData.shadowDistance);
+        anisotropicFilteringDropdown.SetValueWithoutNotify(settingsData.anisotropicFiltering);
+        antiAliasingSlider.SetValueWithoutNotify(settingsData.antiAliasing);
+    }
+
+    private void UpdateCurrentResolutionIndex()
+    {
+        for (int i = 0; i < Screen.resolutions.Length; i++)
+        {
+            string res = Screen.resolutions[i].ToString();
+
+            if (res == settingsData.resolution)
+                currentResolution = i;
+        }
+    }
+
+    public void Apply()
+    {
+        // Resolution
+        Resolution resolution = Screen.resolutions[resolutionDropdown.value];
+        FullScreenMode fsm = (FullScreenMode) fullscreenDropdown.value;
+
+        settingsData.resolution = resolution.ToString();
+        settingsData.fullScreenMode = fullscreenDropdown.value;
+        
+        Debug.Log(resolution.ToString());
+        Debug.Log(fsm);
+        
+        Screen.SetResolution(resolution.width, resolution.height, fsm);
+        
+        // Shadow Quality
+        settingsData.shadowQuality = shadowQualityDropdown.value;
+        ShadowQuality sq = (ShadowQuality) shadowQualityDropdown.value;
+
+        Debug.Log(sq);
+        QualitySettings.shadows = sq;
+        
+        // Shadow Distance
+        QualitySettings.shadowDistance = settingsData.shadowDistance;
+        
+        // Anisotropic Filtering
+        settingsData.anisotropicFiltering = anisotropicFilteringDropdown.value;
+        AnisotropicFiltering af = (AnisotropicFiltering) anisotropicFilteringDropdown.value;
+        
+        Debug.Log(af);
+        QualitySettings.anisotropicFiltering = af;
+        
+        // Anti-Aliasing
+        QualitySettings.antiAliasing = settingsData.antiAliasing;
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 
     List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
@@ -65,28 +132,60 @@ public class SettingsManager : MonoBehaviour
         return options;
     }
 
+    #region Events
+    
+    public void OnChangeAntiAliasing(float aaLevel)
+    {
+        antiAliasingText.text = "" + aaLevel;
+        settingsData.antiAliasing = Mathf.FloorToInt(aaLevel);
+    }
+    
+    public void OnChangeShadowDistance(float shadowDistance)
+    {
+        shadowDistanceText.text = "" + shadowDistance;
+        settingsData.shadowDistance = Mathf.FloorToInt(shadowDistance);
+    }
+
+    private void HideSaveText()
+    {
+        saveText.gameObject.SetActive(false);
+    }
+    
+    #endregion Events
+    
     #region Save/Load
 
-    
     [Serializable]
     public struct SettingsData
     {
         public string resolution;
         public int fullScreenMode;
+        public int shadowQuality;
+        public int shadowDistance;
+        public int anisotropicFiltering;
+        public int antiAliasing;
     }
     
-    private void Save()
+    public void Save()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, settingsFile);
         
         try
         {
             File.WriteAllText(fullPath, JsonUtility.ToJson(settingsData));
+
+            saveText.gameObject.SetActive(true);
+            saveText.text = "Saved";
         }
         catch (Exception e)
         {
             Debug.LogError($"Failed to write to {fullPath} with exception {e}");
+            
+            saveText.gameObject.SetActive(true);
+            saveText.text = $"Failed to write to {fullPath} with exception {e}";
         }
+        
+        Invoke("HideSaveText", 5);
     }
 
     private void Load()
@@ -99,6 +198,9 @@ public class SettingsManager : MonoBehaviour
             Debug.Log(data);
             
             JsonUtility.FromJsonOverwrite(data, settingsData);
+            UpdateUI();
+            UpdateUI();
+            Apply();
         }
         catch (Exception e)
         {
