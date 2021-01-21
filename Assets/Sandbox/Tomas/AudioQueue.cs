@@ -8,6 +8,7 @@ public class AudioQueue : MonoBehaviour
     private int currentIndex = 0;
     private AudioSource audioSource;
     private bool MustPlay = false;
+    private bool IsPaused = false;
     private int IndexMax = 0;
     void Start()
     {
@@ -18,10 +19,26 @@ public class AudioQueue : MonoBehaviour
         audioSource = audio;
         MustPlay = true;
     }
+
+    public void Pause()
+    {
+        IsPaused = true;
+    }
+
+    public void UnPause()
+    {
+        IsPaused = false;
+    }
+
+    public void OnParticleSystemStopped()
+    {
+        MustPlay = false;
+        audioSource.Stop();
+    }
     // Update is called once per frame
     void Update()
     {
-        if(MustPlay && !audioSource.isPlaying)
+        if(MustPlay && !audioSource.isPlaying && !IsPaused)
         {
             if(currentIndex < IndexMax)
             {
