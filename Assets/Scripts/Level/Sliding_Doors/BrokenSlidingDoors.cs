@@ -20,7 +20,9 @@ public class BrokenSlidingDoors : MonoBehaviour
     private Rigidbody rigidbody;
     private Interactable interactable;
 
+    [Tooltip("Is set when the players hand is hovering on the door, so that a force can be applied")]
     private bool isAttached = false;
+    [Tooltip("Used to allow a force to be applied. False when the door has reached its start/end point")]
     private bool canApplyForce = true;
 
     [Tooltip("Hand needed for force calculations")]
@@ -45,6 +47,12 @@ public class BrokenSlidingDoors : MonoBehaviour
             CalculateForceApplied();
         }
 
+        if(rigidbody.velocity.magnitude != 0)
+        {
+            //Counter Movement - Fricition
+            rigidbody.AddForce(Vector3.forward * -rigidbody.velocity.magnitude * 5f);
+        }
+
         if (this.transform.localPosition.x <= EndPosition.localPosition.x)
         {
             ///Stops the door sliding past the end point
@@ -53,6 +61,11 @@ public class BrokenSlidingDoors : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the players hand is hovering over the door
+    /// sets variables for the code to calculate the force being applied
+    /// </summary>
+    /// <param name="hand"></param>
     private void OnHandHoverBegin(Hand hand)
     {
         this.hand = hand;
@@ -63,7 +76,6 @@ public class BrokenSlidingDoors : MonoBehaviour
     private void HandHoverUpdate(Hand hand)
     {
         GrabTypes startingGrabType = hand.GetGrabStarting();
-        bool isGrabEnding = hand.IsGrabEnding(gameObject);
 
         if(interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
@@ -78,9 +90,11 @@ public class BrokenSlidingDoors : MonoBehaviour
     private void OnHandHoverEnd(Hand hand)
     {
         isAttached = false;
-        Debug.Log("Hand hover end");
     }
 
+    /// <summary>
+    /// Calaculates a the force the player is applying to the door
+    /// </summary>
     private void CalculateForceApplied()
     {
         if (!canApplyForce)
@@ -88,6 +102,6 @@ public class BrokenSlidingDoors : MonoBehaviour
 
         //Vector from start hand point to current hand position
         Vector3 startToHand = hand.transform.position - handStartGrabPos;
-        rigidbody.AddForce(Vector3.forward * startToHand.magnitude * 2);;
+        rigidbody.AddForce(Vector3.forward * startToHand.magnitude * 2);
     }
 }
