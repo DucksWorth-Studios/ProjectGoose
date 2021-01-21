@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Author: Tomas
+/// This will hold a scenes lines and whenc alled upon will play the lines in the correct order.
+/// </summary>
 public class AudioQueue : MonoBehaviour
 {
     public AudioClip[] clips;
@@ -30,7 +33,7 @@ public class AudioQueue : MonoBehaviour
         IsPaused = false;
     }
 
-    public void OnParticleSystemStopped()
+    public void Stop()
     {
         MustPlay = false;
         audioSource.Stop();
