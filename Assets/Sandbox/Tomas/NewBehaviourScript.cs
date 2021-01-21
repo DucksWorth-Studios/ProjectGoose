@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public GameObject yay;
-    private AudioSource audioSource;
-    public AudioQueue queue;
+    public SCENE scene;
+    public NarrationManager narration;
     void Start()
     {
-        //queue = yay.GetComponent<AudioQueue>();
-        audioSource = GetComponent<AudioSource>();
+
     }
 
     private void DebugWin()
@@ -23,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            queue.Play(audioSource);
+            narration.narrationCall(scene);
         }
     }
 }
