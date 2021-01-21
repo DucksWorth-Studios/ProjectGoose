@@ -17,8 +17,6 @@ public class BrokenSlidingDoors : MonoBehaviour
 
     private Vector3 handStartGrabPos;
 
-    private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
-
     private Rigidbody rigidbody;
     private Interactable interactable;
 
