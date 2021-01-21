@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject yay;
+    private AudioSource audioSource;
+    public AudioQueue queue;
     void Start()
     {
-        EventManager.instance.OnWinGame += DebugWin;
+        //queue = yay.GetComponent<AudioQueue>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void DebugWin()
@@ -20,8 +23,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            EventManager.instance.SnappedItem(Snap.USB);
-            print("Fuck");
+            queue.Play(audioSource);
         }
     }
 }
