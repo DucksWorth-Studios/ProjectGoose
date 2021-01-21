@@ -2,99 +2,92 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum NARRATION { START, USB, FORMULA,CHEMICAL, HALFLIFE, COMPLETEFORMULA, DANGER };
+public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX };
 /// <summary>
 /// Author Tomas
-/// Active Narration concerns important story and game elements
-/// Passive narration  is small lore based items.
+/// This will be used to control narrative scenes. Each scene is a dedicated Audio Queue
 /// </summary>
 public class NarrationManager : MonoBehaviour
 {
-    [Tooltip("Clip To Play")]
-    public AudioClip[] clips;
+    //Lines For Each Scene will be stored in a prefab audiQueue    
+    public AudioQueue sceneOne;
+    public AudioQueue sceneTwo;
+    public AudioQueue sceneThree;
+    public AudioQueue sceneFour;
+    public AudioQueue sceneFive;
+    public AudioQueue sceneSix;
 
     //Private variables
     private AudioSource activeNarration;
-    private AudioSource passiveNarration;
-    private bool activePaused = false;
-    private bool passivePaused = false;
+    private AudioQueue activeQueue;
     private bool InPast = true;
     void Start()
     {
         activeNarration = GetComponent<AudioSource>();
-        passiveNarration = GetComponent<AudioSource>();
         EventManager.instance.OnTimeJump += JumpInteference;
     }
 
-    //Switch is sued to define what clip will be played.
-    public void narrationCall(NARRATION line)
+    //Switch is sued to define what scene will be played.
+    public void narrationCall(SCENE line)
     {
         switch(line)
         {
-            case NARRATION.START:
-
+            case SCENE.ONE:
+                PlayScene(sceneOne);
+                break;
+            case SCENE.TWO:
+                PlayScene(sceneTwo);
+                break;
+            case SCENE.THREE:
+                PlayScene(sceneThree);
+                break;
+            case SCENE.FOUR:
+                PlayScene(sceneFour);
+                break;
+            case SCENE.FIVE:
+                PlayScene(sceneFive);
+                break;
+            case SCENE.SIX:
+                PlayScene(sceneSix);
                 break;
             default:
                 break;
         }
     }
 
-    //A Main clip is more important than a passive one therefore stop passive.
-    private void playMainClip(AudioClip clip)
+    
+    private void PlayScene(AudioQueue queue)
     {
-        activeNarration.clip = clip;
-        if(passiveNarration.isPlaying)
-        {
-            passiveNarration.Stop();
-        }
-        activeNarration.Play();
+        queue.Play(activeNarration);
+        activeQueue = queue;
     }
 
-    //Only if active narration is not playing
-    private void playPassiveClip(AudioClip clip)
+    private void StopScene()
     {
-        if(!activeNarration.isPlaying)
-        {
-            passiveNarration.clip = clip;
-            activeNarration.Play();
-        }
+        activeQueue.Stop();
     }
 
-    //Pauses One By One
-    private void PauseClips()
+    private void PauseScene()
     {
-        if (activeNarration.isPlaying)
-        {
-            activeNarration.Pause();
-        }
-        else
-        {
-            passiveNarration.Pause();
-        }
+        activeQueue.Pause();
     }
 
-    //Unpauses one by one
-    private void UnPauseClips()
+    private void UnPauseScene()
     {
-        activeNarration.UnPause();
-        if(!activeNarration.isPlaying)
-        {
-            passiveNarration.UnPause();
-        }
+        activeQueue.UnPause();
     }
-
     //Teleport Jump will intefere with clips keep track of tate we are in
     private void JumpInteference()
     {
         if(InPast)
         {
             InPast = false;
-            PauseClips();
+            PauseScene();
         }
         else
         {
             InPast = true;
-            UnPauseClips();
+            UnPauseScene();
         }
     }
     //Not used Currently

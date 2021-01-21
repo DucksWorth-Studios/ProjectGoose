@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public SCENE scene;
+    public NarrationManager narration;
     void Start()
     {
-        EventManager.instance.OnWinGame += DebugWin;
+
     }
 
     private void DebugWin()
@@ -20,8 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            EventManager.instance.SnappedItem(Snap.USB);
-            print("Fuck");
+            narration.narrationCall(scene);
         }
     }
 }
