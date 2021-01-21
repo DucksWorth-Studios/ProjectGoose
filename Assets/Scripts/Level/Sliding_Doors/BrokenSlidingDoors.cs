@@ -23,6 +23,7 @@ public class BrokenSlidingDoors : MonoBehaviour
     private Interactable interactable;
 
     private bool isAttached = false;
+    private bool canApplyForce = true;
 
     [Tooltip("Hand needed for force calculations")]
     private Hand hand;
@@ -44,6 +45,13 @@ public class BrokenSlidingDoors : MonoBehaviour
         {
             ///TODO add code for calculating force
             CalculateForceApplied();
+        }
+
+        if (this.transform.localPosition.x <= EndPosition.localPosition.x)
+        {
+            ///Stops the door sliding past the end point
+            rigidbody.velocity = Vector3.zero;
+            canApplyForce = false;
         }
     }
 
@@ -77,12 +85,8 @@ public class BrokenSlidingDoors : MonoBehaviour
 
     private void CalculateForceApplied()
     {
-        if (this.transform.position.x <= EndPosition.position.x)
-        {
-            rigidbody.velocity = Vector3.zero;
-            Debug.Log(rigidbody.velocity);
+        if (!canApplyForce)
             return;
-        }
 
         //Vector from start hand point to current hand position
         Vector3 startToHand = hand.transform.position - handStartGrabPos;
