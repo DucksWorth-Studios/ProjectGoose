@@ -23,6 +23,7 @@ public class EventManager : MonoBehaviour
     public event Action OnNegatorItemJump;
     public event Action<Sound> OnPlaySound;
     public event Action<Sound> OnStopSound;
+    public event Action<Sound,bool> OnPlayOneSound;
     public event Action OnLoseGame;
     public event Action OnWinGame;
     public event Action<ButtonEnum> OnButtonPress;
@@ -143,6 +144,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("OnItemSnap is Null");
+        }
+    }
+
+    public void PlayOneSound(Sound sound, bool firstSound)
+    {
+        if (OnPlayOneSound != null)
+        {
+            OnPlayOneSound(sound,firstSound);
+        }
+        else
+        {
+            Debug.Log("OnPlayOneSound is Null");
         }
     }
 }

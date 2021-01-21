@@ -38,6 +38,10 @@ public class NegatorSender : MonoBehaviour
         {
             objectInZone.transform.position += positionDifference;
         }
+        else
+        {
+            EventManager.instance.PlayOneSound(Sound.ItemTeleport, true);
+        }
     }
 
     //Tracks multiple objects anything coming in puts up the count.
