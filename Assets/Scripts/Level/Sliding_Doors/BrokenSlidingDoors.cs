@@ -47,6 +47,13 @@ public class BrokenSlidingDoors : MonoBehaviour
         }
     }
 
+    private void OnHandHoverBegin(Hand hand)
+    {
+        this.hand = hand;
+        handStartGrabPos = hand.transform.position;
+        isAttached = true;
+    }
+
     private void HandHoverUpdate(Hand hand)
     {
         GrabTypes startingGrabType = hand.GetGrabStarting();
@@ -55,24 +62,28 @@ public class BrokenSlidingDoors : MonoBehaviour
         if(interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
             hand.HoverLock(interactable);
-
-            //hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
-
-            this.hand = hand;
-            handStartGrabPos = hand.transform.position;
-            isAttached = true;
         }
-        else if(isGrabEnding)
+        else
         {
-            //hand.DetachObject(gameObject);
-            isAttached = false;
-
             hand.HoverUnlock(interactable);
         }
     }
 
+    private void OnHandHoverEnd(Hand hand)
+    {
+        isAttached = false;
+        Debug.Log("Hand hover end");
+    }
+
     private void CalculateForceApplied()
     {
+        if (this.transform.position.x <= EndPosition.position.x)
+        {
+            rigidbody.velocity = Vector3.zero;
+            Debug.Log(rigidbody.velocity);
+            return;
+        }
+
         //Vector from start hand point to current hand position
         Vector3 startToHand = hand.transform.position - handStartGrabPos;
         rigidbody.AddForce(Vector3.forward * startToHand.magnitude * 2);;
