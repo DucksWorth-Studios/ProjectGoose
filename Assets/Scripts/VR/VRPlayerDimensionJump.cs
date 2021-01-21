@@ -44,6 +44,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
     public void DimensionJump()
     {
         EventManager.instance.TimeJump();
+        EventManager.instance.PlaySound(Sound.Teleport);
         if (!upSideDown) {
             // Teleport to the past
             originalLocation = transform.position;

@@ -20,6 +20,7 @@ public class CloudDanger : MonoBehaviour
     {
         EventManager.instance.OnButtonPress += OnRemoveCloudsEvent;
         timeRemaining = timeToSurvive;
+        EventManager.instance.PlaySound(Sound.Alarm);
         StartCoroutine(afterTimePass(27));
     }
 
@@ -91,7 +92,7 @@ public class CloudDanger : MonoBehaviour
         //Destory object
         yield return new WaitForSeconds(3);
         Destroy(this.transform.gameObject);
-
+        EventManager.instance.StopSound(Sound.Alarm);
     }
 
     //Used for Fan to Blow out smoke
