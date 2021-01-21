@@ -40,9 +40,10 @@ public class BrokenSlidingDoors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAttached)
+        if (isAttached)
         {
             ///TODO add code for calculating force
+            CalculateForceApplied();
         }
     }
 
@@ -68,5 +69,12 @@ public class BrokenSlidingDoors : MonoBehaviour
 
             hand.HoverUnlock(interactable);
         }
+    }
+
+    private void CalculateForceApplied()
+    {
+        //Vector from start hand point to current hand position
+        Vector3 startToHand = hand.transform.position - handStartGrabPos;
+        rigidbody.AddForce(Vector3.forward * startToHand.magnitude * 2);;
     }
 }
