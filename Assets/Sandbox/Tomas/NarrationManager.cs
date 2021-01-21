@@ -27,7 +27,7 @@ public class NarrationManager : MonoBehaviour
         EventManager.instance.OnTimeJump += JumpInteference;
     }
 
-    //Switch is sued to define what clip will be played.
+    //Switch is sued to define what scene will be played.
     public void narrationCall(SCENE line)
     {
         switch(line)
