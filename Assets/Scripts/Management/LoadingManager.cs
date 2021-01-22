@@ -16,6 +16,7 @@ public class LoadingManager : MonoBehaviour
     [Header("Scene Loading")]
     public string sceneToLoad;
     private AsyncOperation loadingOperation;
+    private bool isLoadingScene;
 
     [Header("Loading UI")] 
     public Slider progressBar;
@@ -26,20 +27,27 @@ public class LoadingManager : MonoBehaviour
     
     void Start()
     {
-        loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         SceneManager.sceneLoaded += DestroyLoadPlayer;
         shaderVariantCollection.WarmUp();
     }
 
+    void Update()
+    {
+        // This ensures all shaders are warmed up before level loading takes over the scene transition
+        if (shaderVariantCollection.isWarmedUp && !isLoadingScene)
+        {
+            loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+            isLoadingScene = true;
+        }
+        
+        // Loading progress is only measured up to 90%
+        progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+    }
+    
+    // This will destroy the VR Player from the loading scene once the level is loaded
     private void DestroyLoadPlayer(Scene arg0, LoadSceneMode arg1)
     {
         if (arg0.isLoaded)
             Destroy(vrPlayer);
-    }
-
-    void Update()
-    {
-        // Loading progress is only measured up to 90%
-        progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
     }
 }
