@@ -1,19 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Author: Cameron Scholes
 /// References: https://docs.unity3d.com/ScriptReference/Shader.WarmupAllShaders.html
 ///             https://docs.unity3d.com/ScriptReference/ShaderVariantCollection.html
+///             https://gamedevbeginner.com/how-to-load-a-new-scene-in-unity-with-a-loading-screen/
 /// </summary>
 
 public class LoadingManager : MonoBehaviour
 {
-    ShaderVariantCollection shaderVariantCollection;
+    [Header("Scene Loading")]
+    public string sceneToLoad;
+    private AsyncOperation loadingOperation;
+
+    [Header("Loading UI")] 
+    public Slider progressBar;
+    public GameObject vrPlayer;
+
+    [Header("Shader WarmUp")]
+    public ShaderVariantCollection shaderVariantCollection;
     
     void Start()
     {
+        loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+        SceneManager.sceneLoaded += DestroyLoadPlayer;
         shaderVariantCollection.WarmUp();
+    }
+
+    private void DestroyLoadPlayer(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0.isLoaded)
+            Destroy(vrPlayer);
+    }
+
+    void Update()
+    {
+        // Loading progress is only measured up to 90%
+        progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
     }
 }
