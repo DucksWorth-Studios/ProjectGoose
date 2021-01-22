@@ -54,27 +54,27 @@ public class ProgressionManager : MonoBehaviour
 
     private void GameStart()
     {
-
+        narrationManager.narrationCall(SCENE.ONE);
     }
 
     private void FirstJump()
     {
-
+        narrationManager.narrationCall(SCENE.TWO);
     }
 
     private void FirstReturn()
     {
-
+        narrationManager.narrationCall(SCENE.THREE);
     }
 
     private void USB()
     {
-
+        narrationManager.narrationCall(SCENE.FOUR);
     }
 
     private void USBPlugged()
     {
-
+        narrationManager.narrationCall(SCENE.FIVE);
     }
 
     private void ChemicalPuzzle()
@@ -88,7 +88,7 @@ public class ProgressionManager : MonoBehaviour
 
     private void GameEnd()
     {
-
+        narrationManager.narrationCall(SCENE.SIX);
     }
 
     // Update is called once per frame
