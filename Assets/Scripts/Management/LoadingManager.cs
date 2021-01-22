@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,8 +11,10 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    [Header("Scene Loading")]
+    [Header("Scene Loading")] 
+    public bool loadScene = true;
     public string sceneToLoad;
+
     private AsyncOperation loadingOperation;
     private bool isLoadingScene;
 
@@ -34,14 +34,17 @@ public class LoadingManager : MonoBehaviour
     void Update()
     {
         // This ensures all shaders are warmed up before level loading takes over the scene transition
-        if (shaderVariantCollection.isWarmedUp && !isLoadingScene)
+        if (loadScene && shaderVariantCollection.isWarmedUp && !isLoadingScene)
         {
             loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
             isLoadingScene = true;
         }
-        
-        // Loading progress is only measured up to 90%
-        progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+
+        if (isLoadingScene)
+        {
+            // Loading progress is only measured up to 90%
+            progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+        }
     }
     
     // This will destroy the VR Player from the loading scene once the level is loaded
