@@ -7,6 +7,9 @@ public class ProgressionManager : MonoBehaviour
 {
     public NarrationManager narrationManager;
     public static ProgressionManager instance;
+    private bool InPast = true;
+    private bool firstJump = false;
+    private bool firstReturn = false;
     private void Awake()
     {
         instance = this;
@@ -14,7 +17,7 @@ public class ProgressionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Possibly Link To An Event
+        EventManager.instance.OnTimeJump += JumpTrack;
     }
 
     //Outside forces dictate what stage it is at.
@@ -95,5 +98,27 @@ public class ProgressionManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void JumpTrack()
+    {
+        if (InPast)
+        {
+            InPast = false;
+            if(!firstJump)
+            {
+                firstJump = true;
+                Progress(STAGE.FIRSTJUMP);
+            }
+        }
+        else
+        {
+            InPast = true;
+            if (!firstReturn)
+            {
+                firstReturn = true;
+                Progress(STAGE.FIRSTRETURN);
+            }
+        }
     }
 }

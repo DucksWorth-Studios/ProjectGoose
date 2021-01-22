@@ -24,7 +24,7 @@ public class NarrationManager : MonoBehaviour
     void Start()
     {
         activeNarration = GetComponent<AudioSource>();
-        EventManager.instance.OnTimeJump += JumpInteference;
+        //EventManager.instance.OnTimeJump += JumpInteference;
     }
 
     //Switch is sued to define what scene will be played.
