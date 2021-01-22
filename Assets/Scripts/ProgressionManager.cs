@@ -6,18 +6,16 @@ public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZ
 public class ProgressionManager : MonoBehaviour
 {
     public NarrationManager narrationManager;
-    public static ProgressionManager instance;
     private bool InPast = true;
     private bool firstJump = false;
     private bool firstReturn = false;
-    private void Awake()
-    {
-        instance = this;
-    }
+
     // Start is called before the first frame update
     void Start()
     {
         EventManager.instance.OnTimeJump += JumpTrack;
+        EventManager.instance.OnProgress += Progress;
+        Progress(STAGE.START);
     }
 
     //Outside forces dictate what stage it is at.
