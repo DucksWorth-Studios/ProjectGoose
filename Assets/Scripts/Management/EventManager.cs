@@ -28,6 +28,7 @@ public class EventManager : MonoBehaviour
     public event Action OnWinGame;
     public event Action<ButtonEnum> OnButtonPress;
     public event Action<Snap> OnItemSnap;
+    public event Action<STAGE> OnProgress;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -156,6 +157,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("OnPlayOneSound is Null");
+        }
+    }
+
+    public void Progress(STAGE stage)
+    {
+        if (OnProgress != null)
+        {
+            OnProgress(stage);
+        }
+        else
+        {
+            Debug.Log("OnProgress is Null");
         }
     }
 }
