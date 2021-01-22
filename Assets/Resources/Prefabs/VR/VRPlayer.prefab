@@ -3439,6 +3439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4922784825430477730}
   - component: {fileID: 3858318876244482572}
+  - component: {fileID: 757778367}
   m_Layer: 8
   m_Name: Narration
   m_TagString: Untagged
@@ -3556,6 +3557,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &757778367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139007583668203200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa78b1c40c4d0041a71f36f40d637be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneOne: {fileID: 0}
+  sceneTwo: {fileID: 0}
+  sceneThree: {fileID: 0}
+  sceneFour: {fileID: 0}
+  sceneFive: {fileID: 0}
+  sceneSix: {fileID: 0}
 --- !u!1001 &451487251123809176
 PrefabInstance:
   m_ObjectHideFlags: 0
