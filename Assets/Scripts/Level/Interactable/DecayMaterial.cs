@@ -10,7 +10,6 @@ using Valve.VR.InteractionSystem;
 public class DecayMaterial : MonoBehaviour
 {
     private const float FULL_OPACITY = 1.0f;
-    private const float ZERO_OPACITY = 0.0f;
 
     [Tooltip("Interactable script in the parent gameobject to check if this object is being held at the time of dimension jump")]
     private Interactable interactable;
@@ -24,7 +23,7 @@ public class DecayMaterial : MonoBehaviour
     [Tooltip("Get the mesh renderer to change the materials of the object")]
     private MeshRenderer renderer;
 
-    private float opacityIncrease = 0.0f;
+    private float timeSinceJump = 0.0f;
 
     public Material baseMat;
     public Material decayedMat;
@@ -39,17 +38,17 @@ public class DecayMaterial : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
 
-        renderer.material = baseMat;
+        if (!isDecayed)
+            renderer.material = baseMat;
+        else
+            renderer.material = decayedMat;
 
-        //EventManager.instance.OnTimeJump += StartMaterialDecay;
+        EventManager.instance.OnTimeJump += StartMaterialDecay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
-            isDecaying = true;
-
         if (isDecaying)
             DecayMaterials();
     }
@@ -62,31 +61,31 @@ public class DecayMaterial : MonoBehaviour
 
     private void DecayMaterials()
     {
-        opacityIncrease += 0.5f * Time.deltaTime;
+        timeSinceJump += 0.5f * Time.deltaTime;
 
-        if (opacityIncrease < 0.5f)
+        if (timeSinceJump < 0.5f)
             return;
 
         if (!isDecayed)
         {
             renderer.material = decayedMat;
 
-            if (opacityIncrease > FULL_OPACITY)
+            if (timeSinceJump > FULL_OPACITY)
             {
                 isDecayed = true;
                 isDecaying = false;
-                opacityIncrease = 0;
+                timeSinceJump = 0;
             }
         }
         else
         {
             renderer.material = baseMat;
 
-            if (opacityIncrease > FULL_OPACITY)
+            if (timeSinceJump > FULL_OPACITY)
             {
                 isDecayed = false;
                 isDecaying = false;
-                opacityIncrease = 0;
+                timeSinceJump = 0;
             }
         }
     }
