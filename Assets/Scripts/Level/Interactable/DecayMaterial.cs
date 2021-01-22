@@ -69,24 +69,17 @@ public class DecayMaterial : MonoBehaviour
         if (!isDecayed)
         {
             renderer.material = decayedMat;
-
-            if (timeSinceJump > FULL_OPACITY)
-            {
-                isDecayed = true;
-                isDecaying = false;
-                timeSinceJump = 0;
-            }
         }
         else
         {
             renderer.material = baseMat;
+        }
 
-            if (timeSinceJump > FULL_OPACITY)
-            {
-                isDecayed = false;
-                isDecaying = false;
-                timeSinceJump = 0;
-            }
+        if (timeSinceJump > FULL_OPACITY)
+        {
+            isDecayed = isDecayed != true ? true : false;
+            isDecaying = false;
+            timeSinceJump = 0;
         }
     }
 }
