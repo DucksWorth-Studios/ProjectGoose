@@ -20,6 +20,11 @@ public class WaterDropController : MonoBehaviour
     private float timeBetweenDrops = 2.5f;
     private float lastDropTime = 0;
 
+    [Tooltip("The amount of time after the vfx has started to play the audio")]
+    private float audioPlayTime = 0.5f;
+
+    private bool canPlayAudio = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,19 +36,19 @@ public class WaterDropController : MonoBehaviour
     {
         if(lastDropTime + timeBetweenDrops < Time.time)
         {
-            PlayEffect();
+            vfx.SendEvent("OnPlay");
 
             lastDropTime = Time.time;
+
+            canPlayAudio = true;
         }
-    }
 
-    private IEnumerator PlayEffect()
-    {
-        vfx.SendEvent("OnPlay");
+        if(lastDropTime + audioPlayTime <= Time.time && canPlayAudio)
+        {
+            canPlayAudio = false;
 
-        yield return new WaitForSeconds(1.0f);
-
-        if (dropletSound != null)
-            AudioSource.PlayClipAtPoint(dropletSound, new Vector3(transform.position.x, 0, transform.position.z));
+            if (dropletSound != null)
+                AudioSource.PlayClipAtPoint(dropletSound, new Vector3(transform.position.x, 0, transform.position.z));
+        }
     }
 }
