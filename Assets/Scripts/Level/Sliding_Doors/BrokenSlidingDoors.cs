@@ -50,7 +50,7 @@ public class BrokenSlidingDoors : MonoBehaviour
         if(rigidbody.velocity.magnitude != 0)
         {
             //Counter Movement - Fricition
-            rigidbody.AddForce(Vector3.forward * -rigidbody.velocity.magnitude * 5f);
+            rigidbody.AddForce(Vector3.forward * -rigidbody.velocity.magnitude * 10f);
         }
 
         if (this.transform.localPosition.x <= EndPosition.localPosition.x)
