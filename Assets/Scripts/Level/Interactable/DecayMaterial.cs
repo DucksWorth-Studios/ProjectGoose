@@ -18,6 +18,9 @@ public class DecayMaterial : MonoBehaviour
     [Tooltip("is the object decayed?")]
     public bool isDecayed = false;
 
+    [Tooltip("Get the mesh renderer to change the materials of the object")]
+    private MeshRenderer renderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,8 @@ public class DecayMaterial : MonoBehaviour
             interactable = GetComponentInParent<Interactable>();
         else
             interactable = GetComponent<Interactable>();
+
+        renderer = GetComponent<MeshRenderer>();
 
         EventManager.instance.OnTimeJump += StartMaterialDecay;
     }
@@ -39,5 +44,10 @@ public class DecayMaterial : MonoBehaviour
     {
         if (interactable.attachedToHand != null) // Object is in the hand of the player
             isDecayed = true;
+    }
+
+    private void DecayMaterials()
+    {
+
     }
 }
