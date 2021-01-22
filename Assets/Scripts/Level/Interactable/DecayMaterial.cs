@@ -59,6 +59,10 @@ public class DecayMaterial : MonoBehaviour
             isDecaying = true;
     }
 
+    /// <summary>
+    /// Will wait till half a second after the player has jumped to the decayed world and change the texture of the object to the decayed material
+    /// TODO Add a VFX to make swap cleaner
+    /// </summary>
     private void DecayMaterials()
     {
         timeSinceJump += 0.5f * Time.deltaTime;
