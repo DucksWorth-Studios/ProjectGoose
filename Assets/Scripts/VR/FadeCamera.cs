@@ -2,10 +2,10 @@
 using Valve.VR;
 
 /// <summary>
+/// Author: Cameron Scholes
 /// Script to fadeout camera view when a collision is detected.
-/// Based on:
-/// https://forum.unity.com/threads/head-collider-steam-vr-plugin.805743/
-/// https://github.com/ValveSoftware/steamvr_unity_plugin/issues/388
+/// References: https://forum.unity.com/threads/head-collider-steam-vr-plugin.805743/
+///             https://github.com/ValveSoftware/steamvr_unity_plugin/issues/388
 /// </summary>
 public class FadeCamera : MonoBehaviour
 {
