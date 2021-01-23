@@ -115,16 +115,17 @@ namespace Valve.VR.InteractionSystem
             snapTurnSource.panStereo = angle / 90;
             snapTurnSource.PlayOneShot(rotateSound);
 
-            if (fadeScreen)
-            {
-                SteamVR_Fade.Start(Color.clear, 0);
-
-                Color tColor = screenFadeColor;
-                tColor = tColor.linear * 0.6f;
-                SteamVR_Fade.Start(tColor, fadeTime);
-            }
-
-            yield return new WaitForSeconds(fadeTime);
+            // if (fadeScreen)
+            // {
+            //     SteamVR_Fade.Start(Color.clear, 0);
+            //
+            //     Color tColor = screenFadeColor;
+            //     tColor = tColor.linear * 0.6f;
+            //     SteamVR_Fade.Start(tColor, fadeTime);
+            // }
+            //
+            // yield return new WaitForSeconds(fadeTime);
+            CameraBlackout.instance.TriggerSnapTurnBlackout();
 
             Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
             player.trackingOriginTransform.position -= playerFeetOffset;
@@ -137,10 +138,10 @@ namespace Valve.VR.InteractionSystem
             if (showTurnAnimation)
                 ShowRotateFX(fx);
 
-            if (fadeScreen)
-            {
-                SteamVR_Fade.Start(Color.clear, fadeTime);
-            }
+            // if (fadeScreen)
+            // {
+            //     SteamVR_Fade.Start(Color.clear, fadeTime);
+            // }
 
             float startTime = Time.time;
             float endTime = startTime + canTurnEverySeconds;
