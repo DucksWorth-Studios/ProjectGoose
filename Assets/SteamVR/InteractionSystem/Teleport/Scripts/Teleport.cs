@@ -894,7 +894,7 @@ namespace Valve.VR.InteractionSystem
 			if ( teleportingToMarker.ShouldMovePlayer() )
 			{
 				// At this point we know the player can teleport
-				CameraTeleportationFade.instance.TriggerBlackout();
+				CameraBlackout.instance.TriggerTeleportBlackout();
 				
 				Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
 				player.trackingOriginTransform.position = teleportPosition + playerFeetOffset;
