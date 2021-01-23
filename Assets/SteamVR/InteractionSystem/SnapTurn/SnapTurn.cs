@@ -23,9 +23,9 @@ namespace Valve.VR.InteractionSystem
         public SteamVR_Action_Boolean snapLeftAction = SteamVR_Input.GetBooleanAction("SnapTurnLeft");
         public SteamVR_Action_Boolean snapRightAction = SteamVR_Input.GetBooleanAction("SnapTurnRight");
 
-        public bool fadeScreen = true;
-        public float fadeTime = 0.1f;
-        public Color screenFadeColor = Color.black;
+        // public bool fadeScreen = true;
+        // public float fadeTime = 0.1f;
+        // public Color screenFadeColor = Color.black;
 
         public float distanceFromFace = 1.3f;
         public Vector3 additionalOffset = new Vector3(0, -0.3f, 0);
