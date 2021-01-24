@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class ComfortManager : MonoBehaviour
 {
+    public Slider speedSlider;
+    public TextMeshProUGUI speedValue;
+    
     public TMP_Dropdown enableTPDropdown;
     public Slider tpDurationSlider;
     public TextMeshProUGUI tpDurationText;
@@ -49,6 +52,18 @@ public class ComfortManager : MonoBehaviour
 
     #region Events
 
+    public void OnChangeSpeed(float newSpeed)
+    {
+        string strSpeed = newSpeed.ToString("#.00");
+        float speed = float.Parse(strSpeed);
+        
+        speedValue.text = "" + speed;
+        settingsData.speed = speed;
+
+        // Debug.Log(speed);
+        speedSlider.value = speed;
+    }
+    
     public void OnChangeTPBlackout(int blackout)
     {
         Debug.Log(blackout);
@@ -92,6 +107,7 @@ public class ComfortManager : MonoBehaviour
     [Serializable]
     public struct ComfortSettingsData
     {
+        public float speed;
         public int enableTeleportBlackout;
         public float tpBlackoutDuration;
         public int enableSnapTurnBlackout;
