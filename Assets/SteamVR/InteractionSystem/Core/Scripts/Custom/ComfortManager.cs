@@ -163,7 +163,7 @@ public class ComfortManager : MonoBehaviour
             string data = File.ReadAllText(fullPath);
             Debug.Log("Data: " + data);
             
-            JsonUtility.FromJsonOverwrite(data, settingsData);
+            // JsonUtility.FromJsonOverwrite(data, settingsData);
             settingsData = (ComfortSettingsData) JsonUtility.FromJson(data, typeof(ComfortSettingsData));
             Debug.Log("Load.settingsData: " + settingsData);
             UpdateUI();
