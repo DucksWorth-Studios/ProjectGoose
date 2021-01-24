@@ -6,6 +6,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Cameron Scholes
+/// Class for storing and using comfort settings
+/// </summary>
+
 public class ComfortManager : MonoBehaviour
 {
     public Slider speedSlider;
@@ -21,15 +26,12 @@ public class ComfortManager : MonoBehaviour
     
     public TextMeshProUGUI saveText;
 
-    public static ComfortManager instance;
-    private static ComfortSettingsData settingsData;
+    public static ComfortSettingsData settingsData;
     private string settingsFile = "ComfortSettings.dat";
 
     void Start()
     {
-        instance = this;
         settingsData = new ComfortSettingsData();
-
         Load();
     }
 

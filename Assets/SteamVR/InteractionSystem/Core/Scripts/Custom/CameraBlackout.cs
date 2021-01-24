@@ -12,26 +12,6 @@ public class CameraBlackout : MonoBehaviour
 {
     public static CameraBlackout instance;
 
-    #region TeleportSettings
-
-    [Header("Teleport blackout settings")] 
-    public bool enableTeleportBlackout;
-    
-    [Tooltip("In seconds, the amount of time the blackout should last for")]
-    public float teleportBlackoutDuration = 1;
-    
-    #endregion TeleportSettings
-    
-    #region SnapTurnSettings
-
-    [Header("Snap turn blackout settings")] 
-    public bool enableSnapTurnBlackout;
-    
-    [Tooltip("In seconds, the amount of time the blackout should last for")]
-    public float snapTurnBlackoutDuration = 1;
-    
-    #endregion SnapTurnSettings
-    
     void Start()
     {
         instance = this;
@@ -40,14 +20,14 @@ public class CameraBlackout : MonoBehaviour
     public void TriggerTeleportBlackout()
     {
         // https://stackoverflow.com/questions/30056471/how-to-make-the-script-wait-sleep-in-a-simple-way-in-unity
-        if(enableTeleportBlackout)
-            StartCoroutine(Blackout(teleportBlackoutDuration));
+        if(ComfortManager.settingsData.enableTeleportBlackout == 1)
+            StartCoroutine(Blackout(ComfortManager.settingsData.tpBlackoutDuration));
     }
     
     public void TriggerSnapTurnBlackout()
     {
-        if(enableSnapTurnBlackout)
-            StartCoroutine(Blackout(snapTurnBlackoutDuration));
+        if(ComfortManager.settingsData.enableSnapTurnBlackout == 1)
+            StartCoroutine(Blackout(ComfortManager.settingsData.stBlackoutDuration));
     }
 
     private IEnumerator Blackout(float blackoutDuration)
