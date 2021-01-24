@@ -3,7 +3,27 @@ guid: 3122ec2aae4d8af4790cadefdbba3509
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black_Metal
+    second: {fileID: 2100000, guid: e24b44bec325cce4d8b38cd8aafbd814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cylinder_Casing
+    second: {fileID: 2100000, guid: e24b44bec325cce4d8b38cd8aafbd814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver_Metal
+    second: {fileID: 2100000, guid: e24b44bec325cce4d8b38cd8aafbd814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VCol
+    second: {fileID: 2100000, guid: 841b0f2f829b10644a16d475a40bd96d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
