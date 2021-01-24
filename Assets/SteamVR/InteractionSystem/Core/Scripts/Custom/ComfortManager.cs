@@ -17,12 +17,44 @@ public class ComfortManager : MonoBehaviour
     public TextMeshProUGUI stDurationText;
     
     public TextMeshProUGUI saveText;
-    
+
+    public static ComfortManager instance;
     private static ComfortSettingsData settingsData;
     private string settingsFile = "ComfortSettings.dat";
 
+    void Start()
+    {
+        instance = this;
+        settingsData = new ComfortSettingsData();
+
+        Load();
+    }
+
+    private void UpdateUI()
+    {
+        Debug.Log(settingsData);
+        enableTPDropdown.value = settingsData.enableTeleportBlackout;
+        enableTPDropdown.RefreshShownValue();
+        OnChangeTPDuration(settingsData.tpBlackoutDuration);
+        
+        enableSTDropdown.value = settingsData.enableSnapTurnBlackout;
+        enableSTDropdown.RefreshShownValue();
+        OnChangeSTDuration(settingsData.stBlackoutDuration);
+    }
+    
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
     #region Events
 
+    public void OnChangeTPBlackout(int blackout)
+    {
+        Debug.Log(blackout);
+        settingsData.enableTeleportBlackout = blackout;
+    }
+    
     public void OnChangeTPDuration(float tpDuration)
     {
         string strDuration = tpDuration.ToString("#.00");
@@ -33,6 +65,12 @@ public class ComfortManager : MonoBehaviour
 
         // Debug.Log(duration);
         tpDurationSlider.value = duration;
+    }
+    
+    public void OnChangeSTBlackout(int blackout)
+    {
+        Debug.Log(blackout);
+        settingsData.enableSnapTurnBlackout = blackout;
     }
     
     public void OnChangeSTDuration(float stDuration)
@@ -54,9 +92,9 @@ public class ComfortManager : MonoBehaviour
     [Serializable]
     public struct ComfortSettingsData
     {
-        public bool enableTeleportBlackout;
+        public int enableTeleportBlackout;
         public float tpBlackoutDuration;
-        public bool enableSnapTurnBlackout;
+        public int enableSnapTurnBlackout;
         public float stBlackoutDuration;
     }
     
@@ -66,7 +104,11 @@ public class ComfortManager : MonoBehaviour
         
         try
         {
-            File.WriteAllText(fullPath, JsonUtility.ToJson(settingsData));
+            Debug.Log(settingsData);
+            string json = JsonUtility.ToJson(settingsData);
+            Debug.Log(json);
+            
+            File.WriteAllText(fullPath, json);
 
             saveText.gameObject.SetActive(true);
             saveText.text = "Saved";
@@ -97,9 +139,8 @@ public class ComfortManager : MonoBehaviour
             Debug.Log(data);
             
             JsonUtility.FromJsonOverwrite(data, settingsData);
-            // UpdateUI();
-            // UpdateUI();
-            // Apply();
+            Debug.Log(settingsData);
+            UpdateUI();
         }
         catch (Exception e)
         {
