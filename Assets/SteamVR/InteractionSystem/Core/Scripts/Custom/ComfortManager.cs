@@ -35,7 +35,9 @@ public class ComfortManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        Debug.Log(settingsData);
+        Debug.Log("UpdateUI.settingsData: " + settingsData);
+        OnChangeSpeed(settingsData.speed);
+        
         enableTPDropdown.value = settingsData.enableTeleportBlackout;
         enableTPDropdown.RefreshShownValue();
         OnChangeTPDuration(settingsData.tpBlackoutDuration);
@@ -112,6 +114,11 @@ public class ComfortManager : MonoBehaviour
         public float tpBlackoutDuration;
         public int enableSnapTurnBlackout;
         public float stBlackoutDuration;
+
+        public override string ToString()
+        {
+            return JsonUtility.ToJson(this);
+        }
     }
     
     public void Save()
@@ -152,10 +159,11 @@ public class ComfortManager : MonoBehaviour
         try
         {
             string data = File.ReadAllText(fullPath);
-            Debug.Log(data);
+            Debug.Log("Data: " + data);
             
             JsonUtility.FromJsonOverwrite(data, settingsData);
-            Debug.Log(settingsData);
+            settingsData = (ComfortSettingsData) JsonUtility.FromJson(data, typeof(ComfortSettingsData));
+            Debug.Log("Load.settingsData: " + settingsData);
             UpdateUI();
         }
         catch (Exception e)
