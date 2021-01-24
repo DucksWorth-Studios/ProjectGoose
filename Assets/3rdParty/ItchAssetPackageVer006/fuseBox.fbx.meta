@@ -3,7 +3,52 @@ guid: 0376542976b47c3488d01b2f562323b6
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue Light
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clamps
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fuse Container
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fuse Frame
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c183ab13f74c14149b411445453549c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green Light
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main Box
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipes
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red Light
+    second: {fileID: 2100000, guid: d82578c0bf3018b4cb95a53d79b12f87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
