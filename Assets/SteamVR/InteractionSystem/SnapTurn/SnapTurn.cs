@@ -23,9 +23,9 @@ namespace Valve.VR.InteractionSystem
         public SteamVR_Action_Boolean snapLeftAction = SteamVR_Input.GetBooleanAction("SnapTurnLeft");
         public SteamVR_Action_Boolean snapRightAction = SteamVR_Input.GetBooleanAction("SnapTurnRight");
 
-        public bool fadeScreen = true;
-        public float fadeTime = 0.1f;
-        public Color screenFadeColor = Color.black;
+        // public bool fadeScreen = true;
+        // public float fadeTime = 0.1f;
+        // public Color screenFadeColor = Color.black;
 
         public float distanceFromFace = 1.3f;
         public Vector3 additionalOffset = new Vector3(0, -0.3f, 0);
@@ -115,16 +115,17 @@ namespace Valve.VR.InteractionSystem
             snapTurnSource.panStereo = angle / 90;
             snapTurnSource.PlayOneShot(rotateSound);
 
-            if (fadeScreen)
-            {
-                SteamVR_Fade.Start(Color.clear, 0);
-
-                Color tColor = screenFadeColor;
-                tColor = tColor.linear * 0.6f;
-                SteamVR_Fade.Start(tColor, fadeTime);
-            }
-
-            yield return new WaitForSeconds(fadeTime);
+            // if (fadeScreen)
+            // {
+            //     SteamVR_Fade.Start(Color.clear, 0);
+            //
+            //     Color tColor = screenFadeColor;
+            //     tColor = tColor.linear * 0.6f;
+            //     SteamVR_Fade.Start(tColor, fadeTime);
+            // }
+            //
+            // yield return new WaitForSeconds(fadeTime);
+            CameraBlackout.instance.TriggerSnapTurnBlackout();
 
             Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
             player.trackingOriginTransform.position -= playerFeetOffset;
@@ -137,10 +138,10 @@ namespace Valve.VR.InteractionSystem
             if (showTurnAnimation)
                 ShowRotateFX(fx);
 
-            if (fadeScreen)
-            {
-                SteamVR_Fade.Start(Color.clear, fadeTime);
-            }
+            // if (fadeScreen)
+            // {
+            //     SteamVR_Fade.Start(Color.clear, fadeTime);
+            // }
 
             float startTime = Time.time;
             float endTime = startTime + canTurnEverySeconds;

@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 11450526}
   - component: {fileID: 12440092}
   - component: {fileID: 4319187297919626242}
+  - component: {fileID: 3243579699446425652}
   m_Layer: 8
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -843,6 +844,22 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &3243579699446425652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70624f8c8d0ac94cb004925241d4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableTeleportBlackout: 0
+  teleportBlackoutDuration: 0.1
+  enableSnapTurnBlackout: 0
+  snapTurnBlackoutDuration: 0.1
 --- !u!1 &129006
 GameObject:
   m_ObjectHideFlags: 0
