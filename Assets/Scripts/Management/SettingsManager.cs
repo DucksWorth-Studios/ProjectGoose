@@ -56,10 +56,14 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.SetValueWithoutNotify(currentResolution);
 
         fullscreenDropdown.SetValueWithoutNotify(settingsData.fullScreenMode);
+        
         shadowQualityDropdown.SetValueWithoutNotify(settingsData.shadowQuality);
         shadowDistanceSlider.SetValueWithoutNotify(settingsData.shadowDistance);
+        OnChangeShadowDistance(settingsData.shadowDistance);
+        
         anisotropicFilteringDropdown.SetValueWithoutNotify(settingsData.anisotropicFiltering);
         antiAliasingSlider.SetValueWithoutNotify(settingsData.antiAliasing);
+        OnChangeAntiAliasing(settingsData.antiAliasing);
     }
 
     private void UpdateCurrentResolutionIndex()
@@ -197,8 +201,9 @@ public class SettingsManager : MonoBehaviour
             string data = File.ReadAllText(fullPath);
             Debug.Log(data);
             
-            JsonUtility.FromJsonOverwrite(data, settingsData);
-            UpdateUI();
+            // JsonUtility.FromJsonOverwrite(data, settingsData);
+            settingsData = (SettingsData) JsonUtility.FromJson(data, typeof(SettingsData));
+            
             UpdateUI();
             Apply();
         }

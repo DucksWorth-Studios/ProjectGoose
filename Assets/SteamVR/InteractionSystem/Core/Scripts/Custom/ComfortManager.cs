@@ -6,8 +6,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Cameron Scholes
+/// Class for storing and using comfort settings
+/// </summary>
+
 public class ComfortManager : MonoBehaviour
 {
+    public Slider speedSlider;
+    public TextMeshProUGUI speedValue;
+    
     public TMP_Dropdown enableTPDropdown;
     public Slider tpDurationSlider;
     public TextMeshProUGUI tpDurationText;
@@ -18,21 +26,20 @@ public class ComfortManager : MonoBehaviour
     
     public TextMeshProUGUI saveText;
 
-    public static ComfortManager instance;
-    private static ComfortSettingsData settingsData;
+    public static ComfortSettingsData settingsData;
     private string settingsFile = "ComfortSettings.dat";
 
     void Start()
     {
-        instance = this;
         settingsData = new ComfortSettingsData();
-
         Load();
     }
 
     private void UpdateUI()
     {
-        Debug.Log(settingsData);
+        Debug.Log("UpdateUI.settingsData: " + settingsData);
+        OnChangeSpeed(settingsData.speed);
+        
         enableTPDropdown.value = settingsData.enableTeleportBlackout;
         enableTPDropdown.RefreshShownValue();
         OnChangeTPDuration(settingsData.tpBlackoutDuration);
@@ -49,6 +56,18 @@ public class ComfortManager : MonoBehaviour
 
     #region Events
 
+    public void OnChangeSpeed(float newSpeed)
+    {
+        string strSpeed = newSpeed.ToString("#.00");
+        float speed = float.Parse(strSpeed);
+        
+        speedValue.text = "" + speed;
+        settingsData.speed = speed;
+
+        // Debug.Log(speed);
+        speedSlider.value = speed;
+    }
+    
     public void OnChangeTPBlackout(int blackout)
     {
         Debug.Log(blackout);
@@ -92,10 +111,16 @@ public class ComfortManager : MonoBehaviour
     [Serializable]
     public struct ComfortSettingsData
     {
+        public float speed;
         public int enableTeleportBlackout;
         public float tpBlackoutDuration;
         public int enableSnapTurnBlackout;
         public float stBlackoutDuration;
+
+        public override string ToString()
+        {
+            return JsonUtility.ToJson(this);
+        }
     }
     
     public void Save()
@@ -136,10 +161,11 @@ public class ComfortManager : MonoBehaviour
         try
         {
             string data = File.ReadAllText(fullPath);
-            Debug.Log(data);
+            Debug.Log("Data: " + data);
             
-            JsonUtility.FromJsonOverwrite(data, settingsData);
-            Debug.Log(settingsData);
+            // JsonUtility.FromJsonOverwrite(data, settingsData);
+            settingsData = (ComfortSettingsData) JsonUtility.FromJson(data, typeof(ComfortSettingsData));
+            Debug.Log("Load.settingsData: " + settingsData);
             UpdateUI();
         }
         catch (Exception e)
