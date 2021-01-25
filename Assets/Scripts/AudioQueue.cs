@@ -45,21 +45,23 @@ public class AudioQueue : MonoBehaviour
     {
         //If it has been called to play there is nothing currently being fired and its not paused
         //Itll play next clip
-        if(MustPlay && !audioSource.isPlaying && !IsPaused)
+        if (audioSource != null)
         {
-            //Ensures we dont go out of range
-            if(currentIndex < IndexMax)
+            if (MustPlay && !audioSource.isPlaying && !IsPaused)
             {
-                audioSource.clip = clips[currentIndex];
-                audioSource.Play();
-                currentIndex++;
+                //Ensures we dont go out of range
+                if (currentIndex < IndexMax)
+                {
+                    audioSource.clip = clips[currentIndex];
+                    audioSource.Play();
+                    currentIndex++;
+                }
+                else
+                {
+                    //If List completed its job is done
+                    MustPlay = false;
+                }
             }
-            else
-            {
-                //If List completed its job is done
-                MustPlay = false;
-            }
-            
         }
     }
 }
