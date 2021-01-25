@@ -44,7 +44,7 @@ public class Broken_Door_Handle : MonoBehaviour
         {
             Vector3 startToHand = this.transform.position - handleStartPos;
 
-            doors.ApplyForce(startToHand.magnitude);
+            doors.ApplyForce(startToHand);
         }
     }
 

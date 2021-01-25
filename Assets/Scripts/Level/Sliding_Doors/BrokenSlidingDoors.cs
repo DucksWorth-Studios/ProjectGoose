@@ -14,14 +14,17 @@ public class BrokenSlidingDoors : MonoBehaviour
     public Transform StartPosition;
     public Transform EndPosition;
 
-    private Vector3 handStartGrabPos;
+    private Vector3 direction;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        direction = EndPosition.position - StartPosition.position;
+        direction.Normalize();
+
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,4 +32,9 @@ public class BrokenSlidingDoors : MonoBehaviour
     {
         
     }   
+
+    public void ApplyForce(Vector3 force)
+    {
+        rigidBody.AddForce(new Vector3(force.x * direction.x, force.y* direction.y, force.z * direction.z));
+    }
 }
