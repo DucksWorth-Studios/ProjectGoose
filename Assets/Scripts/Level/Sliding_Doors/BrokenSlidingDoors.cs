@@ -35,6 +35,10 @@ public class BrokenSlidingDoors : MonoBehaviour
 
     public void ApplyForce(Vector3 force)
     {
+        //Apply force in the direction the door is sliding
         rigidBody.AddForce(new Vector3(force.x * direction.x, force.y* direction.y, force.z * direction.z));
+
+        //Apply a counter force to provide resistance
+        rigidBody.AddForce(new Vector3(force.x * -direction.x/2, force.y* -direction.y/2, force.z * -direction.z/2));
     }
 }
