@@ -33,8 +33,22 @@ public class BrokenSlidingDoors : MonoBehaviour
         
     }   
 
+    /// <summary>
+    /// Applies a force and a counter force based on the input from the player
+    /// </summary>
+    /// <param name="force">The force vector the player is applying to the door</param>
     public void ApplyForce(Vector3 force)
     {
+        if(force == Vector3.zero)
+        {
+            if (rigidBody.velocity == Vector3.zero)
+                return;
+
+            //rigidBody.velocity = -rigidBody.velocity;
+
+            rigidBody.AddForce(-rigidBody.velocity);
+        }
+
         //Apply force in the direction the door is sliding
         rigidBody.AddForce(new Vector3(force.x * direction.x, force.y* direction.y, force.z * direction.z));
 

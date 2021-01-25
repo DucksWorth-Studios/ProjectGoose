@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
+/// <summary>
+/// Is the handle for the door and will calculate the amount of force being applied by the player
+/// </summary>
 [RequireComponent(typeof(Interactable))]
 public class Broken_Door_Handle : MonoBehaviour
 {
@@ -45,6 +48,10 @@ public class Broken_Door_Handle : MonoBehaviour
             Vector3 startToHand = this.transform.position - handleStartPos;
 
             doors.ApplyForce(startToHand);
+        }
+        else
+        {
+            doors.ApplyForce(Vector3.zero);
         }
     }
 
