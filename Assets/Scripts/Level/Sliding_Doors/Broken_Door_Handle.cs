@@ -21,6 +21,11 @@ public class Broken_Door_Handle : MonoBehaviour
 
     private bool canCalculateForce = false;
 
+    [Tooltip("The start position of the handle in world transform")]
+    private Vector3 handleStartPos;
+
+    private BrokenSlidingDoors doors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +33,19 @@ public class Broken_Door_Handle : MonoBehaviour
         handleRotation = transform.localRotation;
 
         interactable = GetComponent<Interactable>();
+
+        doors = GetComponentInParent<BrokenSlidingDoors>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(canCalculateForce)
+        {
+            Vector3 startToHand = this.transform.position - handleStartPos;
+
+            doors.ApplyForce(startToHand.magnitude);
+        }
     }
 
     private void HandHoverUpdate(Hand hand)
@@ -43,6 +55,7 @@ public class Broken_Door_Handle : MonoBehaviour
 
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
+            handleStartPos = this.transform.position;
             hand.HoverLock(interactable);
 
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
