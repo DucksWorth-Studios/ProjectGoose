@@ -330,7 +330,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   restoreOriginalParent: 0
-  awakeEnableGravity: 0
+  awakeEnableGravity: 1
   detatchEnableGravity: 1
   onPickUp:
     m_PersistentCalls:
@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 6261469749463854479}
   - component: {fileID: 358051275842738444}
   - component: {fileID: 4879341427538068481}
+  - component: {fileID: 4207217706785390213}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -681,6 +682,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4207217706785390213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079527052657468846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcdadd08ce82a1419658bc4aa8f13d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDecayed: 0
+  baseMat: {fileID: 0}
+  decayedMat: {fileID: 0}
 --- !u!1 &9103204578891147333
 GameObject:
   m_ObjectHideFlags: 0
