@@ -24,10 +24,10 @@ public class Computerhandler : MonoBehaviour
     {
         if(itemSnapped == Snap.USB)
         {
-            print("Hello");
             loadingScreen.gameObject.SetActive(true);
             //SOUND
             EventManager.instance.PlaySound(Sound.USB);
+            print("USB LOAD");
         }
     }
 
@@ -37,7 +37,7 @@ public class Computerhandler : MonoBehaviour
         {
             passedTime += Time.deltaTime;
             loadingScreen.fillAmount = passedTime / loadTime;
-            if (passedTime >= loadTime)
+            if (loadingScreen.fillAmount >= 1)
             {
                 displayFormula();
             }
@@ -46,8 +46,9 @@ public class Computerhandler : MonoBehaviour
 
     private void displayFormula()
     {
-        instructions.gameObject.SetActive(true);
         loadingScreen.gameObject.SetActive(false);
+        instructions.gameObject.SetActive(true);
+        
         //SOUND
     }
     void Update()
