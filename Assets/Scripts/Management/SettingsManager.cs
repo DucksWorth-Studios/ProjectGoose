@@ -94,6 +94,8 @@ public class SettingsManager : MonoBehaviour
         anisotropicFilteringDropdown.SetValueWithoutNotify(settingsData.anisotropicFiltering);
         antiAliasingSlider.SetValueWithoutNotify(settingsData.antiAliasing);
         OnChangeAntiAliasing(settingsData.antiAliasing);
+        
+        gameObject.SetActive(false);
     }
 
     private void UpdateCurrentResolutionIndex()
