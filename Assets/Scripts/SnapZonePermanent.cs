@@ -22,15 +22,30 @@ public class SnapZonePermanent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("InZone");
         if (objectToSnap == other.gameObject)
         {
             isSnapped = true;
-            objectToSnap.transform.rotation = Quaternion.Euler(rotation);
+            
+            objectToSnap.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(objectToSnap,true);
             objectToSnap.GetComponent<VRItemAttachment>().attachmentEnabled = false;
-            objectToSnap.transform.position = this.transform.position;
 
+
+            
+
+            objectToSnap.transform.position = this.transform.position;
+            print("HALLLELUJAH");
             //Send event
             EventManager.instance.SnappedItem(itemSnapped);
+        }
+    }
+
+    private void Update()
+    {
+        if(isSnapped)
+        {
+            objectToSnap.transform.position = this.transform.position;
+            objectToSnap.transform.rotation = Quaternion.Euler(rotation);
         }
     }
 }
