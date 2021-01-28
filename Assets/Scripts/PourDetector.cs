@@ -17,6 +17,12 @@ public class PourDetector : MonoBehaviour
         //Get Composition Manager. Will be used generating streams
         compositionManager = GetComponentInChildren<CompositionManager>();
     }
+
+    private void Start()
+    {
+        EventManager.instance.OnTimeJump += TimeJump;
+    }
+
     private void Update()
     {
         //are we at a valid angle to begin?
@@ -86,5 +92,14 @@ public class PourDetector : MonoBehaviour
         //Set in the stream. This is needed to detect and change the composition
         streamObject.GetComponent<Stream>().setCompositionManager(compositionManager);
         return streamObject.GetComponent<Stream>();
+    }
+
+    private void TimeJump()
+    {
+        if(isPouring)
+        {
+            isPouring = false;
+            EndPour;
+        }
     }
 }
