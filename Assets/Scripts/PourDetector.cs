@@ -99,7 +99,7 @@ public class PourDetector : MonoBehaviour
         if(isPouring)
         {
             isPouring = false;
-            EndPour;
+            EndPour();
         }
     }
 }
