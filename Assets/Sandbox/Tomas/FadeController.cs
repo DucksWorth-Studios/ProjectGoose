@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class FadeController : MonoBehaviour
 {
-    public float timeOut = 10f;
+    public float timeOut = 5f;
     public Color fadeColor = Color.black;
     void Start()
     {
         EventManager.instance.OnFadeScreen += FadeEvent;
+        //Valve.VR.SteamVR_Fade.View(Color.black, 0);
     }
 
 
@@ -16,14 +17,13 @@ public class FadeController : MonoBehaviour
     {
         if(fadeout)
         {
-            print("Ha");
-            //Valve.VR.SteamVR_Fade.View(Color.clear, 0);
-            Valve.VR.SteamVR_Fade.View(fadeColor,1);
+            Valve.VR.SteamVR_Fade.View(Color.clear, 0);
+            Valve.VR.SteamVR_Fade.View(fadeColor,timeOut);
         }
         else
         {
-            Valve.VR.SteamVR_Fade.Start(fadeColor, 0);
-            Valve.VR.SteamVR_Fade.Start(Color.clear, timeOut);
+            Valve.VR.SteamVR_Fade.View(fadeColor, timeOut);
+            Valve.VR.SteamVR_Fade.View(Color.clear, timeOut);
         }
     }
 
@@ -31,11 +31,5 @@ public class FadeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print("BOO");
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            EventManager.instance.Fade(true);
-            print("MEH");
-        }
     }
 }
