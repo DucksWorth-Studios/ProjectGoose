@@ -14,7 +14,6 @@ using UnityEngine.UI;
 /// </summary>
 public class SettingsManager : MonoBehaviour
 {
-    public static SettingsManager instance;
     private static SettingsData settingsData;
     
     public TMP_Dropdown resolutionDropdown;
@@ -32,24 +31,55 @@ public class SettingsManager : MonoBehaviour
 
     void Start()
     {
-        instance = this;
         settingsData = new SettingsData();
         
         // Resolution Setup
         resolutionDropdown.AddOptions(GetResolutionsDropdownData());
-        resolutionDropdown.SetValueWithoutNotify(currentResolution);
+        // resolutionDropdown.SetValueWithoutNotify(currentResolution);
         
         // Fullscreen Mode Setup
-        Enum.TryParse(Screen.fullScreenMode.ToString(), out FullScreenMode fsm);
-        settingsData.fullScreenMode = (int) fsm;
-        
-        Debug.Log(Screen.fullScreenMode);
-        Debug.Log(settingsData.fullScreenMode);
-        fullscreenDropdown.SetValueWithoutNotify(settingsData.fullScreenMode);
+        // Enum.TryParse(Screen.fullScreenMode.ToString(), out FullScreenMode fsm);
+        // settingsData.fullScreenMode = (int) fsm;
+        //
+        // Debug.Log(Screen.fullScreenMode);
+        // Debug.Log(settingsData.fullScreenMode);
+        // fullscreenDropdown.SetValueWithoutNotify(settingsData.fullScreenMode);
         
         Load();
+        // SetDefaults();
     }
 
+    private void SetDefaults()
+    {
+        // Debug.Log("Before Default: " + Screen.currentResolution);
+        Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+        // Debug.Log("Width: " + Screen.width);
+        // Debug.Log("Height: " + Screen.height);
+        // Debug.Log("After Default: " + Screen.currentResolution);
+        QualitySettings.shadows = ShadowQuality.Disable;
+        QualitySettings.shadowDistance = 0;
+        QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
+        QualitySettings.antiAliasing = 0;
+
+        UpdateSettings();
+    }
+
+    private void UpdateSettings()
+    {
+        // settingsData.resolution = Screen.currentResolution.ToString();
+        settingsData.width = Screen.width;
+        settingsData.height = Screen.height;
+        settingsData.fullScreenMode = (int) Screen.fullScreenMode;
+        settingsData.shadowQuality = (int) QualitySettings.shadows;
+        settingsData.shadowDistance = QualitySettings.shadowDistance;
+        settingsData.anisotropicFiltering = (int) QualitySettings.anisotropicFiltering;
+        settingsData.antiAliasing = QualitySettings.antiAliasing;
+
+        Debug.Log("JSON Settings: " + JsonUtility.ToJson(settingsData));
+        
+        UpdateUI();
+    }
+    
     private void UpdateUI()
     {
         UpdateCurrentResolutionIndex();
@@ -64,17 +94,24 @@ public class SettingsManager : MonoBehaviour
         anisotropicFilteringDropdown.SetValueWithoutNotify(settingsData.anisotropicFiltering);
         antiAliasingSlider.SetValueWithoutNotify(settingsData.antiAliasing);
         OnChangeAntiAliasing(settingsData.antiAliasing);
+        
+        gameObject.SetActive(false);
     }
 
     private void UpdateCurrentResolutionIndex()
     {
         for (int i = 0; i < Screen.resolutions.Length; i++)
         {
-            string res = Screen.resolutions[i].ToString();
+            Resolution res = Screen.resolutions[i];
 
-            if (res == settingsData.resolution)
+            if (res.width == settingsData.width && 
+                res.height == settingsData.height)
                 currentResolution = i;
         }
+
+        // Debug.Log("Current Resolution: " + Screen.currentResolution);
+        // Debug.Log("Settings Data Resolution: " + settingsData.resolution);
+        // Debug.Log("Resolution Index: " + currentResolution);
     }
 
     public void Apply()
@@ -83,7 +120,8 @@ public class SettingsManager : MonoBehaviour
         Resolution resolution = Screen.resolutions[resolutionDropdown.value];
         FullScreenMode fsm = (FullScreenMode) fullscreenDropdown.value;
 
-        settingsData.resolution = resolution.ToString();
+        settingsData.width = resolution.width;
+        settingsData.height = resolution.height;
         settingsData.fullScreenMode = fullscreenDropdown.value;
         
         Debug.Log(resolution.ToString());
@@ -120,19 +158,21 @@ public class SettingsManager : MonoBehaviour
     List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
     {
         List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
-        string currentResString = Screen.currentResolution.ToString();
-        settingsData.resolution = currentResString;
+        Resolution currentRes = Screen.currentResolution;
+        settingsData.width = currentRes.width;
+        settingsData.height = currentRes.height;
         
         for (int i = 0; i < Screen.resolutions.Length; i++)
         {
             string res = Screen.resolutions[i].ToString();
             options.Add(new TMP_Dropdown.OptionData(res));
 
-            if (res == currentResString)
+            if (currentRes.width == settingsData.width && 
+                currentRes.height == settingsData.height)
                 currentResolution = i;
         }
 
-        Debug.Log(currentResString);
+        // Debug.Log(currentResString);
         return options;
     }
 
@@ -162,16 +202,19 @@ public class SettingsManager : MonoBehaviour
     [Serializable]
     public struct SettingsData
     {
-        public string resolution;
+        // public string resolution;
+        public int width;
+        public int height;
         public int fullScreenMode;
         public int shadowQuality;
-        public int shadowDistance;
+        public float shadowDistance;
         public int anisotropicFiltering;
         public int antiAliasing;
     }
     
     public void Save()
     {
+        Apply();
         string fullPath = Path.Combine(Application.persistentDataPath, settingsFile);
         
         try
@@ -210,6 +253,7 @@ public class SettingsManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            SetDefaults();
         }
     }
 

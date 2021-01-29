@@ -31,13 +31,27 @@ public class ComfortManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ComfortManager Start");
         settingsData = new ComfortSettingsData();
         Load();
+        // SetDefaults();
     }
 
+    private void SetDefaults()
+    {
+        settingsData.speed = 3;
+        settingsData.enableTeleportBlackout = 0;
+        settingsData.tpBlackoutDuration = 0;
+        settingsData.enableSnapTurnBlackout = 0;
+        settingsData.stBlackoutDuration = 0;
+        
+        UpdateUI();
+    }
+    
     private void UpdateUI()
     {
         Debug.Log("UpdateUI.settingsData: " + settingsData);
+        Debug.Log("ComfortManager.settingsData: " + ComfortManager.settingsData);
         OnChangeSpeed(settingsData.speed);
         
         enableTPDropdown.value = settingsData.enableTeleportBlackout;
@@ -47,6 +61,8 @@ public class ComfortManager : MonoBehaviour
         enableSTDropdown.value = settingsData.enableSnapTurnBlackout;
         enableSTDropdown.RefreshShownValue();
         OnChangeSTDuration(settingsData.stBlackoutDuration);
+        
+        gameObject.SetActive(false);
     }
     
     public void Close()
@@ -171,6 +187,7 @@ public class ComfortManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            SetDefaults();
         }
     }
 
