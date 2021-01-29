@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public SCENE scene;
-    public NarrationManager narration;
+
     void Start()
     {
 
@@ -21,7 +20,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            narration.narrationCall(scene);
+            print("Hello");
+            EventManager.instance.WinGame();
         }
     }
 }
