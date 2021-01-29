@@ -339,7 +339,6 @@ MonoBehaviour:
   input:
     actionPath: /actions/default/in/MoveUp
     needsReinit: 0
-  speed: 2.5
 --- !u!114 &4619465599001838581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +727,7 @@ GameObject:
   - component: {fileID: 12440092}
   - component: {fileID: 4319187297919626242}
   - component: {fileID: 3243579699446425652}
+  - component: {fileID: 414443780}
   m_Layer: 8
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -856,10 +856,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70624f8c8d0ac94cb004925241d4eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableTeleportBlackout: 0
-  teleportBlackoutDuration: 0.1
-  enableSnapTurnBlackout: 0
-  snapTurnBlackoutDuration: 0.1
+--- !u!114 &414443780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746d07a3dd1351741adc860b390d1d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOut: 5
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &129006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,9 +3134,6 @@ MonoBehaviour:
   snapRightAction:
     actionPath: /actions/default/in/SnapTurnRight
     needsReinit: 0
-  fadeScreen: 1
-  fadeTime: 0.1
-  screenFadeColor: {r: 0, g: 0, b: 0, a: 1}
   distanceFromFace: 1.3
   additionalOffset: {x: 0, y: -0.3, z: 0}
   canTurnEverySeconds: 0.5

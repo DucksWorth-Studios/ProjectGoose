@@ -29,6 +29,7 @@ public class EventManager : MonoBehaviour
     public event Action<ButtonEnum> OnButtonPress;
     public event Action<Snap> OnItemSnap;
     public event Action<STAGE> OnProgress;
+    public event Action<bool> OnFadeScreen;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -169,6 +170,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("OnProgress is Null");
+        }
+    }
+
+    public void Fade(bool fadeOut)
+    {
+        if (OnFadeScreen != null)
+        {
+            OnFadeScreen(fadeOut);
+        }
+        else
+        {
+            Debug.Log("OnFadeScreen is Null");
         }
     }
 }
