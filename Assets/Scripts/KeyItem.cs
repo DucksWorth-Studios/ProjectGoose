@@ -31,6 +31,10 @@ public class KeyItem : MonoBehaviour
         EventManager.instance.OnItemHighlight += TurnOnHighLight;
     }
 
+    /// <summary>
+    /// Takes in the event parmaeter and checks against stored param if match it allows highlight
+    /// </summary>
+    /// <param name="item"></param>
     private void TurnOnHighLight(KEY item)
     {
         if(item == itemToListen)
@@ -40,6 +44,9 @@ public class KeyItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check of The Highlight is needed to turn off
+    /// </summary>
     private void CheckToTurnOFF()
     {
         if (interactable.attachedToHand != null)
