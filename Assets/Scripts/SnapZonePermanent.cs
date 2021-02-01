@@ -18,11 +18,10 @@ public class SnapZonePermanent : MonoBehaviour
     [Tooltip("Event The Object Should Send")]
     public Snap itemSnapped;
     //string eventToCall might be used to differentiate events
-    private bool isSnapped = false;
+    public bool isSnapped = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        print("InZone");
         if (objectToSnap == other.gameObject)
         {
             isSnapped = true;
@@ -34,7 +33,6 @@ public class SnapZonePermanent : MonoBehaviour
             
 
             objectToSnap.transform.position = this.transform.position;
-            print("HALLLELUJAH");
             //Send event
             EventManager.instance.SnappedItem(itemSnapped);
         }
