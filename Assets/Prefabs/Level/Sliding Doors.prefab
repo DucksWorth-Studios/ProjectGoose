@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f0254ae9fde1544084797814a192d47, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.658
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3c0aae1d540cf41b5a40bda0f52ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 2bf6d0771ceabd242b7a9e5b0c380afa, type: 3}
-  soundToListen: 0
+  audioClip: {fileID: 8300000, guid: 7f0254ae9fde1544084797814a192d47, type: 3}
+  soundToListen: 4
   loop: 0
 --- !u!1 &300757548015461669
 GameObject:
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a409ecda5434b9840b06138c31c2007c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: 0
+  soundToPlay: 4
 --- !u!1 &4089349526483399149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9177137462381924291
 Transform:
@@ -1398,7 +1398,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7324799573047053544
 Transform:
