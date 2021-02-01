@@ -5,10 +5,10 @@ using Valve.VR;
 public class VRInput : BaseInput
 {
     public Camera eventCamera;
-
+    
     public SteamVR_Action_Boolean pullObject = SteamVR_Input.GetBooleanAction("PullObject");
 
-    protected  override void Awake()
+    private void Start()
     {
         GetComponent<BaseInputModule>().inputOverride = this;
     }

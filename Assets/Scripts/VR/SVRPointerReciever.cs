@@ -13,7 +13,7 @@ public enum ButtonTriggers{
     Test2
 }
 
-public class SVRPointerReciever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class SVRPointerReciever : MonoBehaviour
 {
     public SteamVR_LaserPointer laserPointer;
     public ButtonTriggers buttonTrigger;
@@ -89,18 +89,8 @@ public class SVRPointerReciever : MonoBehaviour, IPointerEnterHandler, IPointerE
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void Test()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
+        Debug.Log("Button clicked. WOOP WOPO");
     }
 }
