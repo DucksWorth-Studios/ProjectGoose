@@ -50,10 +50,24 @@
   "scopedRegistries": [
     {
       "name": "Valve",
-      "url": "https://registry.npmjs.org/",
+      "url": "https://registry.npmjs.org",
       "scopes": [
         "com.valvesoftware",
         "com.valvesoftware.unity.openvr"
+      ]
+    },
+    {
+      "name": "Extended Reaility",
+      "url": "https://registry.npmjs.org",
+      "scopes": [
+        "io.extendreality"
+      ]
+    },
+    {
+      "name": "Unity NuGet",
+      "url": "https://unitynuget-registry.azurewebsites.net",
+      "scopes": [
+        "org.nuget"
       ]
     }
   ]
