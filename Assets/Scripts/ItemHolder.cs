@@ -29,7 +29,7 @@ public class ItemHolder : MonoBehaviour
     //Unset object from zone if meets criteria
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == objectToHold && keepHolding == false)
+        if (other.gameObject == objectToHold && keepHolding == false && objectToHold.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand != null)
         {
             isHolding = false;
             objectToHold = null;

@@ -16,6 +16,7 @@ public class HalfLifeHandler : MonoBehaviour
     public Text textbox;
 
     private bool IsInPast = true;
+    private bool IsDone = false;
     void Start()
     {
         //Add To Events
@@ -70,12 +71,16 @@ public class HalfLifeHandler : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.O))
-    //    {
-    //        EventManager.instance.TimeJump();
-    //    }
-    //}
+
+    void Update()
+    {
+        if (!IsDone)
+        {
+            if(!lidZone.GetComponent<ItemHolder>().isHolding)
+            {
+                textbox.text = "0";
+                IsDone = false;
+            }
+        }
+    }
 }
