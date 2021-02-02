@@ -87,13 +87,14 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -7805965318761107941, guid: 12614e233cb9d8f4ebe0ae29d0192892, type: 3}
-  - {fileID: 472361167370837365, guid: 12614e233cb9d8f4ebe0ae29d0192892, type: 3}
+  - {fileID: 1094309100274340258, guid: dc4247dc636862e4fa1fecca0270b2ea, type: 3}
   - {fileID: 8432108100948157617, guid: 12614e233cb9d8f4ebe0ae29d0192892, type: 3}
-  - {fileID: 4976611630767191425, guid: 12614e233cb9d8f4ebe0ae29d0192892, type: 3}
+  - {fileID: 2100000, guid: fc04b76c1db81bd4b8cd1fd07f8bafac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +115,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4572515301627832248
 MeshCollider:
   m_ObjectHideFlags: 0

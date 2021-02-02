@@ -29,6 +29,7 @@ public class LoadingManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += DestroyLoadPlayer;
         shaderVariantCollection.WarmUp();
+
     }
 
     void Update()
@@ -44,6 +45,10 @@ public class LoadingManager : MonoBehaviour
         {
             // Loading progress is only measured up to 90%
             progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+            if(progressBar.value > 0.7f)
+            {
+                Valve.VR.SteamVR_Fade.View(Color.black, 0);
+            }
         }
     }
     
@@ -51,6 +56,8 @@ public class LoadingManager : MonoBehaviour
     private void DestroyLoadPlayer(Scene arg0, LoadSceneMode arg1)
     {
         if (arg0.isLoaded)
+        {
             Destroy(vrPlayer);
+        }
     }
 }

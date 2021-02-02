@@ -18,19 +18,32 @@ public class SnapZonePermanent : MonoBehaviour
     [Tooltip("Event The Object Should Send")]
     public Snap itemSnapped;
     //string eventToCall might be used to differentiate events
-    private bool isSnapped = false;
+    public bool isSnapped = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (objectToSnap == other.gameObject)
         {
             isSnapped = true;
-            objectToSnap.transform.rotation = Quaternion.Euler(rotation);
+            
+            objectToSnap.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(objectToSnap,true);
             objectToSnap.GetComponent<VRItemAttachment>().attachmentEnabled = false;
-            objectToSnap.transform.position = this.transform.position;
 
+
+            
+
+            objectToSnap.transform.position = this.transform.position;
             //Send event
             EventManager.instance.SnappedItem(itemSnapped);
+        }
+    }
+
+    private void Update()
+    {
+        if(isSnapped)
+        {
+            objectToSnap.transform.position = this.transform.position;
+            objectToSnap.transform.rotation = Quaternion.Euler(rotation);
         }
     }
 }
