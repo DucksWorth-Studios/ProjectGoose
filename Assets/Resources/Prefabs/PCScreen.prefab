@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e443160ed7381b4daad5197fe92329b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 1363770922950440279}
+  loadingScreen: {fileID: 1363770922276868820}
   instructions: {fileID: 1363770922506329472}
   loadTime: 10
 --- !u!1 &1363770922950440274
