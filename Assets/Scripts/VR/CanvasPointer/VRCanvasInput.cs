@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Valve.VR;
 
-public class VRInputModule : BaseInputModule
+public class VRCanvasInput : BaseInputModule
 {
     public Camera camera;
     public SteamVR_Input_Sources targetSource;

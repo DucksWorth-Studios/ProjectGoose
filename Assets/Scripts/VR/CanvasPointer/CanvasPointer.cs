@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Pointer : MonoBehaviour
+public class CanvasPointer : MonoBehaviour
 {
     public float defaultLength = 5;
     public GameObject dot;
-    public VRInputModule inputModule;
+    public VRCanvasInput inputModule;
     
     private LineRenderer lineRenderer;
     
