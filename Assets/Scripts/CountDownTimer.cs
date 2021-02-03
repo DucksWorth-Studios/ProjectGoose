@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
 /// Author: Tomas
-/// Used to manage the CountDown of the 
+/// Used to manage the CountDown of the Watch
 /// </summary>
 public class CountDownTimer : MonoBehaviour
 {
+    [Tooltip("Time Takes For End")]
     public float timeAllowed;
+
+    [Tooltip("Is Game Over")]
     public bool isGameOver = false;
+
+    [Tooltip("Object With Count Down Image")]
     public GameObject countDownObject;
+
+    [Tooltip("Object With Text")]
     public GameObject textObject;
+    //Private Variables
     private bool isCountingDown = false;
     private bool isCountingUp = false;
     private bool hasReachedNormal = true;
@@ -24,10 +32,11 @@ public class CountDownTimer : MonoBehaviour
         textbox = textObject.GetComponent<Text>();
         timeRemaining = timeAllowed;
         //Events To Subscribe To
-        EventManager.instance.OnTimeJump += timeJumpListener;
+        EventManager.instance.OnTimeJump += TimeJumpListener;
     }
 
-    private void timeJumpListener()
+    //Listens For Time Jump
+    private void TimeJumpListener()
     {
         if(isCountingDown)
         {
@@ -41,7 +50,7 @@ public class CountDownTimer : MonoBehaviour
             isCountingUp = false;
         }
     }
-
+    //Counts watch down
     private void CountDown()
     {
         if(timeRemaining > 0)
@@ -57,6 +66,7 @@ public class CountDownTimer : MonoBehaviour
         }
     }
 
+    //Counts watch Up
     private void CountUp()
     {
         if(timeRemaining < timeAllowed)
@@ -72,7 +82,8 @@ public class CountDownTimer : MonoBehaviour
         }
     }
 
-    public float getRemainingTime()
+    //Get Remaining time
+    public float GetRemainingTime()
     {
         return this.timeRemaining;
     }
@@ -95,12 +106,12 @@ public class CountDownTimer : MonoBehaviour
         {
             //Do Nothing
         }
-        changeUI();
+        ChangeUI();
     }
 
 
-
-    private void changeUI()
+    //Updates UI based on time remaining v time given
+    private void ChangeUI()
     {
         timerBar.fillAmount = timeRemaining / timeAllowed;
         textbox.text = "" + Mathf.Round(timeRemaining);

@@ -8,11 +8,17 @@ using UnityEngine.UI;
 /// </summary>
 public class HalfLifeHandler : MonoBehaviour
 {
+    [Tooltip("The Amount of the Element.")]
     public float amountOfElement;
+    [Tooltip("The Amount of the Element needed. Set to 0 if not important")]
     public float amountToGet;
+    [Tooltip("Holder For Lid")]
     public GameObject lidZone;
+    [Tooltip("Holder For Element")]
     public GameObject elementZone;
+    [Tooltip("Lock Idicator(Red Or Green)")]
     public Image lockIndicator;
+    [Tooltip("TextBox For Element")]
     public Text textbox;
 
     private bool IsInPast = true;
@@ -20,50 +26,50 @@ public class HalfLifeHandler : MonoBehaviour
     void Start()
     {
         //Add To Events
-        EventManager.instance.OnTimeJump += detectChange;     
+        EventManager.instance.OnTimeJump += DetectChange;     
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
     private void unLockObjects()
     {
-        lidZone.GetComponent<ItemHolder>().setInteractable();
-        elementZone.GetComponent<ItemHolder>().setInteractable();
+        lidZone.GetComponent<ItemHolder>().SetInteractable();
+        elementZone.GetComponent<ItemHolder>().SetInteractable();
         lockIndicator.color = new Color(0,1,0);
     }
 
     //If going in direction either half or double the amount
-    private void detectChange()
+    private void DetectChange()
     {
         if(IsInPast)
         {
             //Is Going to Future
             IsInPast = false;
-            setHalfLife(0.5f);
+            SetHalfLife(0.5f);
         }
         else
         {
             //Is Going Back
             IsInPast = true;
-            setHalfLife(2f);
+            SetHalfLife(2f);
         }
     }
 
     //Set The amount
-    private void setHalfLife(float Multiplier)
+    private void SetHalfLife(float Multiplier)
     {
         amountOfElement = amountOfElement * Multiplier;
-        detectResult();
-        setAmount();
+        DetectResult();
+        SetAmount();
     }
 
     //Set the Indicator Amount
-    private void setAmount()
+    private void SetAmount()
     {
         textbox.text = "" + amountOfElement;
     }
 
     //detect if we reach required amount
-    private void detectResult()
+    private void DetectResult()
     {
         if(amountOfElement == amountToGet)
         {

@@ -12,13 +12,14 @@ public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk, Telepor
 /// </summary>
 public class SoundListener : MonoBehaviour
 {
-
-    AudioSource audioSource;
     [Tooltip("Audio File To Play")]
     public AudioClip audioClip;
     [Tooltip("What Type Of Sound To Listen For")]
     public Sound soundToListen;
+    [Tooltip("Should The Sound Loop")]
     public bool loop;
+
+    private AudioSource audioSource;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

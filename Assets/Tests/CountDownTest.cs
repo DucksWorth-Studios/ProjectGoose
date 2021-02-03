@@ -23,7 +23,7 @@ public class CountDownTest
     {
         //Nothing Happens
         yield return new WaitForSeconds(2f);
-        Assert.AreEqual(20f,timerScript.getRemainingTime());
+        Assert.AreEqual(20f,timerScript.GetRemainingTime());
     }
 
     //Jump Into the Future for 10 seconds then back for 11.
@@ -35,7 +35,7 @@ public class CountDownTest
         yield return new WaitForSeconds(10f);
         EventManager.instance.TimeJump();
         yield return new WaitForSeconds(11f);
-        Assert.AreEqual(20f, timerScript.getRemainingTime());
+        Assert.AreEqual(20f, timerScript.GetRemainingTime());
     }
 
     //Start Timer. Wait 2 secs then make sure it has started
@@ -44,7 +44,7 @@ public class CountDownTest
     {
         EventManager.instance.TimeJump();
         yield return new WaitForSeconds(2f);
-        Assert.Greater(20f,timerScript.getRemainingTime());
+        Assert.Greater(20f,timerScript.GetRemainingTime());
     }
 
     //Stop Timer. Wait then make sure it hasnt gone below 0
@@ -53,7 +53,7 @@ public class CountDownTest
     {
         EventManager.instance.TimeJump();
         yield return new WaitForSeconds(0.1f);
-        Assert.Greater(timerScript.getRemainingTime(), 0f);
+        Assert.Greater(timerScript.GetRemainingTime(), 0f);
     }
 
     //StartTimer and wait for it to run out.
