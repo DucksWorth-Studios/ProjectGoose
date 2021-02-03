@@ -7,9 +7,13 @@ using UnityEngine;
 /// </summary>
 public class EndGameController : MonoBehaviour
 {
+    [Tooltip("TimeOut For Transition")]
     public float timeOut = 10f;
+    [Tooltip("Object For Lose Position")]
     public GameObject badPosition;
+    [Tooltip("Object for Win Position")]
     public GameObject goodPosition;
+    [Tooltip("The Player")]
     public GameObject VRplayer;
 
     void Start()

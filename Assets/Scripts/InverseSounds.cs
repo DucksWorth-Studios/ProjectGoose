@@ -7,7 +7,9 @@ using UnityEngine;
  /// </summary>
 public class InverseSounds : MonoBehaviour
 {
+    [Tooltip("Main Sound")]
     public AudioClip clipOne;
+    [Tooltip("The Alternate Sound")]
     public AudioClip clipTwo;
     public Sound soundToPlay;
     private AudioSource source;
@@ -17,7 +19,11 @@ public class InverseSounds : MonoBehaviour
         EventManager.instance.OnPlayOneSound += PlaySound;
         EventManager.instance.OnStopSound += StopSound;
     }
-
+    /// <summary>
+    /// Play Sound Takes in an enum to identify the sound and a bool.
+    /// </summary>
+    /// <param name="sound">Sound to Play</param>
+    /// <param name="firstSound">Is it the first one if no play second sound</param>
     private void PlaySound(Sound sound,bool firstSound)
     {
         if(sound == soundToPlay)
@@ -35,7 +41,10 @@ public class InverseSounds : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Stop Sound
+    /// </summary>
+    /// <param name="sound">Sound to play</param>
     private void StopSound(Sound sound)
     {
         if (sound == soundToPlay)

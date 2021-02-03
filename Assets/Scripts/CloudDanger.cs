@@ -6,22 +6,28 @@ using UnityEngine.VFX;
 
 public class CloudDanger : MonoBehaviour
 {
+    [Tooltip("The time it takes to kill a player")]
     public float timeToSurvive = 15;
+    //Remaining time
     private float timeRemaining;
+    //Is Player Inside
     private bool IsPlayerInCloud = false;
+    //Has Game Over been triggered
     private bool isGameOver = false;
+    //The VFX
     private VisualEffect cloud;
     private void Awake()
     {
-        
         cloud = GetComponent<VisualEffect>();
     }
+
+    //On object start begin its lifespan
     void Start()
     {
         EventManager.instance.OnButtonPress += OnRemoveCloudsEvent;
         timeRemaining = timeToSurvive;
         EventManager.instance.PlaySound(Sound.Alarm);
-        StartCoroutine(afterTimePass(27));
+        StartCoroutine(AfterTimePass(27));
     }
 
     //If Player enters start countdown
@@ -47,16 +53,16 @@ public class CloudDanger : MonoBehaviour
     {
         if(IsPlayerInCloud && !isGameOver)
         {
-            startCountdown();
+            StartCountdown();
         }
         else if(!IsPlayerInCloud && !isGameOver)
         {
-            resetCountDown();
+            ResetCountDown();
         }
     }
 
     //Reset the countdown
-    private void resetCountDown()
+    private void ResetCountDown()
     {
         if (timeRemaining < timeToSurvive)
         {
@@ -69,7 +75,7 @@ public class CloudDanger : MonoBehaviour
     }
 
     //Countdown to game over
-    private void startCountdown()
+    private void StartCountdown()
     {
         if (timeRemaining > 0)
         {
@@ -84,7 +90,7 @@ public class CloudDanger : MonoBehaviour
         }
     }
     //Used to Stop the cloud after 30 seconds
-    IEnumerator afterTimePass(float timeBefore)
+    IEnumerator AfterTimePass(float timeBefore)
     {
         //Wait then set rate to 0 this tapers off the effect
         yield return new WaitForSeconds(timeBefore);
@@ -100,8 +106,8 @@ public class CloudDanger : MonoBehaviour
     {
         if(buttonPress == ButtonEnum.CLOUDREMOVE)
         {
-            StopCoroutine(afterTimePass(27));
-            StartCoroutine(afterTimePass(0));
+            StopCoroutine(AfterTimePass(27));
+            StartCoroutine(AfterTimePass(0));
             //Remove Event So No Errors Occur
             EventManager.instance.OnButtonPress -= OnRemoveCloudsEvent;
         }

@@ -9,12 +9,18 @@ public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX };
 /// </summary>
 public class NarrationManager : MonoBehaviour
 {
-    //Lines For Each Scene will be stored in a prefab audiQueue    
+    //Lines For Each Scene will be stored in a prefab audiQueue
+    [Tooltip("Queue For Scene One")]
     public AudioQueue sceneOne;
+    [Tooltip("Queue For Scene Two")]
     public AudioQueue sceneTwo;
+    [Tooltip("Queue For Scene Three")]
     public AudioQueue sceneThree;
+    [Tooltip("Queue For Scene Four")]
     public AudioQueue sceneFour;
+    [Tooltip("Queue For Scene Five")]
     public AudioQueue sceneFive;
+    [Tooltip("Queue For Scene Six")]
     public AudioQueue sceneSix;
 
     //Private variables
@@ -28,7 +34,7 @@ public class NarrationManager : MonoBehaviour
     }
 
     //Switch is sued to define what scene will be played.
-    public void narrationCall(SCENE line)
+    public void NarrationCall(SCENE line)
     {
         switch(line)
         {

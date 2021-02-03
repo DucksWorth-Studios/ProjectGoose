@@ -9,18 +9,23 @@ using UnityEngine.UI;
 /// </summary>
 public class Computerhandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Tooltip("The Loading Object")]
     public Image loadingScreen;
+
+    [Tooltip("The Instructions To Reveal")]
     public Image instructions;
+
+    [Tooltip("Time Takes to Load")]
     public int loadTime;
+    //Time passed
     private float passedTime;
 
     void Start()
     {
-        EventManager.instance.OnItemSnap += enableScreen;
+        EventManager.instance.OnItemSnap += EnableScreen;
     }
 
-    private void enableScreen(Snap itemSnapped)
+    private void EnableScreen(Snap itemSnapped)
     {
         if(itemSnapped == Snap.USB)
         {
@@ -31,7 +36,7 @@ public class Computerhandler : MonoBehaviour
         }
     }
 
-    private void loading()
+    private void Loading()
     {
         if(loadingScreen.gameObject.activeSelf)
         {
@@ -39,12 +44,12 @@ public class Computerhandler : MonoBehaviour
             loadingScreen.fillAmount = passedTime / loadTime;
             if (loadingScreen.fillAmount >= 1)
             {
-                displayFormula();
+                DisplayFormula();
             }
         }
     }
 
-    private void displayFormula()
+    private void DisplayFormula()
     {
         loadingScreen.gameObject.SetActive(false);
         instructions.gameObject.SetActive(true);
@@ -53,7 +58,7 @@ public class Computerhandler : MonoBehaviour
     }
     void Update()
     {
-        loading();
+        Loading();
     }
 
 }

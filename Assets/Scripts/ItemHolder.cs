@@ -8,8 +8,11 @@ using UnityEngine;
 /// </summary>
 public class ItemHolder : MonoBehaviour
 {
+    [Tooltip("Object Item must Hold")]
     public GameObject objectToHold;
+    [Tooltip("Is It Holding")]
     public bool isHolding = true;
+    [Tooltip("Should it Continue to hold")]
     public bool keepHolding = true;
     void Start()
     {
@@ -20,7 +23,7 @@ public class ItemHolder : MonoBehaviour
     }
 
     //Allow Pickup
-    public void setInteractable()
+    public void SetInteractable()
     {
         //set interactable
         objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = true;

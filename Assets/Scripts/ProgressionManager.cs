@@ -5,7 +5,9 @@ using UnityEngine;
 public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZLE, ELEMENTPUZZLE,END };
 public class ProgressionManager : MonoBehaviour
 {
+    [Tooltip("Reference To Narration Manager")]
     public NarrationManager narrationManager;
+
     private bool InPast = true;
     private bool firstJump = false;
     private bool firstReturn = false;
@@ -16,7 +18,7 @@ public class ProgressionManager : MonoBehaviour
         EventManager.instance.OnTimeJump += JumpTrack;
         EventManager.instance.OnProgress += Progress;
         Valve.VR.SteamVR_Fade.View(Color.black, 0);
-        StartCoroutine(startUp());
+        StartCoroutine(StartUp());
     }
 
     //Outside forces dictate what stage it is at.
@@ -56,27 +58,27 @@ public class ProgressionManager : MonoBehaviour
 
     private void GameStart()
     {
-        narrationManager.narrationCall(SCENE.ONE);
+        narrationManager.NarrationCall(SCENE.ONE);
     }
 
     private void FirstJump()
     {
-        narrationManager.narrationCall(SCENE.TWO);
+        narrationManager.NarrationCall(SCENE.TWO);
     }
 
     private void FirstReturn()
     {
-        narrationManager.narrationCall(SCENE.THREE);
+        narrationManager.NarrationCall(SCENE.THREE);
     }
 
     private void USB()
     {
-        narrationManager.narrationCall(SCENE.FOUR);
+        narrationManager.NarrationCall(SCENE.FOUR);
     }
 
     private void USBPlugged()
     {
-        narrationManager.narrationCall(SCENE.FIVE);
+        narrationManager.NarrationCall(SCENE.FIVE);
     }
 
     private void ChemicalPuzzle()
@@ -90,7 +92,7 @@ public class ProgressionManager : MonoBehaviour
 
     private void GameEnd()
     {
-        narrationManager.narrationCall(SCENE.SIX);
+        narrationManager.NarrationCall(SCENE.SIX);
     }
 
     // Update is called once per frame
@@ -121,7 +123,7 @@ public class ProgressionManager : MonoBehaviour
         }
     }
 
-    private IEnumerator startUp()
+    private IEnumerator StartUp()
     {
         print("Here");
         
