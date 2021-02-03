@@ -887,8 +887,8 @@
     "m_SerializableColorKeys": [
         {
             "x": 0.0,
-            "y": 0.41423657536506655,
-            "z": 0.5943396091461182,
+            "y": 0.25567635893821719,
+            "z": 0.3679245114326477,
             "w": 0.16765087842941285
         },
         {
@@ -1121,7 +1121,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Metallic",
     "m_StageCapability": 2,
-    "m_Value": 0.699999988079071,
+    "m_Value": 0.8999999761581421,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
