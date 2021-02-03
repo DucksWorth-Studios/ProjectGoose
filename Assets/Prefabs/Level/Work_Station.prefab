@@ -118,15 +118,16 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6484930320718598026, guid: f426d826b045a02428c4aae427cac250, type: 3}
-  - {fileID: -7805965318761107941, guid: f426d826b045a02428c4aae427cac250, type: 3}
-  - {fileID: -6175858530446176545, guid: f426d826b045a02428c4aae427cac250, type: 3}
-  - {fileID: 772359722248288438, guid: f426d826b045a02428c4aae427cac250, type: 3}
-  - {fileID: 2100000, guid: ff009eb8a04ffcc4c874dad894e7148e, type: 2}
-  - {fileID: -4300741198532308423, guid: f426d826b045a02428c4aae427cac250, type: 3}
+  - {fileID: 2100000, guid: bcd66be2d003e2147bc667271c14b025, type: 2}
+  - {fileID: 2100000, guid: 0854c65c98f7e014d88c8cabe9b64af5, type: 2}
+  - {fileID: 2100000, guid: fc04b76c1db81bd4b8cd1fd07f8bafac, type: 2}
+  - {fileID: 2100000, guid: 7e1ef197d60a2244294a81483ef4b880, type: 2}
+  - {fileID: 2100000, guid: 0854c65c98f7e014d88c8cabe9b64af5, type: 2}
+  - {fileID: 2100000, guid: 44a918ca4d1e3f647ad52175c3abbb34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,6 +148,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &818459008678169325
 BoxCollider:
   m_ObjectHideFlags: 0

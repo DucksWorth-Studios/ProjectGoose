@@ -1,0 +1,36 @@
+# Blender MTL File: 'suitcase.blend'
+# Material Count: 3
+
+newmtl Burlington_Leather
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump F:\\Dropbox\\Blender\\Assets\\All Items\\Material Libraries\\Alchemist\\GWC Burlington Leather\\GWC Burlington Leather_Normal.png
+map_Kd F:\\Dropbox\\Blender\\Assets\\All Items\\Material Libraries\\Alchemist\\GWC Burlington Leather\\GWC Burlington Leather_BaseColor.png
+map_d F:\\Dropbox\\Blender\\Assets\\All Items\\Material Libraries\\Alchemist\\GWC Burlington Leather\\GWC Burlington Leather_BaseColor.png
+
+newmtl Leather_Base_01
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+refl M:\\BlenderKit\\ToGumroad\\Materials_Leather\\Textures\\4k JPEG\\Leather_Base_01\\Leather_Base_01_metallic.jpg
+
+newmtl Material.001
+Ns 71.479323
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.511628 0.000000
+Ks 0.345455 0.345455 0.345455
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3

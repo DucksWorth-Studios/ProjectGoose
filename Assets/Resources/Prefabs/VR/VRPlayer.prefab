@@ -870,51 +870,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOut: 5
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
---- !u!1 &129006
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 495400}
-  - component: {fileID: 11405908}
-  m_Layer: 8
-  m_Name: ControllerHoverHighlight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &495400
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0099999, y: 1.01, z: 1.0099999}
-  m_Children: []
-  m_Father: {fileID: 485514}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &11405908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca2cc563cc33f542a5d9f8f661184ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highLightMaterial: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
-  fireHapticsOnHightlight: 1
 --- !u!1 &133480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1081,6 @@ Transform:
   m_Children:
   - {fileID: 4000012325712216}
   - {fileID: 4000011474053580}
-  - {fileID: 451882}
   - {fileID: 413580}
   - {fileID: 1545443888956955245}
   m_Father: {fileID: 494198}
@@ -1270,7 +1224,6 @@ Transform:
   m_Children:
   - {fileID: 480432}
   - {fileID: 490018}
-  - {fileID: 495400}
   - {fileID: 446772}
   m_Father: {fileID: 494198}
   m_RootOrder: 2
@@ -1535,51 +1488,6 @@ Transform:
   m_Father: {fileID: 485514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &167242
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 451882}
-  - component: {fileID: 11461284}
-  m_Layer: 8
-  m_Name: ControllerHoverHighlight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &451882
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0100001, y: 1.01, z: 1.0100001}
-  m_Children: []
-  m_Father: {fileID: 476540}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &11461284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca2cc563cc33f542a5d9f8f661184ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highLightMaterial: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
-  fireHapticsOnHightlight: 1
 --- !u!1 &168724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +1598,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 485514}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11489144
 MonoBehaviour:
@@ -1743,7 +1651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476540}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11494192
 MonoBehaviour:
@@ -3609,22 +3517,27 @@ PrefabInstance:
     - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0062429146
       objectReference: {fileID: 0}
     - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0535
+      value: -0.053499997
       objectReference: {fileID: 0}
     - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0803
+      value: 0.080299854
       objectReference: {fileID: 0}
     - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2217
+      value: -0.22170019
       objectReference: {fileID: 0}
     - target: {fileID: 1384439363630920181, guid: d2dd77a815153134d962014d8daad108,
         type: 3}

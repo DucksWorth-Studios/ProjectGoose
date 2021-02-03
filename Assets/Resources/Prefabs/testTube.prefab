@@ -320,7 +320,7 @@ GameObject:
   m_TagString: Chemical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &5134468866849140788
 Transform:
@@ -352,7 +352,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7846898505065448406}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc207b89988c86e49a9cc59cb39e55e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentColor: {r: 1, g: 0.06132078, b: 0.9003255, a: 1}
+  currentColor: {r: 0.062745094, g: 1, b: 0.9727492, a: 1}
   puffEffect: {fileID: 8979454299987645689}
   cloud: {fileID: 6098020013189580256, guid: 2ea7110b62749d348981fb5a02e51908, type: 3}
   debugHold: 0

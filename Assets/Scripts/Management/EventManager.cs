@@ -30,6 +30,7 @@ public class EventManager : MonoBehaviour
     public event Action<Snap> OnItemSnap;
     public event Action<STAGE> OnProgress;
     public event Action<bool> OnFadeScreen;
+    public event Action<KEY> OnItemHighlight;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -182,6 +183,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.Log("OnFadeScreen is Null");
+        }
+    }
+
+    public void HighlightItem(KEY item)
+    {
+        if (OnItemHighlight != null)
+        {
+            OnItemHighlight(item);
+        }
+        else
+        {
+            Debug.Log("OnItemHighlight is Null");
         }
     }
 }
