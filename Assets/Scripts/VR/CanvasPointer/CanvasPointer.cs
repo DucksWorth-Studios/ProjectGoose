@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Valve.VR;
 
 /// <summary>
 /// Author: Cameron Scholes & VR With Andrew
@@ -16,6 +15,7 @@ public class CanvasPointer : MonoBehaviour
     public float defaultLength = 5;
     public GameObject dot;
     public VRCanvasInput inputModule;
+    public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");
     
     private LineRenderer lineRenderer;
     
@@ -26,7 +26,17 @@ public class CanvasPointer : MonoBehaviour
 
     private void Update()
     {
-        UpdateLine();
+        if (startLaser.axis > 0.25f)
+        {
+            lineRenderer.enabled = true;
+            dot.gameObject.SetActive(true);
+            UpdateLine();
+        }
+        else
+        {
+            lineRenderer.enabled = false;
+            dot.gameObject.SetActive(false);
+        }
     }
 
     private void UpdateLine()
@@ -38,7 +48,7 @@ public class CanvasPointer : MonoBehaviour
         // Raycast
         RaycastHit hit = CreateRaycast(targetLength);
 
-        // Default
+        // Default end position
         Vector3 endPosition = transform.position + (transform.forward * targetLength);
 
         // or based on hit
@@ -57,7 +67,7 @@ public class CanvasPointer : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, transform.forward);
-        Physics.Raycast(ray, out hit, defaultLength);
+        Physics.Raycast(ray, out hit, length);
         
         return hit;
     }

@@ -16,7 +16,7 @@ public class VRCanvasInput : BaseInputModule
 {
     public Camera camera;
     public SteamVR_Input_Sources targetSource;
-    public SteamVR_Action_Boolean clickAction;
+    public SteamVR_Action_Boolean clickAction = SteamVR_Input.GetBooleanAction("PullObject");
 
     private GameObject currentObject;
     private PointerEventData pointerData;
