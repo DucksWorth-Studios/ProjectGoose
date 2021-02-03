@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Valve.VR;
 
+/// <summary>
+/// Author: Cameron Scholes & VR With Andrew
+///
+/// Input Module that uses graphics raycasting to interact with a canvas
+/// 
+/// Resource: https://www.youtube.com/watch?v=vNqHRD4sqPc
+/// </summary>
+
 public class VRCanvasInput : BaseInputModule
 {
     public Camera camera;

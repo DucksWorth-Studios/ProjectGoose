@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Author: Cameron Scholes & VR With Andrew
+///
+/// Script to update physical pointer
+/// 
+/// Resource: https://www.youtube.com/watch?v=vNqHRD4sqPc
+/// </summary>
+
 public class CanvasPointer : MonoBehaviour
 {
     public float defaultLength = 5;

@@ -2,6 +2,14 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Cameron Scholes & VR With Andrew
+///
+/// Replaces Unity button script with quick colour changes
+/// 
+/// Resource: https://www.youtube.com/watch?v=vNqHRD4sqPc
+/// </summary>
+
 public class ButtonTransitioner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                                     IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
