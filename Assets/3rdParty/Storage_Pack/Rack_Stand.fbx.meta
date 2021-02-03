@@ -3,7 +3,17 @@ guid: c62905e4ebd478a478ff083bd499835e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rack_Stands
+    second: {fileID: 2100000, guid: d701ef2701c837d4691ac024fd8e87fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Storage_Metal
+    second: {fileID: 2100000, guid: d701ef2701c837d4691ac024fd8e87fd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
