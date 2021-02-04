@@ -8,7 +8,9 @@ using UnityEngine;
 /// </summary>
 public class NegatorSender : MonoBehaviour
 {
+    [Tooltip("The Reciever Object")]
     public GameObject reciever;
+
     private Vector3 positionDifference;
     private GameObject objectInZone;
     private int entityCount = 0;
@@ -27,20 +29,23 @@ public class NegatorSender : MonoBehaviour
           recieverPos.x - senderPos.x,
           recieverPos.y - senderPos.y,
           recieverPos.z - senderPos.z);
-        EventManager.instance.OnNegatorItemJump += SendObject;
+        EventManager.instance.OnButtonPress += SendObject;
     }
 
     //Send to the reciever via the difference
-    private void SendObject()
+    private void SendObject(ButtonEnum buttonEnum)
     {
-        bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
-        if(objectInZone != null && entityCount == 1 && isRecieverReady)
+        if(buttonEnum == ButtonEnum.NEGATOR)
         {
-            objectInZone.transform.position += positionDifference;
-        }
-        else
-        {
-            EventManager.instance.PlayOneSound(Sound.ItemTeleport, true);
+            bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
+            if (objectInZone != null && entityCount == 1 && isRecieverReady)
+            {
+                objectInZone.transform.position += positionDifference;
+            }
+            else
+            {
+                EventManager.instance.PlayOneSound(Sound.ItemTeleport, true);
+            }
         }
     }
 
