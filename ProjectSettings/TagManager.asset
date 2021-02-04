@@ -12,6 +12,7 @@ TagManager:
   - Vial
   - RightHand
   - PersistantCloud
+  - Element
   layers:
   - Default
   - TransparentFX

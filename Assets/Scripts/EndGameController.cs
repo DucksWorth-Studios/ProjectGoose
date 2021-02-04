@@ -38,6 +38,7 @@ public class EndGameController : MonoBehaviour
     private IEnumerator GameOverGood()
     {
         EventManager.instance.Fade(true);
+        VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         yield return new WaitForSeconds(6);
         VRplayer.transform.position = goodPosition.transform.position;
         EventManager.instance.Fade(false);
@@ -46,6 +47,7 @@ public class EndGameController : MonoBehaviour
     private IEnumerator GameOverBad()
     {
         EventManager.instance.Fade(true);
+        VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         yield return new WaitForSeconds(6);
         VRplayer.transform.position = badPosition.transform.position;
         EventManager.instance.Fade(false);
@@ -55,9 +57,9 @@ public class EndGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.O))
-        //{
-        //    EventManager.instance.WinGame();
-        //}
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            EventManager.instance.WinGame();
+        }
     }
 }
