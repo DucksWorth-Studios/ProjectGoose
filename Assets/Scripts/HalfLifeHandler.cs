@@ -39,10 +39,10 @@ public class HalfLifeHandler : MonoBehaviour
 
     private void LockObjects()
     {
-        if(IsDone)
+        if(!IsDone)
         {
-            lidZone.GetComponent<ItemHolder>().SetInteractable();
-            elementZone.GetComponent<ItemHolder>().SetInteractable();
+            lidZone.GetComponent<ItemHolder>().LockInteractable();
+            elementZone.GetComponent<ItemHolder>().LockInteractable();
             lockIndicator.color = new Color(1, 0, 0);
         }
     }
