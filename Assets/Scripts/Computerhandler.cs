@@ -32,7 +32,6 @@ public class Computerhandler : MonoBehaviour
             loadingScreen.gameObject.SetActive(true);
             //SOUND
             EventManager.instance.PlaySound(Sound.USB);
-            print("USB LOAD");
         }
     }
 
@@ -53,8 +52,9 @@ public class Computerhandler : MonoBehaviour
     {
         loadingScreen.gameObject.SetActive(false);
         instructions.gameObject.SetActive(true);
-        
         //SOUND
+        EventManager.instance.Progress(STAGE.USBPLUGGED);
+        EventManager.instance.PlaySound(Sound.USB);
     }
     void Update()
     {
