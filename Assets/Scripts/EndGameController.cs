@@ -48,6 +48,7 @@ public class EndGameController : MonoBehaviour
     {
         EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
+        VRplayer.GetComponent<SmokeRing>().enabled = false;
         yield return new WaitForSeconds(6);
         VRplayer.transform.position = badPosition.transform.position;
         EventManager.instance.Fade(false);

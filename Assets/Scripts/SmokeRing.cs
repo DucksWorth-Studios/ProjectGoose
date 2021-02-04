@@ -32,6 +32,7 @@ public class SmokeRing : MonoBehaviour
         initialSpawnLimit = spawnLimit;
         initialSpawnRadius = spawnRadius;
         EventManager.instance.OnTimeJump += UpdateSmokeEffect;
+        EventManager.instance.OnLoseGame += Destroy;
     }
 
     private void UpdateSmokeEffect()
