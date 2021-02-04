@@ -30,11 +30,21 @@ public class HalfLifeHandler : MonoBehaviour
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
-    private void unLockObjects()
+    private void UnLockObjects()
     {
         lidZone.GetComponent<ItemHolder>().SetInteractable();
         elementZone.GetComponent<ItemHolder>().SetInteractable();
         lockIndicator.color = new Color(0,1,0);
+    }
+
+    private void LockObjects()
+    {
+        if(IsDone)
+        {
+            lidZone.GetComponent<ItemHolder>().SetInteractable();
+            elementZone.GetComponent<ItemHolder>().SetInteractable();
+            lockIndicator.color = new Color(1, 0, 0);
+        }
     }
 
     //If going in direction either half or double the amount
@@ -73,7 +83,11 @@ public class HalfLifeHandler : MonoBehaviour
     {
         if(amountOfElement == amountToGet)
         {
-            unLockObjects();
+            UnLockObjects();
+        }
+        else
+        {
+            LockObjects();
         }
     }
 
@@ -85,7 +99,7 @@ public class HalfLifeHandler : MonoBehaviour
             if(!lidZone.GetComponent<ItemHolder>().isHolding)
             {
                 textbox.text = "0";
-                IsDone = false;
+                IsDone = true;
             }
         }
     }

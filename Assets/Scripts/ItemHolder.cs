@@ -19,9 +19,13 @@ public class ItemHolder : MonoBehaviour
         //Set to SnapZones
         KeepObjectInZone();
         //Set as not interactable not currently working
-        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = false;
+        LockInteractable();
     }
-
+    public void LockInteractable()
+    {
+        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = false;
+        keepHolding = true;
+    }
     //Allow Pickup
     public void SetInteractable()
     {
