@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public enum ButtonEnum { CLOUDREMOVE };
+public enum ButtonEnum { CLOUDREMOVE,NEGATOR };
 /// <summary>
 /// Author: Tomas
 /// Reusable Button Script. Defining the event that will be called via en um makes script reusable

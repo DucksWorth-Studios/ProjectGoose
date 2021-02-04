@@ -69,16 +69,19 @@ public class ProgressionManager : MonoBehaviour
     private void FirstReturn()
     {
         narrationManager.NarrationCall(SCENE.THREE);
+        EventManager.instance.HighlightItem(KEY.USB);
     }
 
     private void USB()
     {
         narrationManager.NarrationCall(SCENE.FOUR);
+        EventManager.instance.HighlightItem(KEY.USBSLOT);
     }
 
     private void USBPlugged()
     {
         narrationManager.NarrationCall(SCENE.FIVE);
+        EventManager.instance.HighlightItem(KEY.CHEMICAL);
     }
 
     private void ChemicalPuzzle()
@@ -125,15 +128,10 @@ public class ProgressionManager : MonoBehaviour
 
     private IEnumerator StartUp()
     {
-        print("Here");
-        
         Valve.VR.SteamVR_Fade.View(Color.black, 0f);
         yield return new WaitForSeconds(0.000000001f);
         EventManager.instance.Fade(false);
         yield return new WaitForSeconds(2);
-        
-        
         Progress(STAGE.START);
-        
     }
 }

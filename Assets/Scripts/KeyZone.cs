@@ -50,7 +50,7 @@ public class KeyZone : MonoBehaviour
     {
         if(IsHighlighted)
         {
-
+            TurnOFFHighLight();
         }
     }
 }
