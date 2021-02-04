@@ -7,15 +7,15 @@ public class LightingController : MonoBehaviour
     [Tooltip("An array of lights that can flash at random points")]
     public Light[] lights;
 
-    private bool canExecute = false;
+    public bool canExecute = false;
     private bool isFlashing = false;
 
     private float startTime;
 
     private float nextPlayTime;
 
-    private Color originalColor;
-    private float originalIntensity;
+    public Color originalColor;
+    public float originalIntensity;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,7 @@ public class LightingController : MonoBehaviour
         if(canExecute)//Player is in the decayed dimension
         {
             if (isFlashing) return; // a light is already active
-            else(startTime + nextPlayTime <= Time.time)
+            else if(startTime + nextPlayTime <= Time.time || startTime == 0)
             {
                 startTime = Time.time;
                 isFlashing = true;
@@ -42,21 +42,25 @@ public class LightingController : MonoBehaviour
 
     private IEnumerator FlashLight(Light lightToFlash)
     {
-        originalColor = lightToFlash.color;
-        originalIntensity = lightToFlash.intensity;
-
         lightToFlash.color = Color.white;
         lightToFlash.intensity = 5;
 
         while(isFlashing)
         {
-            if (Time.time - startTime > 1.5f) isFlashing = false;
-
             yield return new WaitForSeconds(Random.Range(0.25f, 0.75f));
+
+            if (Time.time - startTime > 1.5f)
+            {
+                lightToFlash.enabled = true;
+                lightToFlash.color = originalColor;
+                lightToFlash.intensity = originalIntensity;
+
+                startTime = Time.time;
+                nextPlayTime = Random.Range(2.5f, 6f); // Next light will flash between 2.5 and 6 seconds
+                isFlashing = false;
+            }
+
             lightToFlash.enabled = !lightToFlash.enabled;
         }
-
-        lightToFlash.color = originalColor;
-        lightToFlash.intensity = originalIntensity;
     }
 }
