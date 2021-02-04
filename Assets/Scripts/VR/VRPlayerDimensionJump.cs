@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Valve.VR;
 
 /// <summary>
@@ -37,12 +38,16 @@ public class VRPlayerDimensionJump : MonoBehaviour
     void Update()
     {
         if (dimensionJumpAction.stateDown)
-            DimensionJump();
+            StartCoroutine(DimensionJump());
     }
 
     // Move the player up or down depending on the dimension they are in
-    public void DimensionJump()
+    public IEnumerator DimensionJump()
     {
+        EventManager.instance.TimeJumpButton();
+
+        yield return new WaitForSeconds(0.5f);
+
         EventManager.instance.TimeJump();
         EventManager.instance.PlaySound(Sound.Teleport);
         if (!upSideDown) {
