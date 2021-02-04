@@ -20,6 +20,7 @@ public class EventManager : MonoBehaviour
     public event Action OnTestEventCall;
     public event Action<Color> OnTestEventCallParam;
     public event Action OnTimeJump;
+    public event Action OnTimeJumpButtonPressed;
     public event Action OnNegatorItemJump;
     public event Action<Sound> OnPlaySound;
     public event Action<Sound> OnStopSound;
@@ -62,6 +63,11 @@ public class EventManager : MonoBehaviour
     public void TimeJump()
     {
         OnTimeJump?.Invoke();
+    }
+
+    public void TimeJumpButton()
+    {
+        OnTimeJumpButtonPressed?.Invoke();
     }
 
     public void NegatorItemJump()
