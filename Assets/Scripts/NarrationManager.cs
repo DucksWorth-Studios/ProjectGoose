@@ -31,6 +31,7 @@ public class NarrationManager : MonoBehaviour
     {
         activeNarration = GetComponent<AudioSource>();
         //EventManager.instance.OnTimeJump += JumpInteference;
+        EventManager.instance.OnLoseGame += StopScene;
     }
 
     //Switch is sued to define what scene will be played.
