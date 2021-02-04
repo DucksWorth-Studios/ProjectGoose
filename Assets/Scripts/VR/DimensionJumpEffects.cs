@@ -15,7 +15,7 @@ public class DimensionJumpEffects : MonoBehaviour
     private VisualEffect jumpEffect;
 
     [Tooltip("The amount of time the effect should play for")]
-    private float effectPlayTime = 2f;
+    private float effectPlayTime = 1f;
     #endregion
 
     // Start is called before the first frame update
@@ -81,6 +81,6 @@ public class DimensionJumpEffects : MonoBehaviour
 
         yield return new WaitForSeconds(effectPlayTime);
 
-        jumpEffect.Stop();
+        jumpEffect.SendEvent("OnStopParticle");
     }
 }
