@@ -1,24 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using Valve.VR;
 
 public class DimensionJumpEffects : MonoBehaviour
 {
+    #region Variables
+    //Camera Fade
     private Color fadeColor = Color.black;
     private float fadeDuration = 0.5f;
+
+    //VFX variables
+    private VisualEffect jumpEffect;
+
+    [Tooltip("The amount of time the effect should play for")]
+    private float effectPlayTime = 2f;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.instance.OnTimeJumpButtonPressed += StartCameraFade;
-        EventManager.instance.OnTimeJump += StartVFX;
+        jumpEffect = GetComponent<VisualEffect>();
+
+        if (jumpEffect != null)
+            jumpEffect.Stop();
+
+        //Event Subscription
+        EventManager.instance.OnTimeJumpButtonPressed += CallCameraFade;
+        EventManager.instance.OnTimeJump += CallVFX;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void CallCameraFade()
+    {
+        StartCoroutine(StartCameraFade());
     }
 
     /// <summary>
@@ -42,8 +63,24 @@ public class DimensionJumpEffects : MonoBehaviour
         SteamVR_Fade.View(Color.clear, fadeDuration);
     }
 
-    private void StartVFX()
+    /// <summary>
+    /// Calls the IEnumerator function StartVFX
+    /// </summary>
+    private void CallVFX()
     {
+        StartCoroutine(StartVFX());
+    }
 
+    /// <summary>
+    /// Starts the VFX after the player has completed the dimension jump
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator StartVFX()
+    {
+        jumpEffect.SendEvent("OnStartPlay");
+
+        yield return new WaitForSeconds(effectPlayTime);
+
+        jumpEffect.Stop();
     }
 }
