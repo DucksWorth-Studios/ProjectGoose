@@ -16,8 +16,8 @@ public class CompositionManager : MonoBehaviour
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
-    private bool ISComposition = false;
-    private bool HasElement = false;
+    public bool ISComposition = false;
+    public bool HasElement = false;
     public bool debugHold = false;
     private void Start()
     {
@@ -85,12 +85,13 @@ public class CompositionManager : MonoBehaviour
             //Recreate the Color
             Color changedColor = Color.HSVToRGB(hue, saturation, brightness);
             
-            //Detect if we got the mixture
-            detectIfWithinWinBounds();
+            
 
             //Set as current
             currentMaterial.color = changedColor;
             currentColor = changedColor;
+            //Detect if we got the mixture
+            detectIfWithinWinBounds();
         }
     }
 
@@ -140,22 +141,11 @@ public class CompositionManager : MonoBehaviour
         otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Element" && ISComposition)
-        {
-            HasElement = true;
-            //Send Event 
-
-            //Get rid of Object
-            Destroy(collision.gameObject);
-        }
-    }
-
     public void IsPerfectCompositionDrunk()
     {
         if(ISComposition && HasElement)
         {
+            EventManager.instance.Progress(STAGE.END);
             EventManager.instance.WinGame();
         }
     }
