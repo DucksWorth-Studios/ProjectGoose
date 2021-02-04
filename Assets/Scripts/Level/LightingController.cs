@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Andrew Carolan
+/// Will choose a light at random and make it flicker
+/// </summary>
 public class LightingController : MonoBehaviour
 {
     [Tooltip("An array of lights that can flash at random points")]
@@ -40,6 +44,11 @@ public class LightingController : MonoBehaviour
     private void Activate()
         => canExecute = true;
 
+    /// <summary>
+    /// Will make the light flicker at random intervals before stopping
+    /// </summary>
+    /// <param name="lightToFlash"></param>
+    /// <returns></returns>
     private IEnumerator FlashLight(Light lightToFlash)
     {
         lightToFlash.color = Color.white;
