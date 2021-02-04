@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.VFX;
 using Valve.VR;
 
+/// <summary>
+/// Author: Andrew Carolan
+/// Controls the camera fade and VFX for when the player uses the dimension jump
+/// </summary>
 public class DimensionJumpEffects : MonoBehaviour
 {
     #region Variables
