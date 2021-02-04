@@ -333,7 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2792bf6fa366c4f9f3a93ebfe21e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenPrefab: {fileID: 0}
+  brokenPrefab: {fileID: 1017807481779938695, guid: 0cf1bbd85d26a974382b92211808c220,
+    type: 3}
   breakingVelocity: 2
   isShatterable: 1
   clip: {fileID: 0}

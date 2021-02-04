@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2792bf6fa366c4f9f3a93ebfe21e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenPrefab: {fileID: 4407770633316376990, guid: 6ba74eb132cbff44691baf1b8ef62ec8,
+  brokenPrefab: {fileID: 1177063011478040944, guid: 6ba74eb132cbff44691baf1b8ef62ec8,
     type: 3}
   breakingVelocity: 10
   isShatterable: 0
