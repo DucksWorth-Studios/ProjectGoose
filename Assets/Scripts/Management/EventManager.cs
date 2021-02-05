@@ -42,7 +42,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("testEventCall is Null");
+            Debug.LogError("testEventCall is Null");
         }
     }
 
@@ -55,7 +55,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("testEventCallParam is Null");
+            Debug.LogError("testEventCallParam is Null");
         }
     }
 
@@ -78,7 +78,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Time Jump is Null");
+            Debug.LogError("Time Jump is Null");
         }
     }
 
@@ -91,7 +91,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("PlaySound is Null");
+            Debug.LogError("PlaySound is Null");
         }
     }
 
@@ -104,7 +104,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnStopSound is Null");
+            Debug.LogError("OnStopSound is Null");
         }
     }
 
@@ -116,7 +116,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("LoseGame is Null");
+            Debug.LogError("LoseGame is Null");
         }
     }
 
@@ -128,7 +128,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("WinGame is Null");
+            Debug.LogError("WinGame is Null");
         }
     }
 
@@ -140,7 +140,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnButtonPress is Null");
+            Debug.LogError("OnButtonPress is Null");
         }
     }
 
@@ -152,7 +152,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnItemSnap is Null");
+            Debug.LogError("OnItemSnap is Null");
         }
     }
 
@@ -164,7 +164,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnPlayOneSound is Null");
+            Debug.LogError("OnPlayOneSound is Null");
         }
     }
 
@@ -176,7 +176,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnProgress is Null");
+            Debug.LogError("OnProgress is Null");
         }
     }
 
@@ -188,7 +188,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnFadeScreen is Null");
+            Debug.LogError("OnFadeScreen is Null");
         }
     }
 
@@ -200,7 +200,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnItemHighlight is Null");
+            Debug.LogError("OnItemHighlight is Null");
         }
     }
 }

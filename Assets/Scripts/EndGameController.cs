@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 /// <summary>
 /// Author: Tomas
 /// Controls Players endgame. Changes the position to one of two small rooms.
@@ -13,11 +14,11 @@ public class EndGameController : MonoBehaviour
     public GameObject badPosition;
     [Tooltip("Object for Win Position")]
     public GameObject goodPosition;
-    [Tooltip("The Player")]
-    public GameObject VRplayer;
+    private GameObject VRplayer;
 
     void Start()
     {
+        VRplayer = Player.instance.gameObject;
         EventManager.instance.OnLoseGame += LoseGameEvent;
         EventManager.instance.OnWinGame += WinGameEvent;
     }
@@ -37,21 +38,21 @@ public class EndGameController : MonoBehaviour
     /// <returns></returns>
     private IEnumerator GameOverGood()
     {
-        EventManager.instance.Fade(true);
+        //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         yield return new WaitForSeconds(6);
         VRplayer.transform.position = goodPosition.transform.position;
-        EventManager.instance.Fade(false);
+        //EventManager.instance.Fade(false);
     }
 
     private IEnumerator GameOverBad()
     {
-        EventManager.instance.Fade(true);
+        //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         VRplayer.GetComponent<SmokeRing>().enabled = false;
         yield return new WaitForSeconds(6);
         VRplayer.transform.position = badPosition.transform.position;
-        EventManager.instance.Fade(false);
+        //EventManager.instance.Fade(false);
 
     }
     //Debug for testing

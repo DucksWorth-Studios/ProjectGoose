@@ -18,7 +18,7 @@ public class ProgressionManager : MonoBehaviour
         EventManager.instance.OnTimeJump += JumpTrack;
         EventManager.instance.OnProgress += Progress;
         Valve.VR.SteamVR_Fade.View(Color.black, 0);
-        StartCoroutine(StartUp());
+        //StartCoroutine(StartUp());
     }
 
     //Outside forces dictate what stage it is at.
