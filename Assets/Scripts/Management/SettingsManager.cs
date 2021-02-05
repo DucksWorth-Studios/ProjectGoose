@@ -16,15 +16,23 @@ public class SettingsManager : MonoBehaviour
 {
     private static SettingsData settingsData;
     
+    [Header("Dropdowns")]
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
     public TMP_Dropdown shadowQualityDropdown;
     public TMP_Dropdown anisotropicFilteringDropdown;
+    
+    [Header("Sliders")]
     public Slider antiAliasingSlider;
     public Slider shadowDistanceSlider;
+    
+    [Header("Text")]
     public TextMeshProUGUI antiAliasingText;
     public TextMeshProUGUI shadowDistanceText;
     public TextMeshProUGUI saveText;
+
+    [Header("Other Menus")] 
+    public GameObject startMenu;
     
     private int currentResolution;
     private string settingsFile = "Settings.dat";
@@ -153,6 +161,7 @@ public class SettingsManager : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        startMenu.gameObject.SetActive(true);
     }
 
     List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
