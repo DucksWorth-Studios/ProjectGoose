@@ -1,11 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+/// <summary>
+/// Author: Cameron Scholes
+/// Manager to make VR player changes on scene cchange
+/// </summary>
 
 public class LevelSwitchManager : MonoBehaviour
 {
     private string lastScene;
+    private VRPlayerDimensionJump dimensionJump;
+
+    void Start()
+    {
+        dimensionJump = GetComponent<VRPlayerDimensionJump>();
+    }
     
     void Update()
     {
@@ -25,6 +34,7 @@ public class LevelSwitchManager : MonoBehaviour
         {
             transform.position = new Vector3(0.096f, 0.542f, 4.526f);
             transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1f);
+            dimensionJump.teleportPoints = TeleportPoint.points;
         }
     }
 }
