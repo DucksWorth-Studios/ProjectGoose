@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb423a24fda7743b3a6ae38758e927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagToSearchFor: TestTubes
+  tagToSearchFor: TestTube
   rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &680523875978628788
 GameObject:
@@ -620,7 +620,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   restoreOriginalParent: 0
-  awakeEnableGravity: 0
+  awakeEnableGravity: 1
   detatchEnableGravity: 1
   onPickUp:
     m_PersistentCalls:
