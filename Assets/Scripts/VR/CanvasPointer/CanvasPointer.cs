@@ -12,6 +12,8 @@ using Valve.VR;
 
 public class CanvasPointer : MonoBehaviour
 {
+    public static Camera eventCamera;
+    
     public float defaultLength = 5;
     public GameObject dot;
     public VRCanvasInput inputModule;
@@ -22,6 +24,7 @@ public class CanvasPointer : MonoBehaviour
     private void Awake() 
     {
         lineRenderer = GetComponent<LineRenderer>();
+        eventCamera = GetComponent<Camera>();
     }
 
     private void Update()
