@@ -32,9 +32,12 @@ public class HalfLifeHandler : MonoBehaviour
     //Unlock Object If Meet Criteria Set Indicator to Green
     private void UnLockObjects()
     {
-        lidZone.GetComponent<ItemHolder>().SetInteractable();
-        elementZone.GetComponent<ItemHolder>().SetInteractable();
-        lockIndicator.color = new Color(0,1,0);
+        if(!IsDone)
+        {
+            lidZone.GetComponent<ItemHolder>().SetInteractable();
+            elementZone.GetComponent<ItemHolder>().SetInteractable();
+            lockIndicator.color = new Color(0, 1, 0);
+        }
     }
 
     private void LockObjects()
