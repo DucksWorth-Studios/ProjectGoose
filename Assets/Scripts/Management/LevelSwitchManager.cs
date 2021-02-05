@@ -42,6 +42,7 @@ public class LevelSwitchManager : MonoBehaviour
     // Changes to apply when in LabCompound scene
     private void InLab()
     {
+        EventManager.instance.Progress(STAGE.START);
         transform.position = new Vector3(0.096f, 0.542f, 4.526f);
         transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1f);
         dimensionJump.teleportPoints = TeleportPoint.points;
