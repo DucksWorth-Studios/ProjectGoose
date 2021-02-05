@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 947374503972506684}
   - component: {fileID: 2533392456053211645}
   - component: {fileID: 8521962807084461959}
-  - component: {fileID: -8910896657171560974}
-  - component: {fileID: 419795104366622539}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Vial
@@ -210,37 +208,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &-8910896657171560974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586371660606939060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &419795104366622539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586371660606939060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121dc06f5005b894ab4cb2c810633cf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToListen: 0
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc207b89988c86e49a9cc59cb39e55e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentColor: {r: 0.062745094, g: 1, b: 0.9727492, a: 1}
+  currentColor: {r: 0.986, g: 0.17030083, b: 0.40435818, a: 1}
   puffEffect: {fileID: 8979454299987645689}
   cloud: {fileID: 6098020013189580256, guid: 2ea7110b62749d348981fb5a02e51908, type: 3}
   ISComposition: 0
