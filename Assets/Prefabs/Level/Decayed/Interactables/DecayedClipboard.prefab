@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenPrefab: {fileID: 1177063011478040944, guid: 6ba74eb132cbff44691baf1b8ef62ec8,
     type: 3}
-  breakingVelocity: 10
+  breakingVelocity: 7
   isShatterable: 0
   clip: {fileID: 0}
 --- !u!1 &7921749573663359902
@@ -333,8 +333,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5bab1eddfa21a384eb69399763dc33db, type: 2}
-  - {fileID: 2100000, guid: 6c48d1386ce4bc84fbd640916d41490a, type: 2}
+  - {fileID: 2100000, guid: 91aa645e4fa5e0747b1687836544de32, type: 2}
+  - {fileID: 2100000, guid: 91aa645e4fa5e0747b1687836544de32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
