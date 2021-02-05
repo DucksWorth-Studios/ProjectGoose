@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be9571738f46674e8a15e1a336a9e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 2573672161239932901}
   targetSource: 2
   clickAction:
     actionPath: /actions/default/in/PullObject
@@ -1223,6 +1223,7 @@ GameObject:
   - component: {fileID: 114000010591715100}
   - component: {fileID: 1128167261716872123}
   - component: {fileID: 8387629984046442996}
+  - component: {fileID: 4093168386175917390}
   m_Layer: 8
   m_Name: RightHand
   m_TagString: Untagged
@@ -1479,6 +1480,20 @@ MonoBehaviour:
     actionPath: /actions/default/in/PullObject
     needsReinit: 0
   defaultLength: 3
+--- !u!114 &4093168386175917390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4352e52d95422846bda6b6a7639933d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerState: 1
+  canvasPointer: {fileID: 3508060379081353121}
 --- !u!1 &165334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultLength: 5
   dot: {fileID: 340656973719361643}
-  inputModule: {fileID: 0}
+  inputModule: {fileID: 1825629180164937053}
   startLaser:
     actionPath: /actions/default/in/StartLaser
     needsReinit: 0
