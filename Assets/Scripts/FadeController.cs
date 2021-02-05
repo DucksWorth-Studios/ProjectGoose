@@ -15,7 +15,6 @@ public class FadeController : MonoBehaviour
     }
     void Start()
     {
-        
         EventManager.instance.OnFadeScreen += FadeEvent;
     }
 

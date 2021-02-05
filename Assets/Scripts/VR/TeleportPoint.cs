@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Author: Cameron Scholes
+/// Holds references to teleport points
+/// </summary>
 
 public class TeleportPoint : MonoBehaviour
 {
-    public static int noOfPoints = 5;
-    public static int count = 0;
+    private static int noOfPoints = 5;
+    private static int count = 0;
     public static GameObject[] points;
     
     void Start()
