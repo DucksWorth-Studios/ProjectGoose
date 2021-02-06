@@ -33,6 +33,7 @@ public class SettingsManager : MonoBehaviour
 
     [Header("Other Menus")] 
     public GameObject startMenu;
+    public GameObject optionsMenu;
     
     private int currentResolution;
     private string settingsFile = "Settings.dat";
@@ -160,7 +161,7 @@ public class SettingsManager : MonoBehaviour
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        optionsMenu.gameObject.SetActive(false);
         startMenu.gameObject.SetActive(true);
     }
 
