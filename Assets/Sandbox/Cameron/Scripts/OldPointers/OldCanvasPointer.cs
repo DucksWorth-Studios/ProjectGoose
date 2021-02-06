@@ -10,7 +10,7 @@ using Valve.VR.InteractionSystem;
 /// </summary>
 
 [RequireComponent(typeof(LineRenderer))]
-public class CanvasPointer : MonoBehaviour
+public class OldCanvasPointer : MonoBehaviour
 {
     // Single is the name Vector1
     public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");

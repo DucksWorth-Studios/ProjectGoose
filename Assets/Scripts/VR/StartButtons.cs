@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class StartButtons : MonoBehaviour
 {
+    public GameObject startMenu;
+    public GameObject optionsMenu;
+    
     public void StartBtn()
     {
         SceneManager.LoadScene("Loading");
@@ -15,7 +18,8 @@ public class StartButtons : MonoBehaviour
 
     public void OptionsBtn()
     {
-        throw new System.NotImplementedException();
+        optionsMenu.SetActive(true);
+        startMenu.gameObject.SetActive(false);
     }
 
     public void QuitBtn()
