@@ -13,19 +13,25 @@ using UnityEngine.UI;
 
 public class ComfortManager : MonoBehaviour
 {
+    [Header("Movement Speed")]
     public Slider speedSlider;
     public TextMeshProUGUI speedValue;
     
+    [Header("Teleport")]
     public TMP_Dropdown enableTPDropdown;
     public Slider tpDurationSlider;
     public TextMeshProUGUI tpDurationText;
     
+    [Header("Snap Turn")]
     public TMP_Dropdown enableSTDropdown;
     public Slider stDurationSlider;
     public TextMeshProUGUI stDurationText;
     
+    [Header("Other")]
     public TextMeshProUGUI saveText;
-
+    public GameObject startMenu;
+    public GameObject optionsMenu;
+    
     public static ComfortSettingsData settingsData;
     private string settingsFile = "ComfortSettings.dat";
 
@@ -67,7 +73,8 @@ public class ComfortManager : MonoBehaviour
     
     public void Close()
     {
-        gameObject.SetActive(false);
+        optionsMenu.gameObject.SetActive(false);
+        startMenu.gameObject.SetActive(true);
     }
 
     #region Events

@@ -9,11 +9,13 @@ public class SettingsSwitcher : MonoBehaviour
 
     public void ToggleVideoSettings()
     {
-        videoSettings.SetActive(!videoSettings.activeSelf);
+        videoSettings.SetActive(true);
+        comfortSettings.SetActive(false);
     }
 
     public void ToggleComfortSettings()
     {
-        comfortSettings.SetActive(!comfortSettings.activeSelf);
+        videoSettings.SetActive(false);
+        comfortSettings.SetActive(true);
     }
 }
