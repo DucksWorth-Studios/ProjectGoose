@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: b959c8d1ebdfa874cbf3eef91f69f0b9
+guid: 4a50487c2ea609c48af616dc243688f4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Keycard_5Mat
-    second: {fileID: 2100000, guid: 45527066da993084988465484f804338, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +35,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
