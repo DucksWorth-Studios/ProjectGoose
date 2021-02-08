@@ -40,8 +40,6 @@ public class EventManager : MonoBehaviour
     public event Action OnDisablePointer;
     public event Action OnSetPhysicsPointer;
     public event Action OnSetUIPointer;
-    // public event Action OnDisableAllInput;
-    // public event Action<PointerState> OnEnableAllInput;
     
     //This is a model for an event
     public void TestEventCall()
@@ -250,14 +248,31 @@ public class EventManager : MonoBehaviour
         OnSetUIPointer?.Invoke();
     }
 
-    // public virtual void DisableAllInput()
-    // {
-    //     OnDisableAllInput?.Invoke();
-    // }
-    //
-    // public virtual void EnableAllInput(PointerState state)
-    // {
-    //     OnEnableAllInput?.Invoke(state);
-    // }
+    public virtual void DisableAllInput()
+    {
+        DisableMovement();
+        DisableJumping();
+        DisablePointer();
+    }
+    
+    public virtual void EnableAllInput(PointerState state = PointerState.Disabled)
+    {
+        //TODO: Change to enable physics by default
+        EnableMovement();
+        EnableJumping();
+
+        switch (state)
+        {
+            case PointerState.PhysicsPointer:
+                SetPhysicsPointer();
+                break;
+            case PointerState.CanvasPointer:
+                SetUIPointer();
+                break;
+            default:
+                DisablePointer();
+                break;
+        }
+    }
 }
 

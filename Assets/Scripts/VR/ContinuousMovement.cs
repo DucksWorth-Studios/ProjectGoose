@@ -19,7 +19,7 @@ public class ContinuousMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         
-        EventManager.instance.OnTimeJump += trackPosition;
+        EventManager.instance.OnTimeJump += TrackPosition;
         EventManager.instance.OnEnableMovement += EnableMovement;
         EventManager.instance.OnDisableMovement += DisableMovement;
         
@@ -27,13 +27,10 @@ public class ContinuousMovement : MonoBehaviour
             Debug.LogError("ContinuousMovement.cs is missing input", this);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (!isEnabled)
-            return;
-        
         // Prevent locomotion interfering with teleportation
-        if (input.axis.magnitude > 0.1f)
+        if (input.axis.magnitude > 0.1f && isEnabled)
         {
             Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(input.axis.x, 0, input.axis.y));
             // First line is movement based on where the headset is. ProjectOnPlane ensures that all movement is horizontal
@@ -41,27 +38,20 @@ public class ContinuousMovement : MonoBehaviour
             characterController.Move(ComfortManager.settingsData.speed * Time.deltaTime * 
                                      Vector3.ProjectOnPlane(direction, Vector3.up) 
                                       - new Vector3(0, 9.81f, 0) * Time.deltaTime);
-            startWalk();
+            StartWalk();
         }
         else
         {
             Vector3 direction = Player.instance.hmdTransform.localPosition;
             characterController.center = new Vector3(direction.x, characterController.center.y, direction.z);
-            stopWalk();
+            StopWalk();
         }
     }
-    private void trackPosition()
+    private void TrackPosition()
     {
-        if(inPast)
-        {
-            inPast = false;
-        }
-        else
-        {
-            inPast = true;
-        }
+        inPast = !inPast;
     }
-    private void startWalk()
+    private void StartWalk()
     {
         if(!walking)
         {
@@ -70,7 +60,7 @@ public class ContinuousMovement : MonoBehaviour
         }
     }
 
-    private void stopWalk()
+    private void StopWalk()
     {
         if (walking)
         {
@@ -82,10 +72,12 @@ public class ContinuousMovement : MonoBehaviour
     private void EnableMovement()
     {
         isEnabled = true;
+        // Debug.LogWarning("Movement enabled by event");
     }
     
     private void DisableMovement()
     {
         isEnabled = false;
+        // Debug.LogWarning("Movement disabled by event");
     }
 }

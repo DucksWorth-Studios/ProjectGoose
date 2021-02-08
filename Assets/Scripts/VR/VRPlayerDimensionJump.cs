@@ -45,7 +45,10 @@ public class VRPlayerDimensionJump : MonoBehaviour
             return;
         
         if (dimensionJumpAction.stateDown)
+        {
+            EventManager.instance.DisableAllInput();
             StartCoroutine(DimensionJump());
+        }
     }
 
     // Move the player up or down depending on the dimension they are in
@@ -64,17 +67,20 @@ public class VRPlayerDimensionJump : MonoBehaviour
             upSideDown = true;
         } else {
             // Teleport to the future
+            Debug.Log("Teleport back to last position", this);
             transform.position = originalLocation;
             upSideDown = false;
         }
+        
+        EventManager.instance.EnableAllInput();
     }
 
     private Vector3 PickRandomPointToJumpTo()
     {
         GameObject point = teleportPoints[Random.Range(0, teleportPoints.Length)];
         
-        Debug.Log("Point: " + point);
-        Debug.Log("Point Transform: " + point.transform.position);
+        // Debug.Log("Point: " + point, this);
+        // Debug.Log("Point Transform: " + point.transform.position, this);
         
         return point.transform.position;
     }
