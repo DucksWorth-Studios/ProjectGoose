@@ -14,6 +14,8 @@ TagManager:
   - PersistantCloud
   - Element
   - TestTube
+  - Negator
+  - Ignore
   layers:
   - Default
   - TransparentFX

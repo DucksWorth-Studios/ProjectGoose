@@ -51,8 +51,11 @@ public class NegatorSender : MonoBehaviour
 
     //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
-    {
-        entityCount++;
+    {   
+        if(other.tag != "Chemical" && other.tag != "Ignore")
+        {
+            entityCount++;
+        }
     }
     //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
@@ -66,21 +69,33 @@ public class NegatorSender : MonoBehaviour
     //if nothing has been set sset it as sendable object. If it is null and there us something there set it as sendable
     private void OnTriggerStay(Collider other)
     {
+        print(other.gameObject.name);
         if(entityCount == 0)
         {
-            objectInZone = other.gameObject;
+            if(other.tag != "Chemical" && other.tag != "Ignore")
+            {
+                objectInZone = other.gameObject;
+            }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
-            objectInZone = other.gameObject;
+            if (other.tag != "Chemical" && other.tag != "Ignore")
+            {
+                objectInZone = other.gameObject;
+            }
         }
     }
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-        //    SendObject();
-        //}
+        print("Entity" + entityCount);
+        if(objectInZone != null)
+        {
+            print(objectInZone.tag);
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SendObject(ButtonEnum.NEGATOR);
+        }
     }
 }
