@@ -52,7 +52,7 @@ public class NegatorSender : MonoBehaviour
     //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
     {   
-        if(other.tag != "Chemical" && other.tag != "Ignore")
+        if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
         {
             entityCount++;
         }
@@ -72,14 +72,14 @@ public class NegatorSender : MonoBehaviour
         print(other.gameObject.name);
         if(entityCount == 0)
         {
-            if(other.tag != "Chemical" && other.tag != "Ignore")
+            if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
             {
                 objectInZone = other.gameObject;
             }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
-            if (other.tag != "Chemical" && other.tag != "Ignore")
+            if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
             {
                 objectInZone = other.gameObject;
             }

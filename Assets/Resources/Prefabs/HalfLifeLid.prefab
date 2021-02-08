@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8230434493379772903}
   m_Layer: 0
   m_Name: Cylinder.001_Cylinder.001_Material.001
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 389328528}
   m_Layer: 0
   m_Name: HalfLifeLid
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
