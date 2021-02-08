@@ -881,6 +881,7 @@ GameObject:
   - component: {fileID: 8630831005354796369}
   - component: {fileID: 5967689951875829413}
   - component: {fileID: 3202479060507075559}
+  - component: {fileID: 1365999116191968585}
   m_Layer: 0
   m_Name: HalfLifeContainer
   m_TagString: Untagged
@@ -1060,6 +1061,19 @@ MonoBehaviour:
   elementZone: {fileID: 8091307711040160625}
   lockIndicator: {fileID: 6669888530853708651}
   textbox: {fileID: 8569770623944748974}
+--- !u!65 &1365999116191968585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659730346352375604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05637563, y: 0.14960682, z: 1}
+  m_Center: {x: 0.44354162, y: 0.2779086, z: 0}
 --- !u!1 &7501820461476386483
 GameObject:
   m_ObjectHideFlags: 0
