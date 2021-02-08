@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZLE, ELEMENTPUZZLE,END };
+public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZLE, ELEMENTPUZZLE,END, USBRETURN };
 public class ProgressionManager : MonoBehaviour
 {
     [Tooltip("Reference To Narration Manager")]
@@ -38,6 +38,9 @@ public class ProgressionManager : MonoBehaviour
                 break;
             case STAGE.USB:
                 USB();
+                break;
+            case STAGE.USBRETURN:
+                USBReturn();
                 break;
             case STAGE.USBPLUGGED:
                 USBPlugged();
@@ -76,6 +79,12 @@ public class ProgressionManager : MonoBehaviour
     {
         narrationManager.NarrationCall(SCENE.FOUR);
         EventManager.instance.HighlightItem(KEY.USBSLOT);
+    }
+
+    private void USBReturn()
+    {
+        narrationManager.NarrationCall(SCENE.FOURP2);
+        //EventManager.instance.HighlightItem(KEY.USBSLOT);
     }
 
     private void USBPlugged()

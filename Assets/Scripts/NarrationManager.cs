@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX };
+public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2 };
 /// <summary>
 /// Author Tomas
 /// This will be used to control narrative scenes. Each scene is a dedicated Audio Queue
@@ -18,6 +18,8 @@ public class NarrationManager : MonoBehaviour
     public AudioQueue sceneThree;
     [Tooltip("Queue For Scene Four")]
     public AudioQueue sceneFour;
+    [Tooltip("Queue For Scene FourP2")]
+    public AudioQueue sceneFourP2;
     [Tooltip("Queue For Scene Five")]
     public AudioQueue sceneFive;
     [Tooltip("Queue For Scene Six")]
@@ -50,6 +52,9 @@ public class NarrationManager : MonoBehaviour
                 break;
             case SCENE.FOUR:
                 PlayScene(sceneFour);
+                break;
+            case SCENE.FOURP2:
+                PlayScene(sceneFourP2);
                 break;
             case SCENE.FIVE:
                 PlayScene(sceneFive);
