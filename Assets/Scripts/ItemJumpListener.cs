@@ -28,6 +28,7 @@ public class ItemJumpListener : MonoBehaviour
         {
             //Send Progress
             ISActive = false;
+            EventManager.instance.Progress(STAGE.USBRETURN);
         }
     }
     // Update is called once per frame
