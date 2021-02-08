@@ -32,6 +32,17 @@ public class EventManager : MonoBehaviour
     public event Action<STAGE> OnProgress;
     public event Action<bool> OnFadeScreen;
     public event Action<KEY> OnItemHighlight;
+
+    public event Action OnDisableMovement;
+    public event Action OnEnableMovement;
+    public event Action OnDisableJumping;
+    public event Action OnEnableJumping;
+    public event Action OnDisablePointer;
+    public event Action OnSetPhysicsPointer;
+    public event Action OnSetUIPointer;
+    // public event Action OnDisableAllInput;
+    // public event Action<PointerState> OnEnableAllInput;
+    
     //This is a model for an event
     public void TestEventCall()
     {
@@ -203,5 +214,50 @@ public class EventManager : MonoBehaviour
             Debug.LogError("OnItemHighlight is Null");
         }
     }
+
+    public virtual void DisableMovement()
+    {
+        OnDisableMovement?.Invoke();
+    }
+
+    public virtual void EnableMovement()
+    {
+        OnEnableMovement?.Invoke();
+    }
+
+    public virtual void DisableJumping()
+    {
+        OnDisableJumping?.Invoke();
+    }
+
+    public virtual void EnableJumping()
+    {
+        OnEnableJumping?.Invoke();
+    }
+
+    public virtual void DisablePointer()
+    {
+        OnDisablePointer?.Invoke();
+    }
+
+    public virtual void SetPhysicsPointer()
+    {
+        OnSetPhysicsPointer?.Invoke();
+    }
+
+    public virtual void SetUIPointer()
+    {
+        OnSetUIPointer?.Invoke();
+    }
+
+    // public virtual void DisableAllInput()
+    // {
+    //     OnDisableAllInput?.Invoke();
+    // }
+    //
+    // public virtual void EnableAllInput(PointerState state)
+    // {
+    //     OnEnableAllInput?.Invoke(state);
+    // }
 }
 

@@ -20,6 +20,11 @@ public class PointerSwitch : MonoBehaviour
         lastState = pointerState;
         physicsLineRender = GetComponent<LineRenderer>();
         physicsLaserPointer = GetComponent<LaserPointer>();
+        
+        EventManager.instance.OnSetPhysicsPointer += SetPhysicsPointer;
+        EventManager.instance.OnSetUIPointer += SetUIPointer;
+        EventManager.instance.OnDisablePointer += DisablePointerState;
+        
         UpdateState();
     }
     
@@ -37,5 +42,20 @@ public class PointerSwitch : MonoBehaviour
         canvasPointer.SetActive(pointerState == PointerState.CanvasPointer);
         physicsLineRender.enabled = pointerState == PointerState.PhysicsPointer;
         physicsLaserPointer.enabled = pointerState == PointerState.PhysicsPointer;
+    }
+    
+    private void SetPhysicsPointer()
+    {
+        pointerState = PointerState.PhysicsPointer;
+    }
+
+    private void SetUIPointer()
+    {
+        pointerState = PointerState.CanvasPointer;
+    }
+
+    private void DisablePointerState()
+    {
+        pointerState = PointerState.Disabled;
     }
 }

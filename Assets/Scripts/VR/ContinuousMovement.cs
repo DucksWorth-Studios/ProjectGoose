@@ -12,17 +12,26 @@ public class ContinuousMovement : MonoBehaviour
     // public float speed = 2.5f;
     private CharacterController characterController;
     private bool walking = false;
-    private bool InPast = true;
+    private bool inPast = true;
+    private bool isEnabled = true;
+    
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        
         EventManager.instance.OnTimeJump += trackPosition;
+        EventManager.instance.OnEnableMovement += EnableMovement;
+        EventManager.instance.OnDisableMovement += DisableMovement;
+        
         if (input == null)
             Debug.LogError("ContinuousMovement.cs is missing input", this);
     }
 
     void FixedUpdate()
     {
+        if (!isEnabled)
+            return;
+        
         // Prevent locomotion interfering with teleportation
         if (input.axis.magnitude > 0.1f)
         {
@@ -43,13 +52,13 @@ public class ContinuousMovement : MonoBehaviour
     }
     private void trackPosition()
     {
-        if(InPast)
+        if(inPast)
         {
-            InPast = false;
+            inPast = false;
         }
         else
         {
-            InPast = true;
+            inPast = true;
         }
     }
     private void startWalk()
@@ -57,7 +66,7 @@ public class ContinuousMovement : MonoBehaviour
         if(!walking)
         {
             walking = true;
-            EventManager.instance.PlayOneSound(Sound.Walk,InPast);
+            EventManager.instance.PlayOneSound(Sound.Walk,inPast);
         }
     }
 
@@ -68,5 +77,15 @@ public class ContinuousMovement : MonoBehaviour
             walking = false;
             EventManager.instance.StopSound(Sound.Walk);
         }
+    }
+    
+    private void EnableMovement()
+    {
+        isEnabled = true;
+    }
+    
+    private void DisableMovement()
+    {
+        isEnabled = false;
     }
 }
