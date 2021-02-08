@@ -52,16 +52,20 @@ public class NegatorSender : MonoBehaviour
     //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
     {   
-        if(other.tag != "Chemical" && other.tag != "Ignore")
+        if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
         {
+            print("Name " + other.gameObject.name);
             entityCount++;
         }
     }
     //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
     {
-        entityCount--;
-        if(other.gameObject == objectInZone)
+        if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        {
+            entityCount--;
+        }
+        if (other.gameObject == objectInZone)
         {
             objectInZone = null;
         }
@@ -69,17 +73,17 @@ public class NegatorSender : MonoBehaviour
     //if nothing has been set sset it as sendable object. If it is null and there us something there set it as sendable
     private void OnTriggerStay(Collider other)
     {
-        print(other.gameObject.name);
+        
         if(entityCount == 0)
         {
-            if(other.tag != "Chemical" && other.tag != "Ignore")
+            if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
             {
                 objectInZone = other.gameObject;
             }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
-            if (other.tag != "Chemical" && other.tag != "Ignore")
+            if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
             {
                 objectInZone = other.gameObject;
             }

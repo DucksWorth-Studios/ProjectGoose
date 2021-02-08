@@ -16,12 +16,18 @@ public class NegatorReciever : MonoBehaviour
     //Anything enters count goes up
     private void OnTriggerEnter(Collider other)
     {
-        entityCount++;
+        if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        {
+            entityCount++;
+        }
     }
     //Anything leaves count goes down
     private void OnTriggerExit(Collider other)
     {
-        entityCount--;
+        if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        {
+            entityCount--;
+        }
     }
     //if is empty count will be zero. You cant go below zero
     public bool isNotOccupied()
