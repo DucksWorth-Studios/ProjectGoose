@@ -38,6 +38,9 @@ public class EndGameController : MonoBehaviour
     /// <returns></returns>
     private IEnumerator GameOverGood()
     {
+        EventManager.instance.DisableAllInput();
+        EventManager.instance.SetUIPointer();
+        
         //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         yield return new WaitForSeconds(6);
@@ -47,6 +50,9 @@ public class EndGameController : MonoBehaviour
 
     private IEnumerator GameOverBad()
     {
+        EventManager.instance.DisableAllInput();
+        EventManager.instance.SetUIPointer();
+        
         //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         VRplayer.GetComponent<SmokeRing>().enabled = false;

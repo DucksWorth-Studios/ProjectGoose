@@ -12,19 +12,25 @@ public class ContinuousMovement : MonoBehaviour
     // public float speed = 2.5f;
     private CharacterController characterController;
     private bool walking = false;
-    private bool InPast = true;
+    private bool inPast = true;
+    private bool isEnabled = true;
+    
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        EventManager.instance.OnTimeJump += trackPosition;
+        
+        EventManager.instance.OnTimeJump += TrackPosition;
+        EventManager.instance.OnEnableMovement += EnableMovement;
+        EventManager.instance.OnDisableMovement += DisableMovement;
+        
         if (input == null)
             Debug.LogError("ContinuousMovement.cs is missing input", this);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Prevent locomotion interfering with teleportation
-        if (input.axis.magnitude > 0.1f)
+        if (input.axis.magnitude > 0.1f && isEnabled)
         {
             Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(input.axis.x, 0, input.axis.y));
             // First line is movement based on where the headset is. ProjectOnPlane ensures that all movement is horizontal
@@ -32,41 +38,46 @@ public class ContinuousMovement : MonoBehaviour
             characterController.Move(ComfortManager.settingsData.speed * Time.deltaTime * 
                                      Vector3.ProjectOnPlane(direction, Vector3.up) 
                                       - new Vector3(0, 9.81f, 0) * Time.deltaTime);
-            startWalk();
+            StartWalk();
         }
         else
         {
             Vector3 direction = Player.instance.hmdTransform.localPosition;
             characterController.center = new Vector3(direction.x, characterController.center.y, direction.z);
-            stopWalk();
+            StopWalk();
         }
     }
-    private void trackPosition()
+    private void TrackPosition()
     {
-        if(InPast)
-        {
-            InPast = false;
-        }
-        else
-        {
-            InPast = true;
-        }
+        inPast = !inPast;
     }
-    private void startWalk()
+    private void StartWalk()
     {
         if(!walking)
         {
             walking = true;
-            EventManager.instance.PlayOneSound(Sound.Walk,InPast);
+            EventManager.instance.PlayOneSound(Sound.Walk,inPast);
         }
     }
 
-    private void stopWalk()
+    private void StopWalk()
     {
         if (walking)
         {
             walking = false;
             EventManager.instance.StopSound(Sound.Walk);
         }
+    }
+    
+    private void EnableMovement()
+    {
+        isEnabled = true;
+        // Debug.LogWarning("Movement enabled by event");
+    }
+    
+    private void DisableMovement()
+    {
+        isEnabled = false;
+        // Debug.LogWarning("Movement disabled by event");
     }
 }

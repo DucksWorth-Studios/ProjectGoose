@@ -12,7 +12,8 @@ public class VRPlayerDimensionJump : MonoBehaviour
 
     [Tooltip("The points the player will be randomly sent to when the teleport to the past")]
     public GameObject[] teleportPoints;
-    
+
+    private bool isEnabled = true;
     private bool upSideDown;
     private Vector3 originalLocation;
 
@@ -33,12 +34,21 @@ public class VRPlayerDimensionJump : MonoBehaviour
         
         if (teleportPoints.Length == 0)
             Debug.LogError("VRPlayerDimensionJump is missing teleport point(s)", this);
+
+        EventManager.instance.OnEnableJumping += EnableJumping;
+        EventManager.instance.OnDisableJumping += DisableJumping;
     }
-    
+
     void Update()
     {
+        if (!isEnabled)
+            return;
+        
         if (dimensionJumpAction.stateDown)
+        {
+            EventManager.instance.DisableAllInput();
             StartCoroutine(DimensionJump());
+        }
     }
 
     // Move the player up or down depending on the dimension they are in
@@ -57,18 +67,31 @@ public class VRPlayerDimensionJump : MonoBehaviour
             upSideDown = true;
         } else {
             // Teleport to the future
+            Debug.Log("Teleport back to last position", this);
             transform.position = originalLocation;
             upSideDown = false;
         }
+        
+        EventManager.instance.EnableAllInput();
     }
 
     private Vector3 PickRandomPointToJumpTo()
     {
         GameObject point = teleportPoints[Random.Range(0, teleportPoints.Length)];
         
-        Debug.Log("Point: " + point);
-        Debug.Log("Point Transform: " + point.transform.position);
+        // Debug.Log("Point: " + point, this);
+        // Debug.Log("Point Transform: " + point.transform.position, this);
         
         return point.transform.position;
+    }
+    
+    private void EnableJumping()
+    {
+        isEnabled = true;
+    }
+    
+    private void DisableJumping()
+    {
+        isEnabled = false;
     }
 }

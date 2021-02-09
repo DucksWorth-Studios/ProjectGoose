@@ -26,15 +26,24 @@ public class LevelSwitchManager : MonoBehaviour
         lastScene = scene;
         print(scene);
 
-        if (scene == "Loading")
+        if (scene == "StartScene")
+            InStart();
+        else if (scene == "Loading")
             InLoading();
         else if (scene == "LabCompound")
             InLab();
     }
 
+    private void InStart()
+    {
+        EventManager.instance.EnableAllInput(PointerState.CanvasPointer);
+        EventManager.instance.DisableJumping();
+    }
+    
     // Changes to apply when in Loading scene
     private void InLoading()
     {
+        EventManager.instance.DisableAllInput();
         transform.position = new Vector3(0, 2, 0);
         transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
     }
@@ -47,5 +56,6 @@ public class LevelSwitchManager : MonoBehaviour
         dimensionJump.teleportPoints = TeleportPoint.points;
         
         EventManager.instance.Progress(STAGE.START);
+        EventManager.instance.EnableAllInput();
     }
 }
