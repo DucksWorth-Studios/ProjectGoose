@@ -17,6 +17,7 @@ public class KeyZone : MonoBehaviour
     void Start()
     {
         outline = GetComponent<Outline>();
+        outline.enabled = false;
         snapZone = GetComponent<SnapZonePermanent>();
         EventManager.instance.OnItemHighlight += TurnOnHighLight;
     }
