@@ -23,10 +23,12 @@ public class HalfLifeHandler : MonoBehaviour
 
     private bool IsInPast = true;
     private bool IsDone = false;
+    private Valve.VR.InteractionSystem.Interactable interactable;
     void Start()
     {
         //Add To Events
-        EventManager.instance.OnTimeJump += DetectChange;     
+        EventManager.instance.OnTimeJump += DetectChange;
+        interactable = GetComponent<Valve.VR.InteractionSystem.Interactable>();
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
@@ -53,18 +55,22 @@ public class HalfLifeHandler : MonoBehaviour
     //If going in direction either half or double the amount
     private void DetectChange()
     {
-        if(IsInPast)
+        if(interactable.attachedToHand != null)
         {
-            //Is Going to Future
-            IsInPast = false;
-            SetHalfLife(0.5f);
+            if (IsInPast)
+            {
+                //Is Going to Future
+                IsInPast = false;
+                SetHalfLife(0.5f);
+            }
+            else
+            {
+                //Is Going Back
+                IsInPast = true;
+                SetHalfLife(2f);
+            }
         }
-        else
-        {
-            //Is Going Back
-            IsInPast = true;
-            SetHalfLife(2f);
-        }
+
     }
 
     //Set The amount

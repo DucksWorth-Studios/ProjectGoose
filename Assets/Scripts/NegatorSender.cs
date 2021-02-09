@@ -54,7 +54,7 @@ public class NegatorSender : MonoBehaviour
     {   
         if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
         {
-            print("Name " + other.gameObject.name);
+            //print("Name " + other.gameObject.name);
             entityCount++;
         }
     }
@@ -92,14 +92,14 @@ public class NegatorSender : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Entity" + entityCount);
-        if(objectInZone != null)
-        {
-            print(objectInZone.tag);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SendObject(ButtonEnum.NEGATOR);
-        }
+        //print("Entity" + entityCount);
+        //if(objectInZone != null)
+        //{
+        //    print(objectInZone.tag);
+        //}
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    SendObject(ButtonEnum.NEGATOR);
+        //}
     }
 }
