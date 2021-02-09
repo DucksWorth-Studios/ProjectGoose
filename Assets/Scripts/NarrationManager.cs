@@ -70,7 +70,11 @@ public class NarrationManager : MonoBehaviour
     
     private void PlayScene(AudioQueue queue)
     {
-        StopScene();
+        if(activeQueue != null)
+        {
+            StopScene();
+        }
+
         queue.Play(activeNarration);
         activeQueue = queue;
     }
