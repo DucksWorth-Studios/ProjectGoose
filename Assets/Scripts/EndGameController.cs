@@ -43,7 +43,7 @@ public class EndGameController : MonoBehaviour
         
         //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         VRplayer.transform.position = goodPosition.transform.position;
         //EventManager.instance.Fade(false);
     }
@@ -56,7 +56,7 @@ public class EndGameController : MonoBehaviour
         //EventManager.instance.Fade(true);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         VRplayer.GetComponent<SmokeRing>().enabled = false;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         VRplayer.transform.position = badPosition.transform.position;
         //EventManager.instance.Fade(false);
 
