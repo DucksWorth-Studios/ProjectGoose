@@ -37,6 +37,6 @@ public class NegatorReciever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("wooo" +entityCount);
+        //print("wooo" +entityCount);
     }
 }
