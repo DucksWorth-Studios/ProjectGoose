@@ -7,7 +7,8 @@ public class ProgressionManager : MonoBehaviour
 {
     [Tooltip("Reference To Narration Manager")]
     public NarrationManager narrationManager;
-
+    [Tooltip("Narration Disabled")]
+    public bool IsDisabled = false;
     private bool InPast = true;
     private bool firstJump = false;
     private bool firstReturn = false;
@@ -15,6 +16,7 @@ public class ProgressionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        narrationManager.IsDisabled = IsDisabled;
         EventManager.instance.OnTimeJump += JumpTrack;
         EventManager.instance.OnProgress += Progress;
         Valve.VR.SteamVR_Fade.View(Color.black, 0);

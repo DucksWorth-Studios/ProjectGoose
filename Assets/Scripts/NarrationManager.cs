@@ -24,7 +24,8 @@ public class NarrationManager : MonoBehaviour
     public AudioQueue sceneFive;
     [Tooltip("Queue For Scene Six")]
     public AudioQueue sceneSix;
-
+    [Tooltip("Narration Disabled")]
+    public bool IsDisabled = false;
     //Private variables
     private AudioSource activeNarration;
     private AudioQueue activeQueue;
@@ -39,32 +40,36 @@ public class NarrationManager : MonoBehaviour
     //Switch is sued to define what scene will be played.
     public void NarrationCall(SCENE line)
     {
-        switch(line)
+        if(IsDisabled)
         {
-            case SCENE.ONE:
-                PlayScene(sceneOne);
-                break;
-            case SCENE.TWO:
-                PlayScene(sceneTwo);
-                break;
-            case SCENE.THREE:
-                PlayScene(sceneThree);
-                break;
-            case SCENE.FOUR:
-                PlayScene(sceneFour);
-                break;
-            case SCENE.FOURP2:
-                PlayScene(sceneFourP2);
-                break;
-            case SCENE.FIVE:
-                PlayScene(sceneFive);
-                break;
-            case SCENE.SIX:
-                PlayScene(sceneSix);
-                break;
-            default:
-                break;
+            switch (line)
+            {
+                case SCENE.ONE:
+                    PlayScene(sceneOne);
+                    break;
+                case SCENE.TWO:
+                    PlayScene(sceneTwo);
+                    break;
+                case SCENE.THREE:
+                    PlayScene(sceneThree);
+                    break;
+                case SCENE.FOUR:
+                    PlayScene(sceneFour);
+                    break;
+                case SCENE.FOURP2:
+                    PlayScene(sceneFourP2);
+                    break;
+                case SCENE.FIVE:
+                    PlayScene(sceneFive);
+                    break;
+                case SCENE.SIX:
+                    PlayScene(sceneSix);
+                    break;
+                default:
+                    break;
+            }
         }
+        
     }
 
     
