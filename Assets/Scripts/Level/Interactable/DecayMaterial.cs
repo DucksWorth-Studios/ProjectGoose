@@ -12,8 +12,8 @@ public class DecayMaterial : MonoBehaviour
     [Tooltip("Interactable script in the parent gameobject to check if this object is being held at the time of dimension jump")]
     private Interactable interactable;
 
-    [Tooltip("If true, the materials will change over a set time")]
-    private bool isDecaying = false;
+    [Tooltip("If true, the materials will change over a set time"), HideInInspector]
+    public bool isDecaying = false;
 
     [Tooltip("is the object decayed?")]
     private bool isDecayed = false;
@@ -21,7 +21,8 @@ public class DecayMaterial : MonoBehaviour
     [Tooltip("The first material of the mesh renderer")]
     Material material;
 
-    float blendAmount = 0;
+    [HideInInspector]
+    public float blendAmount = 0;
     float timeElasped;
     float duration = 1;
 
