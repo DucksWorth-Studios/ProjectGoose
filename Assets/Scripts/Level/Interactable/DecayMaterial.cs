@@ -15,7 +15,7 @@ public class DecayMaterial : MonoBehaviour
     private Interactable interactable;
 
     [Tooltip("If true, the materials will change over a set time")]
-    private bool isDecaying = false;
+    public bool isDecaying = false;
 
     [Tooltip("is the object decayed?")]
     public bool isDecayed = false;
@@ -54,11 +54,11 @@ public class DecayMaterial : MonoBehaviour
     //        DecayMaterials();
     //}
 
-    //private void StartMaterialDecay()
-    //{
-    //    if (interactable.attachedToHand != null) // Object is in the hand of the player
-    //        isDecaying = true;
-    //}
+    private void StartMaterialDecay()
+    {
+        if (interactable.attachedToHand != null) // Object is in the hand of the player
+            isDecaying = true;
+    }
 
     ///// <summary>
     ///// Will wait till half a second after the player has jumped to the decayed world and change the texture of the object to the decayed material
@@ -90,7 +90,11 @@ public class DecayMaterial : MonoBehaviour
     #endregion
 
     #region V2
-    Shader matShader;
+    Material material;
+    float blendAmount = 0;
+    float timeElasped;
+    float duration = 1;
+
 
     private void Start()
     {
@@ -101,13 +105,30 @@ public class DecayMaterial : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
 
-        matShader = renderer.material.shader;
+        material = renderer.material;
     }
 
     private void Update()
     {
-        if (isDecayed)
-            renderer.material.SetFloat("BlendAmount", 1); ///Set the float variable which controls 
+        if (isDecaying)
+        {
+            if(timeElasped < duration)
+            {
+                if (isDecayed)
+                    blendAmount = Mathf.Lerp(1, 0, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
+                else
+                    blendAmount = Mathf.Lerp(0, 1, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
+
+                timeElasped += Time.deltaTime;
+
+                material.SetFloat("BlendAmount", blendAmount);
+            }
+            else
+            {
+                isDecayed = (blendAmount >= 0.95f) ? true : false;
+                isDecaying = false;
+            }
+        }
     }
     #endregion
 }
