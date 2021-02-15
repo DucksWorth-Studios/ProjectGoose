@@ -23,13 +23,76 @@ public class DecayMaterial : MonoBehaviour
     [Tooltip("Get the mesh renderer to change the materials of the object")]
     private MeshRenderer renderer;
 
-    private float timeSinceJump = 0.0f;
+    #region V1
+    //private float timeSinceJump = 0.0f;
 
-    public Material baseMat;
-    public Material decayedMat;
+    //public Material baseMat;
+    //public Material decayedMat;
 
-    // Start is called before the first frame update
-    void Start()
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    if (this.transform.parent != null)
+    //        interactable = GetComponentInParent<Interactable>();
+    //    else
+    //        interactable = GetComponent<Interactable>();
+
+    //    renderer = GetComponent<MeshRenderer>();
+
+    //    if (!isDecayed)
+    //        renderer.material = baseMat;
+    //    else
+    //        renderer.material = decayedMat;
+
+    //    EventManager.instance.OnTimeJump += StartMaterialDecay;
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if (isDecaying)
+    //        DecayMaterials();
+    //}
+
+    //private void StartMaterialDecay()
+    //{
+    //    if (interactable.attachedToHand != null) // Object is in the hand of the player
+    //        isDecaying = true;
+    //}
+
+    ///// <summary>
+    ///// Will wait till half a second after the player has jumped to the decayed world and change the texture of the object to the decayed material
+    ///// TODO Add a VFX to make swap cleaner
+    ///// </summary>
+    //private void DecayMaterials()
+    //{
+    //    timeSinceJump += 0.5f * Time.deltaTime;
+
+    //    if (timeSinceJump < 0.5f)
+    //        return;
+
+    //    if (!isDecayed)
+    //    {
+    //        renderer.material = decayedMat;
+    //    }
+    //    else
+    //    {
+    //        renderer.material = baseMat;
+    //    }
+
+    //    if (timeSinceJump > FULL_OPACITY)
+    //    {
+    //        isDecayed = isDecayed != true ? true : false;
+    //        isDecaying = false;
+    //        timeSinceJump = 0;
+    //    }
+    //}
+    #endregion
+
+    #region V2
+    Shader matShader;
+
+    private void Start()
     {
         if (this.transform.parent != null)
             interactable = GetComponentInParent<Interactable>();
@@ -38,52 +101,13 @@ public class DecayMaterial : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
 
-        if (!isDecayed)
-            renderer.material = baseMat;
-        else
-            renderer.material = decayedMat;
-
-        EventManager.instance.OnTimeJump += StartMaterialDecay;
+        matShader = renderer.material.shader;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (isDecaying)
-            DecayMaterials();
+        if (isDecayed)
+            renderer.material.SetFloat("BlendAmount", 1); ///Set the float variable which controls 
     }
-
-    private void StartMaterialDecay()
-    {
-        if (interactable.attachedToHand != null) // Object is in the hand of the player
-            isDecaying = true;
-    }
-
-    /// <summary>
-    /// Will wait till half a second after the player has jumped to the decayed world and change the texture of the object to the decayed material
-    /// TODO Add a VFX to make swap cleaner
-    /// </summary>
-    private void DecayMaterials()
-    {
-        timeSinceJump += 0.5f * Time.deltaTime;
-
-        if (timeSinceJump < 0.5f)
-            return;
-
-        if (!isDecayed)
-        {
-            renderer.material = decayedMat;
-        }
-        else
-        {
-            renderer.material = baseMat;
-        }
-
-        if (timeSinceJump > FULL_OPACITY)
-        {
-            isDecayed = isDecayed != true ? true : false;
-            isDecaying = false;
-            timeSinceJump = 0;
-        }
-    }
+    #endregion
 }
