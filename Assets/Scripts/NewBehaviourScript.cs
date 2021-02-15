@@ -20,7 +20,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            print(AppData.fadeTimeOut);
+            print(AppData.ignoreTag);
             
         }
     }
