@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Key Enum Used TO Control what Items Highlight
-public enum KEY { CHEMICAL,USB,USBSLOT };
+
 /// <summary>
 /// Author: Tomas
 /// Controls the key item highlighting throughout the game.
