@@ -110,11 +110,11 @@ public class Stream : MonoBehaviour
         //Generate Ray
         Physics.Raycast(ray, out hit, 2.0f);
         //set the object
-        if (hit.collider.gameObject.tag == "Chemical")
+        if (hit.collider.gameObject.tag == AppData.chemicalTag)
         {
             gameObjectCollide = hit.collider.gameObject;
         }
-        else if(hit.collider.gameObject.tag == "Player")
+        else if(hit.collider.gameObject.tag == AppData.playerTag)
         {
             compositionManager.IsPerfectCompositionDrunk();
         }

@@ -20,8 +20,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            print("Hello");
-            EventManager.instance.WinGame();
+            print(AppData.ignoreTag);
+            
         }
     }
 }

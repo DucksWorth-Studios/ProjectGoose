@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2 };
+
 /// <summary>
 /// Author Tomas
 /// This will be used to control narrative scenes. Each scene is a dedicated Audio Queue

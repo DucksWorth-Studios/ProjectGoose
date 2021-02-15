@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZLE, ELEMENTPUZZLE,END, USBRETURN };
+
 public class ProgressionManager : MonoBehaviour
 {
     [Tooltip("Reference To Narration Manager")]

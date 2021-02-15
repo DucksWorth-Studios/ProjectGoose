@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Snap { USB };
+
 /// <summary>
 /// Author: Tomas
 /// Snap zones will be used for keys and other objects. When an item enters designated zone it will snap to position triggering an Event.

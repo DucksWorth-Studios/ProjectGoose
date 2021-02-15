@@ -1,11 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Author tomas
-/// The Enum will contain variables for all listening objects
-/// </summary>
-public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk, Teleport, ItemPickUp, USB, ItemTeleport };
+
 /// <summary>
 /// Author: Tomas
 /// Will be attached to Enviromental objects To Listen for events to play.
