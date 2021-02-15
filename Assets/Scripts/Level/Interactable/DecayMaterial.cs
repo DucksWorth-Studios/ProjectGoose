@@ -13,19 +13,17 @@ public class DecayMaterial : MonoBehaviour
     private Interactable interactable;
 
     [Tooltip("If true, the materials will change over a set time")]
-    public bool isDecaying = false;
+    private bool isDecaying = false;
 
     [Tooltip("is the object decayed?")]
-    public bool isDecayed = false;
+    private bool isDecayed = false;
 
-    [Tooltip("Get the mesh renderer to change the materials of the object")]
-    private MeshRenderer renderer;
-
+    [Tooltip("The first material of the mesh renderer")]
     Material material;
+
     float blendAmount = 0;
     float timeElasped;
     float duration = 1;
-
 
     private void Start()
     {
@@ -34,9 +32,7 @@ public class DecayMaterial : MonoBehaviour
         else
             interactable = GetComponent<Interactable>();
 
-        renderer = GetComponent<MeshRenderer>();
-
-        material = renderer.material;
+        material = GetComponent<MeshRenderer>().material;
 
         EventManager.instance.OnTimeJump += StartMaterialDecay;
     }
@@ -47,10 +43,13 @@ public class DecayMaterial : MonoBehaviour
         {
             if(timeElasped < duration)
             {
+                /**
+                 * Lerps the Blend Amount between 0 and 1 if the object is not decayed, and 1 and 0 if the object is decayed
+                 **/
                 if (isDecayed)
-                    blendAmount = Mathf.Lerp(1, 0, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
+                    blendAmount = Mathf.Lerp(AppData.Opaque, AppData.Transparent, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
                 else
-                    blendAmount = Mathf.Lerp(0, 1, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
+                    blendAmount = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / duration); ///https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
 
                 timeElasped += Time.deltaTime;
 

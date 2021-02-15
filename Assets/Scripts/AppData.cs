@@ -33,4 +33,8 @@ public class AppData : MonoBehaviour
     public static string elementTag = "Element";
     public static string chemicalTag = "Chemical";
     public static string playerTag = "Player";
+
+    /*---DecayMaterial.cs---*/
+    public static float Opaque = 1;
+    public static float Transparent = 0;
 }
