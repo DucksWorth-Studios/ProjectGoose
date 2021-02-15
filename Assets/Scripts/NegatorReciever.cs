@@ -16,7 +16,7 @@ public class NegatorReciever : MonoBehaviour
     //Anything enters count goes up
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             entityCount++;
         }
@@ -24,7 +24,7 @@ public class NegatorReciever : MonoBehaviour
     //Anything leaves count goes down
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             entityCount--;
         }

@@ -52,7 +52,7 @@ public class NegatorSender : MonoBehaviour
     //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
     {   
-        if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             //print("Name " + other.gameObject.name);
             entityCount++;
@@ -61,7 +61,7 @@ public class NegatorSender : MonoBehaviour
     //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+        if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             entityCount--;
         }
@@ -76,14 +76,14 @@ public class NegatorSender : MonoBehaviour
         
         if(entityCount == 0)
         {
-            if(other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+            if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
             {
                 objectInZone = other.gameObject;
             }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
-            if (other.tag != "Chemical" && other.tag != "Ignore" && other.tag != "Element")
+            if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
             {
                 objectInZone = other.gameObject;
             }
@@ -97,9 +97,9 @@ public class NegatorSender : MonoBehaviour
         //{
         //    print(objectInZone.tag);
         //}
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-        //    SendObject(ButtonEnum.NEGATOR);
-        //}
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SendObject(ButtonEnum.NEGATOR);
+        }
     }
 }
