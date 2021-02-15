@@ -10,9 +10,6 @@
             "m_Id": "b8bb2a26d6e84840be6c1931c69d6b0b"
         },
         {
-            "m_Id": "e446657372294571ba0366175d360470"
-        },
-        {
             "m_Id": "10bdd54528a840efaaaac9153a6ce1e2"
         }
     ],
@@ -1303,24 +1300,6 @@
     },
     "m_TextureType": 0,
     "m_NormalMapSpace": 0
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
-    "m_ObjectId": "e446657372294571ba0366175d360470",
-    "m_Guid": {
-        "m_GuidSerialized": "46c9e3c2-da2e-4326-afab-627ce8e71dca"
-    },
-    "m_Name": "isActive",
-    "m_DefaultReferenceName": "Boolean_e446657372294571ba0366175d360470",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": false
 }
 
 {
