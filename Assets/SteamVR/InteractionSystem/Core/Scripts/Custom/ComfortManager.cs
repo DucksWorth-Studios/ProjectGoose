@@ -26,6 +26,8 @@ public class ComfortManager : MonoBehaviour
     public TMP_Dropdown enableSTDropdown;
     public Slider stDurationSlider;
     public TextMeshProUGUI stDurationText;
+    public Slider stAngleSlider;
+    public TextMeshProUGUI stAngleText;
     
     [Header("Other")]
     public TextMeshProUGUI saveText;
@@ -50,6 +52,7 @@ public class ComfortManager : MonoBehaviour
         settingsData.tpBlackoutDuration = 0;
         settingsData.enableSnapTurnBlackout = 0;
         settingsData.stBlackoutDuration = 0;
+        settingsData.snapTurnAngle = 45;
         
         UpdateUI();
     }
@@ -67,6 +70,7 @@ public class ComfortManager : MonoBehaviour
         enableSTDropdown.value = settingsData.enableSnapTurnBlackout;
         enableSTDropdown.RefreshShownValue();
         OnChangeSTDuration(settingsData.stBlackoutDuration);
+        OnChangeSTAngle(settingsData.snapTurnAngle);
         
         gameObject.SetActive(false);
     }
@@ -126,6 +130,15 @@ public class ComfortManager : MonoBehaviour
         // Debug.Log(duration);
         stDurationSlider.value = duration;
     }
+    
+    public void OnChangeSTAngle(float stAngle)
+    {
+        stAngleText.text = "" + stAngle;
+        settingsData.snapTurnAngle = stAngle;
+        
+        // Debug.Log(stAngle);
+        stAngleSlider.value = stAngle;
+    }
 
     #endregion
     
@@ -139,6 +152,7 @@ public class ComfortManager : MonoBehaviour
         public float tpBlackoutDuration;
         public int enableSnapTurnBlackout;
         public float stBlackoutDuration;
+        public float snapTurnAngle;
 
         public override string ToString()
         {

@@ -17,9 +17,7 @@ namespace Valve.VR.InteractionSystem
     //-----------------------------------------------------------------------------
     public class SnapTurn : MonoBehaviour
     {
-        public float snapAngle = 90.0f;
-
-        public SteamVR_Action_Boolean snapLeftAction = SteamVR_Input.GetBooleanAction("SnapTurnLeft");
+       public SteamVR_Action_Boolean snapLeftAction = SteamVR_Input.GetBooleanAction("SnapTurnLeft");
         public SteamVR_Action_Boolean snapRightAction = SteamVR_Input.GetBooleanAction("SnapTurnRight");
 
         public static float teleportLastActiveTime;
@@ -46,11 +44,11 @@ namespace Valve.VR.InteractionSystem
 
                 if (leftHandTurnLeft || rightHandTurnLeft)
                 {
-                    RotatePlayer(-snapAngle);
+                    RotatePlayer(-ComfortManager.settingsData.snapTurnAngle);
                 }
                 else if (leftHandTurnRight || rightHandTurnRight)
                 {
-                    RotatePlayer(snapAngle);
+                    RotatePlayer(ComfortManager.settingsData.snapTurnAngle);
                 }
             }
         }
