@@ -27,7 +27,7 @@ public class CloudDanger : MonoBehaviour
         EventManager.instance.OnButtonPress += OnRemoveCloudsEvent;
         timeRemaining = timeToSurvive;
         EventManager.instance.PlaySound(Sound.Alarm);
-        StartCoroutine(AfterTimePass(27));
+        StartCoroutine(AfterTimePass(AppData.cloudSurviveTime));
     }
 
     //If Player enters start countdown
@@ -96,7 +96,7 @@ public class CloudDanger : MonoBehaviour
         yield return new WaitForSeconds(timeBefore);
         cloud.SetInt("Rate",0);
         //Destory object
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(AppData.cloudSurviveTimeDelay);
         Destroy(this.transform.gameObject);
         EventManager.instance.StopSound(Sound.Alarm);
     }
@@ -106,7 +106,7 @@ public class CloudDanger : MonoBehaviour
     {
         if(buttonPress == ButtonEnum.CLOUDREMOVE)
         {
-            StopCoroutine(AfterTimePass(27));
+            StopCoroutine(AfterTimePass(AppData.cloudSurviveTime));
             StartCoroutine(AfterTimePass(0));
             //Remove Event So No Errors Occur
             EventManager.instance.OnButtonPress -= OnRemoveCloudsEvent;

@@ -7,8 +7,9 @@ using UnityEngine;
 /// </summary>
 public class FadeController : MonoBehaviour
 {
-    public float timeOut = 10f;
+    
     public Color fadeColor = Color.black;
+    private float timeOut = AppData.fadeTimeOut;
     private void Awake()
     {
        // Valve.VR.SteamVR_Fade.View(Color.black, 0);
@@ -45,7 +46,7 @@ public class FadeController : MonoBehaviour
     {
 
         Valve.VR.SteamVR_Fade.View(fadeColor, 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Valve.VR.SteamVR_Fade.View(Color.clear, timeOut);
     }
 
