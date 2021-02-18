@@ -50,7 +50,6 @@ public class EndGameController : MonoBehaviour
 
     private IEnumerator GameOverBad()
     {
-        print("Got HEre");
         EventManager.instance.DisableAllInput();
         EventManager.instance.SetUIPointer();
 
@@ -58,7 +57,6 @@ public class EndGameController : MonoBehaviour
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         VRplayer.GetComponent<SmokeRing>().enabled = false;
         yield return new WaitForSeconds(3);
-        print("Got HEre");
         VRplayer.transform.position = badPosition.transform.position;
         Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
 
