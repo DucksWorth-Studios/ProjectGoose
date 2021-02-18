@@ -11,7 +11,7 @@ public class WinDetector : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        print("HELLO HONEY" + other.tag);
+        
         if (other.gameObject.tag == AppData.elementTag && compositionManager.ISComposition)
         {
             compositionManager.HasElement = true;

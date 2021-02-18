@@ -40,7 +40,7 @@ public class NarrationManager : MonoBehaviour
     //Switch is sued to define what scene will be played.
     public void NarrationCall(SCENE line)
     {
-        if(IsDisabled)
+        if(!IsDisabled)
         {
             switch (line)
             {
@@ -86,7 +86,11 @@ public class NarrationManager : MonoBehaviour
 
     private void StopScene()
     {
-        activeQueue.Stop();
+        if(!IsDisabled)
+        {
+            activeQueue.Stop();
+        }
+
     }
 
     private void PauseScene()
