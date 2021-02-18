@@ -141,7 +141,7 @@ public class ProgressionManager : MonoBehaviour
     {
         Valve.VR.SteamVR_Fade.View(Color.black, 0f);
         yield return new WaitForSeconds(0.000000001f);
-        EventManager.instance.Fade(false);
+        //EventManager.instance.Fade(false);
         yield return new WaitForSeconds(2);
         Progress(STAGE.START);
     }
