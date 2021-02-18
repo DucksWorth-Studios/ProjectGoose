@@ -30,7 +30,6 @@ public class EventManager : MonoBehaviour
     public event Action<ButtonEnum> OnButtonPress;
     public event Action<Snap> OnItemSnap;
     public event Action<STAGE> OnProgress;
-    public event Action<bool> OnFadeScreen;
     public event Action<KEY> OnItemHighlight;
 
     public event Action OnDisableMovement;
@@ -189,17 +188,6 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void Fade(bool fadeOut)
-    {
-        if (OnFadeScreen != null)
-        {
-            OnFadeScreen(fadeOut);
-        }
-        else
-        {
-            Debug.LogError("OnFadeScreen is Null");
-        }
-    }
 
     public void HighlightItem(KEY item)
     {
