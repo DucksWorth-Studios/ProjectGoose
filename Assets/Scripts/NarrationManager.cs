@@ -116,9 +116,12 @@ public class NarrationManager : MonoBehaviour
             UnPauseScene();
         }
     }
-    //Not used Currently
+
     //void Update()
     //{
-        
+    //    if (Input.GetKeyDown(KeyCode.O))
+    //    {
+    //        NarrationCall(SCENE.FOUR);
+    //    }
     //}
 }

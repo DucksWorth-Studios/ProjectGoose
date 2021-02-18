@@ -23,6 +23,7 @@ public class ItemPickUpListener : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             EventManager.instance.Progress(stage);
+            ShouldFire = false;
         }
     }
 
