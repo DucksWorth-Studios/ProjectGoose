@@ -22,7 +22,7 @@ public enum ButtonEnum { CLOUDREMOVE, NEGATOR };
 public class AppData : MonoBehaviour
 {
     /*---Floats---*/
-    public static float fadeTimeOut = 10f;
+    public static float fadeTimeOut = 2f;
     public static float cloudSurviveTime = 27f;
     // Delay from survival to item destruction
     public static float cloudSurviveTimeDelay = 3f;
