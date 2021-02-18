@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8529284710557285951}
   m_Layer: 0
   m_Name: EmptyTestTube
-  m_TagString: Untagged
+  m_TagString: TestTube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,6 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +85,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5365140759637875085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +240,4 @@ MonoBehaviour:
     type: 3}
   breakingVelocity: 2
   isShatterable: 1
+  clip: {fileID: 0}
