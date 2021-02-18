@@ -55,8 +55,9 @@ public class EndGameController : MonoBehaviour
 
         Valve.VR.SteamVR_Fade.View(Color.black, AppData.fadeTimeOut);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
-        VRplayer.GetComponent<SmokeRing>().enabled = false;
+        
         yield return new WaitForSeconds(3);
+        VRplayer.GetComponent<SmokeRing>().enabled = false;
         VRplayer.transform.position = badPosition.transform.position;
         Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
 
