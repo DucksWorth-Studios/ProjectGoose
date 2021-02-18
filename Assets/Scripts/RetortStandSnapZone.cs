@@ -8,13 +8,26 @@ public class RetortStandSnapZone : MonoBehaviour
     public string tagToSearchFor;
 
     [Tooltip("The Roation of The Snapped Object")]
-    public Vector3 rotation;
+    private Vector3 rotation;
+
+    /// <summary>
+    /// Trigger volume needs to be bigger than the snap zone to catch the objects that use gravity
+    /// This transform will set the object to the correct position
+    /// </summary>
+    [Tooltip("The position of the snapped object")]
+    private Vector3 position;
+
+    public Transform SnappedTransform;
 
     private GameObject objectCurrentlyHeld;
     private bool isHolding = false;
     void Start()
     {
-        
+        if(transform == null)
+        {
+            rotation = transform.rotation.eulerAngles;
+            position = transform.position;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +37,7 @@ public class RetortStandSnapZone : MonoBehaviour
             other.gameObject.GetComponent<Throwable>().ToggleGravity();
 
             objectCurrentlyHeld = other.gameObject;
-            objectCurrentlyHeld.transform.position = this.transform.position;
+            objectCurrentlyHeld.transform.position = position;
             objectCurrentlyHeld.transform.rotation = Quaternion.Euler(rotation);
 
             isHolding = true;
