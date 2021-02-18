@@ -40,25 +40,27 @@ public class EndGameController : MonoBehaviour
     {
         EventManager.instance.DisableAllInput();
         EventManager.instance.SetUIPointer();
-        
-        //EventManager.instance.Fade(true);
+
+        Valve.VR.SteamVR_Fade.View(Color.black, AppData.fadeTimeOut);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
-        yield return new WaitForSeconds(AppData.fadeTimeOut);
+        yield return new WaitForSeconds(3);
         VRplayer.transform.position = goodPosition.transform.position;
-        //EventManager.instance.Fade(false);
+        Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
     }
 
     private IEnumerator GameOverBad()
     {
+        print("Got HEre");
         EventManager.instance.DisableAllInput();
         EventManager.instance.SetUIPointer();
-        
-        //EventManager.instance.Fade(true);
+
+        Valve.VR.SteamVR_Fade.View(Color.black, AppData.fadeTimeOut);
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         VRplayer.GetComponent<SmokeRing>().enabled = false;
-        yield return new WaitForSeconds(AppData.fadeTimeOut);
+        yield return new WaitForSeconds(3);
+        print("Got HEre");
         VRplayer.transform.position = badPosition.transform.position;
-        //EventManager.instance.Fade(false);
+        Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
 
     }
     //Debug for testing

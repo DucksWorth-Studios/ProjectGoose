@@ -19,7 +19,7 @@ public class ProgressionManager : MonoBehaviour
         narrationManager.IsDisabled = IsDisabled;
         EventManager.instance.OnTimeJump += JumpTrack;
         EventManager.instance.OnProgress += Progress;
-        Valve.VR.SteamVR_Fade.View(Color.black, 0);
+        //Valve.VR.SteamVR_Fade.View(Color.black, 0);
         //StartCoroutine(StartUp());
     }
 
