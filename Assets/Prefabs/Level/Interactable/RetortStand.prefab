@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 124110096665048587}
   - component: {fileID: 2756473066168843967}
   m_Layer: 0
-  m_Name: DecayedRetortStand
+  m_Name: RetortStand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5827315936080589096}
-  m_LocalRotation: {x: -0, y: -0.68513656, z: -0, w: 0.7284147}
+  m_LocalRotation: {x: 0, y: -0.68513846, z: 0, w: 0.72841287}
   m_LocalPosition: {x: 4.445449, y: -10.298847, z: 11.887401}
   m_LocalScale: {x: 0.08127699, y: 0.081277, z: 0.08127699}
   m_Children:
@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.121839, y: 0.44364998, z: 2.9074302}
-  m_Center: {x: -0.25785425, y: -0.27817485, z: -0.02198864}
+  m_Size: {x: 4.457164, y: 0.49654528, z: 2.9074302}
+  m_Center: {x: -0.090194054, y: -0.2410526, z: -0.021988643}
 --- !u!114 &9121106592978639892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   snapAttachEaseInCompleted: 0
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
-  highlightOnHover: 1
+  highlightOnHover: 0
   hideHighlight: []
   hoverPriority: 0
 --- !u!54 &124110096665048587
@@ -183,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7595729177027347349}
   - component: {fileID: 7595729177027347346}
+  - component: {fileID: 788682816}
   m_Layer: 0
   m_Name: SnapZone
   m_TagString: Untagged
@@ -198,8 +199,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7595729177027347348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.443, y: 3.973, z: -0.162}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.08, y: 3.79, z: -0.019242}
+  m_LocalScale: {x: 1, y: 1.8439, z: 3.2023}
   m_Children: []
   m_Father: {fileID: 6599207581103565714}
   m_RootOrder: 1
@@ -217,7 +218,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToSearchFor: TestTube
-  rotation: {x: 0, y: 0, z: 0}
+  rotation: {x: 90, y: 0, z: 0}
+--- !u!65 &788682816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7595729177027347348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.52207786, z: 0.31285593}
+  m_Center: {x: -1.1135086e-10, y: 0.05132759, z: -0.02304838}
 --- !u!1001 &8108935699356840026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,37 +267,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3648634
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.795599
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.08321962
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99653125
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
@@ -293,7 +307,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 623b23daa7473d249a5774de2e21fa7d,
         type: 3}
