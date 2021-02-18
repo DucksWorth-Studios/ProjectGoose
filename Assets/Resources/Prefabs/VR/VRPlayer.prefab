@@ -975,7 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be9571738f46674e8a15e1a336a9e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 2573672161239932901}
+  pointer: {fileID: 2573672161239932901}
   targetSource: 2
   clickAction:
     actionPath: /actions/default/in/PullObject
