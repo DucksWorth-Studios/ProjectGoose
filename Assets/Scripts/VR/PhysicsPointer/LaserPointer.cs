@@ -41,7 +41,7 @@ public class LaserPointer : MonoBehaviour
         if (!enabled)
             return;
         
-        if (startLaser.axis > 0.25f)
+        if (startLaser.axis > 0.25f && !lastHit)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -49,8 +49,10 @@ public class LaserPointer : MonoBehaviour
         else
         {
             lineRenderer.enabled = false;
-            RayExit();
         }
+        
+        if (!pullObject.state)
+            RayExit();
     }
 
     private void UpdateLength()
@@ -77,12 +79,15 @@ public class LaserPointer : MonoBehaviour
                     lastHit.Click(pointerHand);
                 // lastHit.Click(transform);
                 else
+                {
                     lastHit.HitByRay();
+                    lastHit = null;
+                }
         }
         else
         {
             endPosition = DefaultEnd(defaultLength);
-            RayExit();
+            // RayExit();
         }
         
         return endPosition;

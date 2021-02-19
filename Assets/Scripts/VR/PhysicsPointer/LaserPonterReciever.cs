@@ -10,7 +10,7 @@ public class LaserPonterReciever : MonoBehaviour
     public Color clickColour = Color.green;
 
     private MeshRenderer meshRenderer;
-    
+    private Hand pointerHand;
 
     // Speed the interactable will move towards the hand
     private float speed = 2;
@@ -38,6 +38,9 @@ public class LaserPonterReciever : MonoBehaviour
     {
         // Debug.Log("RayExit: " + name);
         meshRenderer.material.color = defaultColour;
+        
+        if (pointerHand)
+            pointerHand.DetachObject(gameObject);
     }
 
     // public void Click(Transform handLocation)
@@ -67,7 +70,9 @@ public class LaserPonterReciever : MonoBehaviour
                                                    & ~Hand.AttachmentFlags.SnapOnAttach
                                                    & ~Hand.AttachmentFlags.DetachOthers
                                                    & ~Hand.AttachmentFlags.VelocityMovement;
-        
+
+        transform.position = pointerHand.gameObject.transform.position;
         pointerHand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
+        this.pointerHand = pointerHand;
     }
 }
