@@ -11,10 +11,6 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    [Header("Scene Loading")] 
-    public bool loadScene = true;
-    public string sceneToLoad;
-
     private AsyncOperation loadingOperation;
     private bool isLoadingScene;
 
@@ -27,17 +23,16 @@ public class LoadingManager : MonoBehaviour
     
     void Start()
     {
-        SceneManager.sceneLoaded += DestroyLoadPlayer;
+        // SceneManager.sceneLoaded += DestroyLoadPlayer;
         shaderVariantCollection.WarmUp();
-
     }
 
     void Update()
     {
         // This ensures all shaders are warmed up before level loading takes over the scene transition
-        if (loadScene && shaderVariantCollection.isWarmedUp && !isLoadingScene)
+        if (shaderVariantCollection.isWarmedUp && !isLoadingScene)
         {
-            loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+            loadingOperation = SceneManager.LoadSceneAsync(AppData.sceneToLoad);
             isLoadingScene = true;
         }
 
