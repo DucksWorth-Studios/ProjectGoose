@@ -20,7 +20,7 @@ public class LaserPonterReciever : MonoBehaviour
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material.color = defaultColour;
+        defaultColour = meshRenderer.material.color;
     }
 
     void Update()
@@ -66,13 +66,20 @@ public class LaserPonterReciever : MonoBehaviour
 
     private void TeleportToHand(Hand pointerHand)
     {
+        // Store default attachment flags
         Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags 
                                                    & ~Hand.AttachmentFlags.SnapOnAttach
                                                    & ~Hand.AttachmentFlags.DetachOthers
                                                    & ~Hand.AttachmentFlags.VelocityMovement;
 
+        // Move object before attach otherwise the player remote controls the object
         transform.position = pointerHand.gameObject.transform.position;
+        
+        // Attach object and store hand for future reference
         pointerHand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
         this.pointerHand = pointerHand;
+
+        // Reset material colour otherwise object stays green
+        meshRenderer.material.color = defaultColour;
     }
 }
