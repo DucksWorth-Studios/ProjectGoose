@@ -9,6 +9,9 @@ public class LaserPonterReciever : MonoBehaviour
     public Color hitColour = Color.red;
     public Color clickColour = Color.green;
 
+    [Tooltip("The amount to offset the object by when attached to hand")]
+    public Vector3 offset;
+    
     private MeshRenderer meshRenderer;
     private Hand pointerHand;
 
@@ -73,7 +76,7 @@ public class LaserPonterReciever : MonoBehaviour
                                                    & ~Hand.AttachmentFlags.VelocityMovement;
 
         // Move object before attach otherwise the player remote controls the object
-        transform.position = pointerHand.gameObject.transform.position;
+        transform.position = pointerHand.gameObject.transform.position + offset;
         
         // Attach object and store hand for future reference
         pointerHand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
