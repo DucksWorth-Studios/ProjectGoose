@@ -39,7 +39,7 @@ public class EventManager : MonoBehaviour
     public event Action OnDisablePointer;
     public event Action OnSetPhysicsPointer;
     public event Action OnSetUIPointer;
-    
+    public event Action<bool> OnHurtScreen;
     //This is a model for an event
     public void TestEventCall()
     {
@@ -198,6 +198,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.LogError("OnItemHighlight is Null");
+        }
+    }
+
+    public void HurtScreen(bool enter)
+    {
+        if (OnHurtScreen != null)
+        {
+            OnHurtScreen(enter);
+        }
+        else
+        {
+            Debug.LogError("OnHurtScreen is Null");
         }
     }
 
