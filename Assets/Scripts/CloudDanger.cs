@@ -33,8 +33,10 @@ public class CloudDanger : MonoBehaviour
     //If Player enters start countdown
     private void OnTriggerEnter(Collider other)
     {
+
         if (IsPlayerInCloud == false && other.gameObject.tag == "Player")
         {
+            EventManager.instance.HurtScreen(true);
             IsPlayerInCloud = true;
         }
     }
@@ -44,6 +46,7 @@ public class CloudDanger : MonoBehaviour
     {
         if(IsPlayerInCloud && other.gameObject.tag == "Player")
         {
+            EventManager.instance.HurtScreen(false);
             IsPlayerInCloud = false;
         }
     }
@@ -97,8 +100,10 @@ public class CloudDanger : MonoBehaviour
         cloud.SetInt("Rate",0);
         //Destory object
         yield return new WaitForSeconds(AppData.cloudSurviveTimeDelay);
-        Destroy(this.transform.gameObject);
+        EventManager.instance.HurtScreen(false);
         EventManager.instance.StopSound(Sound.Alarm);
+        Destroy(this.transform.gameObject);
+       
     }
 
     //Used for Fan to Blow out smoke
