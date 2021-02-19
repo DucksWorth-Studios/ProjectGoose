@@ -2,6 +2,7 @@
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
+[RequireComponent( typeof( Interactable ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
     public Color defaultColour = Color.white;
@@ -39,12 +40,14 @@ public class LaserPonterReciever : MonoBehaviour
         meshRenderer.material.color = defaultColour;
     }
 
-    public void Click(Transform handLocation)
+    // public void Click(Transform handLocation)
+    public void Click(Hand pointerHand)
     {
         meshRenderer.material.color = clickColour;
         
-        handTarget = handLocation.position;
-        movingTowardsHand = true;
+        handTarget = pointerHand.gameObject.transform.position;
+        // movingTowardsHand = true;
+        TeleportToHand(pointerHand);
     }
 
     private void MoveTowardsHand()
@@ -56,5 +59,15 @@ public class LaserPonterReciever : MonoBehaviour
         // Check if the position of the intractable and hand are relatively the same
         if (Vector3.Distance(transform.position, handTarget) < 0.001f)
             movingTowardsHand = false;
+    }
+
+    private void TeleportToHand(Hand pointerHand)
+    {
+        Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags 
+                                                   & ~Hand.AttachmentFlags.SnapOnAttach
+                                                   & ~Hand.AttachmentFlags.DetachOthers
+                                                   & ~Hand.AttachmentFlags.VelocityMovement;
+        
+        pointerHand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
     }
 }

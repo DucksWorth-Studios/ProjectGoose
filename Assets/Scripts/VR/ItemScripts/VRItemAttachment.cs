@@ -66,6 +66,9 @@ public class VRItemAttachment : MonoBehaviour
             // and prevent the hand from hovering over anything else
             hand.HoverLock(interactable);
 
+            Debug.Log(startingGrabType);
+            Debug.Log(attachmentFlags);
+            
             // Attach this object to the hand
             hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
             EventManager.instance.PlaySound(Sound.ItemPickUp);

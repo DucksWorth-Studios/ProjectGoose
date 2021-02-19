@@ -7,6 +7,7 @@ using Valve.VR.InteractionSystem;
 /// The laser pointer method of interacting with objects
 /// </summary>
 
+[RequireComponent(typeof(Hand))]
 [RequireComponent(typeof(LineRenderer))]
 public class LaserPointer : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class LaserPointer : MonoBehaviour
     private LineRenderer lineRenderer;
     private LaserPonterReciever lastHit;
 
+    private Hand pointerHand;
+
     void Awake()
     {
         if (startLaser == null)
@@ -30,6 +33,7 @@ public class LaserPointer : MonoBehaviour
             Debug.LogError("LaserPointer is missing PullObject.", this);
 
         lineRenderer = GetComponent<LineRenderer>();
+        pointerHand = GetComponent<Hand>();
     }
 
     void Update()
@@ -70,7 +74,8 @@ public class LaserPointer : MonoBehaviour
 
             if (lastHit != null)
                 if (pullObject.state)
-                    lastHit.Click(transform);
+                    lastHit.Click(pointerHand);
+                // lastHit.Click(transform);
                 else
                     lastHit.HitByRay();
         }
