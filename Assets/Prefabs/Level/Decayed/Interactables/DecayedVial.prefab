@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5647970869711415693}
   - component: {fileID: 4233540604542247440}
   - component: {fileID: 9158368358455323696}
+  - component: {fileID: 5094478928713320784}
   m_Layer: 0
   m_Name: DecayedVial
   m_TagString: Untagged
@@ -273,6 +274,24 @@ MonoBehaviour:
   breakingVelocity: 2
   isShatterable: 1
   clip: {fileID: 8300000, guid: ead5ee8d7fea15744a116dea8729bb21, type: 3}
+--- !u!114 &5094478928713320784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888533667657169370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 774963153263209676}
+  defaultColours: []
+  hitColour: {r: 1, g: 0, b: 0, a: 1}
+  clickColour: {r: 0, g: 1, b: 0, a: 1}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!64 &8872500590719946688
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -370,6 +389,12 @@ GameObject:
 --- !u!4 &1912363245681432483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fabbf553730701545bf7b7fcf01a5ca0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2089860717940813896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &774963153263209676 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: fabbf553730701545bf7b7fcf01a5ca0,
     type: 3}
   m_PrefabInstance: {fileID: 2089860717940813896}
   m_PrefabAsset: {fileID: 0}

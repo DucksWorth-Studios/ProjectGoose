@@ -215,8 +215,9 @@ GameObject:
   - component: {fileID: 3649932919853167547}
   - component: {fileID: 1692164162085768462}
   - component: {fileID: 953968602949517460}
+  - component: {fileID: 6826753501265619771}
   m_Layer: 0
-  m_Name: retort stand (1)
+  m_Name: retort stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,6 +376,33 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &6826753501265619771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392776041187163421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 3320563693483440706}
+  - {fileID: 6806982686670258821}
+  - {fileID: 10079066207247312}
+  - {fileID: 6415042644105784343}
+  - {fileID: 2656929076272332854}
+  - {fileID: 14817572959066508}
+  - {fileID: 1947624204291262836}
+  - {fileID: 2474779865008346169}
+  - {fileID: 8932738572096336317}
+  - {fileID: 5202970176857666638}
+  defaultColours: []
+  hitColour: {r: 1, g: 0, b: 0, a: 1}
+  clickColour: {r: 0, g: 1, b: 0, a: 1}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &2069512935075931242
 GameObject:
   m_ObjectHideFlags: 0
