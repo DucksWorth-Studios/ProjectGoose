@@ -1,4 +1,5 @@
-
+﻿
+using System;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -16,8 +17,8 @@ public class LaserPonterReciever : MonoBehaviour
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
     
-    private MeshRenderer meshRenderer;
     private Hand pointerHand;
+    private Throwable throwable;
 
     // Speed the interactable will move towards the hand
     private float speed = 2;
@@ -26,8 +27,15 @@ public class LaserPonterReciever : MonoBehaviour
 
     void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        defaultColour = meshRenderer.material.color;
+        try
+        {
+            throwable = GetComponent<Throwable>();
+        }
+        catch(NullReferenceException e)
+        {
+            Debug.LogWarning("Missing throwable script. " + e.Message);
+        }
+        
         defaultColours = new Color[meshRenderers.Length];
         
         for (int i = 0; i < meshRenderers.Length; i++)
@@ -61,8 +69,12 @@ public class LaserPonterReciever : MonoBehaviour
     {
         ResetMat();
         
+        // Detach object from hand
         if (pointerHand)
             pointerHand.DetachObject(gameObject);
+        
+        if (throwable)
+            throwable.Detach();
     }
 
     // public void Click(Transform handLocation)
@@ -89,17 +101,28 @@ public class LaserPonterReciever : MonoBehaviour
     private void TeleportToHand(Hand pointerHand)
     {
         // Store default attachment flags
-        Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags 
-                                                   & ~Hand.AttachmentFlags.SnapOnAttach
-                                                   & ~Hand.AttachmentFlags.DetachOthers
-                                                   & ~Hand.AttachmentFlags.VelocityMovement;
+        Hand.AttachmentFlags attachmentFlags;
+        
+        if (throwable)
+            attachmentFlags = Hand.defaultAttachmentFlags 
+                              & ~Hand.AttachmentFlags.SnapOnAttach
+                              & ~Hand.AttachmentFlags.DetachOthers
+                              & ~Hand.AttachmentFlags.TurnOnKinematic;
+        else
+            attachmentFlags = Hand.defaultAttachmentFlags 
+                              & ~Hand.AttachmentFlags.SnapOnAttach
+                              & ~Hand.AttachmentFlags.DetachOthers
+                              & ~Hand.AttachmentFlags.VelocityMovement;
 
         // Move object before attach otherwise the player remote controls the object
         transform.position = pointerHand.gameObject.transform.position + offset;
         
         // Attach object and store hand for future reference
-        pointerHand.AttachObject(gameObject, GrabTypes.Scripted, attachmentFlags);
+        pointerHand.AttachObject(gameObject, GrabTypes.Grip, attachmentFlags);
         this.pointerHand = pointerHand;
+        
+        if (throwable)
+            throwable.Attach();
 
         // Reset material colour otherwise object stays green
         ResetMat();

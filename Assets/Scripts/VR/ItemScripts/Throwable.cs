@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using Valve.VR.InteractionSystem;
@@ -80,8 +81,6 @@ public class Throwable : MonoBehaviour
 
         if (djScript == null) return;
         
-        EventManager.instance.OnTimeJump += OnTimeJump;
-        
         if (!djScript.inFuture)
         {
 	        initMass = djScript.normalObjectMass;
@@ -95,6 +94,11 @@ public class Throwable : MonoBehaviour
 
         rigidbody.mass = initMass;
 	}
+
+    private void Start()
+    {
+	    EventManager.instance.OnTimeJump += OnTimeJump;
+    }
 
     private void OnTimeJump()
     {
@@ -137,6 +141,11 @@ public class Throwable : MonoBehaviour
 				if (rigidbody.velocity.magnitude >= catchingThreshold)
 				{
 					hand.AttachObject( gameObject, bestGrabType, attachmentFlags );
+
+					// TODO: Interactable Debugging
+					// Debug.Log("Throwable bestGrabType: " + bestGrabType);
+					// Debug.Log("Throwable attachmentFlags: " + attachmentFlags);
+
 					// showHint = false;
 				}
 			}
@@ -167,6 +176,10 @@ public class Throwable : MonoBehaviour
         {
 			hand.AttachObject( gameObject, startingGrabType, attachmentFlags, attachmentOffset );
             hand.HideGrabHint();
+            
+            // TODO: Interactable Debugging
+            // Debug.Log("Throwable startingGrabType: " + startingGrabType);
+            // Debug.Log("Throwable attachmentFlags: " + attachmentFlags);
         }
 	}
 
