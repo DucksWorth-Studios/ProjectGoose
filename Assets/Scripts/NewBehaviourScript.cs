@@ -20,7 +20,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            print(AppData.ignoreTag);
+            EventManager.instance.HighlightItem(KEY.CHEMICAL);
             
         }
     }
