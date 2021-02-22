@@ -386,12 +386,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderers:
   - {fileID: 4879341427538068481}
-  - {fileID: 6712425474085083503}
-  - {fileID: 4614534730234404019}
   - {fileID: 4776684662232797696}
-  - {fileID: 583518911647932770}
   - {fileID: 1952037263322832480}
-  - {fileID: 6767058542023486110}
   defaultColours: []
   hitColour: {r: 1, g: 0, b: 0, a: 1}
   clickColour: {r: 0, g: 1, b: 0, a: 1}

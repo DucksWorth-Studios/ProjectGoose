@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderers:
-  - {fileID: 8710918317072108127}
   - {fileID: 8732795192850355258}
   defaultColours: []
   hitColour: {r: 1, g: 0, b: 0, a: 1}
