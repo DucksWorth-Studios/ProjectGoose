@@ -1,11 +1,15 @@
-﻿
+
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent( typeof( Interactable ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
-    public Color defaultColour = Color.white;
+    [Tooltip("Add ALL object mesh renders")]
+    public MeshRenderer[] meshRenderers;
+    
+    // TODO: Make private after debug
+    public Color[] defaultColours;
     public Color hitColour = Color.red;
     public Color clickColour = Color.green;
 
@@ -24,6 +28,10 @@ public class LaserPonterReciever : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         defaultColour = meshRenderer.material.color;
+        defaultColours = new Color[meshRenderers.Length];
+        
+        for (int i = 0; i < meshRenderers.Length; i++)
+            defaultColours[i] = meshRenderers[i].material.color;
     }
 
     void Update()
@@ -32,15 +40,26 @@ public class LaserPonterReciever : MonoBehaviour
             MoveTowardsHand();
     }
 
+    private void UpdateMat(Color newColour)
+    {
+        foreach (MeshRenderer mr in meshRenderers)
+            mr.material.color = newColour;
+    }
+    
+    private void ResetMat()
+    {
+        for (int i = 0; i < meshRenderers.Length; i++)
+            meshRenderers[i].material.color = defaultColours[i];
+    }
+    
     public void HitByRay()
     {
-        meshRenderer.material.color = hitColour;
+        UpdateMat(hitColour);
     }
     
     public void RayExit()
     {
-        // Debug.Log("RayExit: " + name);
-        meshRenderer.material.color = defaultColour;
+        ResetMat();
         
         if (pointerHand)
             pointerHand.DetachObject(gameObject);
@@ -49,7 +68,7 @@ public class LaserPonterReciever : MonoBehaviour
     // public void Click(Transform handLocation)
     public void Click(Hand pointerHand)
     {
-        meshRenderer.material.color = clickColour;
+        UpdateMat(clickColour);
         
         handTarget = pointerHand.gameObject.transform.position;
         // movingTowardsHand = true;
@@ -83,6 +102,6 @@ public class LaserPonterReciever : MonoBehaviour
         this.pointerHand = pointerHand;
 
         // Reset material colour otherwise object stays green
-        meshRenderer.material.color = defaultColour;
+        ResetMat();
     }
 }
