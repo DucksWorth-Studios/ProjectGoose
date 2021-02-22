@@ -1493,7 +1493,7 @@ MonoBehaviour:
   pullObject:
     actionPath: /actions/default/in/PullObject
     needsReinit: 0
-  defaultLength: 3
+  defaultLength: 5
 --- !u!114 &4093168386175917390
 MonoBehaviour:
   m_ObjectHideFlags: 0

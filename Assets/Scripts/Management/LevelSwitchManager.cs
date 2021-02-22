@@ -32,6 +32,8 @@ public class LevelSwitchManager : MonoBehaviour
             InLoading();
         else if (scene == "LabCompound")
             InLab();
+        else
+            InDefault();
     }
 
     private void InStart()
@@ -56,6 +58,16 @@ public class LevelSwitchManager : MonoBehaviour
         dimensionJump.teleportPoints = TeleportPoint.points;
         
         EventManager.instance.Progress(STAGE.START);
-        EventManager.instance.EnableAllInput();
+        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
+    }
+
+    // Changes to apply when in sandbox or unknown scene
+    private void InDefault()
+    {
+        transform.position = AppData.defaultPosition;
+        transform.rotation = AppData.defaultRotation;
+        dimensionJump.teleportPoints = TeleportPoint.points;
+        
+        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
     }
 }
