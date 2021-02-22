@@ -19,6 +19,7 @@ public class CompositionManager : MonoBehaviour
     public bool ISComposition = false;
     public bool HasElement = false;
     public bool debugHold = false;
+    private bool IsDrunk = false;
     private void Start()
     {
         puffEffect.SetActive(false);
@@ -143,8 +144,9 @@ public class CompositionManager : MonoBehaviour
 
     public void IsPerfectCompositionDrunk()
     {
-        if(ISComposition && HasElement)
+        if(ISComposition && HasElement && !IsDrunk)
         {
+            IsDrunk = true;
             EventManager.instance.Progress(STAGE.END);
             EventManager.instance.WinGame();
         }
