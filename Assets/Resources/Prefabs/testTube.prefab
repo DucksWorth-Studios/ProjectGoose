@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 947374503972506684}
   - component: {fileID: 2533392456053211645}
   - component: {fileID: 8521962807084461959}
+  - component: {fileID: 1271593464}
+  - component: {fileID: 1271593465}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Vial
@@ -208,6 +210,37 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &1271593464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121dc06f5005b894ab4cb2c810633cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToListen: 0
+--- !u!114 &1271593465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.9527312, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
