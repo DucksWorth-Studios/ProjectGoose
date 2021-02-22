@@ -101,15 +101,7 @@ public class LaserPonterReciever : MonoBehaviour
     private void TeleportToHand(Hand pointerHand)
     {
         // Store default attachment flags
-        Hand.AttachmentFlags attachmentFlags;
-        
-        if (throwable)
-            attachmentFlags = Hand.defaultAttachmentFlags 
-                              & ~Hand.AttachmentFlags.SnapOnAttach
-                              & ~Hand.AttachmentFlags.DetachOthers
-                              & ~Hand.AttachmentFlags.TurnOnKinematic;
-        else
-            attachmentFlags = Hand.defaultAttachmentFlags 
+        Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags 
                               & ~Hand.AttachmentFlags.SnapOnAttach
                               & ~Hand.AttachmentFlags.DetachOthers
                               & ~Hand.AttachmentFlags.VelocityMovement;
