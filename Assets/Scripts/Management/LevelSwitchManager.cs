@@ -58,7 +58,7 @@ public class LevelSwitchManager : MonoBehaviour
         dimensionJump.teleportPoints = TeleportPoint.points;
         
         EventManager.instance.Progress(STAGE.START);
-        EventManager.instance.EnableAllInput();
+        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
     }
 
     // Changes to apply when in sandbox or unknown scene
