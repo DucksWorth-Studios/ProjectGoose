@@ -53,7 +53,7 @@ public class LaserPointer : MonoBehaviour
             lineRenderer.enabled = false;
         }
         
-        if (!pullObject.state && wasClicked)
+        if (!IsClicking() && wasClicked)
             RayExit();
     }
 
@@ -77,7 +77,7 @@ public class LaserPointer : MonoBehaviour
             lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
             if (lastHit != null)
-                if (pullObject.state)
+                if (IsClicking())
                 {
                     lastHit.Click(pointerHand);
                     // lastHit.Click(transform);
@@ -124,5 +124,12 @@ public class LaserPointer : MonoBehaviour
         lastHit = null;
         materialUpdated = false;
         wasClicked = false;
+    }
+
+    // For checking if the player is pulling the trigger down for enough
+    // Only the Index supports boolean click being separate to trigger axis
+    private bool IsClicking()
+    {
+        return pullObject.state && startLaser.axis > 0.95f;
     }
 }
