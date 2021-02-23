@@ -23,6 +23,8 @@ public class LaserPointer : MonoBehaviour
     private LaserPonterReciever lastHit;
 
     private Hand pointerHand;
+    private bool materialUpdated;
+    private bool wasClicked;
 
     void Awake()
     {
@@ -38,10 +40,10 @@ public class LaserPointer : MonoBehaviour
 
     void Update()
     {
-        if (!enabled || pointerHand.objectIsAttached)
+        if (!enabled)
             return;
         
-        if (startLaser.axis > 0.25f && !lastHit)
+        if (startLaser.axis > 0.25f && !pointerHand.objectIsAttached)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -51,7 +53,7 @@ public class LaserPointer : MonoBehaviour
             lineRenderer.enabled = false;
         }
         
-        if (!pullObject.state)
+        if (!pullObject.state && wasClicked)
             RayExit();
     }
 
@@ -76,18 +78,22 @@ public class LaserPointer : MonoBehaviour
 
             if (lastHit != null)
                 if (pullObject.state)
+                {
                     lastHit.Click(pointerHand);
-                // lastHit.Click(transform);
-                else
+                    // lastHit.Click(transform);
+                    wasClicked = true;
+                }
+                else if (!materialUpdated)
                 {
                     lastHit.HitByRay();
-                    lastHit = null;
+                    // lastHit = null;
+                    materialUpdated = true;
                 }
         }
         else
         {
             endPosition = DefaultEnd(defaultLength);
-            // RayExit();
+            RayExit();
         }
         
         return endPosition;
@@ -112,7 +118,11 @@ public class LaserPointer : MonoBehaviour
     {
         if (!lastHit) return;
         
+        Debug.Log("RayExit");
+        
         lastHit.RayExit();
         lastHit = null;
+        materialUpdated = false;
+        wasClicked = false;
     }
 }
