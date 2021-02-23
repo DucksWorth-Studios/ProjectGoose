@@ -38,7 +38,7 @@ public class LaserPointer : MonoBehaviour
 
     void Update()
     {
-        if (!enabled)
+        if (!enabled || pointerHand.objectIsAttached)
             return;
         
         if (startLaser.axis > 0.25f && !lastHit)

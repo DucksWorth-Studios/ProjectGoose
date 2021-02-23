@@ -87,6 +87,8 @@ namespace Valve.VR.InteractionSystem
         public bool spewDebugText = false;
         public bool showDebugInteractables = false;
 
+        public bool objectIsAttached;
+
         public struct AttachedObject
         {
             public GameObject attachedObject;
@@ -297,15 +299,20 @@ namespace Valve.VR.InteractionSystem
         public void Show()
         {
             SetVisibility(true);
+            // Debug.LogWarning("Hand Show");
         }
 
         public void Hide()
         {
             SetVisibility(false);
+            // Debug.LogWarning("Hand Hide");
         }
 
         public void SetVisibility(bool visible)
         {
+            // This works assuming visibility is set when grabbing an interactable
+            objectIsAttached = !visible;
+            
             if (mainRenderModel != null)
                 mainRenderModel.SetVisibility(visible);
         }
