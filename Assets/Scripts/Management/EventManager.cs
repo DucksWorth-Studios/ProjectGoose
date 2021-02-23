@@ -255,7 +255,7 @@ public class EventManager : MonoBehaviour
         DisablePointer();
     }
     
-    public virtual void EnableAllInput(PointerState state = PointerState.Disabled)
+    public virtual void EnableAllInput(PointerState state = PointerState.PhysicsPointer)
     {
         //TODO: Change to enable physics by default
         EnableMovement();

@@ -66,7 +66,7 @@ public class LevelSwitchManager : MonoBehaviour
     {
         transform.position = AppData.defaultPosition;
         transform.rotation = AppData.defaultRotation;
-        dimensionJump.teleportPoints = TeleportPoint.points;
+        // dimensionJump.teleportPoints = TeleportPoint.points;
         
         EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
     }
