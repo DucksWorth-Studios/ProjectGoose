@@ -20,7 +20,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            EventManager.instance.HighlightItem(KEY.CHEMICAL);
+            EventManager.instance.HighlightItem(KEY.USB);
             
         }
     }
