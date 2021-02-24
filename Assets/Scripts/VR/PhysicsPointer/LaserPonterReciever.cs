@@ -62,6 +62,7 @@ public class LaserPonterReciever : MonoBehaviour
     
     public void HitByRay()
     {
+        Debug.Log("HitByRay");
         UpdateMat(hitColour);
     }
     

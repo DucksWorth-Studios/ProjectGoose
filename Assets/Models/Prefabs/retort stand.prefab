@@ -388,17 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 3320563693483440706}
-  - {fileID: 6806982686670258821}
-  - {fileID: 10079066207247312}
-  - {fileID: 6415042644105784343}
-  - {fileID: 2656929076272332854}
-  - {fileID: 14817572959066508}
-  - {fileID: 1947624204291262836}
-  - {fileID: 2474779865008346169}
-  - {fileID: 8932738572096336317}
-  - {fileID: 5202970176857666638}
+  meshRenderers: []
   defaultColours: []
   hitColour: {r: 1, g: 0, b: 0, a: 1}
   clickColour: {r: 0, g: 1, b: 0, a: 1}

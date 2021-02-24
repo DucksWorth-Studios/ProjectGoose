@@ -23,6 +23,8 @@ public class LaserPointer : MonoBehaviour
     private LaserPonterReciever lastHit;
 
     private Hand pointerHand;
+    private bool materialUpdated;
+    private bool wasClicked;
 
     void Awake()
     {
@@ -41,7 +43,7 @@ public class LaserPointer : MonoBehaviour
         if (!enabled)
             return;
         
-        if (startLaser.axis > 0.25f && !lastHit)
+        if (startLaser.axis > 0.25f && !pointerHand.objectIsAttached)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -51,7 +53,7 @@ public class LaserPointer : MonoBehaviour
             lineRenderer.enabled = false;
         }
         
-        if (!pullObject.state)
+        if (!IsClicking() && wasClicked)
             RayExit();
     }
 
@@ -75,19 +77,23 @@ public class LaserPointer : MonoBehaviour
             lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
             if (lastHit != null)
-                if (pullObject.state)
+                if (IsClicking())
+                {
                     lastHit.Click(pointerHand);
-                // lastHit.Click(transform);
-                else
+                    // lastHit.Click(transform);
+                    wasClicked = true;
+                }
+                else if (!materialUpdated)
                 {
                     lastHit.HitByRay();
-                    lastHit = null;
+                    // lastHit = null;
+                    materialUpdated = true;
                 }
         }
         else
         {
             endPosition = DefaultEnd(defaultLength);
-            // RayExit();
+            RayExit();
         }
         
         return endPosition;
@@ -112,7 +118,18 @@ public class LaserPointer : MonoBehaviour
     {
         if (!lastHit) return;
         
+        Debug.Log("RayExit");
+        
         lastHit.RayExit();
         lastHit = null;
+        materialUpdated = false;
+        wasClicked = false;
+    }
+
+    // For checking if the player is pulling the trigger down for enough
+    // Only the Index supports boolean click being separate to trigger axis
+    private bool IsClicking()
+    {
+        return pullObject.state && startLaser.axis > 0.95f;
     }
 }
