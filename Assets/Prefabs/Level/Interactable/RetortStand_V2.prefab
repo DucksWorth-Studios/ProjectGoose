@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88a714581db35a41b1ab9e81dfb953d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagToSearchFor: TestTube
+  tagToSearchFor: Vial
   SnappedTransform: {fileID: 2563560040277916092}
 --- !u!1 &6906916101394334401
 GameObject:
