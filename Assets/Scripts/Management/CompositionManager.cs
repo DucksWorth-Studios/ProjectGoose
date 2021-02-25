@@ -56,7 +56,7 @@ public class CompositionManager : MonoBehaviour
 
             bool HasReachedGoal = detectIfWithinWinBounds();
             detectIfToxic(HasReachedGoal);
-
+            
             //if(debugHold)
             //{
             //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
@@ -124,15 +124,36 @@ public class CompositionManager : MonoBehaviour
 
     private void detectIfToxic(bool isWinner)
     {
-        if(!isWinner)
+        bool IsStep = detectIFStepToSolution();
+        if (!isWinner && !IsStep)
         {
             //If not a composition theres a chance it could be toxic if so generate the cloud
             int x = Random.Range(0, 1000);
-            if(x % 4 == 0)
+            if (x % 4 == 0)
             {
                 Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity);
             }
         }
+    }
+
+    private bool detectIFStepToSolution()
+    {
+        
+        bool IsMatch = false;
+        foreach(Color step in AppData.chemicalSteps)
+        {
+
+            bool redInRange = currentColor.r < (step.r + AppData.mixLeniancey) && currentColor.r > (step.r - AppData.mixLeniancey);
+            bool greenInRange = currentColor.g < (step.g + AppData.mixLeniancey) && currentColor.g > (step.g - AppData.mixLeniancey);
+            bool blueInRange = currentColor.b < (step.b + AppData.mixLeniancey) && currentColor.g > (step.b - AppData.mixLeniancey);
+
+            if (redInRange && greenInRange && blueInRange)
+            {
+                IsMatch = true;
+            }
+        }
+
+        return IsMatch;
     }
 
     public void callColorChange(GameObject otherVial)
