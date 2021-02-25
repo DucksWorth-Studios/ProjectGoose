@@ -173,6 +173,21 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Takes in a color to reset the composition to.
+    /// </summary>
+    /// <param name="color"></param>
+    public void ResetComposition(Color color)
+    {
+        //reset current color
+        currentColor = color;
+        //reset previous color
+        previousColor = color;
+
+        //set material
+        currentMaterial.color = color; ;
+    }
+
     void Update()
     {
 
