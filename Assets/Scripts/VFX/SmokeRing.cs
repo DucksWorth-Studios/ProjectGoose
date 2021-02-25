@@ -75,7 +75,7 @@ public class SmokeRing : MonoBehaviour
 
             for (int i = 0; i < difference; i++)
             {
-                StopCoroutine("CloseIn");
+                // StopCoroutine("CloseIn");
                 
                 // Debug.Log("Removed");
                 Destroy(spawned[0]);
@@ -116,7 +116,14 @@ public class SmokeRing : MonoBehaviour
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
   
             GameObject ob = Instantiate(smokePrefab, transform, true);
-            ob.transform.position = new Vector3(x, localPosition.y, z);
+            Vector3 newPosition = new Vector3(x, localPosition.y, z);
+            ob.transform.position = newPosition;
+            
+            VFXManager vfx = ob.GetComponent<VFXManager>();
+            vfx.target = newPosition;
+            vfx.moveSpeed = moveSpeed;
+            
+            ob.name = "Fog-" + i;
             spawned.Add(ob);
         }
     }
@@ -133,17 +140,22 @@ public class SmokeRing : MonoBehaviour
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
 
-            StartCoroutine(CloseIn(spawned[i], new Vector3(x, localPosition.y, z)));
+            VFXManager vfx = spawned[i].GetComponent<VFXManager>();
+            vfx.target = new Vector3(x, localPosition.y, z);
+
+            // StartCoroutine(CloseIn(spawned[i], new Vector3(x, localPosition.y, z)));
         }
     }
 
     private IEnumerator CloseIn(GameObject objectToMove, Vector3 target)
     {
+        Debug.Log(objectToMove.name + ": " + target);
+        
         // while (objectToMove.transform.position != target)
-        while (Vector3.Distance(objectToMove.transform.position, target) > 0.001f)
+        while (objectToMove && Vector3.Distance(objectToMove.transform.position, target) > 0.001f)
         {
             // Move our position a step closer to the target.
-            float step =  moveSpeed * Time.deltaTime; // calculate distance to move
+            float step =  moveSpeed * Time.deltaTime;
             objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, target, step);
 
             yield return null;
