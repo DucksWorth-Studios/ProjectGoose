@@ -25,6 +25,12 @@ public class SmokeRing : MonoBehaviour
     
     [Tooltip("The speed the smoke should move at")]
     public float moveSpeed = 5;
+    
+    [Tooltip("The speed the smoke should move at when the emitters start getting destroyed")]
+    public float destroyMoveSpeed = 5;
+
+    [Tooltip("The amount to offset the y of each effect by")]
+    public float yOffset = 0.5f;
 
     private int initialSpawnLimit;
     private float initialSpawnRadius;
@@ -36,6 +42,7 @@ public class SmokeRing : MonoBehaviour
     {
         initialSpawnLimit = spawnLimit;
         initialSpawnRadius = spawnRadius;
+        VFXManager.moveSpeed = moveSpeed;
 
         if (!SceneManager.GetActiveScene().name.Equals("FogTesting"))
         {
@@ -74,8 +81,13 @@ public class SmokeRing : MonoBehaviour
             int difference = lastSpwanCount - Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius));
             spawnLimit -= difference;
 
+            // Debug.Log("spawnRadius: " + spawnRadius);
+            // Debug.Log("Curve: " + Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius)));
+
             for (int i = 0; i < difference; i++)
             {
+                VFXManager.moveSpeed = destroyMoveSpeed;
+                
                 Destroy(spawned[0]);
                 spawned.RemoveAt(0);
                 spawnedVFX.RemoveAt(0);
@@ -113,12 +125,11 @@ public class SmokeRing : MonoBehaviour
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
   
             GameObject ob = Instantiate(smokePrefab, transform, true);
-            Vector3 newPosition = new Vector3(x, localPosition.y, z);
+            Vector3 newPosition = new Vector3(x, localPosition.y + yOffset, z);
             ob.transform.position = newPosition;
             
             VFXManager vfx = ob.GetComponent<VFXManager>();
             vfx.target = newPosition;
-            vfx.moveSpeed = moveSpeed;
             
             ob.name = "Fog-" + i;
             spawned.Add(ob);
@@ -138,7 +149,7 @@ public class SmokeRing : MonoBehaviour
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
 
-            spawnedVFX[i].target = new Vector3(x, localPosition.y, z);
+            spawnedVFX[i].target = new Vector3(x, localPosition.y + yOffset, z);
         }
     }
 }

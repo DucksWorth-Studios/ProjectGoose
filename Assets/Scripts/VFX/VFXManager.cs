@@ -4,8 +4,7 @@ public class VFXManager : MonoBehaviour
 {
     [HideInInspector]
     public Vector3 target;
-    [HideInInspector]
-    public float moveSpeed = 2.5f;
+    public static float moveSpeed = 2.5f;
 
     void Update()
     {
