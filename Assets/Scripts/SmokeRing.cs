@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Author: Cameron Scholes
@@ -21,6 +22,9 @@ public class SmokeRing : MonoBehaviour
     
     [Tooltip("Time is spawn radius, value is spawned effects.")]
     public AnimationCurve spawnCurve = AnimationCurve.Linear(0, 10, 20, 5);
+    
+    [Tooltip("The speed the smoke should move at")]
+    public float moveSpeed = 5;
 
     private int initialSpawnLimit;
     private float initialSpawnRadius;
@@ -31,8 +35,14 @@ public class SmokeRing : MonoBehaviour
     {
         initialSpawnLimit = spawnLimit;
         initialSpawnRadius = spawnRadius;
-        EventManager.instance.OnTimeJump += UpdateSmokeEffect;
-        EventManager.instance.OnLoseGame += Destroy;
+
+        if (!SceneManager.GetActiveScene().name.Equals("FogTesting"))
+        {
+            EventManager.instance.OnTimeJump += UpdateSmokeEffect;
+            EventManager.instance.OnLoseGame += Destroy;
+        } 
+        else
+            UpdateSmokeEffect();
     }
 
     private void UpdateSmokeEffect()
@@ -65,6 +75,8 @@ public class SmokeRing : MonoBehaviour
 
             for (int i = 0; i < difference; i++)
             {
+                StopCoroutine("CloseIn");
+                
                 // Debug.Log("Removed");
                 Destroy(spawned[0]);
                 spawned.RemoveAt(0);
@@ -120,8 +132,23 @@ public class SmokeRing : MonoBehaviour
             float theta = i * 2 * Mathf.PI / spawnLimit;
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
-  
-            spawned[i].transform.position = new Vector3(x, localPosition.y, z);
+
+            StartCoroutine(CloseIn(spawned[i], new Vector3(x, localPosition.y, z)));
         }
+    }
+
+    private IEnumerator CloseIn(GameObject objectToMove, Vector3 target)
+    {
+        // while (objectToMove.transform.position != target)
+        while (Vector3.Distance(objectToMove.transform.position, target) > 0.001f)
+        {
+            // Move our position a step closer to the target.
+            float step =  moveSpeed * Time.deltaTime; // calculate distance to move
+            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, target, step);
+
+            yield return null;
+        }
+
+        Debug.Log("Reached target");
     }
 }
