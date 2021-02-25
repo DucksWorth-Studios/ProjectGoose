@@ -29,6 +29,7 @@ public class SmokeRing : MonoBehaviour
     private int initialSpawnLimit;
     private float initialSpawnRadius;
     private List<GameObject> spawned;
+    private List<VFXManager> spawnedVFX;
     private int lastSpwanCount;
 
     void Start()
@@ -75,11 +76,9 @@ public class SmokeRing : MonoBehaviour
 
             for (int i = 0; i < difference; i++)
             {
-                // StopCoroutine("CloseIn");
-                
-                // Debug.Log("Removed");
                 Destroy(spawned[0]);
                 spawned.RemoveAt(0);
+                spawnedVFX.RemoveAt(0);
             }
 
             MoveObjects();
@@ -100,6 +99,7 @@ public class SmokeRing : MonoBehaviour
     void Reset()
     {
         spawned = new List<GameObject>();
+        spawnedVFX = new List<VFXManager>();
         SpawnObjects();
     }
     
@@ -125,6 +125,7 @@ public class SmokeRing : MonoBehaviour
             
             ob.name = "Fog-" + i;
             spawned.Add(ob);
+            spawnedVFX.Add(vfx);
         }
     }
     
@@ -140,27 +141,7 @@ public class SmokeRing : MonoBehaviour
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
 
-            VFXManager vfx = spawned[i].GetComponent<VFXManager>();
-            vfx.target = new Vector3(x, localPosition.y, z);
-
-            // StartCoroutine(CloseIn(spawned[i], new Vector3(x, localPosition.y, z)));
+            spawnedVFX[i].target = new Vector3(x, localPosition.y, z);
         }
-    }
-
-    private IEnumerator CloseIn(GameObject objectToMove, Vector3 target)
-    {
-        Debug.Log(objectToMove.name + ": " + target);
-        
-        // while (objectToMove.transform.position != target)
-        while (objectToMove && Vector3.Distance(objectToMove.transform.position, target) > 0.001f)
-        {
-            // Move our position a step closer to the target.
-            float step =  moveSpeed * Time.deltaTime;
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, target, step);
-
-            yield return null;
-        }
-
-        Debug.Log("Reached target");
     }
 }
