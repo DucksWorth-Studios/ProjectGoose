@@ -28,7 +28,6 @@ public class ChemicalRestart : MonoBehaviour
         if(button == ButtonEnum.RESET)
         {
             compositionManager.ResetComposition(startingColor);
-            print("HERE");
         }
     }
 
