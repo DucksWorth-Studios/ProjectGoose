@@ -17,7 +17,7 @@ public class SmokeRing : MonoBehaviour
     [Tooltip("The initial size of the spawn radius")]
     public float spawnRadius = 5;
     
-    [Tooltip("The limit for how small the fianll fog radius should be")]
+    [Tooltip("The limit for how small the final fog radius should be")]
     public float spawnRadiusLimit = 1;
     
     [Tooltip("Time is spawn radius, value is spawned effects.")]
@@ -52,7 +52,7 @@ public class SmokeRing : MonoBehaviour
         {
             // Player has already jumped to the future and has now jumped back to the past
             Destroy();
-            CancelInvoke("ShrinkFogArea");
+            StopCoroutine("ShrinkFogArea");
 
             spawnLimit = initialSpawnLimit;
             spawnRadius = initialSpawnRadius;
@@ -61,13 +61,13 @@ public class SmokeRing : MonoBehaviour
         {
             // Player has just jumped to the future
             Reset();
-            InvokeRepeating("ShrinkFogArea", 1, 1);
+            StartCoroutine("ShrinkFogArea");
         }
     }
 
-    void ShrinkFogArea()
+    private IEnumerator ShrinkFogArea()
     {
-        if (spawnRadius > spawnRadiusLimit)
+        while (spawnRadius > spawnRadiusLimit)
         {
             spawnRadius -= 1;
 
@@ -82,10 +82,7 @@ public class SmokeRing : MonoBehaviour
             }
 
             MoveObjects();
-        } 
-        else
-        {
-            CancelInvoke("ShrinkFogArea");
+            yield return new WaitForSeconds(1);
         }
     }
     void Destroy()
