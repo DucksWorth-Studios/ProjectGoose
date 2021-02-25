@@ -17,7 +17,7 @@ public enum KEY { CHEMICAL, USB, USBSLOT };
 public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2 };
 
 //Button Enum
-public enum ButtonEnum { CLOUDREMOVE, NEGATOR };
+public enum ButtonEnum { CLOUDREMOVE, NEGATOR, RESET };
 
 public class AppData : MonoBehaviour
 {
@@ -26,9 +26,12 @@ public class AppData : MonoBehaviour
     public static float cloudSurviveTime = 27f;
     public static float timeToDisplayRed = 2f;
     public static float timeToClear = 3f;
+    public static float mixLeniancey = 0.01f;
     // Delay from survival to item destruction
     public static float cloudSurviveTimeDelay = 3f;
 
+    /*--Colors--*/
+    public static Color[] chemicalSteps = { new Color(0.5f, 0.8555f, 0.5f, 1f)};
 
     /*---Strings---*/
     public static string ignoreTag = "Ignore";

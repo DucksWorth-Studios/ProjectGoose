@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1271593464}
   - component: {fileID: 1271593465}
   - component: {fileID: 4441867242369566538}
+  - component: {fileID: 3814554753766229654}
   m_Layer: 0
   m_Name: testTube
   m_TagString: Vial
@@ -260,6 +261,19 @@ MonoBehaviour:
   hitColour: {r: 1, g: 0, b: 0, a: 1}
   clickColour: {r: 0, g: 1, b: 0, a: 1}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3814554753766229654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586371660606939060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c018f109602070141a745f2a68f4fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compositionManager: {fileID: 6556756402260595651}
 --- !u!1 &2917117418977307877
 GameObject:
   m_ObjectHideFlags: 0
