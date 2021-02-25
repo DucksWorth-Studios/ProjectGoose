@@ -17,7 +17,7 @@ public enum KEY { CHEMICAL, USB, USBSLOT };
 public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2 };
 
 //Button Enum
-public enum ButtonEnum { CLOUDREMOVE, NEGATOR };
+public enum ButtonEnum { CLOUDREMOVE, NEGATOR, RESET };
 
 public class AppData : MonoBehaviour
 {
