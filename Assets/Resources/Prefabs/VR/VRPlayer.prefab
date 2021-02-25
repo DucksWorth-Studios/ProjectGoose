@@ -401,6 +401,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  moveSpeed: 2.5
 --- !u!114 &7921376852730977367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1066,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!54 &5492098
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1170,6 +1172,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!114 &114000011273627542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,6 +1318,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!114 &114000011957598740
 MonoBehaviour:
   m_ObjectHideFlags: 0
