@@ -29,6 +29,8 @@ public class AppData : MonoBehaviour
     // Delay from survival to item destruction
     public static float cloudSurviveTimeDelay = 3f;
 
+    /*--Colors--*/
+    public static Color[] chemicalSteps = { new Color(0.5f, 0.8555f, 0.5f, 1f)};
 
     /*---Strings---*/
     public static string ignoreTag = "Ignore";
