@@ -33,7 +33,7 @@ public class NarrationManager : MonoBehaviour
     void Start()
     {
         activeNarration = GetComponent<AudioSource>();
-        //EventManager.instance.OnTimeJump += JumpInteference;
+        EventManager.instance.OnTimeJump += JumpInteference;
         EventManager.instance.OnLoseGame += StopScene;
     }
 
@@ -103,18 +103,13 @@ public class NarrationManager : MonoBehaviour
         activeQueue.UnPause();
     }
     //Teleport Jump will intefere with clips keep track of tate we are in
-    private void JumpInteference()
+    public void JumpInteference()
     {
-        if(InPast)
+        if(activeQueue != null)
         {
-            InPast = false;
-            PauseScene();
+            activeQueue.InteruptLines();
         }
-        else
-        {
-            InPast = true;
-            UnPauseScene();
-        }
+
     }
 
     //void Update()

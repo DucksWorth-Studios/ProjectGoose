@@ -9,7 +9,7 @@ public class AudioQueue : MonoBehaviour
 {
     [Tooltip("The Audio Clips In The Scene")]
     public AudioClip[] clips;
-
+    public bool IsInteruptable = false;
     //Current Index We are At
     private int currentIndex = 0;
     //Will Be Passed
@@ -20,6 +20,8 @@ public class AudioQueue : MonoBehaviour
     private bool IsPaused = false;
     //Max Index we have
     private int IndexMax = 0;
+
+    private bool isInterupted = false;
     void Start()
     {
         IndexMax = clips.Length;
@@ -36,12 +38,14 @@ public class AudioQueue : MonoBehaviour
     //Pause
     public void Pause()
     {
+        audioSource.Pause();
         IsPaused = true;
     }
 
     //UnPause
     public void UnPause()
     {
+        audioSource.UnPause();
         IsPaused = false;
     }
 
@@ -52,6 +56,23 @@ public class AudioQueue : MonoBehaviour
         audioSource.Stop();
     }
 
+    public void InteruptLines()
+    {
+        if(IsInteruptable)
+        {
+            if (isInterupted)
+            {
+                UnPause();
+                isInterupted = false;
+            }
+            else
+            {
+                Pause();
+                isInterupted = true;
+            }
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
