@@ -131,8 +131,10 @@ public class ProgressionManager : MonoBehaviour
             InPast = true;
             if (!firstReturn)
             {
+                print("STARTING");
                 firstReturn = true;
                 Progress(STAGE.FIRSTRETURN);
+                narrationManager.JumpInteference();
             }
         }
     }
