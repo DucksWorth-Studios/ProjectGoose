@@ -403,6 +403,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   moveSpeed: 2.5
   destroyMoveSpeed: 10
+  yOffset: 0.5
 --- !u!114 &7921376852730977367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,6 +1966,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 21cffd1e0a7bed04f9083993dcd8dcb1, type: 3}
   - {fileID: 8300000, guid: 2ee21f400e09f6347a7c50618533bcba, type: 3}
+  IsInteruptable: 0
 --- !u!1 &851450543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,6 +4366,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 447954}
     m_Modifications:
+    - target: {fileID: 6309919869005353922, guid: c244453525828854399a2746fb215fae,
+        type: 3}
+      propertyPath: IsInteruptable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309919870510012526, guid: c244453525828854399a2746fb215fae,
+        type: 3}
+      propertyPath: IsInteruptable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6309919870510012526, guid: c244453525828854399a2746fb215fae,
         type: 3}
       propertyPath: clips.Array.size
