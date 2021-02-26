@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Author: Cameron Scholes
@@ -16,23 +17,40 @@ public class SmokeRing : MonoBehaviour
     [Tooltip("The initial size of the spawn radius")]
     public float spawnRadius = 5;
     
-    [Tooltip("The limit for how small the fianll fog radius should be")]
+    [Tooltip("The limit for how small the final fog radius should be")]
     public float spawnRadiusLimit = 1;
     
     [Tooltip("Time is spawn radius, value is spawned effects.")]
     public AnimationCurve spawnCurve = AnimationCurve.Linear(0, 10, 20, 5);
+    
+    [Tooltip("The speed the smoke should move at")]
+    public float moveSpeed = 5;
+    
+    [Tooltip("The speed the smoke should move at when the emitters start getting destroyed")]
+    public float destroyMoveSpeed = 5;
+
+    [Tooltip("The amount to offset the y of each effect by")]
+    public float yOffset = 0.5f;
 
     private int initialSpawnLimit;
     private float initialSpawnRadius;
     private List<GameObject> spawned;
+    private List<VFXManager> spawnedVFX;
     private int lastSpwanCount;
 
     void Start()
     {
         initialSpawnLimit = spawnLimit;
         initialSpawnRadius = spawnRadius;
-        EventManager.instance.OnTimeJump += UpdateSmokeEffect;
-        EventManager.instance.OnLoseGame += Destroy;
+        VFXManager.moveSpeed = moveSpeed;
+
+        if (!SceneManager.GetActiveScene().name.Equals("FogTesting"))
+        {
+            EventManager.instance.OnTimeJump += UpdateSmokeEffect;
+            EventManager.instance.OnLoseGame += Destroy;
+        } 
+        else
+            UpdateSmokeEffect();
     }
 
     private void UpdateSmokeEffect()
@@ -41,7 +59,7 @@ public class SmokeRing : MonoBehaviour
         {
             // Player has already jumped to the future and has now jumped back to the past
             Destroy();
-            CancelInvoke("ShrinkFogArea");
+            StopCoroutine("ShrinkFogArea");
 
             spawnLimit = initialSpawnLimit;
             spawnRadius = initialSpawnRadius;
@@ -50,31 +68,33 @@ public class SmokeRing : MonoBehaviour
         {
             // Player has just jumped to the future
             Reset();
-            InvokeRepeating("ShrinkFogArea", 1, 1);
+            StartCoroutine("ShrinkFogArea");
         }
     }
 
-    void ShrinkFogArea()
+    private IEnumerator ShrinkFogArea()
     {
-        if (spawnRadius > spawnRadiusLimit)
+        while (spawnRadius > spawnRadiusLimit)
         {
             spawnRadius -= 1;
 
             int difference = lastSpwanCount - Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius));
             spawnLimit -= difference;
 
+            // Debug.Log("spawnRadius: " + spawnRadius);
+            // Debug.Log("Curve: " + Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius)));
+
             for (int i = 0; i < difference; i++)
             {
-                // Debug.Log("Removed");
+                VFXManager.moveSpeed = destroyMoveSpeed;
+                
                 Destroy(spawned[0]);
                 spawned.RemoveAt(0);
+                spawnedVFX.RemoveAt(0);
             }
 
             MoveObjects();
-        } 
-        else
-        {
-            CancelInvoke("ShrinkFogArea");
+            yield return new WaitForSeconds(1);
         }
     }
     void Destroy()
@@ -88,6 +108,7 @@ public class SmokeRing : MonoBehaviour
     void Reset()
     {
         spawned = new List<GameObject>();
+        spawnedVFX = new List<VFXManager>();
         SpawnObjects();
     }
     
@@ -104,8 +125,15 @@ public class SmokeRing : MonoBehaviour
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
   
             GameObject ob = Instantiate(smokePrefab, transform, true);
-            ob.transform.position = new Vector3(x, localPosition.y, z);
+            Vector3 newPosition = new Vector3(x, localPosition.y + yOffset, z);
+            ob.transform.position = newPosition;
+            
+            VFXManager vfx = ob.GetComponent<VFXManager>();
+            vfx.target = newPosition;
+            
+            ob.name = "Fog-" + i;
             spawned.Add(ob);
+            spawnedVFX.Add(vfx);
         }
     }
     
@@ -120,8 +148,8 @@ public class SmokeRing : MonoBehaviour
             float theta = i * 2 * Mathf.PI / spawnLimit;
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
-  
-            spawned[i].transform.position = new Vector3(x, localPosition.y, z);
+
+            spawnedVFX[i].target = new Vector3(x, localPosition.y + yOffset, z);
         }
     }
 }
