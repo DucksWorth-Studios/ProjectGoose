@@ -286,11 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 6441156115027584821}
-  defaultColours: []
-  hitColour: {r: 1, g: 0, b: 0, a: 1}
-  clickColour: {r: 0, g: 1, b: 0, a: 1}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &7921749573663359902
 GameObject:
