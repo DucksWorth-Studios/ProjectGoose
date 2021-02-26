@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 6138914625227778416, guid: cc0210386cfeb1c49b3114ddbd0bf4ce,
     type: 3}
-  spawnLimit: 10
+  spawnLimit: 20
   spawnRadius: 20
   spawnRadiusLimit: 1
   spawnCurve:
@@ -381,8 +381,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 4
-      value: 10
+      time: 10
+      value: 20
       inSlope: 1.6666666
       outSlope: 0
       tangentMode: 69
@@ -390,8 +390,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 10
-      value: 10
+      time: 20
+      value: 20
       inSlope: -0
       outSlope: 0
       tangentMode: 69
@@ -401,6 +401,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  moveSpeed: 2.5
+  destroyMoveSpeed: 10
 --- !u!114 &7921376852730977367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1067,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!54 &5492098
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1170,6 +1173,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!114 &114000011273627542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,6 +1319,7 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+  objectIsAttached: 0
 --- !u!114 &114000011957598740
 MonoBehaviour:
   m_ObjectHideFlags: 0
