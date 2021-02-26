@@ -4,26 +4,22 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent( typeof( Interactable ) )]
+[RequireComponent( typeof( Outline ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
-    [Tooltip("Add ALL object mesh renders")]
-    public MeshRenderer[] meshRenderers;
-    
-    // TODO: Make private after debug
-    public Color[] defaultColours;
-    public Color hitColour = Color.red;
-    public Color clickColour = Color.green;
-
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
     
     private Hand pointerHand;
     private Throwable throwable;
 
-    // Speed the interactable will move towards the hand
-    private float speed = 2;
-    private Vector3 handTarget;
-    private bool movingTowardsHand;
+    // private Vector3 handTarget;
+    // private bool movingTowardsHand;
+    
+    // Outline settings
+    private Outline outline;
+    private Color outlineColor = new Color(1, 0.5f, 0);
+    private float outlineWidth = 2;
 
     void Awake()
     {
@@ -36,34 +32,26 @@ public class LaserPonterReciever : MonoBehaviour
             Debug.LogWarning("Missing throwable script. " + e.Message);
         }
         
-        defaultColours = new Color[meshRenderers.Length];
-        
-        for (int i = 0; i < meshRenderers.Length; i++)
-            defaultColours[i] = meshRenderers[i].material.color;
+        outline = GetComponent<Outline>();
+        outline.OutlineColor = outlineColor;
+        outline.OutlineWidth = outlineWidth;
+        outline.OutlineMode = Outline.Mode.OutlineHidden;
     }
 
-    void Update()
+    private void UpdateMat()
     {
-        if (movingTowardsHand)
-            MoveTowardsHand();
-    }
-
-    private void UpdateMat(Color newColour)
-    {
-        foreach (MeshRenderer mr in meshRenderers)
-            mr.material.color = newColour;
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
     }
     
     private void ResetMat()
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
-            meshRenderers[i].material.color = defaultColours[i];
+        outline.OutlineMode = Outline.Mode.OutlineHidden;
     }
     
     public void HitByRay()
     {
-        Debug.Log("HitByRay");
-        UpdateMat(hitColour);
+        // Debug.Log("HitByRay");
+        UpdateMat();
     }
     
     public void RayExit()
@@ -81,23 +69,23 @@ public class LaserPonterReciever : MonoBehaviour
     // public void Click(Transform handLocation)
     public void Click(Hand pointerHand)
     {
-        UpdateMat(clickColour);
+        UpdateMat();
         
-        handTarget = pointerHand.gameObject.transform.position;
+        // handTarget = pointerHand.gameObject.transform.position;
         // movingTowardsHand = true;
         TeleportToHand(pointerHand);
     }
 
-    private void MoveTowardsHand()
-    {
-        // Move our position a step closer to the target.
-        float step =  speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, handTarget, step);
-        
-        // Check if the position of the intractable and hand are relatively the same
-        if (Vector3.Distance(transform.position, handTarget) < 0.001f)
-            movingTowardsHand = false;
-    }
+    // private void MoveTowardsHand()
+    // {
+    //     // Move our position a step closer to the target.
+    //     float step =  speed * Time.deltaTime; // calculate distance to move
+    //     transform.position = Vector3.MoveTowards(transform.position, handTarget, step);
+    //     
+    //     // Check if the position of the intractable and hand are relatively the same
+    //     if (Vector3.Distance(transform.position, handTarget) < 0.001f)
+    //         movingTowardsHand = false;
+    // }
 
     private void TeleportToHand(Hand pointerHand)
     {

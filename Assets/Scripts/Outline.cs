@@ -21,7 +21,8 @@ public class Outline : MonoBehaviour {
     OutlineVisible,
     OutlineHidden,
     OutlineAndSilhouette,
-    SilhouetteOnly
+    SilhouetteOnly,
+    Test
   }
 
   public Mode OutlineMode {
@@ -66,7 +67,7 @@ public class Outline : MonoBehaviour {
 
   [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
   + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
-  private bool precomputeOutline;
+  private bool precomputeOutline = true;
 
   [SerializeField, HideInInspector]
   private List<Mesh> bakeKeys = new List<Mesh>();
@@ -86,10 +87,18 @@ public class Outline : MonoBehaviour {
     renderers = GetComponentsInChildren<Renderer>();
 
     // Instantiate outline materials
-    outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
+    if (outlineMode != Mode.Test)
+    {
+      outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
+      Debug.LogError("Outline fucked");
+    }
     outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
 
-    outlineMaskMaterial.name = "OutlineMask (Instance)";
+    if (outlineMode != Mode.Test)
+    {
+      outlineMaskMaterial.name = "OutlineMask (Instance)";
+      Debug.LogError("Outline fucked");
+    }
     outlineFillMaterial.name = "OutlineFill (Instance)";
 
     // Retrieve or generate smooth normals
@@ -105,7 +114,11 @@ public class Outline : MonoBehaviour {
       // Append outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
-      materials.Add(outlineMaskMaterial);
+      if (outlineMode != Mode.Test)
+      {
+        materials.Add(outlineMaskMaterial);
+        Debug.LogError("Outline fucked");
+      }
       materials.Add(outlineFillMaterial);
 
       renderer.materials = materials.ToArray();
@@ -143,7 +156,11 @@ public class Outline : MonoBehaviour {
       // Remove outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
-      materials.Remove(outlineMaskMaterial);
+      if (outlineMode != Mode.Test)
+      {
+        materials.Remove(outlineMaskMaterial);
+        Debug.LogError("Outline fucked");
+      }
       materials.Remove(outlineFillMaterial);
 
       renderer.materials = materials.ToArray();
@@ -153,7 +170,11 @@ public class Outline : MonoBehaviour {
   void OnDestroy() {
 
     // Destroy material instances
-    Destroy(outlineMaskMaterial);
+    if (outlineMode != Mode.Test)
+    {
+      Destroy(outlineMaskMaterial);
+      Debug.LogError("Outline fucked");
+    }
     Destroy(outlineFillMaterial);
   }
 
