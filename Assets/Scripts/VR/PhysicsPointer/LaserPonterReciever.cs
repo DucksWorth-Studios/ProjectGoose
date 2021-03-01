@@ -1,14 +1,17 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent( typeof( Interactable ) )]
-[RequireComponent( typeof( Outline ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
+
+    public bool outlineDoesntWork;
+    public Material backupMaterial;
     
     private Hand pointerHand;
     private Throwable throwable;
@@ -20,6 +23,10 @@ public class LaserPonterReciever : MonoBehaviour
     private Outline outline;
     private Color outlineColor = new Color(1, 0.5f, 0);
     private float outlineWidth = 2;
+    
+    // Backup Outline setup
+    private Renderer[] renderers;
+    private List<Material> materials;
 
     void Awake()
     {
@@ -32,20 +39,78 @@ public class LaserPonterReciever : MonoBehaviour
             Debug.LogWarning("Missing throwable script. " + e.Message);
         }
         
-        outline = GetComponent<Outline>();
-        outline.OutlineColor = outlineColor;
-        outline.OutlineWidth = outlineWidth;
-        outline.OutlineMode = Outline.Mode.OutlineHidden;
+        if (!outlineDoesntWork)
+        {
+            if (TryGetComponent(out Outline outline))
+            {
+                this.outline = outline;
+                outline.OutlineColor = outlineColor;
+                outline.OutlineWidth = outlineWidth;
+                outline.OutlineMode = Outline.Mode.OutlineHidden;
+            }
+            else
+                Debug.LogError(gameObject.name + " is missing Outline script or outlineDoesntWork flag");
+        }
+        else
+        {
+            // Cache renderers
+            renderers = GetComponentsInChildren<Renderer>();
+            materials = new List<Material>();
+            
+            foreach (Renderer renderer in renderers) 
+            {
+                // Get all existing materials to use for resetting later
+                List<Material> mats = renderer.sharedMaterials.ToList();
+                materials.AddRange(mats);
+            }
+        }
     }
 
     private void UpdateMat()
     {
-        outline.OutlineMode = Outline.Mode.OutlineVisible;
+        if (!outlineDoesntWork)
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+        else
+        {
+            foreach (Renderer renderer in renderers) 
+            {
+                // Get all existing materials
+                List<Material> mats = renderer.sharedMaterials.ToList();
+
+                // Change all materials to backup
+                for (int i = 0; i < mats.Count; i++)
+                    mats[i] = backupMaterial;
+                    
+                // Push material changes to renderer
+                renderer.materials = mats.ToArray();
+            }
+        }
     }
     
     private void ResetMat()
     {
-        outline.OutlineMode = Outline.Mode.OutlineHidden;
+        if (!outlineDoesntWork)
+            outline.OutlineMode = Outline.Mode.OutlineHidden;
+        else
+        {
+            int count = 0;
+            
+            foreach (Renderer renderer in renderers) 
+            {
+                // Get all existing materials
+                List<Material> mats = renderer.sharedMaterials.ToList();
+
+                // Change all materials back to their original
+                for (int i = 0; i < mats.Count; i++)
+                {
+                    mats[i] = materials[count];
+                    count++;
+                }
+                    
+                // Push material changes to renderer
+                renderer.materials = mats.ToArray();
+            }
+        }
     }
     
     public void HitByRay()
