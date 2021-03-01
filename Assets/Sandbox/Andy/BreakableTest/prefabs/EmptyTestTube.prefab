@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4295783097612921400}
   - component: {fileID: 80105751354620140}
   - component: {fileID: 8529284710557285951}
+  - component: {fileID: 7289713418481571243}
   m_Layer: 0
   m_Name: EmptyTestTube
   m_TagString: TestTube
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c183ab13f74c14149b411445453549c2, type: 2}
+  - {fileID: 2100000, guid: 4ae63e0d1ce19af46a2cc0ea397b8672, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -241,3 +242,17 @@ MonoBehaviour:
   breakingVelocity: 2
   isShatterable: 1
   clip: {fileID: 0}
+--- !u!114 &7289713418481571243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300338741338905673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcdadd08ce82a1419658bc4aa8f13d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDecaying: 0
+  blendAmount: 0
