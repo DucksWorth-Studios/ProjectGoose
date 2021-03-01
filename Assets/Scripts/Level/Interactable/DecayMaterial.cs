@@ -16,7 +16,7 @@ public class DecayMaterial : MonoBehaviour
     public bool isDecaying = false;
 
     [Tooltip("is the object decayed?")]
-    private bool isDecayed = false;
+    public bool isDecayed = false;
 
     [Tooltip("The first material of the mesh renderer")]
     Material material;
@@ -36,6 +36,9 @@ public class DecayMaterial : MonoBehaviour
         material = GetComponent<MeshRenderer>().material;
 
         EventManager.instance.OnTimeJump += StartMaterialDecay;
+
+        if (isDecayed)
+            material.SetFloat("BlendAmount", 1);
     }
 
     private void Update()
