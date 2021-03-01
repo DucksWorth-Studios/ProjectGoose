@@ -10,6 +10,7 @@ public class LaserPonterReciever : MonoBehaviour
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
 
+    [Header("Backup Outline")]
     public bool outlineDoesntWork;
     public Material backupMaterial;
     
@@ -46,7 +47,7 @@ public class LaserPonterReciever : MonoBehaviour
                 this.outline = outline;
                 outline.OutlineColor = outlineColor;
                 outline.OutlineWidth = outlineWidth;
-                outline.OutlineMode = Outline.Mode.OutlineHidden;
+                outline.OutlineMode = Outline.Mode.Disabled;
             }
             else
                 Debug.LogError(gameObject.name + " is missing Outline script or outlineDoesntWork flag");
@@ -90,7 +91,7 @@ public class LaserPonterReciever : MonoBehaviour
     private void ResetMat()
     {
         if (!outlineDoesntWork)
-            outline.OutlineMode = Outline.Mode.OutlineHidden;
+            outline.OutlineMode = Outline.Mode.Disabled;
         else
         {
             int count = 0;
