@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
+  outlineDoesntWork: 1
+  backupMaterial: {fileID: 2100000, guid: aa26c346923b3354bb744b0501da55a6, type: 2}
 --- !u!1 &7921749573663359902
 GameObject:
   m_ObjectHideFlags: 0
