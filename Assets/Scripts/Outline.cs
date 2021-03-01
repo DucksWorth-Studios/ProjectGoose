@@ -21,8 +21,7 @@ public class Outline : MonoBehaviour {
     OutlineVisible,
     OutlineHidden,
     OutlineAndSilhouette,
-    SilhouetteOnly,
-    Test
+    SilhouetteOnly
   }
 
   public Mode OutlineMode {
@@ -87,18 +86,10 @@ public class Outline : MonoBehaviour {
     renderers = GetComponentsInChildren<Renderer>();
 
     // Instantiate outline materials
-    if (outlineMode != Mode.Test)
-    {
-      outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
-      Debug.LogError("Outline fucked");
-    }
+    outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
     outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
 
-    if (outlineMode != Mode.Test)
-    {
-      outlineMaskMaterial.name = "OutlineMask (Instance)";
-      Debug.LogError("Outline fucked");
-    }
+    outlineMaskMaterial.name = "OutlineMask (Instance)";
     outlineFillMaterial.name = "OutlineFill (Instance)";
 
     // Retrieve or generate smooth normals
@@ -114,11 +105,7 @@ public class Outline : MonoBehaviour {
       // Append outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
-      if (outlineMode != Mode.Test)
-      {
-        materials.Add(outlineMaskMaterial);
-        Debug.LogError("Outline fucked");
-      }
+      materials.Add(outlineMaskMaterial);
       materials.Add(outlineFillMaterial);
 
       renderer.materials = materials.ToArray();
@@ -156,11 +143,7 @@ public class Outline : MonoBehaviour {
       // Remove outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
-      if (outlineMode != Mode.Test)
-      {
-        materials.Remove(outlineMaskMaterial);
-        Debug.LogError("Outline fucked");
-      }
+      materials.Remove(outlineMaskMaterial);
       materials.Remove(outlineFillMaterial);
 
       renderer.materials = materials.ToArray();
@@ -170,11 +153,7 @@ public class Outline : MonoBehaviour {
   void OnDestroy() {
 
     // Destroy material instances
-    if (outlineMode != Mode.Test)
-    {
-      Destroy(outlineMaskMaterial);
-      Debug.LogError("Outline fucked");
-    }
+    Destroy(outlineMaskMaterial);
     Destroy(outlineFillMaterial);
   }
 
