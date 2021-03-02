@@ -38,6 +38,7 @@ public class EventManager : MonoBehaviour
     public event Action OnEnableJumping;
     public event Action OnDisablePointer;
     public event Action OnSetPhysicsPointer;
+    public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
     public event Action<bool> OnHurtScreen;
     //This is a model for an event
@@ -242,6 +243,11 @@ public class EventManager : MonoBehaviour
     {
         OnSetPhysicsPointer?.Invoke();
     }
+    
+    public virtual void SetNotRussels()
+    {
+        OnSetNotRussels?.Invoke();
+    }
 
     public virtual void SetUIPointer()
     {
@@ -265,6 +271,9 @@ public class EventManager : MonoBehaviour
         {
             case PointerState.PhysicsPointer:
                 SetPhysicsPointer();
+                break;
+            case PointerState.NotRussels:
+                SetNotRussels();
                 break;
             case PointerState.CanvasPointer:
                 SetUIPointer();
