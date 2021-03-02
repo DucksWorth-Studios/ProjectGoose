@@ -4,94 +4,62 @@ using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// Author: Cameron Scholes
-/// The laser pointer method of interacting with objects
+/// The Not Russels method of interacting with objects
 /// </summary>
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class NotRussels : MonoBehaviour
 {
-    public bool enabled;
-    
-    public float defaultLength = 3.0f;
-
-    private LineRenderer lineRenderer;
+    public float length = 1.5f;
     private LaserPonterReciever lastHit;
+    private CapsuleCollider trigger;
 
-    public Hand pointerHand;
     private bool materialUpdated;
     private bool wasClicked;
+    private bool updated;
 
-    void Awake()
+    private void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-        
-        lineRenderer.enabled = true;
-    }
-
-    void Update()
-    {
-        UpdateLength();
-    }
-
-    private void UpdateLength()
-    {
-        lineRenderer.SetPosition(0, transform.position);
-        
-        // Calculate the end of the line render
-        lineRenderer.SetPosition(1, CalculateEnd());
+        trigger = GetComponent<CapsuleCollider>();
+        CalculateCollider();
     }
     
-    private Vector3 CalculateEnd()
+    // There is only one value so OnValidate replaces Update
+    private void OnValidate()
     {
-        RaycastHit hit = CreateForwardRaycast();
-        Vector3 endPosition;
+        CalculateCollider();
+    }
+    
+    private void OnTriggerEnter(Collider hit)
+    {
+        Debug.Log("OnTriggerEnter");
+        lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
-        if (hit.collider)
-        {
-            endPosition = hit.point;
-            lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
-
-            if (lastHit != null)
-                if (!materialUpdated)
-                {
-                    lastHit.HitByRay();
-                    // lastHit = null;
-                    materialUpdated = true;
-                }
-        }
-        else
-        {
-            endPosition = DefaultEnd(defaultLength);
-            RayExit();
-        }
+        if (!lastHit) 
+            return;
         
-        return endPosition;
+        if (!materialUpdated)
+        {
+            lastHit.HitByRay();
+            materialUpdated = true;
+        }
     }
 
-    private RaycastHit CreateForwardRaycast()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.right * -1);
-
-        Physics.Raycast(ray, out hit, defaultLength);
-        
-        return hit;
-    }
-
-    private Vector3 DefaultEnd(float length)
-    {
-        return transform.position + (transform.right * (-1 * length));
-    }
-
-    private void RayExit()
+    private void OnTriggerExit(Collider hit)
     {
         if (!lastHit) return;
-        
-        Debug.Log("RayExit");
         
         lastHit.RayExit();
         lastHit = null;
         materialUpdated = false;
         wasClicked = false;
+    }
+
+    private void CalculateCollider()
+    {
+        if (!trigger) return;
+        
+        trigger.height = length;
+        trigger.center = new Vector3(length / -2, 0, 0);
     }
 }

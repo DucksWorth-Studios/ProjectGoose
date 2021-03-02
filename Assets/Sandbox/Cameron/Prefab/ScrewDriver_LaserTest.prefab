@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8745916728275407151}
   - component: {fileID: 8745916728275407144}
   - component: {fileID: 8745916728275407145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ScrewDriver_LaserTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 8745916727801760394}
   offset: {x: 0, y: 0, z: 0}
+  outlineDoesntWork: 0
+  backupMaterial: {fileID: 0}
 --- !u!114 &8745916728275407144
 MonoBehaviour:
   m_ObjectHideFlags: 0

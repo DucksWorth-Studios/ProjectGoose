@@ -67,6 +67,11 @@ public class LaserPonterReciever : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider hit)
+    {
+        Debug.Log("LPR - TriggerEnter");
+    }
+    
     private void UpdateMat()
     {
         if (!outlineDoesntWork)
