@@ -64,8 +64,8 @@ public class LevelSwitchManager : MonoBehaviour
     // Changes to apply when in sandbox or unknown scene
     private void InDefault()
     {
-        transform.position = AppData.defaultPosition;
-        transform.rotation = AppData.defaultRotation;
+        transform.position = AppData.DefaultPosition;
+        transform.rotation = AppData.DefaultRotation;
         // dimensionJump.teleportPoints = TeleportPoint.points;
         
         EventManager.instance.EnableAllInput(PointerState.NotRussels);

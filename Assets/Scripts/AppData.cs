@@ -44,11 +44,11 @@ public class AppData : MonoBehaviour
     public static float Transparent = 0;
     
     /*---Loading---*/
-    public static string sceneToLoad = "LabCompound";
+    public static readonly string SceneToLoad = "LabCompound";
     // public static string sceneToLoad = "VRPlayer-v2-Test";
     // Used for sandbox scenes
-    public static Vector3 defaultPosition = new Vector3(0, 0, 0);
-    public static Quaternion defaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
+    public static readonly Vector3 DefaultPosition = new Vector3(0, 0, 0);
+    public static readonly Quaternion DefaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
     
     /*---NotRussels---*/
     public static readonly int BufferAllocation = 5;
