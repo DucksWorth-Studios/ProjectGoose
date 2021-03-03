@@ -49,4 +49,7 @@ public class AppData : MonoBehaviour
     // Used for sandbox scenes
     public static Vector3 defaultPosition = new Vector3(0, 0, 0);
     public static Quaternion defaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
+    
+    /*---NotRussels---*/
+    public static readonly int BufferAllocation = 5;
 }

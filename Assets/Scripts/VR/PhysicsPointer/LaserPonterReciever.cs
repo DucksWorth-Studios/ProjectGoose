@@ -42,9 +42,9 @@ public class LaserPonterReciever : MonoBehaviour
         
         if (!outlineDoesntWork)
         {
-            if (TryGetComponent(out Outline outline))
+            if (TryGetComponent(out Outline outlineRef))
             {
-                this.outline = outline;
+                outline = outlineRef;
                 outline.OutlineColor = outlineColor;
                 outline.OutlineWidth = outlineWidth;
                 outline.OutlineMode = Outline.Mode.Disabled;

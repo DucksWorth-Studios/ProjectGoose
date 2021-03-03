@@ -1,65 +1,81 @@
 ﻿using UnityEngine;
-using Valve.VR;
-using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// Author: Cameron Scholes
 /// The Not Russels method of interacting with objects
 /// </summary>
-
-[RequireComponent(typeof(CapsuleCollider))]
 public class NotRussels : MonoBehaviour
 {
-    public float length = 1.5f;
+    public Transform endTarget;
+    public float radius = 0.1f;
+
     private LaserPonterReciever lastHit;
-    private CapsuleCollider trigger;
 
     private bool materialUpdated;
-    private bool wasClicked;
-    private bool updated;
+    // private bool wasClicked;
+    // private bool updated;
 
-    private void Awake()
+    private void Update()
     {
-        trigger = GetComponent<CapsuleCollider>();
-        CalculateCollider();
+        CalculateHit();
     }
-    
-    // There is only one value so OnValidate replaces Update
-    private void OnValidate()
-    {
-        CalculateCollider();
-    }
-    
-    private void OnTriggerEnter(Collider hit)
-    {
-        Debug.Log("OnTriggerEnter");
-        lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
-        if (!lastHit) 
-            return;
-        
-        if (!materialUpdated)
+    private void CalculateHit()
+    {
+        // Bit shift the index of the layer (9) to get a bit mask
+        // Layer 9 is for Interactables
+        int layerMask = 1 << 9;
+
+        // The number of returned colliders is limited to this allocated buffer
+        Collider[] colliders = new Collider[AppData.BufferAllocation];
+        Physics.OverlapCapsuleNonAlloc(transform.position, endTarget.transform.position, 
+            radius, colliders, layerMask);
+
+        if (colliders.Length > 0)
         {
-            lastHit.HitByRay();
-            materialUpdated = true;
+            Collider target = colliders.Length > 1 ? FindClosestTarget(colliders) : colliders[0];
+            Debug.LogWarning("We got " + colliders.Length);
+            
+            lastHit = target.transform.GetComponent<LaserPonterReciever>();
+
+            if (!lastHit)
+                return;
+
+            if (!materialUpdated)
+            {
+                lastHit.HitByRay();
+                materialUpdated = true;
+            }
+        }
+        else
+        {
+            if (!lastHit)
+                return;
+
+            lastHit.RayExit();
+            lastHit = null;
+            materialUpdated = false;
         }
     }
 
-    private void OnTriggerExit(Collider hit)
+    // Taken from: https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
+    Collider FindClosestTarget(Collider[] targets)
     {
-        if (!lastHit) return;
+        Collider closest = targets[0];
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
         
-        lastHit.RayExit();
-        lastHit = null;
-        materialUpdated = false;
-        wasClicked = false;
-    }
+        foreach (Collider target in targets)
+        {
+            Vector3 diff = target.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = target;
+                distance = curDistance;
+            }
+        }
 
-    private void CalculateCollider()
-    {
-        if (!trigger) return;
-        
-        trigger.height = length;
-        trigger.center = new Vector3(length / -2, 0, 0);
+        return closest;
     }
 }
