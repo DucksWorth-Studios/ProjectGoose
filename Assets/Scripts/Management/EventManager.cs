@@ -31,7 +31,7 @@ public class EventManager : MonoBehaviour
     public event Action<Snap> OnItemSnap;
     public event Action<STAGE> OnProgress;
     public event Action<KEY> OnItemHighlight;
-
+    public event Action<SCENE> OnPassiveCall; 
     public event Action OnDisableMovement;
     public event Action OnEnableMovement;
     public event Action OnDisableJumping;
@@ -210,6 +210,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.LogError("OnHurtScreen is Null");
+        }
+    }
+
+    public void PlayPassive(SCENE scene)
+    {
+        if (OnPassiveCall != null)
+        {
+            OnPassiveCall(scene);
+        }
+        else
+        {
+            Debug.LogError("OnPassiveCall is Null");
         }
     }
 

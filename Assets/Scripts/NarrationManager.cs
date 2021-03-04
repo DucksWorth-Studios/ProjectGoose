@@ -10,6 +10,10 @@ using UnityEngine;
 public class NarrationManager : MonoBehaviour
 {
     //Lines For Each Scene will be stored in a prefab audiQueue
+    [Tooltip("Narration Disabled")]
+    public bool IsDisabled = false;
+
+    //SCENES
     [Tooltip("Queue For Scene One")]
     public AudioQueue sceneOne;
     [Tooltip("Queue For Scene Two")]
@@ -24,8 +28,48 @@ public class NarrationManager : MonoBehaviour
     public AudioQueue sceneFive;
     [Tooltip("Queue For Scene Six")]
     public AudioQueue sceneSix;
-    [Tooltip("Narration Disabled")]
-    public bool IsDisabled = false;
+
+    //Passive
+    [Tooltip("Queue For SuitCase Scene")]
+    public AudioQueue suitcaseScene;
+    [Tooltip("Queue For Cradle Scene")]
+    public AudioQueue cradleScene;
+    [Tooltip("Queue For Figure Scene")]
+    public AudioQueue figureScene;
+    [Tooltip("Queue For Jamie Plaque Scene")]
+    public AudioQueue jplaqueScene;
+    [Tooltip("Queue For Francis Plaque Scene")]
+    public AudioQueue fplaqueScene;
+    [Tooltip("Queue For Burner Scene")]
+    public AudioQueue BunsenBurnerScene;
+    [Tooltip("Queue For Frame Scene")]
+    public AudioQueue frameScene;
+    [Tooltip("Queue For Notepad Scene")]
+    public AudioQueue notepadScene;
+    [Tooltip("Queue For Lamp Scene")]
+    public AudioQueue lampScene;
+    [Tooltip("Queue For Mug Scene")]
+    public AudioQueue mugScene;
+    [Tooltip("Queue For SHBook Scene")]
+    public AudioQueue shBookScene;
+    [Tooltip("Queue For ABook Scene")]
+    public AudioQueue aBookScene;
+    [Tooltip("Queue For Compass Scene")]
+    public AudioQueue compassScene;
+    [Tooltip("Queue For Safe Scene")]
+    public AudioQueue safeScene;
+    [Tooltip("Queue For EnterOffice Scene")]
+    public AudioQueue officeScene;
+    [Tooltip("Queue For Wine Scene")]
+    public AudioQueue wineScene;
+    [Tooltip("Queue For Diploma Scene")]
+    public AudioQueue diplomaScene;
+    [Tooltip("Queue For DucksWorth Scene")]
+    public AudioQueue ducksScene;
+
+
+
+
     //Private variables
     private AudioSource activeNarration;
     private AudioQueue activeQueue;
@@ -35,6 +79,7 @@ public class NarrationManager : MonoBehaviour
         activeNarration = GetComponent<AudioSource>();
         EventManager.instance.OnTimeJump += JumpInteference;
         EventManager.instance.OnLoseGame += StopScene;
+        EventManager.instance.OnPassiveCall += NarrationCall;
     }
 
     //Switch is sued to define what scene will be played.
@@ -65,9 +110,64 @@ public class NarrationManager : MonoBehaviour
                 case SCENE.SIX:
                     PlayScene(sceneSix);
                     break;
+                case SCENE.SUITCASE:
+                    PlayPassiveScene(line, suitcaseScene);
+                    break;
+                case SCENE.CRADLE:
+                    PlayPassiveScene(line, cradleScene);
+                    break;
+                case SCENE.FIGURE:
+                    PlayPassiveScene(line, figureScene);
+                    break;
+                case SCENE.JPLAQUE:
+                    PlayPassiveScene(line, jplaqueScene);
+                    break;
+                case SCENE.FPLAQUE:
+                    PlayPassiveScene(line, fplaqueScene);
+                    break;
+                case SCENE.BBURNER:
+                    PlayPassiveScene(line, BunsenBurnerScene);
+                    break;
+                case SCENE.FRAME:
+                    PlayPassiveScene(line, frameScene);
+                    break;
+                case SCENE.NOTEPAD:
+                    PlayPassiveScene(line, notepadScene);
+                    break;
+                case SCENE.LAMP:
+                    PlayPassiveScene(line, lampScene);
+                    break;
+                case SCENE.COFFEEMUG:
+                    PlayPassiveScene(line, mugScene);
+                    break;
+                case SCENE.SHBOOK:
+                    PlayPassiveScene(line, shBookScene);
+                    break;
+                case SCENE.ABOOK:
+                    PlayPassiveScene(line, aBookScene);
+                    break;
+                case SCENE.COMPASS:
+                    PlayPassiveScene(line, compassScene);
+                    break;
+                case SCENE.SAFE:
+                    PlayPassiveScene(line, safeScene);
+                    break;
+                case SCENE.ENTEROFFICE:
+                    PlayPassiveScene(line, officeScene);
+                    break;
+                case SCENE.WINE:
+                    PlayPassiveScene(line, wineScene);
+                    break;
+                case SCENE.DIPLOMA:
+                    PlayPassiveScene(line, diplomaScene);
+                    break;
+                case SCENE.DUCKSWORTH:
+                    PlayPassiveScene(line, ducksScene);
+                    break;
                 default:
                     break;
             }
+
         }
         
     }
@@ -92,6 +192,27 @@ public class NarrationManager : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Checks that we dont interupt a main scene otherwise plays the scene
+    /// </summary>
+    /// <param name="queue">Scene to play</param>
+    private void PlayPassiveScene(SCENE scene,AudioQueue queue)
+    {
+        if(activeQueue.narrationType == Narration.MAIN && !activeQueue.IsFinished)
+        {
+            //dont do anything
+        }
+        else if(queue.IsFinished)
+        {
+            //dont do anything
+        }
+        else
+        {
+            StopScene();
+            queue.Play(activeNarration);
+            activeQueue = queue;
+        }
+    }
 
     private void PauseScene()
     {
@@ -111,6 +232,7 @@ public class NarrationManager : MonoBehaviour
         }
 
     }
+
 
     //void Update()
     //{

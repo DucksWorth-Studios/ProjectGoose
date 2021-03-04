@@ -20,8 +20,18 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            EventManager.instance.PressButton(ButtonEnum.RESET);
+            EventManager.instance.PlayPassive(SCENE.ABOOK);
             
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EventManager.instance.Progress(STAGE.USB);
+
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            EventManager.instance.PlayPassive(SCENE.BBURNER);
+
         }
     }
 }
