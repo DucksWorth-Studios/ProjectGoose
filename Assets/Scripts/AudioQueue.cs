@@ -7,15 +7,25 @@ using UnityEngine;
 /// </summary>
 public class AudioQueue : MonoBehaviour
 {
+    [Tooltip("What Type Of Narration is It")]
+    public Narration narrationType;
+
+    [Tooltip("Can It Be Interupted")]
+    public bool IsInteruptable = false;
+
     [Tooltip("The Audio Clips In The Scene")]
     public AudioClip[] clips;
-    public bool IsInteruptable = false;
+
+    
     //Current Index We are At
     private int currentIndex = 0;
     //Will Be Passed
     private AudioSource audioSource;
     //Has it been called to play
     private bool MustPlay = false;
+
+    //Has Finished
+    public bool IsFinished = false;
     //Is Paused
     private bool IsPaused = false;
     //Max Index we have
@@ -94,6 +104,7 @@ public class AudioQueue : MonoBehaviour
                 {
                     //If List completed its job is done
                     MustPlay = false;
+                    IsFinished = true;
                 }
             }
         }
