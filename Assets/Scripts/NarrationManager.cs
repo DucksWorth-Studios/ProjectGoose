@@ -88,36 +88,90 @@ public class NarrationManager : MonoBehaviour
     {
         if(!IsDisabled)
         {
-            switch (line)
+            if(!passiveCalled.Contains((int)line))
             {
-                case SCENE.ONE:
-                    PlayScene(sceneOne);
-                    break;
-                case SCENE.TWO:
-                    PlayScene(sceneTwo);
-                    break;
-                case SCENE.THREE:
-                    PlayScene(sceneThree);
-                    break;
-                case SCENE.FOUR:
-                    PlayScene(sceneFour);
-                    break;
-                case SCENE.FOURP2:
-                    PlayScene(sceneFourP2);
-                    break;
-                case SCENE.FIVE:
-                    PlayScene(sceneFive);
-                    break;
-                case SCENE.SIX:
-                    PlayScene(sceneSix);
-                    break;
-                case SCENE.SUITCASE:
-                    PlayPassiveScene(line);
-                    break;
-
-                default:
-                    break;
+                switch (line)
+                {
+                    case SCENE.ONE:
+                        PlayScene(sceneOne);
+                        break;
+                    case SCENE.TWO:
+                        PlayScene(sceneTwo);
+                        break;
+                    case SCENE.THREE:
+                        PlayScene(sceneThree);
+                        break;
+                    case SCENE.FOUR:
+                        PlayScene(sceneFour);
+                        break;
+                    case SCENE.FOURP2:
+                        PlayScene(sceneFourP2);
+                        break;
+                    case SCENE.FIVE:
+                        PlayScene(sceneFive);
+                        break;
+                    case SCENE.SIX:
+                        PlayScene(sceneSix);
+                        break;
+                    case SCENE.SUITCASE:
+                        PlayPassiveScene(line, suitcaseScene);
+                        break;
+                    case SCENE.CRADLE:
+                        PlayPassiveScene(line, cradleScene);
+                        break;
+                    case SCENE.FIGURE:
+                        PlayPassiveScene(line, figureScene);
+                        break;
+                    case SCENE.JPLAQUE:
+                        PlayPassiveScene(line, jplaqueScene);
+                        break;
+                    case SCENE.FPLAQUE:
+                        PlayPassiveScene(line, fplaqueScene);
+                        break;
+                    case SCENE.BBURNER:
+                        PlayPassiveScene(line, BunsenBurnerScene);
+                        break;
+                    case SCENE.FRAME:
+                        PlayPassiveScene(line, frameScene);
+                        break;
+                    case SCENE.NOTEPAD:
+                        PlayPassiveScene(line, notepadScene);
+                        break;
+                    case SCENE.LAMP:
+                        PlayPassiveScene(line, lampScene);
+                        break;
+                    case SCENE.COFFEEMUG:
+                        PlayPassiveScene(line, mugScene);
+                        break;
+                    case SCENE.SHBOOK:
+                        PlayPassiveScene(line, shBookScene);
+                        break;
+                    case SCENE.ABOOK:
+                        PlayPassiveScene(line, aBookScene);
+                        break;
+                    case SCENE.COMPASS:
+                        PlayPassiveScene(line, compassScene);
+                        break;
+                    case SCENE.SAFE:
+                        PlayPassiveScene(line, safeScene);
+                        break;
+                    case SCENE.ENTEROFFICE:
+                        PlayPassiveScene(line, officeScene);
+                        break;
+                    case SCENE.WINE:
+                        PlayPassiveScene(line, wineScene);
+                        break;
+                    case SCENE.DIPLOMA:
+                        PlayPassiveScene(line, diplomaScene);
+                        break;
+                    case SCENE.DUCKSWORTH:
+                        PlayPassiveScene(line, ducksScene);
+                        break;
+                    default:
+                        break;
+                }
             }
+
         }
         
     }
