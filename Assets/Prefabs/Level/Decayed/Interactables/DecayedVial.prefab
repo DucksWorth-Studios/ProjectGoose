@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4233540604542247440}
   - component: {fileID: 9158368358455323696}
   - component: {fileID: 5094478928713320784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DecayedVial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

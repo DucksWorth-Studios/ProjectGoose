@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 3898845882403063765}
   - component: {fileID: 1223202370341013437}
   - component: {fileID: 5391858643228297513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Microscope
   m_TagString: Untagged
   m_Icon: {fileID: 0}

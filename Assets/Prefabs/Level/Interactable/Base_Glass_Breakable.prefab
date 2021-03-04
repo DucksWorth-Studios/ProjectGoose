@@ -17,10 +17,10 @@ GameObject:
   - component: {fileID: 8461928605790095285}
   - component: {fileID: 8557464569216971183}
   - component: {fileID: 2019254975356064595}
-  - component: {fileID: 2774859269776776468}
   - component: {fileID: 4872809160708809505}
-  - component: {fileID: 946843426088452818}
-  m_Layer: 0
+  - component: {fileID: 8063722725096656315}
+  - component: {fileID: 7002970307063846704}
+  m_Layer: 9
   m_Name: Base_Glass_Breakable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,21 +341,6 @@ MonoBehaviour:
   breakingVelocity: 2
   isShatterable: 1
   clip: {fileID: 8300000, guid: 4291388254194704b919641021256f14, type: 3}
---- !u!114 &2774859269776776468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4466672506964534032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
 --- !u!114 &4872809160708809505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +356,22 @@ MonoBehaviour:
   isDecaying: 0
   isDecayed: 0
   blendAmount: 0
---- !u!114 &946843426088452818
+--- !u!114 &8063722725096656315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4466672506964534032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  outlineDoesntWork: 0
+  backupMaterial: {fileID: 2100000, guid: aa26c346923b3354bb744b0501da55a6, type: 2}
+--- !u!114 &7002970307063846704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 0.49019608, b: 0, a: 1}
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
   bakeKeys:

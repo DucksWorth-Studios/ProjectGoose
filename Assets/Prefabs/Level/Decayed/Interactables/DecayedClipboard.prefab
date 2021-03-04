@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2588303077309560327}
   - component: {fileID: 1718964167046156308}
   - component: {fileID: 5103099218422453086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DecayedClipboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

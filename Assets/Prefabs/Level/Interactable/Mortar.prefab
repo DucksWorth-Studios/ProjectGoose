@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7796152725295658708}
   - component: {fileID: 4183757187085143687}
   - component: {fileID: 2156697080043760290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mortar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

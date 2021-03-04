@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4179651761480176126}
   - component: {fileID: 4179651761480176125}
   - component: {fileID: 4179651761480176105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UsbPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,12 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 4179651761480176102, guid: 01428ff0309fbe14daa0ce3a87fb0c58, type: 3}
-  defaultColours: []
-  hitColour: {r: 1, g: 0, b: 0, a: 1}
-  clickColour: {r: 0, g: 1, b: 0, a: 1}
   offset: {x: 0, y: 0, z: 0}
+  outlineDoesntWork: 0
+  backupMaterial: {fileID: 0}
 --- !u!1001 &4354830421844267821
 PrefabInstance:
   m_ObjectHideFlags: 0

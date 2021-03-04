@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3905687253702477490}
   - component: {fileID: 2258427802536774235}
   - component: {fileID: 884489510638393366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pestle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
