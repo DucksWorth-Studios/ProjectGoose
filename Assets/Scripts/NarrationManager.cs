@@ -106,7 +106,7 @@ public class NarrationManager : MonoBehaviour
         }
         else
         {
-            passiveCalled.Add(scene);
+            passiveCalled.Add((int)scene);
             StopScene();
             queue.Play(activeNarration);
             activeQueue = queue;
