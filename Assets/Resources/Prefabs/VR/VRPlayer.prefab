@@ -4589,8 +4589,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6275326c87c470c93ee45f3281a7164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startLaser:
+    actionPath: /actions/default/in/StartLaser
+    needsReinit: 0
+  pullObject:
+    actionPath: /actions/default/in/PullObject
+    needsReinit: 0
+  pose:
+    actionPath: /actions/default/in/Pose
+    needsReinit: 0
   endTarget: {fileID: 5303616068546018223}
   radius: 0.1
+  handVelocitySensitivity: 1
+  debugPrefab: {fileID: 8512666963670908663, guid: 1fec5b3df369b924c81614c18b693301,
+    type: 3}
 --- !u!1 &7749080673199055940
 GameObject:
   m_ObjectHideFlags: 0

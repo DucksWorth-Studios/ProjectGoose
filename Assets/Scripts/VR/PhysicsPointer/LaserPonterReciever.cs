@@ -5,6 +5,7 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent( typeof( Interactable ) )]
+[RequireComponent( typeof( Rigidbody ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
     [Tooltip("The amount to offset the object by when attached to hand")]
