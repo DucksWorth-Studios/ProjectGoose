@@ -91,7 +91,7 @@ public class AudioQueue : MonoBehaviour
         //Itll play next clip
         if (audioSource != null)
         {
-            if (MustPlay && !audioSource.isPlaying && !IsPaused)
+            if (MustPlay && !audioSource.isPlaying && !IsPaused && !IsFinished)
             {
                 //Ensures we dont go out of range
                 if (currentIndex < IndexMax)
