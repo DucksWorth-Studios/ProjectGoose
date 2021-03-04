@@ -19,6 +19,8 @@ public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2 };
 //Button Enum
 public enum ButtonEnum { CLOUDREMOVE, NEGATOR, RESET };
 
+
+public enum Narration { PASSIVE, MAIN };
 public class AppData : MonoBehaviour
 {
     /*---Floats---*/
