@@ -22,19 +22,15 @@ public class NotRussels : MonoBehaviour
 
     private void CalculateHit()
     {
-        // Bit shift the index of the layer (9) to get a bit mask
-        // Layer 9 is for Interactables
-        int layerMask = 1 << 9;
-
         // The number of returned colliders is limited to this allocated buffer
         Collider[] colliders = new Collider[AppData.BufferAllocation];
         Physics.OverlapCapsuleNonAlloc(transform.position, endTarget.transform.position, 
-            radius, colliders, layerMask);
+            radius, colliders, AppData.InteractableLayerMask);
 
         if (colliders.Length > 0)
         {
             Collider target = colliders.Length > 1 ? FindClosestTarget(colliders) : colliders[0];
-            Debug.LogWarning("We got " + colliders.Length);
+            // Debug.LogWarning("We got " + colliders.Length);
             
             lastHit = target.transform.GetComponent<LaserPonterReciever>();
 
@@ -69,6 +65,7 @@ public class NotRussels : MonoBehaviour
         {
             Vector3 diff = target.transform.position - position;
             float curDistance = diff.sqrMagnitude;
+            
             if (curDistance < distance)
             {
                 closest = target;

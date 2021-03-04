@@ -52,4 +52,6 @@ public class AppData : MonoBehaviour
     
     /*---NotRussels---*/
     public static readonly int BufferAllocation = 5;
+    // Bit shift the index of the layer (9) to get a bit mask
+    public static readonly int InteractableLayerMask = 1 << 9;
 }
