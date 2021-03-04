@@ -24,13 +24,13 @@ public class NotRussels : MonoBehaviour
     {
         // The number of returned colliders is limited to this allocated buffer
         Collider[] colliders = new Collider[AppData.BufferAllocation];
-        Physics.OverlapCapsuleNonAlloc(transform.position, endTarget.transform.position, 
+        int noOfColliders = Physics.OverlapCapsuleNonAlloc(transform.position, endTarget.transform.position, 
             radius, colliders, AppData.InteractableLayerMask);
 
-        if (colliders.Length > 0)
+        if (noOfColliders > 0)
         {
-            Collider target = colliders.Length > 1 ? FindClosestTarget(colliders) : colliders[0];
-            // Debug.LogWarning("We got " + colliders.Length);
+            Debug.LogWarning("We got " + noOfColliders);
+            Collider target = noOfColliders > 1 ? FindClosestTarget(colliders) : colliders[0];
             
             lastHit = target.transform.GetComponent<LaserPonterReciever>();
 
