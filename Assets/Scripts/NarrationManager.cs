@@ -30,11 +30,13 @@ public class NarrationManager : MonoBehaviour
     private AudioSource activeNarration;
     private AudioQueue activeQueue;
     private bool InPast = true;
+    private List<int> passiveCalled;
     void Start()
     {
         activeNarration = GetComponent<AudioSource>();
         EventManager.instance.OnTimeJump += JumpInteference;
         EventManager.instance.OnLoseGame += StopScene;
+        EventManager.instance.OnPassiveCall += NarrationCall;
     }
 
     //Switch is sued to define what scene will be played.
@@ -92,6 +94,24 @@ public class NarrationManager : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Checks that we dont interupt a main scene otherwise plays the scene
+    /// </summary>
+    /// <param name="queue">Scene to play</param>
+    private void PlayPassiveScene(SCENE scene,AudioQueue queue)
+    {
+        if(activeQueue.narrationType == Narration.MAIN && !activeQueue.IsFinished)
+        {
+            //dont do anything
+        }
+        else
+        {
+            passiveCalled.Add(scene);
+            StopScene();
+            queue.Play(activeNarration);
+            activeQueue = queue;
+        }
+    }
 
     private void PauseScene()
     {
@@ -111,6 +131,7 @@ public class NarrationManager : MonoBehaviour
         }
 
     }
+
 
     //void Update()
     //{
