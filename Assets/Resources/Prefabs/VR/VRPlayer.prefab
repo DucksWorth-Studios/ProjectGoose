@@ -4844,24 +4844,24 @@ MonoBehaviour:
   sceneFourP2: {fileID: 302592992}
   sceneFive: {fileID: 6309919870791151780}
   sceneSix: {fileID: 6309919869242899619}
-  suitcaseScene: {fileID: 0}
-  cradleScene: {fileID: 0}
-  figureScene: {fileID: 0}
-  jplaqueScene: {fileID: 0}
-  fplaqueScene: {fileID: 0}
-  BunsenBurnerScene: {fileID: 0}
-  frameScene: {fileID: 0}
-  notepadScene: {fileID: 0}
-  lampScene: {fileID: 0}
-  mugScene: {fileID: 0}
-  shBookScene: {fileID: 0}
-  aBookScene: {fileID: 0}
-  compassScene: {fileID: 0}
-  safeScene: {fileID: 0}
-  officeScene: {fileID: 0}
-  wineScene: {fileID: 0}
-  diplomaScene: {fileID: 0}
-  ducksScene: {fileID: 0}
+  suitcaseScene: {fileID: 7686689690455104336}
+  cradleScene: {fileID: 3253350397794535328}
+  figureScene: {fileID: 1909289966033682053}
+  jplaqueScene: {fileID: 5939784446678328777}
+  fplaqueScene: {fileID: 6409881295994525267}
+  BunsenBurnerScene: {fileID: 3737124542469478521}
+  frameScene: {fileID: 6007717874357273528}
+  notepadScene: {fileID: 4334458152286809342}
+  lampScene: {fileID: 1325412145013999499}
+  mugScene: {fileID: 7608730030962187012}
+  shBookScene: {fileID: 6549655394979929343}
+  aBookScene: {fileID: 2771787286059899003}
+  compassScene: {fileID: 3262485350049343686}
+  safeScene: {fileID: 3597156157404410060}
+  officeScene: {fileID: 7320345948698038899}
+  wineScene: {fileID: 6946720081115459296}
+  diplomaScene: {fileID: 4920087062781938740}
+  ducksScene: {fileID: 8977220262976977388}
 --- !u!1 &5771018371339816475
 GameObject:
   m_ObjectHideFlags: 0
