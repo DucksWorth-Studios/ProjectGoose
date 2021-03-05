@@ -21,11 +21,14 @@ public class NotRussels : MonoBehaviour
     
     [Range(0.0f, 0.5f)]
     [Tooltip("The radius to find objects in")]
-    public float radius = 0.1f;
+    public float radius = 0.25f;
     
     [Range(0.0f, 1.0f)]
-    [Tooltip("The amount to dampen the velocity by after the flick")]
-    public float velocityDampening = 0.5f;
+    [Tooltip("The amount to multiply velocity by")]
+    public float velocityDampening = 0.65f; 
+    // Current best values
+    // 0.65 for palm
+    // 0.5 for forward
     
     [Range(0.0f, 1.0f)]
     [Tooltip("The value the player must exceed for the object to move")]
@@ -34,6 +37,7 @@ public class NotRussels : MonoBehaviour
     [Header("Debug")] 
     public bool debug = true;
     public GameObject debugPrefab;
+    public TargetingStyle targetingStyle;
 
     private LaserPonterReciever lastHit;
 
@@ -157,15 +161,33 @@ public class NotRussels : MonoBehaviour
         for (int i = 0; i < spawnLimit; i++)
         {
             Vector3 localPosition = endTarget.position;
+            Vector3 newPosition = Vector3.zero;
             
             float theta = i * 2 * Mathf.PI / spawnLimit;
+            float x = Mathf.Sin(theta) * radius + localPosition.x;
             float y = Mathf.Sin(theta) * radius + localPosition.y;
             float z = Mathf.Cos(theta) * radius + localPosition.z;
-  
+
+            switch (targetingStyle)
+            {
+                case TargetingStyle.Palm:
+                    newPosition = new Vector3(localPosition.x, y, z);
+                    break;
+                case TargetingStyle.Forward:
+                    newPosition = new Vector3(x, localPosition.y, z);
+                    break;
+            }
+                
+           
             GameObject ob = Instantiate(debugPrefab, endTarget, true);
-            Vector3 newPosition = new Vector3(localPosition.x, y, z);
             ob.transform.position = newPosition;
             ob.name = "Circle-" + i;
         }
+    }
+
+    public enum TargetingStyle
+    {
+        Palm,
+        Forward
     }
 }
