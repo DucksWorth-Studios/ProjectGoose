@@ -8,28 +8,42 @@ using Valve.VR.InteractionSystem;
 /// </summary>
 public class NotRussels : MonoBehaviour
 {
+    [Header("Inputs")]
     public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");
     public SteamVR_Action_Boolean pullObject = SteamVR_Input.GetBooleanAction("PullObject");
     public SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");
-    
+
+    [Header("References")] 
+    public Transform objectAttachmentPoint;
     public Transform endTarget;
+    
+    [Header("Parameters")] 
+    
+    [Range(0.0f, 0.5f)]
+    [Tooltip("The radius to find objects in")]
     public float radius = 0.1f;
+    
+    [Range(0.0f, 1.0f)]
+    [Tooltip("The amount to dampen the velocity by after the flick")]
+    public float velocityDampening = 0.5f;
     
     [Range(0.0f, 1.0f)]
     [Tooltip("The value the player must exceed for the object to move")]
     public float handVelocitySensitivity;
 
+    [Header("Debug")] 
+    public bool debug = true;
     public GameObject debugPrefab;
 
     private LaserPonterReciever lastHit;
 
     private bool materialUpdated;
-    // private bool wasClicked;
-    // private bool updated;
+    private bool isMoving;
 
     private void Start()
     {
-        SpawnRing();
+        if (debug)
+            SpawnRing();
     }
     
     private void Update()
@@ -54,38 +68,55 @@ public class NotRussels : MonoBehaviour
             if (!lastHit)
                 return;
 
+            // Material update should only be called once per object
             if (!materialUpdated)
             {
                 lastHit.HitByRay();
                 materialUpdated = true;
             }
 
-            if (!IsClicking()) 
-                return;
-
-            float handVelocity = Vector3.Dot(pose[Player.instance.rightHand.handType].velocity,
-                (Camera.main.transform.forward - Camera.main.transform.up));
-
-            Debug.Log("Hand Velocity: " + handVelocity);
-            
-            if (handVelocity < -handVelocitySensitivity)
-            {
-                //Calculate velocity and apply it to the target
-                Vector3 velocity = NotRusselsCalculations.CalculateParabola(lastHit.transform.position, transform.position);
-                lastHit.GetComponent<Rigidbody>().velocity = velocity;
-            }
+            if (IsClicking() && !isMoving) 
+                ThrowObject(lastHit);
         }
         else
-        {
-            if (!lastHit)
-                return;
-
-            lastHit.RayExit();
-            lastHit = null;
-            materialUpdated = false;
-        }
+            RayExit();
     }
 
+    private void ThrowObject(LaserPonterReciever lpr)
+    {
+        // Transform cameraTransform = Camera.main.transform;
+        Transform cameraTransform = Player.instance.hmdTransform;
+            
+        float handVelocity = Vector3.Dot(pose[Player.instance.rightHand.handType].velocity,
+            (cameraTransform.forward - cameraTransform.up));
+
+        // Debug.Log("Hand Velocity: " + handVelocity);
+            
+        if (handVelocity < -handVelocitySensitivity)
+        {
+            isMoving = true;
+                
+            //Calculate velocity and apply it to the target
+            Vector3 velocity = NotRusselsCalculations.CalculateParabola(lpr.gameObject.transform.position, 
+                objectAttachmentPoint.position);
+            
+            Debug.Log("Velocity: " + velocity);
+            Debug.Log("Dampened Velocity: " + velocity * velocityDampening);
+            lpr.rigidbody.velocity = velocity * velocityDampening;
+        }
+    }
+    
+    private void RayExit()
+    {
+        if (!lastHit)
+            return;
+
+        lastHit.RayExit();
+        lastHit = null;
+        materialUpdated = false;
+        isMoving = false;
+    }
+    
     // Taken from: https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
     Collider FindClosestTarget(Collider[] targets)
     {
@@ -95,6 +126,9 @@ public class NotRussels : MonoBehaviour
         
         foreach (Collider target in targets)
         {
+            if (!target)
+                 continue;
+            
             Vector3 diff = target.transform.position - position;
             float curDistance = diff.sqrMagnitude;
             

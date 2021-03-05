@@ -4598,9 +4598,11 @@ MonoBehaviour:
   pose:
     actionPath: /actions/default/in/Pose
     needsReinit: 0
+  objectAttachmentPoint: {fileID: 490018}
   endTarget: {fileID: 5303616068546018223}
   radius: 0.1
-  handVelocitySensitivity: 1
+  velocityDampening: 0.6
+  handVelocitySensitivity: 0.1
   debugPrefab: {fileID: 8512666963670908663, guid: 1fec5b3df369b924c81614c18b693301,
     type: 3}
 --- !u!1 &7749080673199055940
