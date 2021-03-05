@@ -1,11 +1,5 @@
 using UnityEngine;
 
-public enum PointerState {
-    PhysicsPointer,
-    CanvasPointer,
-    NotRussels,
-    Disabled
-}
 
 public class PointerSwitch : MonoBehaviour
 {

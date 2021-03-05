@@ -16,6 +16,23 @@ TagManager:
   - TestTube
   - Negator
   - Ignore
+  - SuitCase
+  - Cradle
+  - Figure
+  - JamiePlaque
+  - FrancisPlaque
+  - BunsenBurner
+  - Frame
+  - NotePad
+  - Lamp
+  - CoffeeMug
+  - SherlockBook
+  - AveryBook
+  - Compass
+  - Safe
+  - Wine
+  - Diploma
+  - DucksWorth
   layers:
   - Default
   - TransparentFX

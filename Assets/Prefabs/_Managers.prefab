@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   narrationManager: {fileID: 0}
+  IsDisabled: 0
 --- !u!1 &9148661822870506204
 GameObject:
   m_ObjectHideFlags: 0
