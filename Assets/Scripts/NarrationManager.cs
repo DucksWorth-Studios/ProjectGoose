@@ -73,9 +73,11 @@ public class NarrationManager : MonoBehaviour
     //Private variables
     private AudioSource activeNarration;
     private AudioQueue activeQueue;
+    private List<int> passivePlayed;
     private bool InPast = true;
     void Start()
     {
+        passivePlayed = new List<int>();
         activeNarration = GetComponent<AudioSource>();
         EventManager.instance.OnTimeJump += JumpInteference;
         EventManager.instance.OnLoseGame += StopScene;
@@ -206,8 +208,13 @@ public class NarrationManager : MonoBehaviour
         {
             //dont do anything
         }
+        else if(passivePlayed.Contains((int) scene))
+        {
+
+        }
         else
         {
+            passivePlayed.Add((int)scene);
             StopScene();
             queue.Play(activeNarration);
             activeQueue = queue;
