@@ -17,6 +17,14 @@ public enum KEY { CHEMICAL, USB, USBSLOT };
 public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2, SUITCASE, CRADLE, FIGURE, JPLAQUE, FPLAQUE, 
     BBURNER, FRAME, NOTEPAD, LAMP, COFFEEMUG, SHBOOK,  ABOOK, COMPASS, SAFE, ENTEROFFICE, WINE, DIPLOMA, DUCKSWORTH};
 
+public enum PointerState
+{
+    PhysicsPointer,
+    CanvasPointer,
+    Disabled
+}
+
+
 //Button Enum
 public enum ButtonEnum { CLOUDREMOVE, NEGATOR, RESET };
 

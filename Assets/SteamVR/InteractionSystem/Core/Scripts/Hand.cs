@@ -412,6 +412,7 @@ namespace Valve.VR.InteractionSystem
 
             if (attachedObject.interactable != null)
             {
+                IdentifyItem(objectToAttach.tag);
                 if (attachedObject.interactable.attachEaseIn)
                 {
                     attachedObject.easeSourcePosition = attachedObject.attachedObject.transform.position;
@@ -580,6 +581,67 @@ namespace Valve.VR.InteractionSystem
             if (spewDebugText)
                 HandDebugLog("AttachObject " + objectToAttach);
             objectToAttach.SendMessage("OnAttachedToHand", this, SendMessageOptions.DontRequireReceiver);
+        }
+
+        private void IdentifyItem(string tag)
+        {
+            switch(tag)
+            {
+                case "SuitCase":
+                    print("Here");
+                    EventManager.instance.PlayPassive(SCENE.CRADLE);
+                    break;
+                case "Cradle":
+                    EventManager.instance.PlayPassive(SCENE.CRADLE);
+                    break;
+                case "Figure":
+                    EventManager.instance.PlayPassive(SCENE.FIGURE);
+                    break;
+                case "JamiePlaque":
+                    EventManager.instance.PlayPassive(SCENE.JPLAQUE);
+                    break;
+                case "FrancisPlaque":
+                    EventManager.instance.PlayPassive(SCENE.FPLAQUE);
+                    break;
+                case "BunsenBurner":
+                    EventManager.instance.PlayPassive(SCENE.BBURNER);
+                    break;
+                case "Frame":
+                    EventManager.instance.PlayPassive(SCENE.FRAME);
+                    break;
+                case "NotePad":
+                    EventManager.instance.PlayPassive(SCENE.NOTEPAD);
+                    break;
+                case "Lamp":
+                    EventManager.instance.PlayPassive(SCENE.LAMP);
+                    break;
+                case "CoffeeMug":
+                    EventManager.instance.PlayPassive(SCENE.COFFEEMUG);
+                    break;
+                case "SherlockBook":
+                    EventManager.instance.PlayPassive(SCENE.SHBOOK);
+                    break;
+                case "AveryBook":
+                    EventManager.instance.PlayPassive(SCENE.ABOOK);
+                    break;
+                case "Compass":
+                    EventManager.instance.PlayPassive(SCENE.COMPASS);
+                    break;
+                case "Safe":
+                    EventManager.instance.PlayPassive(SCENE.SAFE);
+                    break;
+                case "Wine":
+                    EventManager.instance.PlayPassive(SCENE.WINE);
+                    break;
+                case "Diploma":
+                    EventManager.instance.PlayPassive(SCENE.DIPLOMA);
+                    break;
+                case "DucksWorth":
+                    EventManager.instance.PlayPassive(SCENE.DUCKSWORTH);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public bool ObjectIsAttached(GameObject go)
