@@ -3,7 +3,37 @@ guid: a6ece5f941dab784fb0a58f4eede8328
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Cube.002_BlackSteelMat
+    second: {fileID: 2100000, guid: b7324af5ad4ed2b4f8ce8645963d532d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bulb_Sphere.001_BulbMat
+    second: {fileID: 2100000, guid: b144e7fc78aacd6409910867b98f2680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Connector_Cube.001_Black_EnamelMat
+    second: {fileID: 2100000, guid: b7324af5ad4ed2b4f8ce8645963d532d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Housing_Cylinder.001_Black_EnamelMat
+    second: {fileID: 2100000, guid: b7324af5ad4ed2b4f8ce8645963d532d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Housing_Cylinder.001_InnerShadeMat
+    second: {fileID: 2100000, guid: b7324af5ad4ed2b4f8ce8645963d532d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Switch_Cube.003_SwitchMatMat
+    second: {fileID: 2100000, guid: b7324af5ad4ed2b4f8ce8645963d532d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
