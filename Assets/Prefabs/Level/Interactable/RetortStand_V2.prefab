@@ -410,11 +410,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2563560040277916095}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.1, y: 3.7000005, z: 0.111}
-  m_LocalScale: {x: 1, y: 3.0187879, z: 3.2023}
+  m_LocalPosition: {x: -0.38, y: -0.14, z: -0.041}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8648740953053455448}
-  m_RootOrder: 2
+  m_Father: {fileID: 5402889324933467231}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &2563560040576474221
 GameObject:
@@ -514,6 +514,7 @@ Transform:
   - {fileID: 8955403847947276821}
   - {fileID: 2563560040644905428}
   - {fileID: 2563560039567322941}
+  - {fileID: 5402889324933467231}
   m_Father: {fileID: 6093822423142586491}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1044,12 +1045,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5402889324933467230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.084, y: 3.7, z: 0.334}
-  m_LocalScale: {x: 1, y: 3.0187879, z: 3.2023}
-  m_Children: []
-  m_Father: {fileID: 8648740953053455448}
-  m_RootOrder: 1
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 2.0840018, y: -0.3099997, z: -0.33399934}
+  m_LocalScale: {x: 1, y: 3.0187879, z: 3.2023003}
+  m_Children:
+  - {fileID: 2563560040277916092}
+  m_Father: {fileID: 2563560041164866452}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2563560041410172810
 BoxCollider:
@@ -1076,8 +1078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88a714581db35a41b1ab9e81dfb953d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagToSearchFor: Vial
-  SnappedTransform: {fileID: 2563560040277916092}
+  tagToSearchFor: TestTube
+  rotation: {x: -90, y: 0, z: 0}
+  snappedTransform: {fileID: 2563560040277916092}
 --- !u!1 &6906916101394334401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,8 +1231,6 @@ Transform:
   m_LocalScale: {x: 0.08127699, y: 0.081277, z: 0.08127699}
   m_Children:
   - {fileID: 6093822423142586491}
-  - {fileID: 5402889324933467231}
-  - {fileID: 2563560040277916092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
