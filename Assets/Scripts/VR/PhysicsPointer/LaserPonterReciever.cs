@@ -1,69 +1,157 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent( typeof( Interactable ) )]
+[RequireComponent( typeof( Throwable ) )]
+[RequireComponent( typeof( Rigidbody ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
-    [Tooltip("Add ALL object mesh renders")]
-    public MeshRenderer[] meshRenderers;
-    
-    // TODO: Make private after debug
-    public Color[] defaultColours;
-    public Color hitColour = Color.red;
-    public Color clickColour = Color.green;
-
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
+
+    [Header("Backup Outline")]
+    public bool outlineDoesntWork;
+    public Material backupMaterial;
+
+    // References to be used in other scripts
+    [HideInInspector] public Throwable throwable;
+    [HideInInspector] public Rigidbody rigidbody;
     
     private Hand pointerHand;
-    private Throwable throwable;
-
-    // Speed the interactable will move towards the hand
-    private float speed = 2;
-    private Vector3 handTarget;
-    private bool movingTowardsHand;
+    
+    // Outline settings
+    private Outline outline;
+    private Color outlineColor = new Color(1, 0.5f, 0);
+    private float outlineWidth = 2;
+    
+    // Backup Outline setup
+    private Renderer[] renderers;
+    private List<Material> materials;
 
     void Awake()
+    {
+        GetThrowable();
+        GetRigidbody();
+        
+        if (!outlineDoesntWork)
+            SetupOutline();
+        else
+            SetupMaterialReplacement();
+    }
+
+    #region Awake Functions
+
+    private void GetThrowable()
     {
         try
         {
             throwable = GetComponent<Throwable>();
+            throwable.awakeEnableGravity = true;
+            throwable.detatchEnableGravity = true;
         }
         catch(NullReferenceException e)
         {
-            Debug.LogWarning("Missing throwable script. " + e.Message);
+            Debug.LogWarning("Missing throwable script. " + gameObject.name);
         }
-        
-        defaultColours = new Color[meshRenderers.Length];
-        
-        for (int i = 0; i < meshRenderers.Length; i++)
-            defaultColours[i] = meshRenderers[i].material.color;
+    }
+    
+    private void GetRigidbody()
+    {
+        try
+        {
+            rigidbody = GetComponent<Rigidbody>();
+            rigidbody.useGravity = true;
+            rigidbody.isKinematic = false;
+        }
+        catch(NullReferenceException e)
+        {
+            Debug.LogWarning("Missing rigidbody. " + gameObject.name);
+        }
     }
 
-    void Update()
+    private void SetupOutline()
     {
-        if (movingTowardsHand)
-            MoveTowardsHand();
+        if (TryGetComponent(out Outline outlineRef))
+        {
+            outline = outlineRef;
+            outline.OutlineColor = outlineColor;
+            outline.OutlineWidth = outlineWidth;
+            outline.OutlineMode = Outline.Mode.Disabled;
+        }
+        else
+            Debug.LogError(gameObject.name + " is missing Outline script or outlineDoesntWork flag");
     }
 
-    private void UpdateMat(Color newColour)
+    private void SetupMaterialReplacement()
     {
-        foreach (MeshRenderer mr in meshRenderers)
-            mr.material.color = newColour;
+        // Cache renderers
+        renderers = GetComponentsInChildren<Renderer>();
+        materials = new List<Material>();
+            
+        foreach (Renderer ren in renderers) 
+        {
+            // Get all existing materials to use for resetting later
+            List<Material> mats = ren.sharedMaterials.ToList();
+            materials.AddRange(mats);
+        }
+    }
+
+    #endregion
+
+    private void UpdateMat()
+    {
+        if (!outlineDoesntWork)
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+        else
+        {
+            foreach (Renderer ren in renderers) 
+            {
+                // Get all existing materials
+                List<Material> mats = ren.sharedMaterials.ToList();
+
+                // Change all materials to backup
+                for (int i = 0; i < mats.Count; i++)
+                    mats[i] = backupMaterial;
+                    
+                // Push material changes to renderer
+                ren.materials = mats.ToArray();
+            }
+        }
     }
     
     private void ResetMat()
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
-            meshRenderers[i].material.color = defaultColours[i];
+        if (!outlineDoesntWork)
+            outline.OutlineMode = Outline.Mode.Disabled;
+        else
+        {
+            int count = 0;
+            
+            foreach (Renderer renderer in renderers) 
+            {
+                // Get all existing materials
+                List<Material> mats = renderer.sharedMaterials.ToList();
+
+                // Change all materials back to their original
+                for (int i = 0; i < mats.Count; i++)
+                {
+                    mats[i] = materials[count];
+                    count++;
+                }
+                    
+                // Push material changes to renderer
+                renderer.materials = mats.ToArray();
+            }
+        }
     }
     
     public void HitByRay()
     {
-        Debug.Log("HitByRay");
-        UpdateMat(hitColour);
+        // Debug.Log("HitByRay");
+        UpdateMat();
     }
     
     public void RayExit()
@@ -81,22 +169,11 @@ public class LaserPonterReciever : MonoBehaviour
     // public void Click(Transform handLocation)
     public void Click(Hand pointerHand)
     {
-        UpdateMat(clickColour);
+        UpdateMat();
         
-        handTarget = pointerHand.gameObject.transform.position;
+        // handTarget = pointerHand.gameObject.transform.position;
         // movingTowardsHand = true;
         TeleportToHand(pointerHand);
-    }
-
-    private void MoveTowardsHand()
-    {
-        // Move our position a step closer to the target.
-        float step =  speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, handTarget, step);
-        
-        // Check if the position of the intractable and hand are relatively the same
-        if (Vector3.Distance(transform.position, handTarget) < 0.001f)
-            movingTowardsHand = false;
     }
 
     private void TeleportToHand(Hand pointerHand)

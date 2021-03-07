@@ -32,7 +32,7 @@ public class LoadingManager : MonoBehaviour
         // This ensures all shaders are warmed up before level loading takes over the scene transition
         if (shaderVariantCollection.isWarmedUp && !isLoadingScene)
         {
-            loadingOperation = SceneManager.LoadSceneAsync(AppData.sceneToLoad);
+            loadingOperation = SceneManager.LoadSceneAsync(AppData.SceneToLoad);
             isLoadingScene = true;
         }
 

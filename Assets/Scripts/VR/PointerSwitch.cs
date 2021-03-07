@@ -5,6 +5,7 @@ public class PointerSwitch : MonoBehaviour
 {
     public PointerState pointerState;
     public GameObject canvasPointer;
+    public GameObject notRussels;
 
     private PointerState lastState;
     private LineRenderer physicsLineRender;
@@ -37,11 +38,17 @@ public class PointerSwitch : MonoBehaviour
         canvasPointer.SetActive(pointerState == PointerState.CanvasPointer);
         physicsLineRender.enabled = pointerState == PointerState.PhysicsPointer;
         physicsLaserPointer.enabled = pointerState == PointerState.PhysicsPointer;
+        notRussels.SetActive(pointerState == PointerState.NotRussels);
     }
     
     private void SetPhysicsPointer()
     {
         pointerState = PointerState.PhysicsPointer;
+    }
+    
+    private void SetNotRussels()
+    {
+        pointerState = PointerState.NotRussels;
     }
 
     private void SetUIPointer()

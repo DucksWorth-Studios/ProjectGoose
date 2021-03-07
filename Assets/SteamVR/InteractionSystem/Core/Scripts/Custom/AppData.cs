@@ -20,6 +20,7 @@ public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2, SUITCASE, CRADLE, 
 public enum PointerState
 {
     PhysicsPointer,
+    NotRussels,
     CanvasPointer,
     Disabled
 }
@@ -55,9 +56,14 @@ public class AppData : MonoBehaviour
     public static float Transparent = 0;
     
     /*---Loading---*/
-    public static string sceneToLoad = "LabCompound";
+    public static readonly string SceneToLoad = "LabCompound";
     // public static string sceneToLoad = "VRPlayer-v2-Test";
     // Used for sandbox scenes
-    public static Vector3 defaultPosition = new Vector3(0, 0, 0);
-    public static Quaternion defaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
+    public static readonly Vector3 DefaultPosition = new Vector3(0, 0, 0);
+    public static readonly Quaternion DefaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
+    
+    /*---NotRussels---*/
+    public static readonly int BufferAllocation = 5;
+    // Bit shift the index of the layer (9) to get a bit mask
+    public static readonly int InteractableLayerMask = 1 << 9;
 }

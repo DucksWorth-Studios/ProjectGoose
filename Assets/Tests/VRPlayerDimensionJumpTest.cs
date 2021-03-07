@@ -48,7 +48,7 @@ public class VRPlayerDimensionJumpTest
         
         // Add the teleport points to the jump script after it has been initialised
         GameObject[] points = {point1, point2, point3, point4};
-        jumpScript.teleportPoints = points;
+        // jumpScript.teleportPoints = points;
     }
 
     [UnityTest, Order(1)]

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Author: Cameron Scholes
-/// Manager to make VR player changes on scene cchange
+/// Manager to make VR player changes on scene change
 /// </summary>
 
 public class LevelSwitchManager : MonoBehaviour
@@ -53,9 +53,10 @@ public class LevelSwitchManager : MonoBehaviour
     // Changes to apply when in LabCompound scene
     private void InLab()
     {
-        transform.position = new Vector3(0.096f, 0.542f, 4.526f);
+        transform.position = new Vector3(0.096f, 0.6300016f, 4.526f);
         transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1f);
-        dimensionJump.teleportPoints = TeleportPoint.points;
+        // dimensionJump.teleportPoints = TeleportPoint.points;
+        dimensionJump.planeDifference = 24.57f;
         
         EventManager.instance.Progress(STAGE.START);
         EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
@@ -64,10 +65,11 @@ public class LevelSwitchManager : MonoBehaviour
     // Changes to apply when in sandbox or unknown scene
     private void InDefault()
     {
-        transform.position = AppData.defaultPosition;
-        transform.rotation = AppData.defaultRotation;
+        transform.position = AppData.DefaultPosition;
+        transform.rotation = AppData.DefaultRotation;
         // dimensionJump.teleportPoints = TeleportPoint.points;
+        dimensionJump.planeDifference = 100;
         
-        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
+        EventManager.instance.EnableAllInput(PointerState.NotRussels);
     }
 }
