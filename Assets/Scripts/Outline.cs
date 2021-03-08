@@ -107,6 +107,8 @@ public class Outline : MonoBehaviour
 
     void OnEnable()
     {
+        Application.logMessageReceived += LogCallback;
+        
         foreach (var renderer in renderers)
         {
             // Append outline shaders
@@ -150,6 +152,8 @@ public class Outline : MonoBehaviour
 
     void OnDisable()
     {
+        Application.logMessageReceived -= LogCallback;
+        
         foreach (var renderer in renderers)
         {
             // Remove outline shaders
@@ -205,8 +209,16 @@ public class Outline : MonoBehaviour
             var index = bakeKeys.IndexOf(meshFilter.sharedMesh);
             var smoothNormals = (index >= 0) ? bakeValues[index].data : SmoothNormals(meshFilter.sharedMesh);
 
-            // Store smooth normals in UV3
-            meshFilter.sharedMesh.SetUVs(3, smoothNormals);
+            try
+            {
+                // Store smooth normals in UV3
+                meshFilter.sharedMesh.SetUVs(3, smoothNormals);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+                Debug.LogError(gameObject.name + " must be read/write");
+            }
         }
 
         // Clear UV3 on skinned mesh renderers
@@ -219,42 +231,61 @@ public class Outline : MonoBehaviour
         }
     }
 
+    //Called when there is an exception
+    void LogCallback(string condition, string stackTrace, LogType type)
+    {
+        if (type == LogType.Error && (stackTrace.Contains("UnityEngine.Mesh:SetUV") || 
+                                      stackTrace.Contains("UnityEngine.Mesh:get_vertices")))
+        {
+            Debug.LogError(gameObject.name + " Condition: " + condition + " ST: " + stackTrace + " Type: " + type);
+            Debug.LogError("ST: ||" + stackTrace + "||");
+        }
+    }
+    
     List<Vector3> SmoothNormals(Mesh mesh)
     {
-        // Group vertices by location
-        var groups = mesh.vertices.Select((vertex, index) => new KeyValuePair<Vector3, int>(vertex, index))
-            .GroupBy(pair => pair.Key);
-
-        // Copy normals to a new list
-        var smoothNormals = new List<Vector3>(mesh.normals);
-
-        // Average normals for grouped vertices
-        foreach (var group in groups)
+        try
         {
-            // Skip single vertices
-            if (group.Count() == 1)
+            // Group vertices by location
+            var groups = mesh.vertices.Select((vertex, index) => new KeyValuePair<Vector3, int>(vertex, index))
+                .GroupBy(pair => pair.Key);
+            // Copy normals to a new list
+            var smoothNormals = new List<Vector3>(mesh.normals);
+
+            // Average normals for grouped vertices
+            foreach (var group in groups)
             {
-                continue;
+                // Skip single vertices
+                if (group.Count() == 1)
+                {
+                    continue;
+                }
+
+                // Calculate the average normal
+                var smoothNormal = Vector3.zero;
+
+                foreach (var pair in group)
+                {
+                    smoothNormal += mesh.normals[pair.Value];
+                }
+
+                smoothNormal.Normalize();
+
+                // Assign smooth normal to each vertex
+                foreach (var pair in group)
+                {
+                    smoothNormals[pair.Value] = smoothNormal;
+                }
             }
 
-            // Calculate the average normal
-            var smoothNormal = Vector3.zero;
-
-            foreach (var pair in group)
-            {
-                smoothNormal += mesh.normals[pair.Value];
-            }
-
-            smoothNormal.Normalize();
-
-            // Assign smooth normal to each vertex
-            foreach (var pair in group)
-            {
-                smoothNormals[pair.Value] = smoothNormal;
-            }
+            return smoothNormals;
         }
-
-        return smoothNormals;
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+            Debug.LogError(gameObject.name + " must be read/write");
+            return null;
+        }
     }
 
     void UpdateMaterialProperties()
