@@ -13,7 +13,7 @@ public class DimensionJumpEffects : MonoBehaviour
     #region Variables
     //Camera Fade
     private Color fadeColor = Color.black;
-    private float fadeDuration = 0.5f;
+    private float fadeDuration = 0.1f;
     private bool isCameraFading = false;
 
     //VFX variables
@@ -38,7 +38,7 @@ public class DimensionJumpEffects : MonoBehaviour
 
         //Event Subscription
         EventManager.instance.OnTimeJumpButtonPressed += CallCameraFade;
-        EventManager.instance.OnTimeJump += CallVFX;
+        //EventManager.instance.OnTimeJump += CallVFX;
     }
 
     // Update is called once per frame
