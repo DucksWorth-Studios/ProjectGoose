@@ -589,7 +589,7 @@ namespace Valve.VR.InteractionSystem
             {
                 case "SuitCase":
                     print("Here");
-                    EventManager.instance.PlayPassive(SCENE.CRADLE);
+                    EventManager.instance.PlayPassive(SCENE.SUITCASE);
                     break;
                 case "Cradle":
                     EventManager.instance.PlayPassive(SCENE.CRADLE);
