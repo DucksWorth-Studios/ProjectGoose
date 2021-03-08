@@ -14,9 +14,15 @@ public class DimensionJumpEffects : MonoBehaviour
     //Camera Fade
     private Color fadeColor = Color.black;
     private float fadeDuration = 0.5f;
+    private bool isCameraFading = false;
 
     //VFX variables
     private VisualEffect jumpEffect;
+
+    private bool isEffectPlaying = false;
+    private float intensity = 0;
+    private float timeElasped = 0;
+    private float duration = 0.5f;
 
     [Tooltip("The amount of time the effect should play for")]
     private float effectPlayTime = 1f;
@@ -38,7 +44,23 @@ public class DimensionJumpEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isEffectPlaying)
+        {
+            intensity = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / duration);
+
+            timeElasped += Time.deltaTime;
+
+            jumpEffect.SetFloat("Intensity", intensity);
+
+            if (timeElasped > 0.45f && !isCameraFading) StartCoroutine(StartCameraFade());
+        }
+        else
+        {
+            timeElasped = 0;
+            intensity = 0;
+            isEffectPlaying = false;
+            jumpEffect.SendEvent("OnStopParticle");
+        }
     }
 
     private void CallCameraFade()
@@ -72,19 +94,7 @@ public class DimensionJumpEffects : MonoBehaviour
     /// </summary>
     private void CallVFX()
     {
-        StartCoroutine(StartVFX());
-    }
-
-    /// <summary>
-    /// Starts the VFX after the player has completed the dimension jump
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator StartVFX()
-    {
         jumpEffect.SendEvent("OnStartParticle");
-
-        yield return new WaitForSeconds(effectPlayTime);
-
-        jumpEffect.SendEvent("OnStopParticle");
+        isEffectPlaying = true;
     }
 }
