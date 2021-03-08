@@ -290,7 +290,7 @@ public class EventManager : MonoBehaviour
             case PointerState.CanvasPointer:
                 SetUIPointer();
                 break;
-            default:
+            case PointerState.Disabled:
                 DisablePointer();
                 break;
         }

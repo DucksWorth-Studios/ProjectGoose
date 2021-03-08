@@ -18,6 +18,7 @@ public class PointerSwitch : MonoBehaviour
         physicsLaserPointer = GetComponent<LaserPointer>();
         
         EventManager.instance.OnSetPhysicsPointer += SetPhysicsPointer;
+        EventManager.instance.OnSetNotRussels += SetNotRussels;
         EventManager.instance.OnSetUIPointer += SetUIPointer;
         EventManager.instance.OnDisablePointer += DisablePointerState;
         
