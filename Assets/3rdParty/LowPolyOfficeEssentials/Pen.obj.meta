@@ -3,7 +3,17 @@ guid: 0662332db3d70fa4c99f2088a9abe548
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cap_Cylinder.003_CapMat
+    second: {fileID: 2100000, guid: c11998b8f400e824490d045e7b609398, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pen_Cylinder.002_PenMat
+    second: {fileID: 2100000, guid: c11998b8f400e824490d045e7b609398, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
