@@ -81,7 +81,7 @@ public class DimensionJumpEffects : MonoBehaviour
     /// <returns></returns>
     private IEnumerator StartVFX()
     {
-        jumpEffect.SendEvent("OnStartPlay");
+        jumpEffect.SendEvent("OnStartParticle");
 
         yield return new WaitForSeconds(effectPlayTime);
 
