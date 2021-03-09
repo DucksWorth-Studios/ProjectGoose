@@ -23,12 +23,14 @@ public class ItemHolder : MonoBehaviour
     }
     public void LockInteractable()
     {
+        print("lock");
         objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = false;
         keepHolding = true;
     }
     //Allow Pickup
     public void SetInteractable()
     {
+        print("SET0");
         //set interactable
         objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = true;
         keepHolding = false;
