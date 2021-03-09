@@ -39,6 +39,7 @@ public class AppData : MonoBehaviour
     public static float timeToDisplayRed = 2f;
     public static float timeToClear = 3f;
     public static float mixLeniancey = 0.01f;
+    public static float jumpDelay = 1.5f;
     // Delay from survival to item destruction
     public static float cloudSurviveTimeDelay = 3f;
 
