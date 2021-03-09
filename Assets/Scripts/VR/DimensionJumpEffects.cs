@@ -12,7 +12,7 @@ public class DimensionJumpEffects : MonoBehaviour
 {
     #region Variables
     //Camera Fade
-    private Color fadeColor = Color.black;
+    private Color fadeColor = Color.white;
     private float fadeDuration = 0.1f;
     private bool isCameraFading = false;
 
@@ -22,7 +22,7 @@ public class DimensionJumpEffects : MonoBehaviour
     private bool isEffectPlaying = false;
     private float intensity = 0;
     private float timeElasped = 0;
-    private float duration = 0.5f;
+    //private float duration = 1.5f;
 
     [Tooltip("The amount of time the effect should play for")]
     private float effectPlayTime = 1f;
@@ -37,7 +37,7 @@ public class DimensionJumpEffects : MonoBehaviour
             jumpEffect.Stop();
 
         //Event Subscription
-        EventManager.instance.OnTimeJumpButtonPressed += CallCameraFade;
+        EventManager.instance.OnTimeJumpButtonPressed += CallVFX;
         //EventManager.instance.OnTimeJump += CallVFX;
     }
 
@@ -46,13 +46,15 @@ public class DimensionJumpEffects : MonoBehaviour
     {
         if (isEffectPlaying)
         {
-            intensity = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / duration);
+            intensity = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / AppData.jumpDelay);
 
             timeElasped += Time.deltaTime;
 
             jumpEffect.SetFloat("Intensity", intensity);
 
-            if (timeElasped > 0.45f && !isCameraFading) StartCoroutine(StartCameraFade());
+            if (timeElasped > 1.46f && !isCameraFading) StartCoroutine(StartCameraFade());
+
+            if (timeElasped > AppData.jumpDelay) isEffectPlaying = false;
         }
         else
         {
@@ -83,7 +85,7 @@ public class DimensionJumpEffects : MonoBehaviour
         SteamVR_Fade.View(fadeColor, fadeDuration);
 
         //Wait for the fade to complete
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.35f);
 
         //fade back to clear
         SteamVR_Fade.View(Color.clear, fadeDuration);

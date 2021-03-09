@@ -53,7 +53,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
     {
         EventManager.instance.TimeJumpButton();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(AppData.jumpDelay);
 
         EventManager.instance.TimeJump();
         EventManager.instance.PlaySound(Sound.Teleport);
