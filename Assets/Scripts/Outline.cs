@@ -211,13 +211,18 @@ public class Outline : MonoBehaviour
 
             try
             {
-                // Store smooth normals in UV3
-                meshFilter.sharedMesh.SetUVs(3, smoothNormals);
+                if (meshFilter.sharedMesh.isReadable)
+                    // Store smooth normals in UV3
+                    meshFilter.sharedMesh.SetUVs(3, smoothNormals);
+                else
+                {
+                    Debug.LogError(gameObject.name + ":" + meshFilter.sharedMesh.name + " is not readable. Check import settings");
+                }
             }
             catch (Exception e)
             {
-                Debug.LogError(e.Message);
-                Debug.LogError(gameObject.name + " must be read/write");
+                Debug.LogWarning(e.Message);
+                Debug.LogWarning(gameObject.name + " must be read/write");
             }
         }
 
@@ -236,56 +241,50 @@ public class Outline : MonoBehaviour
     {
         if (type == LogType.Error && (stackTrace.Contains("UnityEngine.Mesh:SetUV") || 
                                       stackTrace.Contains("UnityEngine.Mesh:get_vertices")))
-        {
             Debug.LogError(gameObject.name + " Condition: " + condition + " ST: " + stackTrace + " Type: " + type);
-            Debug.LogError("ST: ||" + stackTrace + "||");
-        }
     }
     
     List<Vector3> SmoothNormals(Mesh mesh)
     {
-        try
+        if (!mesh.isReadable)
         {
-            // Group vertices by location
-            var groups = mesh.vertices.Select((vertex, index) => new KeyValuePair<Vector3, int>(vertex, index))
-                .GroupBy(pair => pair.Key);
-            // Copy normals to a new list
-            var smoothNormals = new List<Vector3>(mesh.normals);
-
-            // Average normals for grouped vertices
-            foreach (var group in groups)
-            {
-                // Skip single vertices
-                if (group.Count() == 1)
-                {
-                    continue;
-                }
-
-                // Calculate the average normal
-                var smoothNormal = Vector3.zero;
-
-                foreach (var pair in group)
-                {
-                    smoothNormal += mesh.normals[pair.Value];
-                }
-
-                smoothNormal.Normalize();
-
-                // Assign smooth normal to each vertex
-                foreach (var pair in group)
-                {
-                    smoothNormals[pair.Value] = smoothNormal;
-                }
-            }
-
-            return smoothNormals;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.Message);
-            Debug.LogError(gameObject.name + " must be read/write");
+            Debug.LogError(gameObject.name + ":" + mesh.name + " is not readable. Check import settings");
             return null;
         }
+        
+        // Group vertices by location
+        var groups = mesh.vertices.Select((vertex, index) => new KeyValuePair<Vector3, int>(vertex, index))
+            .GroupBy(pair => pair.Key);
+        // Copy normals to a new list
+        var smoothNormals = new List<Vector3>(mesh.normals);
+
+        // Average normals for grouped vertices
+        foreach (var group in groups)
+        {
+            // Skip single vertices
+            if (group.Count() == 1)
+            {
+                continue;
+            }
+
+            // Calculate the average normal
+            var smoothNormal = Vector3.zero;
+
+            foreach (var pair in group)
+            {
+                smoothNormal += mesh.normals[pair.Value];
+            }
+
+            smoothNormal.Normalize();
+
+            // Assign smooth normal to each vertex
+            foreach (var pair in group)
+            {
+                smoothNormals[pair.Value] = smoothNormal;
+            }
+        }
+
+        return smoothNormals;
     }
 
     void UpdateMaterialProperties()
