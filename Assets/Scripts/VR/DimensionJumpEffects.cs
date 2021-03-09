@@ -17,25 +17,19 @@ public class DimensionJumpEffects : MonoBehaviour
     private bool isCameraFading = false;
 
     //VFX variables
-    private VisualEffect jumpEffect;
+    [Tooltip("VFX that is attach to the watch on the player")]
+    public VisualEffect watchEffect;
+    [Tooltip("VFX that creates a portal around the player")]
+    public VisualEffect portalEffect;
 
     private bool isEffectPlaying = false;
-    private float intensity = 0;
     private float timeElasped = 0;
-    //private float duration = 1.5f;
-
-    [Tooltip("The amount of time the effect should play for")]
-    private float effectPlayTime = 1f;
+    private float intensity = 0;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        jumpEffect = GetComponent<VisualEffect>();
-
-        if (jumpEffect != null)
-            jumpEffect.Stop();
-
         //Event Subscription
         EventManager.instance.OnTimeJumpButtonPressed += CallVFX;
         //EventManager.instance.OnTimeJump += CallVFX;
@@ -46,28 +40,41 @@ public class DimensionJumpEffects : MonoBehaviour
     {
         if (isEffectPlaying)
         {
-            intensity = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / AppData.jumpDelay);
-
-            timeElasped += Time.deltaTime;
-
-            jumpEffect.SetFloat("Intensity", intensity);
-
-            if (timeElasped > 1.46f && !isCameraFading) StartCoroutine(StartCameraFade());
-
-            if (timeElasped > AppData.jumpDelay) isEffectPlaying = false;
+            UpdateVFX();
         }
         else
         {
-            timeElasped = 0;
-            intensity = 0;
-            isEffectPlaying = false;
-            jumpEffect.SendEvent("OnStopParticle");
+            ResetVFXVariables();
         }
     }
 
-    private void CallCameraFade()
+    /// <summary>
+    /// Updates the variables in the vfx graph if the VFX is currently playing
+    /// </summary>
+    private void UpdateVFX()
     {
-        StartCoroutine(StartCameraFade());
+        intensity = Mathf.Lerp(AppData.Transparent, AppData.Opaque, timeElasped / AppData.jumpDelay);
+
+        watchEffect.SetFloat("Intensity", intensity);
+        portalEffect.SetFloat("Intensity", intensity);
+
+        timeElasped += Time.deltaTime;
+
+        if (timeElasped > 1.45f && !isCameraFading) StartCoroutine(StartCameraFade());
+
+        if (timeElasped > AppData.jumpDelay) isEffectPlaying = false;
+    }
+
+    /// <summary>
+    /// Resets the VFX variables for the next tim,e it has to be played
+    /// </summary>
+    private void ResetVFXVariables()
+    {
+        watchEffect.SendEvent("OnStopParticle");
+        portalEffect.SendEvent("OnStopParticle");
+        timeElasped = 0;
+        intensity = 0;
+        isEffectPlaying = false;
     }
 
     /// <summary>
@@ -96,7 +103,8 @@ public class DimensionJumpEffects : MonoBehaviour
     /// </summary>
     private void CallVFX()
     {
-        jumpEffect.SendEvent("OnStartParticle");
+        watchEffect.SendEvent("OnStartParticle");
+        portalEffect.SendEvent("OnStartParticle");
         isEffectPlaying = true;
     }
 }
