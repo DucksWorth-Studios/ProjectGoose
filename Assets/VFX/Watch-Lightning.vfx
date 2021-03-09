@@ -17,9 +17,9 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 624
+    x: 504
     y: -554
-    width: 958
+    width: 1078
     height: 2949
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -49,8 +49,8 @@ MonoBehaviour:
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 114340500867371532}
   m_ParameterInfo:
-  - name: Color
-    path: Color
+  - name: StartColor
+    path: StartColor
     tooltip: 
     sheetType: m_Vector4f
     realType: Color
@@ -58,7 +58,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.0,"g":707.973876953125,"b":1024.0,"a":0.0}'
+      m_SerializableObject: '{"r":0.0,"g":707.973876953125,"b":1024.0,"a":1.0}'
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -72,9 +72,23 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0
     min: 0
     max: 1
+    enumValues: []
+    descendantCount: 0
+  - name: EndColor
+    path: EndColor
+    tooltip: 
+    sheetType: m_Vector4f
+    realType: Color
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"r":2.2943787574768068,"g":0.0,"b":0.0,"a":1.0}'
+    min: -Infinity
+    max: Infinity
     enumValues: []
     descendantCount: 0
   m_ImportDependencies: []
@@ -2174,7 +2188,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614698}
-  m_ExposedName: Color
+  m_ExposedName: StartColor
   m_Exposed: 1
   m_Order: 0
   m_Category: 
@@ -2195,7 +2209,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614698}
       inputSlot: {fileID: 8926484042661614693}
-    position: {x: 746.9385, y: 1875.0103}
+    position: {x: 504, y: 2130}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614698
@@ -2227,7 +2241,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.0,"g":707.973876953125,"b":1024.0,"a":0.0}'
+      m_SerializableObject: '{"r":0.0,"g":707.973876953125,"b":1024.0,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -3125,7 +3139,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -3183,7 +3197,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0
     m_Space: 2147483647
   m_Property:
     name: o
