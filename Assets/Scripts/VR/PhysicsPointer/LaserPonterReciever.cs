@@ -19,6 +19,7 @@ public class LaserPonterReciever : MonoBehaviour
     // References to be used in other scripts
     [HideInInspector] public Throwable throwable;
     [HideInInspector] public Rigidbody rigidbody;
+    [HideInInspector] public Vector3 target;
     
     private Hand pointerHand;
     
@@ -33,6 +34,7 @@ public class LaserPonterReciever : MonoBehaviour
 
     void Awake()
     {
+        target = gameObject.transform.position;
         GetThrowable();
         GetRigidbody();
         
@@ -42,6 +44,15 @@ public class LaserPonterReciever : MonoBehaviour
             SetupMaterialReplacement();
     }
 
+    void Update()
+    {
+        if (Vector3.Distance(transform.position, target) < 0.01f)
+            return;
+        
+        float step =  2.5f * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target, step);
+    }
+    
     #region Awake Functions
 
     private void GetThrowable()

@@ -118,13 +118,13 @@ public class NotRussels : MonoBehaviour
                     UseVelocity(lpr);
                     break;
                 case NotRusselsPhysics.Bezier:
-                    StartCoroutine(useBezierCurve(lpr));
+                    StartCoroutine(UseBezierCurve(lpr));
                     break;
             }
         }
     }
 
-    private IEnumerator useBezierCurve(LaserPonterReciever lpr)
+    private IEnumerator UseBezierCurve(LaserPonterReciever lpr)
     {
         float step = 1;
         Vector3 peak = NotRusselsCalculations.CalculateMidpoint(lpr.gameObject.transform, objectAttachmentPoint);
@@ -143,7 +143,7 @@ public class NotRussels : MonoBehaviour
             
             Vector3 newPos = NotRusselsCalculations.CalculateQuadraticBezierCurves(start,
                 peak, target, step / bezierSteps);
-            lpr.transform.position = newPos;
+            lpr.target = newPos;
             step++;
 
             yield return new WaitForSeconds(0.1f);
@@ -163,8 +163,8 @@ public class NotRussels : MonoBehaviour
             objectAttachmentPoint.position);
         Vector3 dampVelocity = Vector3.Scale(velocity, velocityDampening);
             
-        Debug.Log("Velocity: " + velocity);
-        Debug.Log("Dampened Velocity: " + dampVelocity);
+        // Debug.Log("Velocity: " + velocity);
+        // Debug.Log("Dampened Velocity: " + dampVelocity);
         lpr.rigidbody.velocity = dampVelocity;
     }
     
