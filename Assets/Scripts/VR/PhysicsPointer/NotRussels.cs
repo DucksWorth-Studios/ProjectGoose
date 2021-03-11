@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -16,16 +17,18 @@ public class NotRussels : MonoBehaviour
     [Header("References")] 
     public Transform objectAttachmentPoint;
     public Transform endTarget;
-    
+
     [Header("Parameters")] 
+    
+    public NotRusselsPhysics physicsToUse = NotRusselsPhysics.Velocity;
+    public int bezierSteps = 4;
     
     [Range(0.0f, 0.5f)]
     [Tooltip("The radius to find objects in")]
     public float radius = 0.25f;
     
-    [Range(0.0f, 1.0f)]
     [Tooltip("The amount to multiply velocity by")]
-    public float velocityDampening = 0.65f; 
+    public Vector3 velocityDampening = new Vector3(0.65f, 1, 0.65f); 
     // Current best values
     // 0.65 for palm
     // 0.5 for forward
@@ -46,10 +49,12 @@ public class NotRussels : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Current Timescale: " + Time.timeScale);
+    
         if (debug)
             SpawnRing();
     }
-    
+
     private void Update()
     {
         CalculateHit();
@@ -99,15 +104,61 @@ public class NotRussels : MonoBehaviour
         if (handVelocity < -handVelocitySensitivity)
         {
             isMoving = true;
-                
-            //Calculate velocity and apply it to the target
-            Vector3 velocity = NotRusselsCalculations.CalculateParabola(lpr.gameObject.transform.position, 
-                objectAttachmentPoint.position);
-            
-            Debug.Log("Velocity: " + velocity);
-            Debug.Log("Dampened Velocity: " + velocity * velocityDampening);
-            lpr.rigidbody.velocity = velocity * velocityDampening;
+
+            switch (physicsToUse)
+            {
+                case NotRusselsPhysics.Velocity:
+                    UseVelocity(lpr);
+                    break;
+                case NotRusselsPhysics.Bezier:
+                    StartCoroutine(useBezierCurve(lpr));
+                    break;
+            }
         }
+    }
+
+    private IEnumerator useBezierCurve(LaserPonterReciever lpr)
+    {
+        float step = 1;
+        Vector3 peak = NotRusselsCalculations.CalculateMidpoint(lpr.gameObject.transform, objectAttachmentPoint);
+        peak += new Vector3(0, 1, 0);
+
+        Vector3 start = lpr.gameObject.transform.position;
+        Vector3 target = objectAttachmentPoint.position;
+        
+        Debug.LogWarning("Gravity off");
+        lpr.rigidbody.useGravity = false;
+        lpr.rigidbody.isKinematic = true;
+        
+        while (step <= bezierSteps)
+        {
+            Debug.Log("Step: " + step + " || " + step / bezierSteps);
+            
+            Vector3 newPos = NotRusselsCalculations.CalculateQuadraticBezierCurves(start,
+                peak, target, step / bezierSteps);
+            lpr.transform.position = newPos;
+            step++;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        Debug.LogWarning("Gravity on");
+        lpr.rigidbody.useGravity = true;
+        lpr.rigidbody.isKinematic = false;
+    }
+    
+    private void UseVelocity(LaserPonterReciever lpr)
+    {
+        Time.timeScale = 0.5f;
+                
+        //Calculate velocity and apply it to the target
+        Vector3 velocity = NotRusselsCalculations.CalculateParabola(lpr.gameObject.transform.position, 
+            objectAttachmentPoint.position);
+        Vector3 dampVelocity = Vector3.Scale(velocity, velocityDampening);
+            
+        Debug.Log("Velocity: " + velocity);
+        Debug.Log("Dampened Velocity: " + dampVelocity);
+        lpr.rigidbody.velocity = dampVelocity;
     }
     
     private void RayExit()
@@ -119,6 +170,7 @@ public class NotRussels : MonoBehaviour
         lastHit = null;
         materialUpdated = false;
         isMoving = false;
+        Time.timeScale = 1;
     }
     
     // Taken from: https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html

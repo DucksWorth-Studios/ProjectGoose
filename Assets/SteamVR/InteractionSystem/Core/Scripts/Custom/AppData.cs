@@ -25,6 +25,11 @@ public enum PointerState
     Disabled
 }
 
+public enum NotRusselsPhysics
+{
+    Velocity,
+    Bezier
+}
 
 //Button Enum
 public enum ButtonEnum { CLOUDREMOVE, NEGATOR, RESET };
