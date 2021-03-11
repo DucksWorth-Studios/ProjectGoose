@@ -40,6 +40,7 @@ public class EventManager : MonoBehaviour
     public event Action OnSetPhysicsPointer;
     public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
+    public event Action OnNotRusselsInterrupt;
     public event Action<bool> OnHurtScreen;
     //This is a model for an event
     public void TestEventCall()
@@ -226,7 +227,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public virtual void DisableMovement()
+    protected virtual void DisableMovement()
     {
         OnDisableMovement?.Invoke();
     }
@@ -259,6 +260,11 @@ public class EventManager : MonoBehaviour
     public virtual void SetNotRussels()
     {
         OnSetNotRussels?.Invoke();
+    }
+
+    public virtual void NotRusselsInterrupt()
+    {
+        OnNotRusselsInterrupt?.Invoke();
     }
 
     public virtual void SetUIPointer()

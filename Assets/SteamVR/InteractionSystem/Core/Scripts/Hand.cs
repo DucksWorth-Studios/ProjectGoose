@@ -412,7 +412,9 @@ namespace Valve.VR.InteractionSystem
 
             if (attachedObject.interactable != null)
             {
+                EventManager.instance.NotRusselsInterrupt();
                 IdentifyItem(objectToAttach.tag);
+                
                 if (attachedObject.interactable.attachEaseIn)
                 {
                     attachedObject.easeSourcePosition = attachedObject.attachedObject.transform.position;

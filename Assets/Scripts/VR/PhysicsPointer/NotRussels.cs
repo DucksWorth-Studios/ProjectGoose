@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
@@ -49,8 +49,9 @@ public class NotRussels : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Current Timescale: " + Time.timeScale);
-    
+        // Debug.Log("Current Timescale: " + Time.timeScale);
+        EventManager.instance.OnNotRusselsInterrupt += StopMoving;
+        
         if (debug)
             SpawnRing();
     }
@@ -60,6 +61,12 @@ public class NotRussels : MonoBehaviour
         CalculateHit();
     }
 
+    private void StopMoving()
+    {
+        Debug.LogWarning("Stop Moving");
+        StopCoroutine("UseBezierCurve");
+    }
+    
     private void CalculateHit()
     {
         // The number of returned colliders is limited to this allocated buffer
