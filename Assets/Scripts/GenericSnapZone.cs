@@ -4,13 +4,17 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 /// <summary>
+/// Author: Andrew Carolan
 /// A generic snap zone that can snap any object to it has long as it has the interactable component
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]
 public class GenericSnapZone : MonoBehaviour
 {
+    [Tooltip("The object being held")]
     protected GameObject currentlyHeldObject;
     protected bool isHolding = false;
+
+    [Tooltip("The position the object shoudl snap to")]
     public Transform snapPosition;
 
     // Start is called before the first frame update
@@ -49,9 +53,9 @@ public class GenericSnapZone : MonoBehaviour
         }
     }
 
-    private void DetachObject(Hand hand)
+    protected void DetachObject(Hand hand)
     {
-        currentlyHeldObject.GetComponent<Interactable>().onAttachedToHand -= DetachObject;
+        currentlyHeldObject.GetComponent<Interactable>().onAttachedToHand -= DetachObject; // unsubscribe from event
 
         isHolding = false;
         currentlyHeldObject = null;
