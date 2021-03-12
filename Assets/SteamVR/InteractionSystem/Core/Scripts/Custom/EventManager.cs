@@ -45,6 +45,8 @@ public class EventManager : MonoBehaviour
     public event Action OnUpdateVideoSettingsUI;
     public event Action OnApplyVideoSettings;
     
+    public event Action OnUpdateComfortSettingsUI;
+    
     //This is a model for an event
     public void TestEventCall()
     {
@@ -308,6 +310,11 @@ public class EventManager : MonoBehaviour
     public virtual void ApplyVideoSettings()
     {
         OnApplyVideoSettings?.Invoke();
+    }
+    
+    public virtual void UpdateComfortSettingsUI()
+    {
+        OnUpdateComfortSettingsUI?.Invoke();
     }
 }
 
