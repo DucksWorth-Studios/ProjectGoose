@@ -5,8 +5,11 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     private Valve.VR.InteractionSystem.Interactable interactable;
+    private Rigidbody rigidbody;
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = false;
         interactable = GetComponent<Valve.VR.InteractionSystem.Interactable>();
     }
     private void OnTriggerEnter(Collider other)
