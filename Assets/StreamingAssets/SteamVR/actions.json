@@ -184,7 +184,8 @@
       "/actions/default/in/DimensionJump": "Dimension Jump",
       "/actions/default/in/Teleport": "Teleport",
       "/actions/default/in/StartLaser": "Activate Laser Beam",
-      "/actions/default/in/PullObject": "Pull Object Towards Player"
+      "/actions/default/in/PullObject": "Pull Object Towards Player",
+      "/actions/default/in/Pause": "Pause game"
     }
   ]
 }
