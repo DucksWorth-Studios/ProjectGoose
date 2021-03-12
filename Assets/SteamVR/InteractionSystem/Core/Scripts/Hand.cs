@@ -639,6 +639,9 @@ namespace Valve.VR.InteractionSystem
                 case "DucksWorth":
                     EventManager.instance.PlayPassive(SCENE.DUCKSWORTH);
                     break;
+                case "Wooo":
+                    print("Woop");
+                    break;
                 default:
                     break;
             }

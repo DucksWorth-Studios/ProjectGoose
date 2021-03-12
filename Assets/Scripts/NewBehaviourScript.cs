@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
+    private Valve.VR.InteractionSystem.Interactable interactable;
     void Start()
     {
-
+        interactable = GetComponent<Valve.VR.InteractionSystem.Interactable>();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "RightHand")
+        {
+            print("YEAAAH");
+            this.transform.parent = null;
+        }
+    }
     private void DebugWin()
     {
         print("Winner Winner Chicken Dinner");
@@ -18,20 +25,9 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if(interactable.attachedToHand != null)
         {
-            EventManager.instance.PlayPassive(SCENE.ABOOK);
-            
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            EventManager.instance.Progress(STAGE.USB);
-
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            EventManager.instance.PlayPassive(SCENE.BBURNER);
-
+            print("WOOOOOOP");
         }
     }
 }
