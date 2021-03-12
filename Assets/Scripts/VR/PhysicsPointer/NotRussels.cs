@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
@@ -146,7 +146,7 @@ public class NotRussels : MonoBehaviour
             lpr.target = newPos;
             step++;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1);
         }
         
         Debug.LogWarning("Gravity on");
