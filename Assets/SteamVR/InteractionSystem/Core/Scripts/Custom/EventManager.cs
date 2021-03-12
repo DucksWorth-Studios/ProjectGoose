@@ -41,6 +41,10 @@ public class EventManager : MonoBehaviour
     public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
     public event Action<bool> OnHurtScreen;
+
+    public event Action OnUpdateVideoSettingsUI;
+    public event Action OnApplyVideoSettings;
+    
     //This is a model for an event
     public void TestEventCall()
     {
@@ -294,6 +298,16 @@ public class EventManager : MonoBehaviour
                 DisablePointer();
                 break;
         }
+    }
+
+    public virtual void UpdateVideoSettingsUI()
+    {
+        OnUpdateVideoSettingsUI?.Invoke();
+    }
+    
+    public virtual void ApplyVideoSettings()
+    {
+        OnApplyVideoSettings?.Invoke();
     }
 }
 
