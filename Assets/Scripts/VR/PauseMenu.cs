@@ -20,6 +20,9 @@ public class PauseMenu : MonoBehaviour
 
         if (pauseMenu.activeInHierarchy)
         {
+            SettingsManager.instance.Load();
+            ComfortManager.instance.Load();
+            
             EventManager.instance.DisableAllInput();
             EventManager.instance.SetUIPointer();
         }
