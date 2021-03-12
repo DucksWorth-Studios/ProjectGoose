@@ -78,8 +78,6 @@ public class VideoSettingsMenu : MonoBehaviour
         anisotropicFilteringDropdown.SetValueWithoutNotify(SettingsManager.settingsData.anisotropicFiltering);
         antiAliasingSlider.SetValueWithoutNotify(SettingsManager.settingsData.antiAliasing);
         OnChangeAntiAliasing(SettingsManager.settingsData.antiAliasing);
-        
-        gameObject.SetActive(false);
     }
 
     private void UpdateCurrentResolutionIndex()

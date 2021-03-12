@@ -50,8 +50,6 @@ public class ComfortSettingsMenu : MonoBehaviour
         enableSTDropdown.RefreshShownValue();
         OnChangeSTDuration(ComfortManager.settingsData.stBlackoutDuration);
         OnChangeSTAngle(ComfortManager.settingsData.snapTurnAngle);
-        
-        gameObject.SetActive(false);
     }
     
     public void Close()
