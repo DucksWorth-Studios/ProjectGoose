@@ -12,10 +12,18 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         string scene = SceneManager.GetActiveScene().name;
+
+        if (!pauseAction.stateDown || scene == "StartScene") 
+            return;
         
-        if (pauseAction.stateDown && scene != "StartScene")
+        pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+
+        if (pauseMenu.activeInHierarchy)
         {
-            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            EventManager.instance.DisableAllInput();
+            EventManager.instance.SetUIPointer();
         }
+        else
+            EventManager.instance.EnableAllInput();
     }
 }

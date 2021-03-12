@@ -11,6 +11,7 @@ public class PauseMenuButtons : MonoBehaviour
     public void Resume()
     {
         pause.SetActive(false);
+        EventManager.instance.EnableAllInput();
     }
 
     public void Options()
