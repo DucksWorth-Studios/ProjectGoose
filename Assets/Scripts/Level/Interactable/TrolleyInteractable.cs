@@ -64,6 +64,7 @@ public class TrolleyInteractable : MonoBehaviour
             hand.DetachObject(gameObject);
 
             attachedHand = null;
+            previousRot = 0;
 
             hand.HoverUnlock(interactable);
         }
