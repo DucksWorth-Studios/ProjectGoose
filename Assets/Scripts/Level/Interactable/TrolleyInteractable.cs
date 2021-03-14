@@ -18,6 +18,8 @@ public class TrolleyInteractable : MonoBehaviour
     private float previousRot;
     private Rigidbody rigidbody;
 
+    public GameObject wheel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,23 +29,38 @@ public class TrolleyInteractable : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if(attachedHand != null)
+    {
+        if (attachedHand != null)
         {
-            if(previousRot == 0)
+            //ChangeTrolleyRotation();
+
+            if (previousRot == 0)
             {
                 previousRot = attachedHand.transform.eulerAngles.y;
                 return;
             }
 
             var angle = Vector3.Angle(new Vector3(0, previousRot, 0), new Vector3(0, previousRot = attachedHand.transform.eulerAngles.y, 0));
-
-            this.transform.Rotate(0, angle, 0);
+            Debug.Log(angle);
+            //this.transform.Rotate(0, angle, 0);
 
             ///Force Rotation only to move in the y axis
             rigidbody.angularVelocity = Vector3.zero;
             this.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
+
+
+            Debug.Log(rigidbody.velocity.magnitude);
+            if(rigidbody.velocity.magnitude > 0.2f)
+                wheel.transform.localRotation = Quaternion.LookRotation(-rigidbody.velocity.normalized);
+
+            wheel.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            wheel.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     private void HandHoverUpdate(Hand hand)
@@ -68,5 +85,22 @@ public class TrolleyInteractable : MonoBehaviour
 
             hand.HoverUnlock(interactable);
         }
+    }
+
+    private void ChangeTrolleyRotation()
+    {
+        if (previousRot == 0)
+        {
+            previousRot = attachedHand.transform.eulerAngles.y;
+            return;
+        }
+
+        var angle = Vector3.Angle(new Vector3(0, previousRot, 0), new Vector3(0, previousRot = attachedHand.transform.eulerAngles.y, 0));
+
+        this.transform.Rotate(0, angle, 0);
+
+        ///Force Rotation only to move in the y axis
+        rigidbody.angularVelocity = Vector3.zero;
+        this.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
     }
 }
