@@ -114,10 +114,7 @@ public class Stream : MonoBehaviour
         {
             gameObjectCollide = hit.collider.gameObject;
         }
-        else if(hit.collider.gameObject.tag == AppData.playerTag)
-        {
-            compositionManager.IsPerfectCompositionDrunk();
-        }
+
 
         //if it hits valid collider set it as end point
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
