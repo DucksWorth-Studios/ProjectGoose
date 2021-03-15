@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3189783670237764729}
   - component: {fileID: 3189783670237764728}
   m_Layer: 0
-  m_Name: EndZone
+  m_Name: VialZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
