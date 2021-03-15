@@ -46,6 +46,8 @@ public class EventManager : MonoBehaviour
     public event Action OnApplyVideoSettings;
     
     public event Action OnUpdateComfortSettingsUI;
+    public event Action OnPauseGame;
+    public event Action OnResumeGame;
     
     //This is a model for an event
     public void TestEventCall()
@@ -327,6 +329,27 @@ public class EventManager : MonoBehaviour
     public virtual void UpdateComfortSettingsUI()
     {
         OnUpdateComfortSettingsUI?.Invoke();
+    }
+
+    public virtual void PauseGame()
+    {
+        OnPauseGame?.Invoke();
+        
+        DisableAllInput();
+        SetUIPointer();
+        
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+    }
+    
+    public virtual void ResumeGame()
+    {
+        OnResumeGame?.Invoke();
+        
+        EnableAllInput();
+        
+        Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }
 

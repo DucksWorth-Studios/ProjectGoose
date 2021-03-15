@@ -23,10 +23,9 @@ public class PauseMenu : MonoBehaviour
             SettingsManager.instance.Load();
             ComfortManager.instance.Load();
             
-            EventManager.instance.DisableAllInput();
-            EventManager.instance.SetUIPointer();
+            EventManager.instance.PauseGame();
         }
         else
-            EventManager.instance.EnableAllInput();
+            EventManager.instance.ResumeGame();
     }
 }
