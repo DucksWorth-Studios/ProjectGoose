@@ -14,6 +14,9 @@ using Valve.VR.InteractionSystem;
 [RequireComponent( typeof( Rigidbody ) )]
 public class Throwable : MonoBehaviour
 {
+	[Tooltip("If false, the player won't be able to pick up the item")]
+	public bool attachmentEnabled = true;
+	
     [EnumFlags]
 	[Tooltip( "The flags used to attach this object to the hand." )]
 	public Hand.AttachmentFlags attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand | Hand.AttachmentFlags.TurnOnKinematic;
@@ -170,6 +173,9 @@ public class Throwable : MonoBehaviour
     //-------------------------------------------------
     protected virtual void HandHoverUpdate( Hand hand )
     {
+	    if (!attachmentEnabled) 
+		    return;
+	    
         GrabTypes startingGrabType = hand.GetGrabStarting();
 
         if (startingGrabType != GrabTypes.None)
