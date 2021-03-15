@@ -41,7 +41,7 @@ public class EventManager : MonoBehaviour
     public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
     public event Action<bool> OnHurtScreen;
-
+    public event Action<bool> OnPauseScene;
     public event Action OnUpdateVideoSettingsUI;
     public event Action OnApplyVideoSettings;
     
@@ -229,6 +229,18 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.LogError("OnPassiveCall is Null");
+        }
+    }
+
+    public void PauseNarration(bool pause)
+    {
+        if (OnPauseScene != null)
+        {
+            OnPauseScene(pause);
+        }
+        else
+        {
+            Debug.LogError("OnPause is Null");
         }
     }
 
