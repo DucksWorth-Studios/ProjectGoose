@@ -335,9 +335,10 @@ public class EventManager : MonoBehaviour
     {
         OnPauseGame?.Invoke();
         
+        PauseNarration(true);
         DisableAllInput();
         SetUIPointer();
-        
+
         Time.timeScale = 0;
         AudioListener.pause = true;
     }
@@ -347,6 +348,7 @@ public class EventManager : MonoBehaviour
         OnResumeGame?.Invoke();
         
         EnableAllInput();
+        PauseNarration(false);
         
         Time.timeScale = 1;
         AudioListener.pause = false;
