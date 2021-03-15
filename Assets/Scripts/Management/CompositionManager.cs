@@ -163,15 +163,6 @@ public class CompositionManager : MonoBehaviour
         otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
     }
 
-    public void IsPerfectCompositionDrunk()
-    {
-        if(ISComposition && HasElement && !IsDrunk)
-        {
-            IsDrunk = true;
-            EventManager.instance.Progress(STAGE.END);
-            EventManager.instance.WinGame();
-        }
-    }
 
     /// <summary>
     /// Takes in a color to reset the composition to.
