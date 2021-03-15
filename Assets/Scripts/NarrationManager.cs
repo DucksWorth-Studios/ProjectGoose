@@ -230,6 +230,22 @@ public class NarrationManager : MonoBehaviour
     {
         activeQueue.UnPause();
     }
+
+    /// <summary>
+    /// Will Be Event To Pause Scene
+    /// </summary>
+    /// <param name="Pause"> If true scene will be paused. If False Scene will be unpaused</param>
+    private void PauseEvent(bool Pause)
+    {
+        if(Pause)
+        {
+            PauseScene();
+        }
+        else
+        {
+            UnPauseScene();
+        }
+    }
     //Teleport Jump will intefere with clips keep track of tate we are in
     public void JumpInteference()
     {
