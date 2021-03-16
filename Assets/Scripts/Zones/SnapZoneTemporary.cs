@@ -5,7 +5,7 @@ using UnityEngine;
 /// Author Tomas
 /// The Script Holds Certain items Designated By their Tag
 /// </summary>
-public class SnapZoneHolder : MonoBehaviour
+public class SnapZoneTemporary : MonoBehaviour
 {
     [Tooltip("Tag To Search For")]
     public string tagToSearchFor;
