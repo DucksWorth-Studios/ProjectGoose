@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
-    [HideInInspector]
-    public Vector3 target;
-    public static float moveSpeed = 2.5f;
+    private Vector3 target;
+    public static float moveSpeed = 5;
+
+    public Vector3 Target
+    {
+        get => target;
+        set
+        {
+            target = value;
+            // Debug.Log(gameObject.name + " Target: " + target);
+        }
+    }
 
     void Update()
     {

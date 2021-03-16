@@ -25,9 +25,6 @@ public class SmokeRing : MonoBehaviour
     
     [Tooltip("The speed the smoke should move at")]
     public float moveSpeed = 5;
-    
-    [Tooltip("The speed the smoke should move at when the emitters start getting destroyed")]
-    public float destroyMoveSpeed = 5;
 
     [Tooltip("The amount to offset the y of each effect by")]
     public float yOffset = 0.5f;
@@ -81,22 +78,15 @@ public class SmokeRing : MonoBehaviour
             int difference = lastSpwanCount - Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius));
             spawnLimit -= difference;
 
+            MoveObjects(difference);
+            
             // Debug.Log("spawnRadius: " + spawnRadius);
             // Debug.Log("Curve: " + Mathf.CeilToInt(spawnCurve.Evaluate(spawnRadius)));
 
-            for (int i = 0; i < difference; i++)
-            {
-                VFXManager.moveSpeed = destroyMoveSpeed;
-                
-                Destroy(spawned[0]);
-                spawned.RemoveAt(0);
-                spawnedVFX.RemoveAt(0);
-            }
-
-            MoveObjects();
             yield return new WaitForSeconds(1);
         }
     }
+    
     void Destroy()
     {
         foreach (GameObject ob in spawned)
@@ -129,7 +119,7 @@ public class SmokeRing : MonoBehaviour
             ob.transform.position = newPosition;
             
             VFXManager vfx = ob.GetComponent<VFXManager>();
-            vfx.target = newPosition;
+            vfx.Target = newPosition;
             
             ob.name = "Fog-" + i;
             spawned.Add(ob);
@@ -137,19 +127,35 @@ public class SmokeRing : MonoBehaviour
         }
     }
     
-    private void MoveObjects()
+    private void MoveObjects(int difference)
     {
         lastSpwanCount = spawnLimit;
-        
-        for (int i = 0; i < spawnLimit; i++)
+        int count = 0;
+
+        foreach (VFXManager vfx in spawnedVFX)
         {
             Vector3 localPosition = transform.position;
             
-            float theta = i * 2 * Mathf.PI / spawnLimit;
+            float theta = count * 2 * Mathf.PI / spawnLimit;
             float x = Mathf.Sin(theta)*spawnRadius + localPosition.x;
             float z = Mathf.Cos(theta)*spawnRadius + localPosition.z;
+                
+            vfx.Target = new Vector3(x, localPosition.y + yOffset, z);
+            count++;
+        }
+        
+        StartCoroutine(DestroyVFX(difference));
+    }
 
-            spawnedVFX[i].target = new Vector3(x, localPosition.y + yOffset, z);
+    private IEnumerator DestroyVFX(int difference)
+    {
+        yield return new WaitForSeconds(1);
+        
+        for (int i = 0; i < difference; i++)
+        {
+            Destroy(spawned[0]);
+            spawned.RemoveAt(0);
+            spawnedVFX.RemoveAt(0);
         }
     }
 }
