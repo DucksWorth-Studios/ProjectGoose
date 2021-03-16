@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2980119117597029643}
   - component: {fileID: 4807457958872633672}
   - component: {fileID: 116501501}
-  - component: {fileID: 116501500}
   - component: {fileID: 801545565}
   - component: {fileID: 801545564}
   m_Layer: 0
@@ -151,20 +150,6 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
---- !u!114 &116501500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447153204268453858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b46f4ebf90414489370d2e1ee9dcc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportBackToOrigin: 0
-  attachmentEnabled: 1
 --- !u!54 &801545565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718dc1d756d095e4ba65f832f889d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentEnabled: 1
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
