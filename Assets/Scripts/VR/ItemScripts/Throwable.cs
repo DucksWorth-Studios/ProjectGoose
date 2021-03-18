@@ -182,12 +182,13 @@ public class Throwable : MonoBehaviour
         {
 			hand.AttachObject( gameObject, startingGrabType, attachmentFlags, attachmentOffset );
             hand.HideGrabHint();
-            
+
             // TODO: Interactable Debugging
             // Debug.Log("Throwable startingGrabType: " + startingGrabType);
             // Debug.Log("Throwable attachmentFlags: " + attachmentFlags);
+            EventManager.instance.PlaySound(Sound.ItemPickUp);
         }
-	}
+    }
 
     //-------------------------------------------------
     protected virtual void OnAttachedToHand( Hand hand )

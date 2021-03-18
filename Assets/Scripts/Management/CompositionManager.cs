@@ -20,8 +20,11 @@ public class CompositionManager : MonoBehaviour
     public bool HasElement = false;
     public bool debugHold = false;
     private bool IsDrunk = false;
+    private AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
+
         puffEffect.SetActive(false);
 
         //Get the interactable component
@@ -56,7 +59,7 @@ public class CompositionManager : MonoBehaviour
 
             bool HasReachedGoal = detectIfWithinWinBounds();
             detectIfToxic(HasReachedGoal);
-            
+            source.Play();
             //if(debugHold)
             //{
             //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
