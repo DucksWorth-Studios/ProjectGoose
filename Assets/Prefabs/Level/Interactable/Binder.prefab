@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2143959659108126718}
   - component: {fileID: 5806418390964500309}
   - component: {fileID: 7399443437894838101}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Binder_Cube.001_Binder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8293045306938896388}
   - component: {fileID: 2577082343005965070}
   - component: {fileID: 5337604736444445041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Binder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
