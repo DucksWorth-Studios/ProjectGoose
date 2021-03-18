@@ -46,7 +46,8 @@ public class VRItemAttachment : MonoBehaviour
     /// <param name="hand">The hand that is currently hovering over the object</param>
     private void HandHoverUpdate( Hand hand )
     {
-        if (!attachmentEnabled) return;
+        if (!attachmentEnabled) 
+            return;
         
         GrabTypes startingGrabType = hand.GetGrabStarting();
         bool isGrabEnding = hand.IsGrabEnding(gameObject);

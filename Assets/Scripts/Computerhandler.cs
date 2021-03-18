@@ -25,6 +25,7 @@ public class Computerhandler : MonoBehaviour
         EventManager.instance.OnItemSnap += EnableScreen;
     }
 
+
     private void EnableScreen(Snap itemSnapped)
     {
         if(itemSnapped == Snap.USB)
@@ -35,6 +36,7 @@ public class Computerhandler : MonoBehaviour
         }
     }
 
+    //Displays Loading Screen and begins loading bar progress
     private void Loading()
     {
         if(loadingScreen.gameObject.activeSelf)
@@ -48,6 +50,9 @@ public class Computerhandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the Formula Screen
+    /// </summary>
     private void DisplayFormula()
     {
         loadingScreen.gameObject.SetActive(false);

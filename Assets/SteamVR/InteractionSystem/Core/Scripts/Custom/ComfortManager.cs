@@ -13,33 +13,14 @@ using UnityEngine.UI;
 
 public class ComfortManager : MonoBehaviour
 {
-    [Header("Movement Speed")]
-    public Slider speedSlider;
-    public TextMeshProUGUI speedValue;
-    
-    [Header("Teleport")]
-    public TMP_Dropdown enableTPDropdown;
-    public Slider tpDurationSlider;
-    public TextMeshProUGUI tpDurationText;
-    
-    [Header("Snap Turn")]
-    public TMP_Dropdown enableSTDropdown;
-    public Slider stDurationSlider;
-    public TextMeshProUGUI stDurationText;
-    public Slider stAngleSlider;
-    public TextMeshProUGUI stAngleText;
-    
-    [Header("Other")]
-    public TextMeshProUGUI saveText;
-    public GameObject startMenu;
-    public GameObject optionsMenu;
-    
+    public static ComfortManager instance;
     public static ComfortSettingsData settingsData;
     private string settingsFile = "ComfortSettings.dat";
 
     void Start()
     {
-        Debug.Log("ComfortManager Start");
+        // Debug.Log("ComfortManager Start");
+        instance = this;
         settingsData = new ComfortSettingsData();
         Load();
         // SetDefaults();
@@ -54,93 +35,9 @@ public class ComfortManager : MonoBehaviour
         settingsData.stBlackoutDuration = 0;
         settingsData.snapTurnAngle = 45;
         
-        UpdateUI();
+        // UpdateUI();
+        EventManager.instance.UpdateComfortSettingsUI();
     }
-    
-    private void UpdateUI()
-    {
-        Debug.Log("UpdateUI.settingsData: " + settingsData);
-        Debug.Log("ComfortManager.settingsData: " + ComfortManager.settingsData);
-        OnChangeSpeed(settingsData.speed);
-        
-        enableTPDropdown.value = settingsData.enableTeleportBlackout;
-        enableTPDropdown.RefreshShownValue();
-        OnChangeTPDuration(settingsData.tpBlackoutDuration);
-        
-        enableSTDropdown.value = settingsData.enableSnapTurnBlackout;
-        enableSTDropdown.RefreshShownValue();
-        OnChangeSTDuration(settingsData.stBlackoutDuration);
-        OnChangeSTAngle(settingsData.snapTurnAngle);
-        
-        gameObject.SetActive(false);
-    }
-    
-    public void Close()
-    {
-        optionsMenu.gameObject.SetActive(false);
-        startMenu.gameObject.SetActive(true);
-    }
-
-    #region Events
-
-    public void OnChangeSpeed(float newSpeed)
-    {
-        string strSpeed = newSpeed.ToString("#.00");
-        float speed = float.Parse(strSpeed);
-        
-        speedValue.text = "" + speed;
-        settingsData.speed = speed;
-
-        // Debug.Log(speed);
-        speedSlider.value = speed;
-    }
-    
-    public void OnChangeTPBlackout(int blackout)
-    {
-        Debug.Log(blackout);
-        settingsData.enableTeleportBlackout = blackout;
-    }
-    
-    public void OnChangeTPDuration(float tpDuration)
-    {
-        string strDuration = tpDuration.ToString("#.00");
-        float duration = float.Parse(strDuration);
-        
-        tpDurationText.text = "" + duration;
-        settingsData.tpBlackoutDuration = duration;
-
-        // Debug.Log(duration);
-        tpDurationSlider.value = duration;
-    }
-    
-    public void OnChangeSTBlackout(int blackout)
-    {
-        Debug.Log(blackout);
-        settingsData.enableSnapTurnBlackout = blackout;
-    }
-    
-    public void OnChangeSTDuration(float stDuration)
-    {
-        string strDuration = stDuration.ToString("#.00");
-        float duration = float.Parse(strDuration);
-        
-        stDurationText.text = "" + duration;
-        settingsData.stBlackoutDuration = duration;
-        
-        // Debug.Log(duration);
-        stDurationSlider.value = duration;
-    }
-    
-    public void OnChangeSTAngle(float stAngle)
-    {
-        stAngleText.text = "" + stAngle;
-        settingsData.snapTurnAngle = stAngle;
-        
-        // Debug.Log(stAngle);
-        stAngleSlider.value = stAngle;
-    }
-
-    #endregion
     
     #region Save/Load
 
@@ -160,7 +57,7 @@ public class ComfortManager : MonoBehaviour
         }
     }
     
-    public void Save()
+    public string Save()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, settingsFile);
         
@@ -172,26 +69,21 @@ public class ComfortManager : MonoBehaviour
             
             File.WriteAllText(fullPath, json);
 
-            saveText.gameObject.SetActive(true);
-            saveText.text = "Saved";
+            // saveText.gameObject.SetActive(true);
+            return "Saved";
         }
         catch (Exception e)
         {
             Debug.LogError($"Failed to write to {fullPath} with exception {e}");
             
-            saveText.gameObject.SetActive(true);
-            saveText.text = $"Failed to write to {fullPath} with exception {e}";
+            // saveText.gameObject.SetActive(true);
+            return $"Failed to write to {fullPath} with exception {e}";
         }
         
         Invoke("HideSaveText", 5);
     }
-    
-    private void HideSaveText()
-    {
-        saveText.gameObject.SetActive(false);
-    }
 
-    private void Load()
+    public void Load()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, settingsFile);
         
@@ -203,7 +95,9 @@ public class ComfortManager : MonoBehaviour
             // JsonUtility.FromJsonOverwrite(data, settingsData);
             settingsData = (ComfortSettingsData) JsonUtility.FromJson(data, typeof(ComfortSettingsData));
             Debug.Log("Load.settingsData: " + settingsData);
-            UpdateUI();
+            
+            // UpdateUI();
+            EventManager.instance.UpdateComfortSettingsUI();
         }
         catch (Exception e)
         {
