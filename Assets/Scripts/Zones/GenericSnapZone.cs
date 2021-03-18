@@ -41,7 +41,10 @@ public class GenericSnapZone : MonoBehaviour
                     currentlyHeldObject = other.gameObject;
                     interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
 
+                    currentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+
                     currentlyHeldObject.transform.position = snapPosition.position;
+                    currentlyHeldObject.transform.rotation = Quaternion.identity;
                     isHolding = true;
                 }
             }
@@ -56,6 +59,7 @@ public class GenericSnapZone : MonoBehaviour
     protected void DetachObject(Hand hand)
     {
         currentlyHeldObject.GetComponent<Interactable>().onAttachedToHand -= DetachObject; // unsubscribe from event
+        currentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false; // enable physics
 
         isHolding = false;
         currentlyHeldObject = null;
