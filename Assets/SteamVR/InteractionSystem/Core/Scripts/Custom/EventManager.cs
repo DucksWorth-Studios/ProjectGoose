@@ -41,6 +41,14 @@ public class EventManager : MonoBehaviour
     public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
     public event Action<bool> OnHurtScreen;
+    public event Action<bool> OnPauseScene;
+    public event Action OnUpdateVideoSettingsUI;
+    public event Action OnApplyVideoSettings;
+    
+    public event Action OnUpdateComfortSettingsUI;
+    public event Action OnPauseGame;
+    public event Action OnResumeGame;
+    
     //This is a model for an event
     public void TestEventCall()
     {
@@ -226,6 +234,18 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void PauseNarration(bool pause)
+    {
+        if (OnPauseScene != null)
+        {
+            OnPauseScene(pause);
+        }
+        else
+        {
+            Debug.LogError("OnPause is Null");
+        }
+    }
+
     public virtual void DisableMovement()
     {
         OnDisableMovement?.Invoke();
@@ -294,6 +314,44 @@ public class EventManager : MonoBehaviour
                 DisablePointer();
                 break;
         }
+    }
+
+    public virtual void UpdateVideoSettingsUI()
+    {
+        OnUpdateVideoSettingsUI?.Invoke();
+    }
+    
+    public virtual void ApplyVideoSettings()
+    {
+        OnApplyVideoSettings?.Invoke();
+    }
+    
+    public virtual void UpdateComfortSettingsUI()
+    {
+        OnUpdateComfortSettingsUI?.Invoke();
+    }
+
+    public virtual void PauseGame()
+    {
+        OnPauseGame?.Invoke();
+        
+        PauseNarration(true);
+        DisableAllInput();
+        SetUIPointer();
+
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+    }
+    
+    public virtual void ResumeGame()
+    {
+        OnResumeGame?.Invoke();
+        
+        EnableAllInput();
+        PauseNarration(false);
+        
+        Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }
 

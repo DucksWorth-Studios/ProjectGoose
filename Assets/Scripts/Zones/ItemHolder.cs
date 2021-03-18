@@ -21,18 +21,17 @@ public class ItemHolder : MonoBehaviour
         //Set as not interactable not currently working
         LockInteractable();
     }
+    //Locks Ability to interact with an object
     public void LockInteractable()
     {
-        print("lock");
-        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = false;
+        objectToHold.GetComponent<Throwable>().attachmentEnabled = false;
         keepHolding = true;
     }
     //Allow Pickup
     public void SetInteractable()
     {
-        print("SET0");
         //set interactable
-        objectToHold.GetComponent<VRItemAttachment>().attachmentEnabled = true;
+        objectToHold.GetComponent<Throwable>().attachmentEnabled = true;
         keepHolding = false;
     }
     //Unset object from zone if meets criteria

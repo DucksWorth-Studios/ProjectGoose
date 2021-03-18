@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4179651761480176096}
   - component: {fileID: 4179651761480176127}
   - component: {fileID: 4179651761480176126}
-  - component: {fileID: 4179651761480176125}
   - component: {fileID: 4179651761480176105}
   m_Layer: 9
   m_Name: UsbPrefab
@@ -148,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718dc1d756d095e4ba65f832f889d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentEnabled: 1
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
@@ -236,20 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 1
---- !u!114 &4179651761480176125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179651761480176124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b46f4ebf90414489370d2e1ee9dcc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportBackToOrigin: 0
-  attachmentEnabled: 1
 --- !u!114 &4179651761480176105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +251,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   outlineDoesntWork: 0
   backupMaterial: {fileID: 0}
+  throwable: {fileID: 0}
+  rigidbody: {fileID: 0}
 --- !u!1001 &4354830421844267821
 PrefabInstance:
   m_ObjectHideFlags: 0

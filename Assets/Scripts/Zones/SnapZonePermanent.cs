@@ -27,7 +27,7 @@ public class SnapZonePermanent : MonoBehaviour
             isSnapped = true;
             
             objectToSnap.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(objectToSnap,true);
-            objectToSnap.GetComponent<VRItemAttachment>().attachmentEnabled = false;
+            objectToSnap.GetComponent<Throwable>().attachmentEnabled = false;
 
             objectToSnap.transform.position = this.transform.position;
             //Send event
