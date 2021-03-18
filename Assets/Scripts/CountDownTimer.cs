@@ -22,10 +22,12 @@ public class CountDownTimer : MonoBehaviour
     //Private Variables
     private bool isCountingDown = false;
     private bool isCountingUp = false;
+    private bool fireOnce = false;
     private bool hasReachedNormal = true;
     private float timeRemaining;
     private Image timerBar;
     private Text textbox;
+
     void Start()
     {
         timerBar = countDownObject.GetComponent<Image>();
@@ -53,7 +55,14 @@ public class CountDownTimer : MonoBehaviour
     //Counts watch down
     private void CountDown()
     {
-        if(timeRemaining > 0)
+        if (Mathf.Round(timeRemaining) == 5f && !fireOnce)
+        {
+            EventManager.instance.PlaySound(Sound.Timer);
+            fireOnce = true;
+        }
+
+
+        if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
         }
@@ -69,6 +78,12 @@ public class CountDownTimer : MonoBehaviour
     //Counts watch Up
     private void CountUp()
     {
+        if(fireOnce)
+        {
+            EventManager.instance.StopSound(Sound.Timer);
+            fireOnce = false;
+        }
+
         if(timeRemaining < timeAllowed)
         {
             timeRemaining += Time.deltaTime;
