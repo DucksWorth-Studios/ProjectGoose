@@ -37,7 +37,6 @@ public class AmbientSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(timeRemaining);
         timeRemaining -= Time.deltaTime;
         if(timeRemaining < 0)
         {
