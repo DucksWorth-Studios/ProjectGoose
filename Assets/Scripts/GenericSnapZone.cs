@@ -59,6 +59,7 @@ public class GenericSnapZone : MonoBehaviour
     protected void DetachObject(Hand hand)
     {
         currentlyHeldObject.GetComponent<Interactable>().onAttachedToHand -= DetachObject; // unsubscribe from event
+        currentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false; // enable physics
 
         isHolding = false;
         currentlyHeldObject = null;
