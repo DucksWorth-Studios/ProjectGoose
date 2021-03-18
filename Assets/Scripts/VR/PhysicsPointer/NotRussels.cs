@@ -46,6 +46,7 @@ public class NotRussels : MonoBehaviour
 
     private bool materialUpdated;
     private bool isMoving;
+    private bool interrupt = false;
 
     private void Start()
     {
@@ -63,8 +64,17 @@ public class NotRussels : MonoBehaviour
 
     private void StopMoving()
     {
+        if (!lastHit)
+            return;
+        
+        if (!isMoving)
+            return;
+        
         Debug.LogWarning("Stop Moving");
         StopCoroutine("UseBezierCurve");
+        
+        interrupt = true;
+        lastHit.rigidbody.isKinematic = true;
     }
     
     private void CalculateHit()
@@ -111,6 +121,7 @@ public class NotRussels : MonoBehaviour
         if (handVelocity < -handVelocitySensitivity)
         {
             isMoving = true;
+            interrupt = false;
 
             switch (physicsToUse)
             {
@@ -136,22 +147,32 @@ public class NotRussels : MonoBehaviour
         Debug.LogWarning("Gravity off");
         lpr.rigidbody.useGravity = false;
         lpr.rigidbody.isKinematic = true;
+        lpr.moveToTarget = true;
         
-        while (step <= bezierSteps)
+        while (step <= bezierSteps && !interrupt)
         {
-            Debug.Log("Step: " + step + " || " + step / bezierSteps);
+            Debug.Log("Step: " + step + " || " + step / bezierSteps + " Start: " + start + " End: " + target +
+                      " Current: " + lpr.gameObject.transform.position);
             
             Vector3 newPos = NotRusselsCalculations.CalculateQuadraticBezierCurves(start,
                 peak, target, step / bezierSteps);
             lpr.target = newPos;
             step++;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        if (interrupt)
+            Debug.LogWarning("Interrupt");
+        else
+        {
+            Debug.LogWarning("Gravity on");
+            lpr.rigidbody.useGravity = true;
+            lpr.rigidbody.isKinematic = false;
         }
         
-        Debug.LogWarning("Gravity on");
-        lpr.rigidbody.useGravity = true;
-        lpr.rigidbody.isKinematic = false;
+        lpr.moveToTarget = false;
+        isMoving = false;
     }
     
     private void UseVelocity(LaserPonterReciever lpr)
@@ -176,7 +197,7 @@ public class NotRussels : MonoBehaviour
         lastHit.RayExit();
         lastHit = null;
         materialUpdated = false;
-        isMoving = false;
+        // isMoving = false;
         Time.timeScale = 1;
     }
     
