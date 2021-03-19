@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -26,7 +28,11 @@ public class GenericSnapZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHolding) currentlyHeldObject.transform.position = snapPosition.position;
+        if (isHolding)
+        {
+            currentlyHeldObject.transform.position = snapPosition.position;
+            currentlyHeldObject.transform.rotation = Quaternion.identity;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,7 +47,7 @@ public class GenericSnapZone : MonoBehaviour
                     currentlyHeldObject = other.gameObject;
                     interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
 
-                    currentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+                    currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 
                     currentlyHeldObject.transform.position = snapPosition.position;
                     currentlyHeldObject.transform.rotation = Quaternion.identity;
@@ -58,10 +64,13 @@ public class GenericSnapZone : MonoBehaviour
 
     protected void DetachObject(Hand hand)
     {
-        currentlyHeldObject.GetComponent<Interactable>().onAttachedToHand -= DetachObject; // unsubscribe from event
-        currentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false; // enable physics
+        var inter = currentlyHeldObject.GetComponent<Interactable>(); // unsubscribe from event
+        inter.onAttachedToHand -= DetachObject;
+        Debug.Log(inter.attachedToHand);
+        currentlyHeldObject.GetComponent<Rigidbody>().useGravity = true; // enable physics
 
-        isHolding = false;
+        //isHolding = false;
         currentlyHeldObject = null;
+        isHolding = false;       
     }
 }
