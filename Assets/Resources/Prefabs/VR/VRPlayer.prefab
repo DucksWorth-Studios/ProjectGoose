@@ -1005,7 +1005,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -5081,7 +5081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa78b1c40c4d0041a71f36f40d637be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDisabled: 0
+  IsDisabled: 1
   sceneOne: {fileID: 6309919869274771026}
   sceneTwo: {fileID: 6309919869373389808}
   sceneThree: {fileID: 6309919869797972744}
