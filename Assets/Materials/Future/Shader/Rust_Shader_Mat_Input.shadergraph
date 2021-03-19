@@ -1010,7 +1010,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Alpha",
     "m_StageCapability": 2,
-    "m_Value": 1.0,
+    "m_Value": 100.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -1448,7 +1448,7 @@
     "m_ActiveSubTarget": {
         "m_Id": "529588a5d57d470b84e642cb0957fd64"
     },
-    "m_SurfaceType": 1,
+    "m_SurfaceType": 0,
     "m_AlphaMode": 0,
     "m_TwoSided": false,
     "m_AlphaClip": false,

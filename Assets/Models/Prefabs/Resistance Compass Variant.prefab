@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3947223317136525222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04470053
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04470053
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.04470053
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.239
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.369
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.925
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6610034260540948519, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b8b9402075658a14e8d1b2d9c2eda810, type: 2}
+    - target: {fileID: 919132149155446097, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Resistance Compass
+      objectReference: {fileID: 0}
+    - target: {fileID: 944865517254179540, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcd66be2d003e2147bc667271c14b025, type: 2}
+    - target: {fileID: 1194655647057653696, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b8b9402075658a14e8d1b2d9c2eda810, type: 2}
+    - target: {fileID: 7318975808297546426, guid: cc45839573637d24eb9bdf0e56daa9e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d6ea37987b683e4c9691aac07de3ee0, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc45839573637d24eb9bdf0e56daa9e5, type: 3}
