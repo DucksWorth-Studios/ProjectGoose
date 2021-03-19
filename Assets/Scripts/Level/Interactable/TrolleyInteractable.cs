@@ -46,6 +46,8 @@ public class TrolleyInteractable : MonoBehaviour
     /// </summary>
     private void ChangeWheelRotation()
     {
+        if (wheels == null || wheels.Length == 0) return;
+
         if (rigidbody.velocity.magnitude > 0.2f)
         {
             foreach (var wheel in wheels)
