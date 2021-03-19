@@ -34,6 +34,7 @@ public class SmokeRing : MonoBehaviour
     private List<GameObject> spawned;
     private List<VFXManager> spawnedVFX;
     private int lastSpwanCount;
+    private bool interrupt;
 
     void Start()
     {
@@ -55,7 +56,10 @@ public class SmokeRing : MonoBehaviour
         if (spawned != null && spawned.Count > 0)
         {
             // Player has already jumped to the future and has now jumped back to the past
+            interrupt = true;
+            
             Destroy();
+            StopCoroutine("DestroyVFX");
             StopCoroutine("ShrinkFogArea");
 
             spawnLimit = initialSpawnLimit;
@@ -64,6 +68,8 @@ public class SmokeRing : MonoBehaviour
         else
         {
             // Player has just jumped to the future
+            interrupt = false;
+            
             Reset();
             StartCoroutine("ShrinkFogArea");
         }
@@ -153,6 +159,9 @@ public class SmokeRing : MonoBehaviour
         
         for (int i = 0; i < difference; i++)
         {
+            if (interrupt)
+                continue;
+            
             Destroy(spawned[0]);
             spawned.RemoveAt(0);
             spawnedVFX.RemoveAt(0);
