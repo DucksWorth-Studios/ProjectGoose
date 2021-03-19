@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718dc1d756d095e4ba65f832f889d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentEnabled: 1
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
@@ -389,6 +390,8 @@ MonoBehaviour:
   backupMaterial: {fileID: 2100000, guid: aa26c346923b3354bb744b0501da55a6, type: 2}
   throwable: {fileID: 0}
   rigidbody: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  moveToTarget: 0
 --- !u!1 &5515317119866622167
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +403,6 @@ GameObject:
   - component: {fileID: 5515317119866622166}
   - component: {fileID: 5515317119866622171}
   - component: {fileID: 5515317119866622164}
-  - component: {fileID: 5515317119866622165}
   m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
@@ -471,17 +473,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5515317119866622165
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5515317119866622167}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
