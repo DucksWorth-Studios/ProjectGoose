@@ -40,6 +40,7 @@ public class EventManager : MonoBehaviour
     public event Action OnSetPhysicsPointer;
     public event Action OnSetNotRussels;
     public event Action OnSetUIPointer;
+    public event Action OnNotRusselsInterrupt;
     public event Action<bool> OnHurtScreen;
     public event Action<bool> OnPauseScene;
     public event Action OnUpdateVideoSettingsUI;
@@ -281,6 +282,11 @@ public class EventManager : MonoBehaviour
         OnSetNotRussels?.Invoke();
     }
 
+    public virtual void NotRusselsInterrupt()
+    {
+        OnNotRusselsInterrupt?.Invoke();
+    }
+
     public virtual void SetUIPointer()
     {
         OnSetUIPointer?.Invoke();
@@ -293,7 +299,7 @@ public class EventManager : MonoBehaviour
         DisablePointer();
     }
     
-    public virtual void EnableAllInput(PointerState state = PointerState.PhysicsPointer)
+    public virtual void EnableAllInput(PointerState state = PointerState.NotRussels)
     {
         //TODO: Change to enable physics by default
         EnableMovement();

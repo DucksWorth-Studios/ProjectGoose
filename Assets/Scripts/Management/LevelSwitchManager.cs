@@ -59,7 +59,7 @@ public class LevelSwitchManager : MonoBehaviour
         dimensionJump.planeDifference = 24.57f;
         
         EventManager.instance.Progress(STAGE.START);
-        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
+        EventManager.instance.EnableAllInput(PointerState.NotRussels);
     }
 
     // Changes to apply when in sandbox or unknown scene

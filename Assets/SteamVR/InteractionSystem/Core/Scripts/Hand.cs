@@ -412,7 +412,9 @@ namespace Valve.VR.InteractionSystem
 
             if (attachedObject.interactable != null)
             {
+                EventManager.instance.NotRusselsInterrupt();
                 IdentifyItem(objectToAttach.tag);
+                
                 if (attachedObject.interactable.attachEaseIn)
                 {
                     attachedObject.easeSourcePosition = attachedObject.attachedObject.transform.position;
@@ -555,7 +557,7 @@ namespace Valve.VR.InteractionSystem
                     attachedObject.collisionDetectionMode = attachedObject.attachedRigidbody.collisionDetectionMode;
                     if (attachedObject.collisionDetectionMode == CollisionDetectionMode.Continuous)
                         attachedObject.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
-
+                    
                     attachedObject.attachedRigidbody.isKinematic = true;
                 }
             }
@@ -712,7 +714,9 @@ namespace Valve.VR.InteractionSystem
                 {
                     if (attachedObjects[index].attachedRigidbody != null)
                     {
-                        attachedObjects[index].attachedRigidbody.isKinematic = attachedObjects[index].attachedRigidbodyWasKinematic;
+                        // attachedObjects[index].attachedRigidbody.isKinematic = attachedObjects[index].attachedRigidbodyWasKinematic;
+                        // TODO: If we have problems with kinematic throwables revert this
+                        attachedObjects[index].attachedRigidbody.isKinematic = false;
                         attachedObjects[index].attachedRigidbody.collisionDetectionMode = attachedObjects[index].collisionDetectionMode;
                     }
                 }

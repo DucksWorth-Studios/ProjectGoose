@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 953968602949517460}
   - component: {fileID: 6826753501265619771}
   - component: {fileID: 7698120791396132694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: retort stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,6 +392,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   outlineDoesntWork: 0
   backupMaterial: {fileID: 0}
+  throwable: {fileID: 0}
+  rigidbody: {fileID: 0}
 --- !u!114 &7698120791396132694
 MonoBehaviour:
   m_ObjectHideFlags: 0
