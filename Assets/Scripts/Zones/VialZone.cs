@@ -15,7 +15,7 @@ public class VialZone : MonoBehaviour
     //The Composition
     private GameObject solution;
     //is object currently Snapped
-    private bool isSnapped = false;
+    public bool isSnapped = false;
 
     private void OnTriggerEnter(Collider other)
     {

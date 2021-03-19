@@ -15,7 +15,8 @@ public class WinDetector : MonoBehaviour
         if (other.gameObject.tag == AppData.elementTag && compositionManager.ISComposition)
         {
             compositionManager.HasElement = true;
-            //Send Event 
+            //Send Event #
+            EventManager.instance.HighlightItem(KEY.SOLUTION);
             //Get rid of Object
             Destroy(other.gameObject);
         }
