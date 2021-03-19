@@ -11,7 +11,7 @@ public enum STAGE { START, FIRSTJUMP, FIRSTRETURN, USB, USBPLUGGED, CHEMICALPUZZ
 public enum Snap { USB };
 
 //Key Enum Used TO Control what Items Highlight
-public enum KEY { CHEMICAL, USB, USBSLOT };
+public enum KEY { CHEMICAL, USB, USBSLOT, SOLUTION };
 
 //Used Define the scene to play
 public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2, SUITCASE, CRADLE, FIGURE, JPLAQUE, FPLAQUE, 
