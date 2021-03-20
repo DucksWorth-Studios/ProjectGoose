@@ -23,7 +23,7 @@ public class VialZone : MonoBehaviour
         if ("Vial" == other.gameObject.tag)
         {
             //Checks If It Has the Element
-            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement)
+            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement && isSnapped == false)
             {
                 //Diasbales Interactions and Detaches From hand
                 isSnapped = true;

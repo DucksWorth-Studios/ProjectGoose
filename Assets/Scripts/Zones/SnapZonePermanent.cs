@@ -22,7 +22,7 @@ public class SnapZonePermanent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (objectToSnap == other.gameObject)
+        if (objectToSnap == other.gameObject && isSnapped == false)
         {
             isSnapped = true;
             

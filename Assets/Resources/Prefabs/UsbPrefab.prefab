@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4179651761480176096}
   - component: {fileID: 4179651761480176127}
   - component: {fileID: 4179651761480176126}
-  - component: {fileID: 4179651761480176105}
   m_Layer: 9
   m_Name: UsbPrefab
   m_TagString: Untagged
@@ -236,23 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 1
---- !u!114 &4179651761480176105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179651761480176124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6c6840fc7d3ec4ea3930076a791afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
-  throwable: {fileID: 0}
-  rigidbody: {fileID: 0}
 --- !u!1001 &4354830421844267821
 PrefabInstance:
   m_ObjectHideFlags: 0
