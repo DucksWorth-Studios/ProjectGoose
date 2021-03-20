@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6567992158159167308}
   m_Layer: 9
   m_Name: Jamie
-  m_TagString: Untagged
+  m_TagString: JamiePlaque
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 7504839812279865054}
   m_LocalRotation: {x: 0, y: -0.47958034, z: 0, w: 0.87749803}
   m_LocalPosition: {x: 5.5856, y: 1.3671, z: 1.4903}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.049999993, y: 0.05, z: 0.049999993}
   m_Children:
   - {fileID: 3546491638206002502}
   - {fileID: 7386070501283101372}

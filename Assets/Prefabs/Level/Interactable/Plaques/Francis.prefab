@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1154188264702616913}
   m_Layer: 9
   m_Name: Francis
-  m_TagString: Untagged
+  m_TagString: FrancisPlaque
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 115936026600852070}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 6.7754, y: 1.3678, z: -17.8978}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.050000004, y: 0.05, z: 0.050000004}
   m_Children:
   - {fileID: 6380127761926271486}
   - {fileID: 1098307401958309380}
