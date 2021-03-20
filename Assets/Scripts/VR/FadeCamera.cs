@@ -48,7 +48,8 @@ public class FadeCamera : MonoBehaviour
         
         
         // Debug.Log("TriggerEnter: VRCamera");
-        FadeToWhite();
+        if (!other.CompareTag("PostProcessing"))
+            FadeToWhite();
     }
  
     public void OnTriggerExit(Collider other)
