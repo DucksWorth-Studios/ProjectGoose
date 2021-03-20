@@ -70,7 +70,7 @@ public class NotRussels : MonoBehaviour
         if (!isMoving)
             return;
         
-        Debug.LogWarning("Stop Moving");
+        // Debug.LogWarning("Stop Moving");
         StopCoroutine("UseBezierCurve");
         
         interrupt = true;
@@ -86,7 +86,7 @@ public class NotRussels : MonoBehaviour
 
         if (noOfColliders > 0)
         {
-            Debug.LogWarning("We got " + noOfColliders);
+            // Debug.LogWarning("We got " + noOfColliders);
             Collider target = noOfColliders > 1 ? FindClosestTarget(colliders) : colliders[0];
             
             lastHit = target.transform.GetComponent<LaserPonterReciever>();
@@ -144,15 +144,15 @@ public class NotRussels : MonoBehaviour
         Vector3 start = lpr.gameObject.transform.position;
         Vector3 target = objectAttachmentPoint.position;
         
-        Debug.LogWarning("Gravity off");
+        // Debug.LogWarning("Gravity off");
         lpr.rigidbody.useGravity = false;
         lpr.rigidbody.isKinematic = true;
         lpr.moveToTarget = true;
         
         while (step <= bezierSteps && !interrupt)
         {
-            Debug.Log("Step: " + step + " || " + step / bezierSteps + " Start: " + start + " End: " + target +
-                      " Current: " + lpr.gameObject.transform.position);
+            // Debug.Log("Step: " + step + " || " + step / bezierSteps + " Start: " + start + " End: " + target +
+                      // " Current: " + lpr.gameObject.transform.position);
             
             Vector3 newPos = NotRusselsCalculations.CalculateQuadraticBezierCurves(start,
                 peak, target, step / bezierSteps);
@@ -166,7 +166,7 @@ public class NotRussels : MonoBehaviour
             Debug.LogWarning("Interrupt");
         else
         {
-            Debug.LogWarning("Gravity on");
+            // Debug.LogWarning("Gravity on");
             lpr.rigidbody.useGravity = true;
             lpr.rigidbody.isKinematic = false;
         }
