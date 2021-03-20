@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718dc1d756d095e4ba65f832f889d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentEnabled: 1
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
@@ -289,6 +290,10 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   outlineDoesntWork: 1
   backupMaterial: {fileID: 2100000, guid: aa26c346923b3354bb744b0501da55a6, type: 2}
+  throwable: {fileID: 0}
+  rigidbody: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  moveToTarget: 0
 --- !u!1 &7921749573663359902
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +311,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6167900860854357364
 Transform:
@@ -350,7 +355,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 91aa645e4fa5e0747b1687836544de32, type: 2}
-  - {fileID: 2100000, guid: 91aa645e4fa5e0747b1687836544de32, type: 2}
+  - {fileID: -7310713436323916814, guid: dc4247dc636862e4fa1fecca0270b2ea, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1005,7 +1005,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2142,7 +2142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &851450544
 Transform:
   m_ObjectHideFlags: 0
@@ -5081,7 +5081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa78b1c40c4d0041a71f36f40d637be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDisabled: 0
+  IsDisabled: 1
   sceneOne: {fileID: 6309919869274771026}
   sceneTwo: {fileID: 6309919869373389808}
   sceneThree: {fileID: 6309919869797972744}
@@ -5449,7 +5449,7 @@ PrefabInstance:
     - target: {fileID: 2689927493642386259, guid: c244453525828854399a2746fb215fae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6309919869005353922, guid: c244453525828854399a2746fb215fae,
         type: 3}
@@ -5694,7 +5694,7 @@ PrefabInstance:
     - target: {fileID: 8885075486267771534, guid: c244453525828854399a2746fb215fae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c244453525828854399a2746fb215fae, type: 3}
