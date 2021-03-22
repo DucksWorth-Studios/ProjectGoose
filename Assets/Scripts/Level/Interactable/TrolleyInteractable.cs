@@ -48,14 +48,15 @@ public class TrolleyInteractable : MonoBehaviour
     {
         if (wheels == null || wheels.Length == 0) return;
 
-        if (rigidbody.velocity.magnitude > 0.2f)
+        if (rigidbody.velocity.magnitude > 0.5f)
         {
             foreach (var wheel in wheels)
             {
+                //Debug.Log("Rotating wheel");
                 wheel.transform.localRotation = Quaternion.LookRotation(-rigidbody.velocity.normalized);
 
                 //wheel.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                wheel.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
+                wheel.transform.eulerAngles = new Vector3(0, wheel.transform.eulerAngles.y, 0);
             }
         }
     }
