@@ -46,7 +46,7 @@ public class TrolleyInteractable : MonoBehaviour
     /// </summary>
     private void ChangeWheelRotation()
     {
-        if (wheels == null || wheels.Length == 0) return;
+        //if (wheels == null || wheels.Length == 0) return;
 
         if (rigidbody.velocity.magnitude > 0.5f)
         {
@@ -68,6 +68,8 @@ public class TrolleyInteractable : MonoBehaviour
     /// </summary>
     private void ApplyReverseForce()
     {
+        if (rigidbody.velocity == Vector3.zero) return;
+
         rigidbody.AddForce(rigidbody.velocity * -0.5f);
 
         if (rigidbody.velocity.magnitude < 0.05f)
