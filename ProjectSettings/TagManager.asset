@@ -34,6 +34,7 @@ TagManager:
   - Diploma
   - DucksWorth
   - PostProcessing
+  - Door
   layers:
   - Default
   - TransparentFX
