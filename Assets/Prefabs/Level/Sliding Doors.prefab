@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 8107002674893025463}
   m_Layer: 0
   m_Name: Sliding Doors
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 4066070196192178412}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 2803657231314449129}
   m_Layer: 0
   m_Name: Door Frame (1)
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
