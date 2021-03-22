@@ -48,7 +48,7 @@ public class FadeCamera : MonoBehaviour
         
         
         // Debug.Log("TriggerEnter: VRCamera");
-        if (!other.CompareTag("PostProcessing"))
+        if (!(other.CompareTag("PostProcessing") || other.CompareTag("Door")))
             FadeToWhite();
     }
  
