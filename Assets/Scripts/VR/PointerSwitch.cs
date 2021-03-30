@@ -39,7 +39,7 @@ public class PointerSwitch : MonoBehaviour
         canvasPointer.SetActive(pointerState == PointerState.CanvasPointer);
         physicsLineRender.enabled = pointerState == PointerState.PhysicsPointer;
         physicsLaserPointer.enabled = pointerState == PointerState.PhysicsPointer;
-        notRussels.SetActive(pointerState == PointerState.NotRussels);
+        notRussels.SetActive(pointerState == PointerState.RATS);
     }
     
     private void SetPhysicsPointer()
@@ -49,7 +49,7 @@ public class PointerSwitch : MonoBehaviour
     
     private void SetNotRussels()
     {
-        pointerState = PointerState.NotRussels;
+        pointerState = PointerState.RATS;
     }
 
     private void SetUIPointer()

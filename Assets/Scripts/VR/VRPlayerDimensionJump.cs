@@ -68,7 +68,7 @@ public class VRPlayerDimensionJump : MonoBehaviour
             upSideDown = false;
         }
         
-        EventManager.instance.EnableAllInput();
+        EventManager.instance.EnableAllInput(ComfortManager.instance.GetPointerState());
     }
     
     private void EnableJumping()

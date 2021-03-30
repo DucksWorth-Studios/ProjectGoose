@@ -39,6 +39,17 @@ public class ComfortManager : MonoBehaviour
         // UpdateUI();
         EventManager.instance.UpdateComfortSettingsUI();
     }
+
+    public PointerState GetPointerState()
+    {
+        switch (settingsData.pointerMode)
+        {
+            case 0:
+                return PointerState.RATS;
+            default:
+                return PointerState.PhysicsPointer;
+        }
+    }
     
     #region Save/Load
 

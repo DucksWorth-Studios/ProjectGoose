@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
             EventManager.instance.PauseGame();
         }
         else
-            EventManager.instance.ResumeGame();
+            EventManager.instance.ResumeGame(ComfortManager.instance.GetPointerState());
     }
     
     private void EnablePause()
