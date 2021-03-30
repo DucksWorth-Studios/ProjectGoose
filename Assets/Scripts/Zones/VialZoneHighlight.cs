@@ -22,7 +22,7 @@ public class VialZoneHighlight : MonoBehaviour
     /// <summary>
     /// Takes in the event parmaeter and checks against stored param if match it allows highlight
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="item">Item to turn off</param>
     private void TurnOnHighLight(KEY item)
     {
         if (item == itemToListen)
@@ -32,6 +32,10 @@ public class VialZoneHighlight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Turn off the highlight
+    /// </summary>
+    /// <param name="item">Item to turn off</param>
     private void TurnOffHighLight(KEY item)
     {
         if (item == itemToListen)

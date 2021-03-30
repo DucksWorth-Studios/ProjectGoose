@@ -30,7 +30,7 @@ public class VialZone : MonoBehaviour
                 other.gameObject.GetComponent<Throwable>().attachmentEnabled = false;
                 other.gameObject.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(other.gameObject, true);
                
-
+                //Set Position and Rotation
                 other.gameObject.transform.position = this.transform.position;
                 other.gameObject.transform.rotation = Quaternion.Euler(rotation);
                 solution = other.gameObject;
