@@ -31,6 +31,7 @@ public class EventManager : MonoBehaviour
     public event Action<Snap> OnItemSnap;
     public event Action<STAGE> OnProgress;
     public event Action<KEY> OnItemHighlight;
+    public event Action<KEY> OnItemHighlightOff;
     public event Action<SCENE> OnPassiveCall; 
     public event Action OnDisableMovement;
     public event Action OnEnableMovement;
@@ -208,6 +209,17 @@ public class EventManager : MonoBehaviour
         else
         {
             Debug.LogError("OnItemHighlight is Null");
+        }
+    }
+    public void DeHighlightItem(KEY item)
+    {
+        if (OnItemHighlightOff != null)
+        {
+            OnItemHighlightOff(item);
+        }
+        else
+        {
+            Debug.LogError("OnItemHighlightOff is Null");
         }
     }
 
