@@ -22,8 +22,8 @@ public class VialZone : MonoBehaviour
         //Checks If Vial
         if ("Vial" == other.gameObject.tag)
         {
-            //Checks If It Has the Element
-            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement && isSnapped == false)
+            //Checks If It Has the Element and is the composition
+            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement && isSnapped == false && other.gameObject.GetComponentInChildren<CompositionManager>().ISComposition)
             {
                 //Diasbales Interactions and Detaches From hand
                 isSnapped = true;
