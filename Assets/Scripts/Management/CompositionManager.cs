@@ -117,9 +117,20 @@ public class CompositionManager : MonoBehaviour
             //Send Event
             ISComposition = true;
             Debug.Log("Composition Correct");
+
+            //If has element and composition changes turn on
+            if (HasElement)
+            {
+                EventManager.instance.HighlightItem(KEY.SOLUTION);
+            }
         }
         if(!isWithinRange && ISComposition)
         {
+            //If has element and composition changes turn off
+            if(HasElement)
+            {
+                EventManager.instance.DeHighlightItem(KEY.SOLUTION);
+            }
             ISComposition = false;
         }
         return isWithinRange;

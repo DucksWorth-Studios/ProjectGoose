@@ -22,15 +22,15 @@ public class VialZone : MonoBehaviour
         //Checks If Vial
         if ("Vial" == other.gameObject.tag)
         {
-            //Checks If It Has the Element
-            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement && isSnapped == false)
+            //Checks If It Has the Element and is the composition
+            if(other.gameObject.GetComponentInChildren<CompositionManager>().HasElement && isSnapped == false && other.gameObject.GetComponentInChildren<CompositionManager>().ISComposition)
             {
                 //Diasbales Interactions and Detaches From hand
                 isSnapped = true;
                 other.gameObject.GetComponent<Throwable>().attachmentEnabled = false;
                 other.gameObject.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(other.gameObject, true);
                
-
+                //Set Position and Rotation
                 other.gameObject.transform.position = this.transform.position;
                 other.gameObject.transform.rotation = Quaternion.Euler(rotation);
                 solution = other.gameObject;

@@ -16,12 +16,13 @@ public class VialZoneHighlight : MonoBehaviour
         outline.enabled = false;
         snapZone = GetComponent<VialZone>();
         EventManager.instance.OnItemHighlight += TurnOnHighLight;
+        EventManager.instance.OnItemHighlight += TurnOffHighLight;
     }
 
     /// <summary>
     /// Takes in the event parmaeter and checks against stored param if match it allows highlight
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="item">Item to turn off</param>
     private void TurnOnHighLight(KEY item)
     {
         if (item == itemToListen)
@@ -32,9 +33,22 @@ public class VialZoneHighlight : MonoBehaviour
     }
 
     /// <summary>
+    /// Turn off the highlight
+    /// </summary>
+    /// <param name="item">Item to turn off</param>
+    private void TurnOffHighLight(KEY item)
+    {
+        if (item == itemToListen)
+        {
+            outline.enabled = false;
+            IsHighlighted = false;
+        }
+    }
+
+    /// <summary>
     /// Check of The Highlight is needed to turn off
     /// </summary>
-    private void TurnOFFHighLight()
+    private void CheckToTurnOff()
     {
         if (snapZone.isSnapped)
         {
@@ -47,7 +61,7 @@ public class VialZoneHighlight : MonoBehaviour
     {
         if (IsHighlighted)
         {
-            TurnOFFHighLight();
+            CheckToTurnOff();
         }
     }
 }
