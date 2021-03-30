@@ -34,9 +34,21 @@ public class ComfortManager : MonoBehaviour
         settingsData.enableSnapTurnBlackout = 0;
         settingsData.stBlackoutDuration = 0;
         settingsData.snapTurnAngle = 45;
+        settingsData.pointerMode = 0;
         
         // UpdateUI();
         EventManager.instance.UpdateComfortSettingsUI();
+    }
+
+    public PointerState GetPointerState()
+    {
+        switch (settingsData.pointerMode)
+        {
+            case 0:
+                return PointerState.RATS;
+            default:
+                return PointerState.PhysicsPointer;
+        }
     }
     
     #region Save/Load
@@ -50,6 +62,7 @@ public class ComfortManager : MonoBehaviour
         public int enableSnapTurnBlackout;
         public float stBlackoutDuration;
         public float snapTurnAngle;
+        public int pointerMode;
 
         public override string ToString()
         {

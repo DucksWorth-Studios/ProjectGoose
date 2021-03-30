@@ -20,7 +20,7 @@ public enum SCENE { ONE, TWO, THREE, FOUR, FIVE, SIX, FOURP2, SUITCASE, CRADLE, 
 public enum PointerState
 {
     PhysicsPointer,
-    NotRussels,
+    RATS,
     CanvasPointer,
     Disabled
 }

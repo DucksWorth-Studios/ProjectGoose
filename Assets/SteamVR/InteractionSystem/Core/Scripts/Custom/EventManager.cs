@@ -311,7 +311,7 @@ public class EventManager : MonoBehaviour
         DisablePointer();
     }
     
-    public virtual void EnableAllInput(PointerState state = PointerState.NotRussels)
+    public virtual void EnableAllInput(PointerState state)
     {
         //TODO: Change to enable physics by default
         EnableMovement();
@@ -322,7 +322,7 @@ public class EventManager : MonoBehaviour
             case PointerState.PhysicsPointer:
                 SetPhysicsPointer();
                 break;
-            case PointerState.NotRussels:
+            case PointerState.RATS:
                 SetNotRussels();
                 break;
             case PointerState.CanvasPointer:
@@ -361,11 +361,11 @@ public class EventManager : MonoBehaviour
         AudioListener.pause = true;
     }
     
-    public virtual void ResumeGame()
+    public virtual void ResumeGame(PointerState state)
     {
         OnResumeGame?.Invoke();
         
-        EnableAllInput();
+        EnableAllInput(state);
         PauseNarration(false);
         
         Time.timeScale = 1;
