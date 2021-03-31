@@ -8,19 +8,27 @@ public class PowerOrbController : MonoBehaviour
     public Transform startPos;
     public Transform endPos;
 
+    public float startDelay = 0;
+
     private float t = 0;
 
     private bool isMovingUp = true;
+    private bool canMove = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (startDelay > 0)
+            StartCoroutine(WaitToMove(startDelay));
+        else
+            canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         if(isMovingUp)
         {
             this.transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
@@ -37,5 +45,12 @@ public class PowerOrbController : MonoBehaviour
             t = 0;
             isMovingUp = !isMovingUp;
         }  
+    }
+
+    IEnumerator WaitToMove(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        canMove = true;
     }
 }
