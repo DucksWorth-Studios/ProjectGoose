@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471722}
   - component: {fileID: 8194540}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: FollowHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 13533284}
   - component: {fileID: 5452286}
   - component: {fileID: 982348837882437789}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: HeadCollider
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -276,7 +276,12 @@ namespace Valve.VR.InteractionSystem
                 float intensity = Util.RemapNumber(energy, minCollisionEnergy, maxCollisionEnergy, 0.3f, 1.0f);
                 float length = Util.RemapNumber(energy, minCollisionEnergy, maxCollisionEnergy, 0.0f, 0.06f);
 
-                hand.hand.TriggerHapticPulse(length, 100, intensity);
+                // Debug.Log("Haptic trigger: " + collision.gameObject.name, this);
+
+                if (!AppData.IsIgnorableHaptic(collision.gameObject.name))
+                    hand.hand.TriggerHapticPulse(length, 100, intensity);
+                // else
+                //     Debug.Log("Ignored haptic", this);
             }
         }
 

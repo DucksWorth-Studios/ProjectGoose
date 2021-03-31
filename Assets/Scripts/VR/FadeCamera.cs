@@ -37,19 +37,12 @@ public class FadeCamera : MonoBehaviour
  
     public void OnTriggerEnter(Collider other)
     {
-        // ulong handle = OpenVR.k_ulOverlayHandleInvalid;
-        // var overlay = OpenVR.Overlay;
-        //
-        // var tex = new Texture_t();
-        // tex.handle = texture.GetNativeTexturePtr();
-        // tex.eType = SteamVR.instance.textureType;
-        // tex.eColorSpace = EColorSpace.Auto;
-        // overlay.SetOverlayTexture(handle, ref tex);
+       Debug.Log("Head collision: " + other.tag, this);
         
-        
-        // Debug.Log("TriggerEnter: VRCamera");
-        if (!(other.CompareTag("PostProcessing") || other.CompareTag("Door")))
+        if (!AppData.IsIgnorableHeadCollision(other.tag))
             FadeToWhite();
+        else
+            Debug.Log("Ignored Head Collision", this);
     }
  
     public void OnTriggerExit(Collider other)
