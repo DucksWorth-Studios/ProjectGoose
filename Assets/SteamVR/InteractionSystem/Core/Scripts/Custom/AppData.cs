@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 //Used To play Sounds
 public enum Sound { DoorSound, Creaking, Breaking, Alarm, Airlock, Walk, Teleport, ItemPickUp, USB, ItemTeleport, Timer };
@@ -68,8 +70,23 @@ public class AppData : MonoBehaviour
     public static readonly Vector3 DefaultPosition = new Vector3(0, 0, 0);
     public static readonly Quaternion DefaultRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1f);
     
-    /*---NotRussels---*/
+    /*---RATS---*/
     public static readonly int BufferAllocation = 5;
     // Bit shift the index of the layer (9) to get a bit mask
     public static readonly int InteractableLayerMask = 1 << 9;
+
+    /*--Ignorable Items--*/
+    // Add the game object name of any object that shouldn't trigger a haptic event to the bellow array
+    public static readonly string[] ignoreHaptics = {"WatchWithMenu", "PresentPlane"};
+    public static readonly string[] ignoreHeadCollision = {};
+
+    public static bool IsIgnorableHaptic(string name)
+    {
+        return ignoreHaptics.Any(name.Equals);
+    }
+    
+    public static bool IsIgnorableHeadCollision(string name)
+    {
+        return ignoreHeadCollision.Any(name.Equals);
+    }
 }
