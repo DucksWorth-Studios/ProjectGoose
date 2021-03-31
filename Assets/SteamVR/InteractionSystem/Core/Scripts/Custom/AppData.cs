@@ -77,8 +77,10 @@ public class AppData : MonoBehaviour
 
     /*--Ignorable Items--*/
     // Add the game object name of any object that shouldn't trigger a haptic event to the bellow array
-    public static readonly string[] ignoreHaptics = {"WatchWithMenu", "PresentPlane"};
-    public static readonly string[] ignoreHeadCollision = {};
+    public static readonly string[] ignoreHaptics = {"WatchWithMenu", "PresentPlane", "floor_straight"};
+    
+    //Add the collider tag for any object that shouldn't trigger a camera blackout
+    public static readonly string[] ignoreHeadCollision = {"PostProcessing", "Door"};
 
     public static bool IsIgnorableHaptic(string name)
     {

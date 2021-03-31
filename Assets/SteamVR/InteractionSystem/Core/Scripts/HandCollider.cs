@@ -278,11 +278,10 @@ namespace Valve.VR.InteractionSystem
 
                 // Debug.Log("Haptic trigger: " + collision.gameObject.name, this);
 
-                // Disable all haptics for watch as it tends to collide with the hand continuously
                 if (!AppData.IsIgnorableHaptic(collision.gameObject.name))
                     hand.hand.TriggerHapticPulse(length, 100, intensity);
                 // else
-                //     Debug.Log("Ignored", this);
+                //     Debug.Log("Ignored haptic", this);
             }
         }
 
