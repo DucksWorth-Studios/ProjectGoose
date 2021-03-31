@@ -276,7 +276,11 @@ namespace Valve.VR.InteractionSystem
                 float intensity = Util.RemapNumber(energy, minCollisionEnergy, maxCollisionEnergy, 0.3f, 1.0f);
                 float length = Util.RemapNumber(energy, minCollisionEnergy, maxCollisionEnergy, 0.0f, 0.06f);
 
-                hand.hand.TriggerHapticPulse(length, 100, intensity);
+                // Debug.Log("Haptic trigger: " + collision.gameObject.name);
+
+                // Disable all haptics for watch as it tends to collide with the hand continuously
+                if (!collision.gameObject.name.Equals("WatchWithMenu"))
+                    hand.hand.TriggerHapticPulse(length, 100, intensity);
             }
         }
 
