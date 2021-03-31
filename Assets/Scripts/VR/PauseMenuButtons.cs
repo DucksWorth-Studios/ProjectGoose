@@ -11,7 +11,7 @@ public class PauseMenuButtons : MonoBehaviour
     public void Resume()
     {
         pause.SetActive(false);
-        EventManager.instance.ResumeGame();
+        EventManager.instance.ResumeGame(ComfortManager.instance.GetPointerState());
     }
 
     public void Options()

@@ -21,6 +21,9 @@ public class ComfortSettingsMenu : MonoBehaviour
     public Slider stAngleSlider;
     public TextMeshProUGUI stAngleText;
     
+    [Header("Pointer")]
+    public TMP_Dropdown pointerDropdown;
+    
     [Header("Other")]
     public TextMeshProUGUI saveText;
     public GameObject startMenu;
@@ -48,6 +51,10 @@ public class ComfortSettingsMenu : MonoBehaviour
         
         enableSTDropdown.value = ComfortManager.settingsData.enableSnapTurnBlackout;
         enableSTDropdown.RefreshShownValue();
+
+        pointerDropdown.value = ComfortManager.settingsData.pointerMode;
+        pointerDropdown.RefreshShownValue();
+        
         OnChangeSTDuration(ComfortManager.settingsData.stBlackoutDuration);
         OnChangeSTAngle(ComfortManager.settingsData.snapTurnAngle);
     }
@@ -115,6 +122,12 @@ public class ComfortSettingsMenu : MonoBehaviour
         
         // Debug.Log(stAngle);
         stAngleSlider.value = stAngle;
+    }
+    
+    public void OnChangePointerMode(int pointer)
+    {
+        Debug.Log(pointer);
+        ComfortManager.settingsData.pointerMode = pointer;
     }
     
     private void HideSaveText()
