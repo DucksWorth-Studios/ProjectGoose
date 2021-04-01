@@ -11,13 +11,16 @@ public class NegatorSender : MonoBehaviour
     [Tooltip("The Reciever Object")]
     public GameObject reciever;
 
+    [Tooltip("The Effect Object")]
+    public GameObject effect;
+
     private Vector3 positionDifference;
     private GameObject objectInZone;
     private int entityCount = 0;
 
     private void Awake()
     {
-
+        effect.SetActive(false);
     }
     //Find the difference
     void Start()
@@ -40,6 +43,9 @@ public class NegatorSender : MonoBehaviour
             bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
             if (objectInZone != null && entityCount == 1 && isRecieverReady)
             {
+                effect.SetActive(false);
+                effect.SetActive(true);
+
                 objectInZone.transform.position += positionDifference;
             }
             else
