@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 /// Author: Cameron Scholes
 /// The Not Russels method of interacting with objects
 /// </summary>
-public class NotRussels : MonoBehaviour
+public class RATS : MonoBehaviour
 {
     [Header("Inputs")]
     public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");
@@ -138,7 +138,7 @@ public class NotRussels : MonoBehaviour
     private IEnumerator UseBezierCurve(LaserPonterReciever lpr)
     {
         float step = 1;
-        Vector3 peak = NotRusselsCalculations.CalculateMidpoint(lpr.gameObject.transform, objectAttachmentPoint);
+        Vector3 peak = RATSCalculations.CalculateMidpoint(lpr.gameObject.transform, objectAttachmentPoint);
         peak += new Vector3(0, 1, 0);
 
         Vector3 start = lpr.gameObject.transform.position;
@@ -154,7 +154,7 @@ public class NotRussels : MonoBehaviour
             // Debug.Log("Step: " + step + " || " + step / bezierSteps + " Start: " + start + " End: " + target +
                       // " Current: " + lpr.gameObject.transform.position);
             
-            Vector3 newPos = NotRusselsCalculations.CalculateQuadraticBezierCurves(start,
+            Vector3 newPos = RATSCalculations.CalculateQuadraticBezierCurves(start,
                 peak, target, step / bezierSteps);
             lpr.target = newPos;
             step++;
@@ -180,7 +180,7 @@ public class NotRussels : MonoBehaviour
         Time.timeScale = 0.5f;
                 
         //Calculate velocity and apply it to the target
-        Vector3 velocity = NotRusselsCalculations.CalculateParabola(lpr.gameObject.transform.position, 
+        Vector3 velocity = RATSCalculations.CalculateParabola(lpr.gameObject.transform.position, 
             objectAttachmentPoint.position);
         Vector3 dampVelocity = Vector3.Scale(velocity, velocityDampening);
             

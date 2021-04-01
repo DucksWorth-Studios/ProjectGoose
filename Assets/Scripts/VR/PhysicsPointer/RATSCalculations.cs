@@ -5,7 +5,7 @@
 /// https://github.com/Frank01001/Unity---HL-A-Gravity-Gloves-Basic-Implementation
 /// </summary>
 
-public class NotRusselsCalculations
+public class RATSCalculations
 {
     /* Calculations for a parabolic movement */
     public static Vector3 CalculateParabola(Vector3 start, Vector3 vertex)
