@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,9 +39,9 @@ public class EventManager : MonoBehaviour
     public event Action OnEnableJumping;
     public event Action OnDisablePointer;
     public event Action OnSetPhysicsPointer;
-    public event Action OnSetNotRussels;
+    public event Action OnSetRATS;
     public event Action OnSetUIPointer;
-    public event Action OnNotRusselsInterrupt;
+    public event Action OnRATSInterrupt;
     public event Action<bool> OnHurtScreen;
     public event Action<bool> OnPauseScene;
     public event Action OnUpdateVideoSettingsUI;
@@ -289,14 +289,14 @@ public class EventManager : MonoBehaviour
         OnSetPhysicsPointer?.Invoke();
     }
     
-    public virtual void SetNotRussels()
+    public virtual void SetRATS()
     {
-        OnSetNotRussels?.Invoke();
+        OnSetRATS?.Invoke();
     }
 
-    public virtual void NotRusselsInterrupt()
+    public virtual void RATSInterrupt()
     {
-        OnNotRusselsInterrupt?.Invoke();
+        OnRATSInterrupt?.Invoke();
     }
 
     public virtual void SetUIPointer()
@@ -323,7 +323,7 @@ public class EventManager : MonoBehaviour
                 SetPhysicsPointer();
                 break;
             case PointerState.RATS:
-                SetNotRussels();
+                SetRATS();
                 break;
             case PointerState.CanvasPointer:
                 SetUIPointer();

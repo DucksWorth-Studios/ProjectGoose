@@ -54,7 +54,7 @@ public class RATS : MonoBehaviour
     private void Start()
     {
         // Debug.Log("Current Timescale: " + Time.timeScale);
-        EventManager.instance.OnNotRusselsInterrupt += StopMoving;
+        EventManager.instance.OnRATSInterrupt += StopMoving;
         
         if (debug)
             SpawnRing();
