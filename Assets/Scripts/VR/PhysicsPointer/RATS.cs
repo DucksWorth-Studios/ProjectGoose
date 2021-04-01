@@ -20,6 +20,9 @@ public class RATS : MonoBehaviour
 
     [Header("Parameters")] 
     
+    [Tooltip("Time is distance, value is move speed. Small time should have high value to move faster at lower distances.")]
+    public AnimationCurve travelSpeed = AnimationCurve.Linear(0, 10, 13, 2.5f);
+    
     public NotRusselsPhysics physicsToUse = NotRusselsPhysics.Velocity;
     public int bezierSteps = 4;
     
@@ -101,8 +104,19 @@ public class RATS : MonoBehaviour
                 materialUpdated = true;
             }
 
-            if (IsClicking() && !isMoving) 
+            if (IsClicking() && !isMoving)
+            {
+                Vector3 diff = lastHit.gameObject.transform.position - gameObject.transform.position;
+                float distance = diff.sqrMagnitude;
+                float speed = travelSpeed.Evaluate(distance);
+
+                Debug.LogWarning(
+                    lastHit.gameObject.name + ": Diff: " + diff + " Distance: " + distance + " Speed: " + speed, 
+                    this);
+                
+                lastHit.moveSpeed = speed;
                 ThrowObject(lastHit);
+            }
         }
         else
             RayExit();

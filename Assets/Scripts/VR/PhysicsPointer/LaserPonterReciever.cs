@@ -21,6 +21,7 @@ public class LaserPonterReciever : MonoBehaviour
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public bool moveToTarget = false;
+    [HideInInspector] public float moveSpeed = 2.5f;
     
     private Hand pointerHand;
     
@@ -55,7 +56,7 @@ public class LaserPonterReciever : MonoBehaviour
 
         // Debug.LogWarning("Moving to: " + target);
         
-        float step =  2.5f * Time.deltaTime;
+        float step =  moveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
     }
     

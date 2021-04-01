@@ -5325,6 +5325,30 @@ MonoBehaviour:
     needsReinit: 0
   objectAttachmentPoint: {fileID: 490018}
   endTarget: {fileID: 4253006756082040430}
+  travelSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: 0
+      outSlope: -0.5769231
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 13
+      value: 2.5
+      inSlope: -0.5769231
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   physicsToUse: 1
   bezierSteps: 16
   radius: 0.25
