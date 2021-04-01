@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +42,7 @@ public class EventManager : MonoBehaviour
     public event Action OnSetRATS;
     public event Action OnSetUIPointer;
     public event Action OnRATSInterrupt;
+    public event Action OnRATSNextStep;
     public event Action<bool> OnHurtScreen;
     public event Action<bool> OnPauseScene;
     public event Action OnUpdateVideoSettingsUI;
@@ -297,6 +298,11 @@ public class EventManager : MonoBehaviour
     public virtual void RATSInterrupt()
     {
         OnRATSInterrupt?.Invoke();
+    }
+    
+    public virtual void RATSNextStep()
+    {
+        OnRATSNextStep?.Invoke();
     }
 
     public virtual void SetUIPointer()

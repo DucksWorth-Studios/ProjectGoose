@@ -50,11 +50,13 @@ public class RATS : MonoBehaviour
     private bool materialUpdated;
     private bool isMoving;
     private bool interrupt = false;
+    private bool nextStep = false;
 
     private void Start()
     {
         // Debug.Log("Current Timescale: " + Time.timeScale);
         EventManager.instance.OnRATSInterrupt += StopMoving;
+        EventManager.instance.OnRATSNextStep += NextStep;
         
         if (debug)
             SpawnRing();
@@ -76,8 +78,15 @@ public class RATS : MonoBehaviour
         // Debug.LogWarning("Stop Moving");
         StopCoroutine("UseBezierCurve");
         
+        isMoving = false;
+        nextStep = false;
         interrupt = true;
         lastHit.rigidbody.isKinematic = true;
+    }
+
+    private void NextStep()
+    {
+        nextStep = true;
     }
     
     private void CalculateHit()
@@ -110,9 +119,9 @@ public class RATS : MonoBehaviour
                 float distance = diff.sqrMagnitude;
                 float speed = travelSpeed.Evaluate(distance);
 
-                Debug.LogWarning(
-                    lastHit.gameObject.name + ": Diff: " + diff + " Distance: " + distance + " Speed: " + speed, 
-                    this);
+                // Debug.LogWarning(
+                //     lastHit.gameObject.name + ": Diff: " + diff + " Distance: " + distance + " Speed: " + speed, 
+                //     this);
                 
                 lastHit.moveSpeed = speed;
                 ThrowObject(lastHit);
@@ -130,7 +139,7 @@ public class RATS : MonoBehaviour
         float handVelocity = Vector3.Dot(pose[Player.instance.rightHand.handType].velocity,
             (cameraTransform.forward - cameraTransform.up));
 
-        // Debug.Log("Hand Velocity: " + handVelocity);
+        // Debug.Log("Hand Velocity: " + handVelocity, this);
             
         if (handVelocity < -handVelocitySensitivity)
         {
@@ -158,33 +167,38 @@ public class RATS : MonoBehaviour
         Vector3 start = lpr.gameObject.transform.position;
         Vector3 target = objectAttachmentPoint.position;
         
-        // Debug.LogWarning("Gravity off");
+        // Debug.LogWarning("Gravity off", this);
         lpr.rigidbody.useGravity = false;
         lpr.rigidbody.isKinematic = true;
         lpr.moveToTarget = true;
+        lpr.interrupt = false;
+        nextStep = false;
         
         while (step <= bezierSteps && !interrupt)
         {
             // Debug.Log("Step: " + step + " || " + step / bezierSteps + " Start: " + start + " End: " + target +
                       // " Current: " + lpr.gameObject.transform.position);
             
+            nextStep = false;
+
             Vector3 newPos = RATSCalculations.CalculateQuadraticBezierCurves(start,
                 peak, target, step / bezierSteps);
             lpr.target = newPos;
             step++;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitUntil(() => nextStep);
         }
 
         if (interrupt)
-            Debug.LogWarning("Interrupt");
+            Debug.LogWarning("Interrupt", this);
         else
         {
-            // Debug.LogWarning("Gravity on");
+            // Debug.LogWarning("Gravity on", this);
             lpr.rigidbody.useGravity = true;
             lpr.rigidbody.isKinematic = false;
         }
         
+        // Debug.LogWarning("Moving finished", this);
         lpr.moveToTarget = false;
         isMoving = false;
     }
