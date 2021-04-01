@@ -5280,7 +5280,7 @@ GameObject:
   - component: {fileID: 4216251144170801585}
   - component: {fileID: 5086078042096448882}
   m_Layer: 8
-  m_Name: NotRussels
+  m_Name: RATS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
