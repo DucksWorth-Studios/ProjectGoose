@@ -35,6 +35,12 @@ public class GenericSnapZone : MonoBehaviour
         }
     }
 
+    protected void FixPosition()
+    {
+        currentlyHeldObject.transform.position = snapPosition.position;
+        currentlyHeldObject.transform.rotation = Quaternion.identity;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(currentlyHeldObject == null)
