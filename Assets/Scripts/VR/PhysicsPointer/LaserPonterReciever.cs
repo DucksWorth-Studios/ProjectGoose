@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,7 +21,6 @@ public class LaserPonterReciever : MonoBehaviour
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public bool moveToTarget;
-    [HideInInspector] public float moveSpeed = 2.5f;
     [HideInInspector] public bool interrupt;
     
     private Hand pointerHand;
@@ -68,10 +67,10 @@ public class LaserPonterReciever : MonoBehaviour
 
         // Debug.LogWarning("Moving to: " + target);
         
-        float step =  moveSpeed * Time.deltaTime;
+        float step =  AppData.RATSMoveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
     }
-    
+
     private void Interrupt()
     {
         if (interrupt)
@@ -83,7 +82,7 @@ public class LaserPonterReciever : MonoBehaviour
         // Debug.LogWarning("LPR Interrupt", this);
         interrupt = true;
     }
-        
+    
     #region Awake Functions
 
     private void GetThrowable()
