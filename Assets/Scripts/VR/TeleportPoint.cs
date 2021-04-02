@@ -19,7 +19,7 @@ public class TeleportPoint : MonoBehaviour
         points[count] = gameObject;
         count++;
         
-        print(count);
-        print(points);
+        // print(count);
+        // print(points);
     }
 }

@@ -74,6 +74,7 @@ public class AppData : MonoBehaviour
     public static readonly int BufferAllocation = 5;
     // Bit shift the index of the layer (9) to get a bit mask
     public static readonly int InteractableLayerMask = 1 << 9;
+    public static readonly float RATSMoveSpeed = 2.5f;
 
     /*--Ignorable Items--*/
     // Add the game object name of any object that shouldn't trigger a haptic event to the bellow array

@@ -20,7 +20,8 @@ public class LaserPonterReciever : MonoBehaviour
     [HideInInspector] public Throwable throwable;
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public Vector3 target;
-    [HideInInspector] public bool moveToTarget = false;
+    [HideInInspector] public bool moveToTarget;
+    [HideInInspector] public bool interrupt;
     
     private Hand pointerHand;
     
@@ -45,18 +46,41 @@ public class LaserPonterReciever : MonoBehaviour
             SetupMaterialReplacement();
     }
 
+    void Start()
+    {
+        EventManager.instance.OnRATSInterrupt += Interrupt;
+    }
+    
     void Update()
     {
+        if (interrupt)
+            return;
+        
         if (!moveToTarget)
             return;
         
         if (Vector3.Distance(transform.position, target) < 0.01f)
+        {
+            EventManager.instance.RATSNextStep();
             return;
+        }
 
         // Debug.LogWarning("Moving to: " + target);
         
-        float step =  2.5f * Time.deltaTime;
+        float step =  AppData.RATSMoveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
+    }
+
+    private void Interrupt()
+    {
+        if (interrupt)
+            return;
+        
+        if (!moveToTarget)
+            return;
+        
+        // Debug.LogWarning("LPR Interrupt", this);
+        interrupt = true;
     }
     
     #region Awake Functions
