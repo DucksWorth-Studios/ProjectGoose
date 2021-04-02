@@ -13,6 +13,7 @@ public class CompositionManager : MonoBehaviour
     public static Color maxCompositionColor = new Color(1f,0.3f,0.6f);
     public GameObject puffEffect;
     public GameObject cloud;
+    public GameObject radiation;
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
@@ -23,6 +24,8 @@ public class CompositionManager : MonoBehaviour
     private AudioSource source;
     private void Start()
     {
+        radiation.SetActive(false);
+
         source = GetComponent<AudioSource>();
 
         puffEffect.SetActive(false);
@@ -121,6 +124,7 @@ public class CompositionManager : MonoBehaviour
             //If has element and composition changes turn on
             if (HasElement)
             {
+                radiation.SetActive(true);
                 EventManager.instance.HighlightItem(KEY.SOLUTION);
             }
         }
@@ -129,6 +133,7 @@ public class CompositionManager : MonoBehaviour
             //If has element and composition changes turn off
             if(HasElement)
             {
+                radiation.SetActive(false);
                 EventManager.instance.DeHighlightItem(KEY.SOLUTION);
             }
             ISComposition = false;
