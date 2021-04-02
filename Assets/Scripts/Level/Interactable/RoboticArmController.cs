@@ -67,7 +67,7 @@ public class RoboticArmController : MonoBehaviour
     /// </summary>
     public void AttachObject()
     {
-        startSnapZone.GetComponent<RobotArmSnapZone>().AttachObject();
+        StartCoroutine(startSnapZone.GetComponent<RobotArmSnapZone>().AttachObject());
     }
 
     /// <summary>

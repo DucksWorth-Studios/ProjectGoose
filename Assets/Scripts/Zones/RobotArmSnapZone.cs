@@ -16,6 +16,8 @@ public class RobotArmSnapZone : GenericSnapZone
 
     private Quaternion rotation;
 
+    private bool canAttach = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,36 +31,39 @@ public class RobotArmSnapZone : GenericSnapZone
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag(tagToSearchFor))
+        if(canAttach)
         {
-            try
+            if (other.gameObject.CompareTag(tagToSearchFor))
             {
-                var interactable = other.GetComponent<Interactable>();
-                if (interactable.attachedToHand == null)
+                try
                 {
-                    currentlyHeldObject = other.gameObject;
-                    interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
+                    var interactable = other.GetComponent<Interactable>();
+                    if (interactable.attachedToHand == null)
+                    {
+                        currentlyHeldObject = other.gameObject;
+                        interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
 
-                    currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+                        currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 
-                    rotation = currentlyHeldObject.transform.rotation;
+                        rotation = currentlyHeldObject.transform.rotation;
 
-                    currentlyHeldObject.transform.position = snapPosition.position;
-                    currentlyHeldObject.transform.rotation = rotation;
-                    isHolding = true;
+                        currentlyHeldObject.transform.position = snapPosition.position;
+                        currentlyHeldObject.transform.rotation = rotation;
+                        isHolding = true;
 
-                    armController.PlayGrabAnim();
+                        armController.PlayGrabAnim();
+                    }
                 }
-            }
-            catch (System.NullReferenceException e)
-            {
-                //if exception is thrown it means object cannot snap to zone. SO we ignore it
-                return;
+                catch (System.NullReferenceException e)
+                {
+                    //if exception is thrown it means object cannot snap to zone. SO we ignore it
+                    return;
+                }
             }
         }
     }
 
-    public void AttachObject()
+    public IEnumerator AttachObject()
     {
         try
         {
@@ -69,10 +74,16 @@ public class RobotArmSnapZone : GenericSnapZone
 
             currentlyHeldObject = null;
             isHolding = false;
+
+            canAttach = false; // Delay attachments to allow object to exit
         }
         catch(System.NullReferenceException e)
         {
-            return;
+            yield break;
         }
+
+        yield return new WaitForSeconds(1f);
+
+        canAttach = true;
     }
 }
