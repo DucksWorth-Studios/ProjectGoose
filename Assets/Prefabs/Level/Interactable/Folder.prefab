@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2945044468230205837}
   - component: {fileID: 3486692965195057731}
   - component: {fileID: 1188301190501228920}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Folder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,12 +269,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
   throwable: {fileID: 0}
   rigidbody: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   moveToTarget: 0
+  interrupt: 0
 --- !u!114 &1188301190501228920
 MonoBehaviour:
   m_ObjectHideFlags: 0
