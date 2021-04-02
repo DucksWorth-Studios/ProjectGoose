@@ -12,6 +12,8 @@ public class RobotArmSnapZone : GenericSnapZone
 {
     public string tagToSearchFor;
 
+    public RoboticArmController armController;
+
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +47,24 @@ public class RobotArmSnapZone : GenericSnapZone
                 //if exception is thrown it means object cannot snap to zone. SO we ignore it
                 return;
             }
+        }
+    }
+
+    private void AttachToArm()
+    {
+        try
+        {
+            var interactable = currentlyHeldObject.GetComponent<Interactable>();
+            interactable.onAttachedToHand -= DetachObject;
+
+            armController.AttachObject(currentlyHeldObject.gameObject);
+
+            currentlyHeldObject = null;
+            isHolding = false;
+        }
+        catch(System.NullReferenceException e)
+        {
+            return;
         }
     }
 }
