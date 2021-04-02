@@ -40,6 +40,8 @@ public class RobotArmSnapZone : GenericSnapZone
                     currentlyHeldObject.transform.position = snapPosition.position;
                     currentlyHeldObject.transform.rotation = Quaternion.identity;
                     isHolding = true;
+
+                    armController.PlayGrabAnim();
                 }
             }
             catch (System.NullReferenceException e)
@@ -50,14 +52,14 @@ public class RobotArmSnapZone : GenericSnapZone
         }
     }
 
-    private void AttachToArm()
+    public void AttachObject()
     {
         try
         {
             var interactable = currentlyHeldObject.GetComponent<Interactable>();
             interactable.onAttachedToHand -= DetachObject;
 
-            armController.AttachObject(currentlyHeldObject.gameObject);
+            armController.AttachObjectToArm(currentlyHeldObject.gameObject);
 
             currentlyHeldObject = null;
             isHolding = false;

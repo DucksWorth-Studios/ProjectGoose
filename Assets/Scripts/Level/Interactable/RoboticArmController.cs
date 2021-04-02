@@ -14,7 +14,8 @@ public class RoboticArmController : MonoBehaviour
 
     private float nextPlayTime;
 
-    public Transform snapZoneTransform;
+    public GameObject startSnapZone;
+    public GameObject armSnapZone;
     private GameObject currentlyHeldObject;
     private bool isHolding = false;
 
@@ -38,7 +39,7 @@ public class RoboticArmController : MonoBehaviour
     /// </summary>
     private void FixObjectPosition()
     {
-        currentlyHeldObject.transform.position = snapZoneTransform.position;
+        currentlyHeldObject.transform.position = armSnapZone.transform.position;
         currentlyHeldObject.transform.rotation = Quaternion.identity;
     }
 
@@ -46,15 +47,23 @@ public class RoboticArmController : MonoBehaviour
     /// Attachs an object to the claw of the arm
     /// </summary>
     /// <param name="objectToAttach">The game object that should be attached to the arm</param>
-    public void AttachObject(GameObject objectToAttach)
+    public void AttachObjectToArm(GameObject objectToAttach)
     {
         var interactable = objectToAttach.GetComponent<Interactable>();
         interactable.onAttachedToHand += DetachObject;
         currentlyHeldObject = objectToAttach;
 
-        currentlyHeldObject.transform.position = snapZoneTransform.position;
+        currentlyHeldObject.transform.position = armSnapZone.transform.position;
         currentlyHeldObject.transform.rotation = Quaternion.identity;
         isHolding = true;
+    }  
+
+    /// <summary>
+    /// Animation Event function. Is called when the arm is at the point where the test tube can be joined
+    /// </summary>
+    public void AttachObject()
+    {
+        startSnapZone.GetComponent<RobotArmSnapZone>().AttachObject();
     }
 
     /// <summary>
@@ -72,6 +81,11 @@ public class RoboticArmController : MonoBehaviour
 
             nextPlayTime = Time.time + Random.Range(2.5f, 5f);
         }
+    }
+
+    public void PlayGrabAnim()
+    {
+        animator.SetTrigger("ComplexMovement");
     }
 
     /// <summary>
