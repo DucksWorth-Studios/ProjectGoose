@@ -14,12 +14,16 @@ public class RobotArmSnapZone : GenericSnapZone
 
     public RoboticArmController armController;
 
+    private Quaternion rotation;
+
     // Update is called once per frame
     void Update()
     {
         if(isHolding)
         {
-            FixPosition();
+            //FixPosition();
+            currentlyHeldObject.transform.position = snapPosition.position;
+            currentlyHeldObject.transform.rotation = rotation;
         }
     }
 
@@ -37,8 +41,10 @@ public class RobotArmSnapZone : GenericSnapZone
 
                     currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 
+                    rotation = currentlyHeldObject.transform.rotation;
+
                     currentlyHeldObject.transform.position = snapPosition.position;
-                    currentlyHeldObject.transform.rotation = Quaternion.identity;
+                    currentlyHeldObject.transform.rotation = rotation;
                     isHolding = true;
 
                     armController.PlayGrabAnim();

@@ -19,6 +19,8 @@ public class RoboticArmController : MonoBehaviour
     private GameObject currentlyHeldObject;
     private bool isHolding = false;
 
+    private Quaternion objectRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class RoboticArmController : MonoBehaviour
     private void FixObjectPosition()
     {
         currentlyHeldObject.transform.position = armSnapZone.transform.position;
-        currentlyHeldObject.transform.rotation = Quaternion.identity;
+        currentlyHeldObject.transform.rotation = objectRotation;
     }
 
     /// <summary>
@@ -53,8 +55,10 @@ public class RoboticArmController : MonoBehaviour
         interactable.onAttachedToHand += DetachObject;
         currentlyHeldObject = objectToAttach;
 
+        objectRotation = currentlyHeldObject.transform.rotation;
+
         currentlyHeldObject.transform.position = armSnapZone.transform.position;
-        currentlyHeldObject.transform.rotation = Quaternion.identity;
+        currentlyHeldObject.transform.rotation = objectRotation;
         isHolding = true;
     }  
 
