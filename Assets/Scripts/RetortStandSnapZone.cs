@@ -37,8 +37,7 @@ public class RetortStandSnapZone : GenericSnapZone
     {
         if(isHolding)
         {
-            currentlyHeldObject.transform.position = snapPosition.position;
-            currentlyHeldObject.transform.rotation = Quaternion.Euler(rotation);
+            FixPosition();
         }
     }
 }

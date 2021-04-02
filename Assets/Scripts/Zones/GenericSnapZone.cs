@@ -35,6 +35,12 @@ public class GenericSnapZone : MonoBehaviour
         }
     }
 
+    protected void FixPosition()
+    {
+        currentlyHeldObject.transform.position = snapPosition.position;
+        currentlyHeldObject.transform.rotation = Quaternion.identity;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(currentlyHeldObject == null)
@@ -66,7 +72,7 @@ public class GenericSnapZone : MonoBehaviour
     {
         var inter = currentlyHeldObject.GetComponent<Interactable>(); // unsubscribe from event
         inter.onAttachedToHand -= DetachObject;
-        Debug.Log(inter.attachedToHand);
+        //Debug.Log(inter.attachedToHand);
         currentlyHeldObject.GetComponent<Rigidbody>().useGravity = true; // enable physics
 
         //isHolding = false;
