@@ -55,6 +55,8 @@ public class RoboticArmController : MonoBehaviour
         interactable.onAttachedToHand += DetachObject;
         currentlyHeldObject = objectToAttach;
 
+        currentlyHeldObject.GetComponent<BreakableObject>().enabled = false; // disable breakable because it causes problems
+
         objectRotation = currentlyHeldObject.transform.rotation;
 
         currentlyHeldObject.transform.position = armSnapZone.transform.position;
@@ -97,11 +99,12 @@ public class RoboticArmController : MonoBehaviour
     /// Detaches the object from the arm and re-enables it's gravity
     /// </summary>
     /// <param name="hand"></param>
-    private void DetachObject(Hand hand)
+    private void DetachObject(Hand hand = null)
     {
         var inter = currentlyHeldObject.GetComponent<Interactable>(); // unsubscribe from event
         inter.onAttachedToHand -= DetachObject;
         currentlyHeldObject.GetComponent<Rigidbody>().useGravity = true; // enable physics
+        currentlyHeldObject.GetComponent<BreakableObject>().enabled = true;
 
         currentlyHeldObject = null;
         isHolding = false;

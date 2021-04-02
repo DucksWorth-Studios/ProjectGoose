@@ -82,7 +82,7 @@ public class RobotArmSnapZone : GenericSnapZone
             yield break;
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         canAttach = true;
     }
