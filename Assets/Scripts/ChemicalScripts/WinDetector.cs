@@ -14,6 +14,7 @@ public class WinDetector : MonoBehaviour
         
         if (other.gameObject.tag == AppData.elementTag && compositionManager.ISComposition)
         {
+            compositionManager.radiation.SetActive(true);
             compositionManager.HasElement = true;
             //Send Event #
             EventManager.instance.HighlightItem(KEY.SOLUTION);
