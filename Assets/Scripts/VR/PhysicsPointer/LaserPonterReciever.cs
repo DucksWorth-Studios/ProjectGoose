@@ -7,14 +7,11 @@ using Valve.VR.InteractionSystem;
 [RequireComponent( typeof( Interactable ) )]
 [RequireComponent( typeof( Throwable ) )]
 [RequireComponent( typeof( Rigidbody ) )]
+[RequireComponent( typeof( Outline ) )]
 public class LaserPonterReciever : MonoBehaviour
 {
     [Tooltip("The amount to offset the object by when attached to hand")]
     public Vector3 offset;
-
-    [Header("Backup Outline")]
-    public bool outlineDoesntWork;
-    public Material backupMaterial;
 
     // References to be used in other scripts
     [HideInInspector] public Throwable throwable;
@@ -39,11 +36,7 @@ public class LaserPonterReciever : MonoBehaviour
         target = gameObject.transform.position;
         GetThrowable();
         GetRigidbody();
-        
-        if (!outlineDoesntWork)
-            SetupOutline();
-        else
-            SetupMaterialReplacement();
+        SetupOutline();
     }
 
     void Start()
@@ -119,8 +112,10 @@ public class LaserPonterReciever : MonoBehaviour
         {
             outline = outlineRef;
             outline.OutlineColor = outlineColor;
-            outline.OutlineWidth = outlineWidth;
-            outline.OutlineMode = Outline.Mode.Disabled;
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            
+            if (outline.OutlineWidth < outlineWidth)
+                outline.OutlineWidth = outlineWidth;
         }
         else
             Debug.LogError(gameObject.name + " is missing Outline script or outlineDoesntWork flag");
@@ -144,49 +139,12 @@ public class LaserPonterReciever : MonoBehaviour
 
     private void UpdateMat()
     {
-        if (!outlineDoesntWork)
-            outline.OutlineMode = Outline.Mode.OutlineVisible;
-        else
-        {
-            foreach (Renderer ren in renderers) 
-            {
-                // Get all existing materials
-                List<Material> mats = ren.sharedMaterials.ToList();
-
-                // Change all materials to backup
-                for (int i = 0; i < mats.Count; i++)
-                    mats[i] = backupMaterial;
-                    
-                // Push material changes to renderer
-                ren.materials = mats.ToArray();
-            }
-        }
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
     }
     
     private void ResetMat()
     {
-        if (!outlineDoesntWork)
-            outline.OutlineMode = Outline.Mode.Disabled;
-        else
-        {
-            int count = 0;
-            
-            foreach (Renderer renderer in renderers) 
-            {
-                // Get all existing materials
-                List<Material> mats = renderer.sharedMaterials.ToList();
-
-                // Change all materials back to their original
-                for (int i = 0; i < mats.Count; i++)
-                {
-                    mats[i] = materials[count];
-                    count++;
-                }
-                    
-                // Push material changes to renderer
-                renderer.materials = mats.ToArray();
-            }
-        }
+        outline.OutlineMode = Outline.Mode.Disabled;
     }
     
     public void HitByRay()

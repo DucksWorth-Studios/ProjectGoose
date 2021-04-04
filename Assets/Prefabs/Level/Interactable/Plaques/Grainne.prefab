@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1442435567345880787}
   - component: {fileID: 1442435567345880620}
   - component: {fileID: 1442435567345880621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Grainne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,12 +276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
   throwable: {fileID: 0}
   rigidbody: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   moveToTarget: 0
+  interrupt: 0
 --- !u!65 &1442435567345880621
 BoxCollider:
   m_ObjectHideFlags: 0
