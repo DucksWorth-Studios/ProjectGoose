@@ -17,6 +17,7 @@ public class WinDetector : MonoBehaviour
             compositionManager.radiation.SetActive(true);
             compositionManager.HasElement = true;
             //Send Event #
+
             EventManager.instance.HighlightItem(KEY.SOLUTION);
             //Detach the object
             other.gameObject.GetComponent<Valve.VR.InteractionSystem.Interactable>().attachedToHand.DetachObject(other.gameObject, true);

@@ -16,7 +16,7 @@ public class VialZoneHighlight : MonoBehaviour
         outline.enabled = false;
         snapZone = GetComponent<VialZone>();
         EventManager.instance.OnItemHighlight += TurnOnHighLight;
-        EventManager.instance.OnItemHighlight += TurnOffHighLight;
+        EventManager.instance.OnItemHighlightOff += TurnOffHighLight;
     }
 
     /// <summary>
@@ -27,6 +27,7 @@ public class VialZoneHighlight : MonoBehaviour
     {
         if (item == itemToListen)
         {
+
             outline.enabled = true;
             IsHighlighted = true;
         }
@@ -40,6 +41,7 @@ public class VialZoneHighlight : MonoBehaviour
     {
         if (item == itemToListen)
         {
+
             outline.enabled = false;
             IsHighlighted = false;
         }
