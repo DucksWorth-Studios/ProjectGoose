@@ -112,7 +112,7 @@ public class LaserPonterReciever : MonoBehaviour
         {
             outline = outlineRef;
             outline.OutlineColor = outlineColor;
-            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.OutlineMode = Outline.Mode.Disabled;
             
             if (outline.OutlineWidth < outlineWidth)
                 outline.OutlineWidth = outlineWidth;
