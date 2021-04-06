@@ -243,8 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
   throwable: {fileID: 0}
   rigidbody: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
@@ -889,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 4334093085060701242, guid: 02bfa306c4154bb439e47f4e1522bf71,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334093085060701242, guid: 02bfa306c4154bb439e47f4e1522bf71,
         type: 3}
@@ -904,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 4334093085060701243, guid: 02bfa306c4154bb439e47f4e1522bf71,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bfa306c4154bb439e47f4e1522bf71, type: 3}
