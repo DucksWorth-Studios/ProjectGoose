@@ -133,7 +133,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/dimensionjump"
+                     "output" : "/actions/default/in/pause"
                   }
                },
                "mode" : "button",
@@ -151,7 +151,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/dimensionjump"
+                     "output" : "/actions/default/in/pause"
                   }
                },
                "mode" : "button",
