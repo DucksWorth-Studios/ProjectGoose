@@ -78,24 +78,25 @@ public class LaserPointer : MonoBehaviour
             endPosition = hit.point;
             lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
-            if (!lastHit) 
-                return endPosition;
-            
             if (!oldLastHit)
                 oldLastHit = lastHit;
             else if (oldLastHit != lastHit)
                 RayChanged();
             
+            if (!lastHit)
+            {
+                RayExit();
+                return endPosition;
+            }
+
             if (IsClicking())
             {
                 lastHit.Click(pointerHand);
-                // lastHit.Click(transform);
                 wasClicked = true;
             }
             else if (!materialUpdated)
             {
                 lastHit.HitByRay();
-                // lastHit = null;
                 materialUpdated = true;
             }
         }
@@ -132,17 +133,18 @@ public class LaserPointer : MonoBehaviour
         
         lastHit.RayExit();
         lastHit = null;
+        
+        oldLastHit.ResetMat();
         oldLastHit = null;
+        
         materialUpdated = false;
         wasClicked = false;
     }
     
     private void RayChanged()
     {
-        if (!lastHit) 
+        if (!oldLastHit) 
             return;
-        
-        // Debug.Log("RayExit");
         
         oldLastHit.ResetMat();
         oldLastHit = lastHit;
