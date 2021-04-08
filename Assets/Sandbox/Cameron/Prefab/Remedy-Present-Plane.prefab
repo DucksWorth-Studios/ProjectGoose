@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2168824833160839395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Remedy-Present-Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1124659649599319141}
   - component: {fileID: 1842974781513950987}
   - component: {fileID: 1842974781513950986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

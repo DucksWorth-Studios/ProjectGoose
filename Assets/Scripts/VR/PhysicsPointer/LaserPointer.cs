@@ -21,6 +21,7 @@ public class LaserPointer : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private LaserPonterReciever lastHit;
+    private LaserPonterReciever oldLastHit;
 
     private Hand pointerHand;
     private bool materialUpdated;
@@ -51,6 +52,7 @@ public class LaserPointer : MonoBehaviour
         else
         {
             lineRenderer.enabled = false;
+            RayExit();
         }
         
         if (!IsClicking() && wasClicked)
@@ -76,19 +78,27 @@ public class LaserPointer : MonoBehaviour
             endPosition = hit.point;
             lastHit = hit.transform.GetComponent<LaserPonterReciever>(); // TODO: Is there a less expensive method
 
-            if (lastHit != null)
-                if (IsClicking())
-                {
-                    lastHit.Click(pointerHand);
-                    // lastHit.Click(transform);
-                    wasClicked = true;
-                }
-                else if (!materialUpdated)
-                {
-                    lastHit.HitByRay();
-                    // lastHit = null;
-                    materialUpdated = true;
-                }
+            if (!oldLastHit)
+                oldLastHit = lastHit;
+            else if (oldLastHit != lastHit)
+                RayChanged();
+            
+            if (!lastHit)
+            {
+                RayExit();
+                return endPosition;
+            }
+
+            if (IsClicking())
+            {
+                lastHit.Click(pointerHand);
+                wasClicked = true;
+            }
+            else if (!materialUpdated)
+            {
+                lastHit.HitByRay();
+                materialUpdated = true;
+            }
         }
         else
         {
@@ -116,14 +126,29 @@ public class LaserPointer : MonoBehaviour
 
     private void RayExit()
     {
-        if (!lastHit) return;
+        if (!lastHit) 
+            return;
         
-        Debug.Log("RayExit");
+        // Debug.Log("RayExit");
         
         lastHit.RayExit();
         lastHit = null;
+        
+        oldLastHit.ResetMat();
+        oldLastHit = null;
+        
         materialUpdated = false;
         wasClicked = false;
+    }
+    
+    private void RayChanged()
+    {
+        if (!oldLastHit) 
+            return;
+        
+        oldLastHit.ResetMat();
+        oldLastHit = lastHit;
+        materialUpdated = false;
     }
 
     // For checking if the player is pulling the trigger down for enough
