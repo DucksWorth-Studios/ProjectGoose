@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -52,6 +52,7 @@ public class LaserPointer : MonoBehaviour
         else
         {
             lineRenderer.enabled = false;
+            RayExit();
         }
         
         if (!IsClicking() && wasClicked)
@@ -88,15 +89,15 @@ public class LaserPointer : MonoBehaviour
             if (IsClicking())
             {
                 lastHit.Click(pointerHand);
-                    // lastHit.Click(transform);
-                    wasClicked = true;
-                }
-                else if (!materialUpdated)
-                {
-                    lastHit.HitByRay();
-                    // lastHit = null;
-                    materialUpdated = true;
-                }
+                // lastHit.Click(transform);
+                wasClicked = true;
+            }
+            else if (!materialUpdated)
+            {
+                lastHit.HitByRay();
+                // lastHit = null;
+                materialUpdated = true;
+            }
         }
         else
         {
