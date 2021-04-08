@@ -143,7 +143,7 @@ public class LaserPonterReciever : MonoBehaviour
         outline.OutlineMode = Outline.Mode.OutlineVisible;
     }
     
-    private void ResetMat()
+    public void ResetMat()
     {
         outline.OutlineMode = Outline.Mode.Disabled;
     }

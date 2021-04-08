@@ -43,6 +43,7 @@ public class RATS : MonoBehaviour
     public TargetingStyle targetingStyle;
 
     private LaserPonterReciever lastHit;
+    private LaserPonterReciever oldLastHit;
 
     private bool materialUpdated;
     private bool isMoving;
@@ -102,6 +103,11 @@ public class RATS : MonoBehaviour
 
             if (!lastHit)
                 return;
+
+            if (!oldLastHit)
+                oldLastHit = lastHit;
+            else if (oldLastHit != lastHit)
+                RayChanged();
 
             // Material update should only be called once per object
             if (!materialUpdated)
@@ -203,6 +209,9 @@ public class RATS : MonoBehaviour
         lpr.rigidbody.velocity = dampVelocity;
     }
     
+    /// <summary>
+    /// Reset all necessary parameters when RATS are no longer pointing at an object.
+    /// </summary>
     private void RayExit()
     {
         if (!lastHit)
@@ -210,9 +219,23 @@ public class RATS : MonoBehaviour
 
         lastHit.RayExit();
         lastHit = null;
+        oldLastHit = null;
         materialUpdated = false;
         // isMoving = false;
         Time.timeScale = 1;
+    }
+    
+    /// <summary>
+    /// Ensure that outline doesn't stay on when moving between objects
+    /// </summary>
+    private void RayChanged()
+    {
+        if (!oldLastHit)
+            return;
+
+        oldLastHit.ResetMat();
+        oldLastHit = lastHit;
+        materialUpdated = false;
     }
     
     // Taken from: https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
