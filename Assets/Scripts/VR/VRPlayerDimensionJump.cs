@@ -52,11 +52,11 @@ public class VRPlayerDimensionJump : MonoBehaviour
     public IEnumerator DimensionJump()
     {
         EventManager.instance.TimeJumpButton();
+        EventManager.instance.PlaySound(Sound.Teleport);
 
         yield return new WaitForSeconds(AppData.jumpDelay);
 
         EventManager.instance.TimeJump();
-        EventManager.instance.PlaySound(Sound.Teleport);
         if (!upSideDown) {
             // Teleport to the future
             transform.position += new Vector3(0, planeDifference, 0);
