@@ -13,7 +13,7 @@ using Valve.VR.InteractionSystem;
 public class GenericSnapZone : MonoBehaviour
 {
     [Tooltip("The object being held")]
-    protected GameObject currentlyHeldObject;
+    public GameObject currentlyHeldObject;
     protected bool isHolding = false;
 
     [Tooltip("The position the object shoudl snap to")]
@@ -22,7 +22,9 @@ public class GenericSnapZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (currentlyHeldObject != null)
+            AttachObject(currentlyHeldObject);
+
     }
 
     // Update is called once per frame
@@ -47,24 +49,33 @@ public class GenericSnapZone : MonoBehaviour
         {
             try
             {
-                var interactable = other.GetComponent<Interactable>();
-                if (interactable.attachedToHand == null)
-                {
-                    currentlyHeldObject = other.gameObject;
-                    interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
-
-                    currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-
-                    currentlyHeldObject.transform.position = snapPosition.position;
-                    currentlyHeldObject.transform.rotation = Quaternion.identity;
-                    isHolding = true;
-                }
+                AttachObject(other.gameObject);
             }
             catch(System.NullReferenceException e)
             {
                 //if exception is thrown it means object cannot snap to zone. SO we ignore it
                 return;
             }
+        }
+    }
+
+    /// <summary>
+    /// Attach the game object to the snap zone
+    /// </summary>
+    /// <param name="objectToAttach"></param>
+    public void AttachObject(GameObject objectToAttach)
+    {
+        var interactable = objectToAttach.GetComponent<Interactable>();
+        if (interactable.attachedToHand == null)
+        {
+            currentlyHeldObject = objectToAttach;
+            interactable.onAttachedToHand += DetachObject; // Subscribe to onAttachToHand event so the object can be detached
+
+            currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+
+            currentlyHeldObject.transform.position = snapPosition.position;
+            currentlyHeldObject.transform.rotation = Quaternion.identity;
+            isHolding = true;
         }
     }
 
