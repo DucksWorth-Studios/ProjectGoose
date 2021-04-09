@@ -45,6 +45,7 @@ public class EndGameController : MonoBehaviour
         VRplayer.GetComponent<VRPlayerDimensionJump>().enabled = false;
         yield return new WaitForSeconds(3);
         VRplayer.transform.position = goodPosition.transform.position;
+        VRplayer.transform.forward = new Vector3(-1, 0, 0);
         Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
     }
 
@@ -59,6 +60,7 @@ public class EndGameController : MonoBehaviour
         yield return new WaitForSeconds(3);
         VRplayer.GetComponent<SmokeRing>().enabled = false;
         VRplayer.transform.position = badPosition.transform.position;
+        VRplayer.transform.forward = new Vector3(-1, 0, 0);
         Valve.VR.SteamVR_Fade.View(Color.clear, AppData.fadeTimeOut);
 
     }
