@@ -11,8 +11,6 @@ using Valve.VR.InteractionSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserPointer : MonoBehaviour
 {
-    public bool enabled;
-    
     // Single is the name Vector1
     public SteamVR_Action_Single startLaser = SteamVR_Input.GetSingleAction("StartLaser");
     public SteamVR_Action_Boolean pullObject = SteamVR_Input.GetBooleanAction("PullObject");
@@ -44,7 +42,7 @@ public class LaserPointer : MonoBehaviour
         if (!enabled)
             return;
         
-        if (startLaser.axis > 0.25f && !pointerHand.objectIsAttached)
+        if (startLaser.axis > 0.25f && !pointerHand.objectIsAttached && !wasClicked)
         {
             lineRenderer.enabled = true;
             UpdateLength();
@@ -52,9 +50,9 @@ public class LaserPointer : MonoBehaviour
         else
         {
             lineRenderer.enabled = false;
-            RayExit();
+            RayChanged();
         }
-        
+
         if (!IsClicking() && wasClicked)
             RayExit();
     }
