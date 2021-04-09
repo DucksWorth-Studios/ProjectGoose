@@ -48,7 +48,10 @@ public class LaserPointer : MonoBehaviour
             UpdateLength();
         }
         else
+        {
             lineRenderer.enabled = false;
+            RayChanged();
+        }
 
         if (!IsClicking() && wasClicked)
             RayExit();
