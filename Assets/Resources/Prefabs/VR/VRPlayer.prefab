@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3c0aae1d540cf41b5a40bda0f52ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 5911a8acc7ab3f84fb0a5c11e579421e, type: 3}
+  audioClip: {fileID: 8300000, guid: f8cce263cf5ae794e843b626c99bebde, type: 3}
   soundToListen: 6
   loop: 0
 --- !u!1 &2045821574
@@ -4105,8 +4105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137f0aa02c9d156419971c717ee4045f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipOne: {fileID: 8300000, guid: 40965e6605a7d9e49ba7d6092046e522, type: 3}
-  clipTwo: {fileID: 8300000, guid: 06c803c20913236449f4bac0c54881aa, type: 3}
+  clipOne: {fileID: 8300000, guid: f5fdc7f0f78e8cc45a1c1129cde9dafa, type: 3}
+  clipTwo: {fileID: 8300000, guid: 0b1d4be8ea7619b4eaa5c0f33387048b, type: 3}
   soundToPlay: 5
 --- !u!1 &1457849595816769858
 GameObject:
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3c0aae1d540cf41b5a40bda0f52ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: cb1d7f8634453a148b30e3638d35d8fb, type: 3}
+  audioClip: {fileID: 8300000, guid: e18f4e71f40286d4ea44a7528cc8313f, type: 3}
   soundToListen: 7
   loop: 0
 --- !u!1 &5139007583668203200
@@ -5325,30 +5325,6 @@ MonoBehaviour:
     needsReinit: 0
   objectAttachmentPoint: {fileID: 490018}
   endTarget: {fileID: 4253006756082040430}
-  travelSpeed:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 10
-      inSlope: 0
-      outSlope: -0.5769231
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 13
-      value: 2.5
-      inSlope: -0.5769231
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   physicsToUse: 1
   bezierSteps: 16
   radius: 0.25
