@@ -70,6 +70,6 @@ public class LevelSwitchManager : MonoBehaviour
         // dimensionJump.teleportPoints = TeleportPoint.points;
         dimensionJump.planeDifference = 100;
         
-        EventManager.instance.EnableAllInput(PointerState.RATS);
+        EventManager.instance.EnableAllInput(PointerState.PhysicsPointer);
     }
 }
