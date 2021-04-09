@@ -79,12 +79,18 @@ public class RoboticArmController : MonoBehaviour
     /// </summary>
     private void PlaySimpleMovement()
     {
-        if (nextPlayTime == 0) nextPlayTime = Random.Range(1f, 3.5f);
+
+        if (nextPlayTime == 0)
+        {
+           // EventManager.instance.PlaySound(Sound.Arm);
+            nextPlayTime = Random.Range(1f, 3.5f);
+        }
 
         if (Time.time > nextPlayTime)
         {
             animator.SetTrigger("SimpleMovement");
 
+            
             nextPlayTime = Time.time + Random.Range(2.5f, 5f);
         }
     }
