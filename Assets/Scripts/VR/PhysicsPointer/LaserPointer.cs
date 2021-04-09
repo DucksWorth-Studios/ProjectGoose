@@ -48,13 +48,10 @@ public class LaserPointer : MonoBehaviour
             UpdateLength();
         }
         else
-        {
             lineRenderer.enabled = false;
-            // RayExit();
-        }
-        
-        // if (!IsClicking() && wasClicked)
-        //     RayExit();
+
+        if (!IsClicking() && wasClicked)
+            RayExit();
     }
 
     private void UpdateLength()
@@ -136,7 +133,7 @@ public class LaserPointer : MonoBehaviour
         oldLastHit = null;
         
         materialUpdated = false;
-        // wasClicked = false;
+        wasClicked = false;
     }
     
     private void RayChanged()
