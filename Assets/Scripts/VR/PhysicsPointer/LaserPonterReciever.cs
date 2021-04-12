@@ -145,7 +145,10 @@ public class LaserPonterReciever : MonoBehaviour
     
     public void ResetMat()
     {
-        outline.OutlineMode = Outline.Mode.Disabled;
+        if (!outline.blockDisabled)
+            outline.OutlineMode = Outline.Mode.Disabled;
+        else
+            outline.OutlineColor = outline.colourToRevertTo;
     }
     
     public void HitByRay()
