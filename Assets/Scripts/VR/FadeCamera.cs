@@ -37,12 +37,12 @@ public class FadeCamera : MonoBehaviour
  
     public void OnTriggerEnter(Collider other)
     {
-       Debug.Log("Head collision: " + other.tag, this);
+       // Debug.Log("Head collision: " + other.tag, this);
         
         if (!AppData.IsIgnorableHeadCollision(other.tag))
             FadeToWhite();
-        else
-            Debug.Log("Ignored Head Collision", this);
+        // else
+        //     Debug.Log("Ignored Head Collision", this);
     }
  
     public void OnTriggerExit(Collider other)
