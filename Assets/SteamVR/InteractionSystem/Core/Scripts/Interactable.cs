@@ -142,7 +142,10 @@ namespace Valve.VR.InteractionSystem
         private void DisableOutline()
         {
             if (outline)
-                outline.OutlineMode = Outline.Mode.Disabled;
+                if (!outline.blockDisabled)
+                    outline.OutlineMode = Outline.Mode.Disabled;
+                else
+                    outline.OutlineColor = outline.colourToRevertTo;
             else
                 Debug.LogError(gameObject.name + " is missing Outline script");
         }
