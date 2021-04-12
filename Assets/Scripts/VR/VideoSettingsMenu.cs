@@ -29,19 +29,20 @@ public class VideoSettingsMenu : MonoBehaviour
 
     private int currentResolution;
     
-    void Start()
+    public void Awake()
     {
         EventManager.instance.OnUpdateVideoSettingsUI += UpdateUI;
         EventManager.instance.OnApplyVideoSettings += Apply;
+        Debug.LogWarning("Video events registered");
         
         // Resolution Setup
         resolutionDropdown.AddOptions(GetResolutionsDropdownData());
     }
 
-    private void OnEnable()
-    {
-        SettingsManager.instance.Load();
-    }
+    // private void OnEnable()
+    // {
+    //     SettingsManager.instance.Load();
+    // }
 
     List<TMP_Dropdown.OptionData> GetResolutionsDropdownData()
     {

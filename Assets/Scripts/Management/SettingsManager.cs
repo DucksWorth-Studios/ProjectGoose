@@ -42,6 +42,7 @@ public class SettingsManager : MonoBehaviour
         QualitySettings.antiAliasing = 0;
 
         UpdateSettings();
+        Save();
     }
 
     private void UpdateSettings()
@@ -97,8 +98,10 @@ public class SettingsManager : MonoBehaviour
             // saveText.gameObject.SetActive(true);
             return $"Failed to write to {fullPath} with exception {e}";
         }
-        
-        // Invoke("HideSaveText", 5);
+        finally
+        {
+            Invoke("HideSaveText", 5);
+        }
     }
 
     public void Load()
@@ -108,7 +111,7 @@ public class SettingsManager : MonoBehaviour
         try
         {
             string data = File.ReadAllText(fullPath);
-            Debug.Log(data);
+            Debug.Log(data, this);
             
             // JsonUtility.FromJsonOverwrite(data, settingsData);
             settingsData = (SettingsData) JsonUtility.FromJson(data, typeof(SettingsData));

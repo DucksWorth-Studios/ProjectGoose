@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -343,12 +343,20 @@ public class EventManager : MonoBehaviour
 
     public virtual void UpdateVideoSettingsUI()
     {
-        OnUpdateVideoSettingsUI?.Invoke();
+        // OnUpdateVideoSettingsUI?.Invoke();
+        if (OnUpdateVideoSettingsUI != null)
+            OnUpdateVideoSettingsUI.Invoke();
+        else
+            Debug.LogError("OnUpdateVideoSettingsUI is Null");
     }
     
     public virtual void ApplyVideoSettings()
     {
-        OnApplyVideoSettings?.Invoke();
+        // OnApplyVideoSettings?.Invoke();
+        if (OnApplyVideoSettings != null)
+            OnApplyVideoSettings.Invoke();
+        else
+            Debug.LogError("OnApplyVideoSettings is Null");
     }
     
     public virtual void UpdateComfortSettingsUI()
