@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +15,7 @@ public class EventManager : MonoBehaviour
     {
         //Creates a singleton
         instance = this;
+        Debug.LogWarning("Event instance set");
     }
     //All events stored here
     public event Action OnTestEventCall;
@@ -352,7 +353,11 @@ public class EventManager : MonoBehaviour
     
     public virtual void UpdateComfortSettingsUI()
     {
-        OnUpdateComfortSettingsUI?.Invoke();
+        // OnUpdateComfortSettingsUI?.Invoke();
+        if (OnUpdateComfortSettingsUI != null)
+            OnUpdateComfortSettingsUI.Invoke();
+        else
+            Debug.LogError("OnUpdateComfortSettingsUI is Null");
     }
 
     public virtual void PauseGame()
