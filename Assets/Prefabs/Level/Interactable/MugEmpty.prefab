@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 168251729010402531}
   m_LocalRotation: {x: -0.69351995, y: -0.13794968, z: -0.13794968, w: 0.69351995}
   m_LocalPosition: {x: 2.1274, y: 0.059, z: -2.4046}
-  m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.05}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.050000004}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &3955639170692062611
 Rigidbody:
@@ -340,7 +339,7 @@ MonoBehaviour:
     type: 3}
   breakingVelocity: 4
   isShatterable: 1
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4291388254194704b919641021256f14, type: 3}
 --- !u!114 &2289635412966965393
 MonoBehaviour:
   m_ObjectHideFlags: 0

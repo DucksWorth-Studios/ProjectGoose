@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4d441967effed2499227f1fc90ac1d7, type: 2}
+  - {fileID: 2100000, guid: 4f2e766fd530c2d4b90def2f016a1841, type: 2}
   - {fileID: 2100000, guid: 67c923c8810d42f49b9600d01af36633, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -151,7 +151,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &5724812959996755542
 Rigidbody:
