@@ -25,7 +25,7 @@ public class KeyItem : MonoBehaviour
     void Start()
     {
         outline = GetComponent<Outline>();
-        outline.enabled = false;
+        outline.OutlineMode = Outline.Mode.Disabled;
         interactable = GetComponent<Valve.VR.InteractionSystem.Interactable>();
         EventManager.instance.OnItemHighlight += TurnOnHighLight;
     }
@@ -38,7 +38,11 @@ public class KeyItem : MonoBehaviour
     {
         if(item == itemToListen)
         {
-            outline.enabled = true;
+            outline.blockDisabled = true;
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.modeToRevertTo = Outline.Mode.OutlineAll;
+            outline.OutlineColor = Color.yellow;
+            outline.colourToRevertTo = Color.yellow;
             IsHighlighted = true;
         }
     }
@@ -50,8 +54,9 @@ public class KeyItem : MonoBehaviour
     {
         if (interactable.attachedToHand != null)
         {
+            outline.blockDisabled = false;
             IsHighlighted = false;
-            outline.enabled = false;
+            outline.OutlineMode = Outline.Mode.Disabled;
         }
     }
 
