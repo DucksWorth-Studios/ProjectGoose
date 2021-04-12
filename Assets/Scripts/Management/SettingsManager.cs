@@ -90,7 +90,9 @@ public class SettingsManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to write to {fullPath} with exception {e}");
+            #if UNITY_EDITOR
+                Debug.LogError($"Failed to write to {fullPath} with exception {e}");
+            #endif
             
             // saveText.gameObject.SetActive(true);
             return $"Failed to write to {fullPath} with exception {e}";
@@ -118,7 +120,10 @@ public class SettingsManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            #if UNITY_EDITOR
+                Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            #endif
+                
             SetDefaults();
         }
     }
