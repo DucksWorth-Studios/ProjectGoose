@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectiveBoardManager : MonoBehaviour
 {
+    public GameObject stage1;
+    public GameObject stage2;
+    public GameObject stage3;
+    public GameObject chemicalCheckMark;
+    public GameObject steriliseCheckMark;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +25,22 @@ public class ObjectiveBoardManager : MonoBehaviour
 
     private void UpdateBoard(STAGE stage)
     {
-
+        switch(stage)
+        {
+            case STAGE.FIRSTRETURN:
+                stage1.SetActive(true);
+                break;
+            case STAGE.USBPLUGGED:
+                stage2.SetActive(true);
+                break;
+            case STAGE.CHEMICALPUZZLE:
+                chemicalCheckMark.SetActive(true);
+                break;
+            case STAGE.ELEMENTPUZZLE:
+                steriliseCheckMark.SetActive(true);
+                break;
+            default:
+                return;
+        }
     }
 }
