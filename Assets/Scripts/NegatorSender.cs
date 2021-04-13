@@ -47,6 +47,7 @@ public class NegatorSender : MonoBehaviour
                 effect.SetActive(true);
 
                 objectInZone.transform.position += positionDifference;
+                EventManager.instance.PlayOneSound(Sound.ItemTeleport, false);
             }
             else
             {
@@ -63,6 +64,17 @@ public class NegatorSender : MonoBehaviour
             //print("Name " + other.gameObject.name);
             entityCount++;
         }
+        else if(other.tag == AppData.elementTag)
+        {
+            if(other.gameObject.GetComponent<ElementEffect>().IsReleased)
+            {
+                entityCount++;
+            }
+        }
+        else
+        {
+
+        }
     }
     //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
@@ -70,6 +82,14 @@ public class NegatorSender : MonoBehaviour
         if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             entityCount--;
+        }
+        else if (other.tag == AppData.elementTag)
+        {
+            print("Element has Been Here");
+            if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
+            {
+                entityCount--;
+            }
         }
         if (other.gameObject == objectInZone)
         {
@@ -86,12 +106,26 @@ public class NegatorSender : MonoBehaviour
             {
                 objectInZone = other.gameObject;
             }
+            else if (other.tag == AppData.elementTag)
+            {
+                if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
+                {
+                    objectInZone = other.gameObject;
+                }
+            }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
             if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
             {
                 objectInZone = other.gameObject;
+            }
+            else if (other.tag == AppData.elementTag)
+            {
+                if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
+                {
+                    objectInZone = other.gameObject;
+                }
             }
         }
     }

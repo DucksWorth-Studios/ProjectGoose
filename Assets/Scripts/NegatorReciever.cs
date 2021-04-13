@@ -20,6 +20,13 @@ public class NegatorReciever : MonoBehaviour
         {
             entityCount++;
         }
+        else if (other.tag == AppData.elementTag)
+        {
+            if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
+            {
+                entityCount++;
+            }
+        }
     }
     //Anything leaves count goes down
     private void OnTriggerExit(Collider other)
@@ -27,6 +34,13 @@ public class NegatorReciever : MonoBehaviour
         if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
         {
             entityCount--;
+        }
+        else if (other.tag == AppData.elementTag)
+        {
+            if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
+            {
+                entityCount--;
+            }
         }
     }
     //if is empty count will be zero. You cant go below zero
