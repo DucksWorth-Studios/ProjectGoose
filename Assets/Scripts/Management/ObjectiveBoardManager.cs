@@ -7,7 +7,6 @@ public class ObjectiveBoardManager : MonoBehaviour
 {
     public GameObject stage1;
     public GameObject stage2;
-    public GameObject stage3;
     public GameObject chemicalCheckMark;
     public GameObject steriliseCheckMark;
 
@@ -23,7 +22,7 @@ public class ObjectiveBoardManager : MonoBehaviour
         
     }
 
-    private void UpdateBoard(STAGE stage)
+    public void UpdateBoard(STAGE stage)
     {
         switch(stage)
         {
