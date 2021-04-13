@@ -39,6 +39,7 @@ public class HalfLifeHandler : MonoBehaviour
             lidZone.GetComponent<ItemHolder>().SetInteractable();
             elementZone.GetComponent<ItemHolder>().SetInteractable();
             lockIndicator.color = new Color(0, 1, 0);
+            EventManager.instance.Progress(STAGE.ELEMENTPUZZLE);
         }
     }
 

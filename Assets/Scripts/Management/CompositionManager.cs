@@ -120,6 +120,7 @@ public class CompositionManager : MonoBehaviour
             //Send Event
             ISComposition = true;
             Debug.Log("Composition Correct");
+            EventManager.instance.Progress(STAGE.CHEMICALPUZZLE);
 
             //If has element and composition changes turn on
             if (HasElement)
