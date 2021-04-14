@@ -19,10 +19,11 @@ public class SettingsSwitcher : MonoBehaviour
     private void UpdateCount()
     {
         count++;
-        Debug.Log("Count: " + count, this);
+        // Debug.Log("Count: " + count, this);
 
         if (count == 2)
         {
+            // Debug.Log("Count Max: " + count, this);
             EventManager.instance.OnUpdateVideoSettingsUI -= UpdateCount;
             EventManager.instance.OnUpdateComfortSettingsUI -= UpdateCount;
             
