@@ -12,7 +12,7 @@ public class WinDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.tag == AppData.elementTag && compositionManager.ISComposition)
+        if (other.gameObject.tag == AppData.elementTag && compositionManager.ISComposition && other.gameObject.GetComponent<ElementEffect>().IsCorrect)
         {
             compositionManager.radiation.SetActive(true);
             compositionManager.HasElement = true;

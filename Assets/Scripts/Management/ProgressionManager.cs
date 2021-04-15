@@ -133,7 +133,7 @@ public class ProgressionManager : MonoBehaviour
             {
                 print("STARTING");
                 firstReturn = true;
-                Progress(STAGE.FIRSTRETURN);
+                EventManager.instance.Progress(STAGE.FIRSTRETURN); // Have to call event for objective board
                 narrationManager.JumpInteference();
             }
         }

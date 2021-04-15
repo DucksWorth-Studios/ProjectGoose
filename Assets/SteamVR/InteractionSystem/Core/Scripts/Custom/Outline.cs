@@ -75,6 +75,15 @@ public class Outline : MonoBehaviour
          + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
     private bool precomputeOutline = true;
 
+    [Tooltip ("When true, disable option will not be used.")]
+    public bool blockDisabled;
+    
+    [Tooltip ("If blockDisable is true, this is the colour to revert to.")]
+    public Color colourToRevertTo;
+    
+    [Tooltip ("If blockDisable is true, this is the mode to revert to.")]
+    public Mode modeToRevertTo;
+
     [SerializeField, HideInInspector] private List<Mesh> bakeKeys = new List<Mesh>();
 
     [SerializeField, HideInInspector] private List<ListVector3> bakeValues = new List<ListVector3>();

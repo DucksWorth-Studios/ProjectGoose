@@ -86,7 +86,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &2034131400132719661
 Rigidbody:
@@ -174,12 +173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 0}
   throwable: {fileID: 0}
   rigidbody: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   moveToTarget: 0
+  interrupt: 0
 --- !u!114 &-8090075790785653503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +194,9 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 0.49019608, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: -2066100093633635616, guid: 0987586cd2d44f34d8704ce56d5b8270, type: 3}
   bakeValues:
@@ -211,7 +212,11 @@ GameObject:
   - component: {fileID: 814142917679716017}
   - component: {fileID: 1192283654321347216}
   - component: {fileID: 3605531820121176985}
-  - component: {fileID: 2790115993091125968}
+  - component: {fileID: 1468519272}
+  - component: {fileID: 1468519273}
+  - component: {fileID: 1468519274}
+  - component: {fileID: 1468519275}
+  - component: {fileID: 1468519276}
   m_Layer: 9
   m_Name: Cylinder_Cylinder.001_Holder
   m_TagString: Untagged
@@ -282,8 +287,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2790115993091125968
-MeshCollider:
+--- !u!65 &1468519272
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -292,7 +297,58 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2066100093633635616, guid: 0987586cd2d44f34d8704ce56d5b8270, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.1436615, y: 5.1102524, z: 2.3906326}
+  m_Center: {x: 1.3544083, y: 0.39354914, z: 0}
+--- !u!65 &1468519273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461943972742754109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.198555, y: 4.811797, z: 2.3906326}
+  m_Center: {x: -1.3134956, y: 0.72506016, z: -0.09973526}
+--- !u!65 &1468519274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461943972742754109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4209976, y: 5.400085, z: 0.25539398}
+  m_Center: {x: 0.034008026, y: 0.24432008, z: -1.3194084}
+--- !u!65 &1468519275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461943972742754109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.522583, y: 5.400085, z: 0.2909088}
+  m_Center: {x: -0.004310608, y: 0.43177712, z: 1.211853}
+--- !u!65 &1468519276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461943972742754109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6900482, y: 0.33941725, z: 2.1844482}
+  m_Center: {x: 0.08350372, y: -2.476916, z: -0.0025939941}
