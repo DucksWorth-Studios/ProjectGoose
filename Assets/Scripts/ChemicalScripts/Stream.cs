@@ -175,7 +175,7 @@ public class Stream : MonoBehaviour
             //Change color when we hit
             if (gameObjectCollide != null  && isHitting)
             {
-                compositionManager.callColorChange(gameObjectCollide);
+                compositionManager.CallColorChange(gameObjectCollide);
                 //gameObjectCollide.GetComponent<ColorChange>().switchColour(chemicalColor);
             }
             yield return null;
