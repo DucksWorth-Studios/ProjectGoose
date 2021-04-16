@@ -152,7 +152,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &866231450428262731
 Rigidbody:
@@ -234,15 +233,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6248103457209319370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
+  outlineMode: 5
   outlineColor: {r: 1, g: 0.49019608, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: 4300054, guid: c2c4f375440670f45af85442700b8416, type: 3}
   bakeValues:

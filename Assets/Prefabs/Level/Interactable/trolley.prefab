@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 155302313}
 --- !u!1 &289895700
 GameObject:
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 289895701}
 --- !u!1 &313739065
 GameObject:
@@ -173,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 313739066}
 --- !u!1 &325419264
 GameObject:
@@ -231,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 325419265}
 --- !u!1 &328888114
 GameObject:
@@ -289,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 328888115}
 --- !u!1 &415227690
 GameObject:
@@ -347,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 415227691}
 --- !u!1 &458540289
 GameObject:
@@ -405,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 458540290}
 --- !u!1 &972377015
 GameObject:
@@ -463,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 972377016}
 --- !u!1 &1329603674
 GameObject:
@@ -521,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 1329603675}
 --- !u!1 &1359822230
 GameObject:
@@ -579,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 1359822231}
 --- !u!1 &1494478224
 GameObject:
@@ -637,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 1494478225}
 --- !u!1 &1546461603
 GameObject:
@@ -695,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643184e0407488245b54db0112fe2207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyHeldObject: {fileID: 0}
   snapPosition: {fileID: 1546461604}
 --- !u!1 &257378995956616096
 GameObject:
@@ -1786,15 +1798,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7565164242674989184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
+  outlineMode: 5
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: -9198256143153050640, guid: b0f98a3eef3ceb14fadd385ea3d018ae, type: 3}
   - {fileID: -7449922572202909043, guid: b0f98a3eef3ceb14fadd385ea3d018ae, type: 3}

@@ -139,6 +139,7 @@ public class LaserPonterReciever : MonoBehaviour
 
     private void UpdateMat()
     {
+        outline.enabled = true;
         outline.OutlineColor = outlineColor;
         outline.OutlineMode = Outline.Mode.OutlineVisible;
     }

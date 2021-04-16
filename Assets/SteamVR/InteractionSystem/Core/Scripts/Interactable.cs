@@ -129,6 +129,7 @@ namespace Valve.VR.InteractionSystem
         {
             if (outline)
             {
+                outline.enabled = true;
                 outline.OutlineColor = outlineColour;
                 outline.OutlineMode = Outline.Mode.OutlineVisible;
             

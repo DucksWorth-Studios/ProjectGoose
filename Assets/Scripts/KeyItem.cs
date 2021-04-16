@@ -38,6 +38,7 @@ public class KeyItem : MonoBehaviour
     {
         if(item == itemToListen)
         {
+            outline.enabled = true;
             outline.blockDisabled = true;
             outline.OutlineMode = Outline.Mode.OutlineAll;
             outline.modeToRevertTo = Outline.Mode.OutlineAll;
