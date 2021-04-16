@@ -97,25 +97,6 @@ public class Outline : MonoBehaviour
 
     void Awake()
     {
-        foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
-        {
-            if (skinnedMeshRenderer.sharedMesh.subMeshCount > 1)
-            {
-                skinnedMeshRenderer.sharedMesh.subMeshCount = skinnedMeshRenderer.sharedMesh.subMeshCount + 1;
-                skinnedMeshRenderer.sharedMesh.SetTriangles(skinnedMeshRenderer.sharedMesh.triangles, skinnedMeshRenderer.sharedMesh.subMeshCount - 1);
-            }
-
-        }
-
-        foreach (var meshFilter in GetComponentsInChildren<MeshFilter>())
-        {
-            if (meshFilter.sharedMesh.subMeshCount > 1)
-            {
-                meshFilter.sharedMesh.subMeshCount = meshFilter.sharedMesh.subMeshCount + 1;
-                meshFilter.sharedMesh.SetTriangles(meshFilter.sharedMesh.triangles, meshFilter.sharedMesh.subMeshCount - 1);
-            }
-        }
-  
         // Cache renderers
         renderers = GetComponentsInChildren<Renderer>();
 
@@ -133,6 +114,32 @@ public class Outline : MonoBehaviour
         needsUpdate = true;
     }
 
+    void Start()
+    {
+        foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            if (skinnedMeshRenderer.sharedMesh.subMeshCount <= 1) 
+                continue;
+            
+            var sharedMesh = skinnedMeshRenderer.sharedMesh;
+                
+            sharedMesh.subMeshCount = sharedMesh.subMeshCount + 1;
+            skinnedMeshRenderer.sharedMesh.SetTriangles(sharedMesh.triangles, sharedMesh.subMeshCount - 1);
+
+        }
+
+        foreach (var meshFilter in GetComponentsInChildren<MeshFilter>())
+        {
+            if (meshFilter.sharedMesh.subMeshCount <= 1) 
+                continue;
+            
+            var sharedMesh = meshFilter.sharedMesh;
+                
+            sharedMesh.subMeshCount = sharedMesh.subMeshCount + 1;
+            meshFilter.sharedMesh.SetTriangles(sharedMesh.triangles, sharedMesh.subMeshCount - 1);
+        }
+    }
+    
     void OnEnable()
     {
         Application.logMessageReceived += LogCallback;
