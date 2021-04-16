@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingsSwitcher : MonoBehaviour
@@ -7,6 +5,7 @@ public class SettingsSwitcher : MonoBehaviour
     public GameObject videoSettings;
     public GameObject comfortSettings;
     public GameObject menu;
+    public GameObject additionalMenu;
 
     private int count = 0;
     
@@ -29,6 +28,9 @@ public class SettingsSwitcher : MonoBehaviour
             
             ToggleComfortSettings();
             menu.SetActive(false);
+
+            if (additionalMenu)
+                additionalMenu.SetActive(false);
         }
     }
 
