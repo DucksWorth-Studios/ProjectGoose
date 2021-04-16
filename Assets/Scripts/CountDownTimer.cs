@@ -109,13 +109,10 @@ public class CountDownTimer : MonoBehaviour
         if(isCountingDown)
         {
             CountDown();
-            //print("Down" + timeRemaining);
         }
         else if(isCountingUp)
         {
-            //print("Up");
             CountUp();
-            //print("Up"+timeRemaining);
         }
         else
         {

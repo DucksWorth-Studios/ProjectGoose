@@ -131,20 +131,10 @@ public class ProgressionManager : MonoBehaviour
             InPast = true;
             if (!firstReturn)
             {
-                print("STARTING");
                 firstReturn = true;
                 EventManager.instance.Progress(STAGE.FIRSTRETURN); // Have to call event for objective board
                 narrationManager.JumpInteference();
             }
         }
-    }
-
-    private IEnumerator StartUp()
-    {
-        Valve.VR.SteamVR_Fade.View(Color.black, 0f);
-        yield return new WaitForSeconds(0.000000001f);
-        //EventManager.instance.Fade(false);
-        yield return new WaitForSeconds(2);
-        Progress(STAGE.START);
     }
 }

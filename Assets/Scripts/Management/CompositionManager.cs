@@ -8,19 +8,29 @@ using UnityEngine;
 /// </summary>
 public class CompositionManager : MonoBehaviour
 {
+    [Tooltip("Current Colors")]
     public Color currentColor = Color.white;
+    [Tooltip("Min Ranges For the solution")]
     public static Color minCompositiionColor = new Color(0.8f,0,0.3f);
+    [Tooltip("Max Ranges For the solution")]
     public static Color maxCompositionColor = new Color(1f,0.3f,0.6f);
+    [Tooltip("The puff effect of the composition")]
     public GameObject puffEffect;
+    [Tooltip("The Cloud that can spawn")]
     public GameObject cloud;
+    [Tooltip("The radiation effect")]
     public GameObject radiation;
+
+
     private Color previousColor = Color.white;
     private Material currentMaterial = null;
     private Valve.VR.InteractionSystem.Interactable interactable = null;
+    //Is it correct Composition
     public bool ISComposition = false;
+    //Has the element been added
     public bool HasElement = false;
+    //debug purposes
     public bool debugHold = false;
-    private bool IsDrunk = false;
     private AudioSource source;
     private void Start()
     {
@@ -43,10 +53,10 @@ public class CompositionManager : MonoBehaviour
         previousColor = currentColor;
 
         //Sets the timeSHift method to only call when time is jumped
-        EventManager.instance.OnTimeJump += timeShiftChange;
+        EventManager.instance.OnTimeJump += TimeShiftChange;
     }
 
-    public void mixChemical(Color chemicalAdditive)
+    public void MixChemical(Color chemicalAdditive)
     {
         
         if (chemicalAdditive != previousColor)
@@ -60,17 +70,17 @@ public class CompositionManager : MonoBehaviour
             previousColor = chemicalAdditive;
             puffEffect.SetActive(true);
 
-            bool HasReachedGoal = detectIfWithinWinBounds();
-            detectIfToxic(HasReachedGoal);
+            bool HasReachedGoal = DetectIfWithinWinBounds();
+            DetectIfToxic(HasReachedGoal);
             source.Play();
-            //if(debugHold)
-            //{
-            //    Instantiate<GameObject>(cloud, this.transform.position, Quaternion.identity, transform);
-            //}
         }
     }
 
-    public void timeShiftChange()
+    /// <summary>
+    /// Author: Tomas
+    /// Changes the time detection
+    /// </summary>
+    public void TimeShiftChange()
     {
         //Only will trigger if attached to hand
         if(interactable.attachedToHand != null || debugHold)
@@ -98,11 +108,16 @@ public class CompositionManager : MonoBehaviour
             currentMaterial.color = changedColor;
             currentColor = changedColor;
             //Detect if we got the mixture
-            detectIfWithinWinBounds();
+            DetectIfWithinWinBounds();
         }
     }
 
-    private bool detectIfWithinWinBounds()
+    /// <summary>
+    /// Author Tomas
+    /// Detects if within composition bounds
+    /// </summary>
+    /// <returns>true or false</returns>
+    private bool DetectIfWithinWinBounds()
     {
         bool isWithinRange = false;
 
@@ -119,7 +134,6 @@ public class CompositionManager : MonoBehaviour
             isWithinRange = true;
             //Send Event
             ISComposition = true;
-            Debug.Log("Composition Correct");
             EventManager.instance.Progress(STAGE.CHEMICALPUZZLE);
 
             //If has element and composition changes turn on
@@ -142,9 +156,14 @@ public class CompositionManager : MonoBehaviour
         return isWithinRange;
     }
 
-    private void detectIfToxic(bool isWinner)
+    /// <summary>
+    /// Author Tomas
+    /// Detects if an object is toxic
+    /// </summary>
+    /// <param name="isWinner">is it within the bounds of being correct</param>
+    private void DetectIfToxic(bool isWinner)
     {
-        bool IsStep = detectIFStepToSolution();
+        bool IsStep = DetectIFStepToSolution();
         if (!isWinner && !IsStep)
         {
             //If not a composition theres a chance it could be toxic if so generate the cloud
@@ -156,7 +175,12 @@ public class CompositionManager : MonoBehaviour
         }
     }
 
-    private bool detectIFStepToSolution()
+    /// <summary>
+    /// Author Tomas
+    /// Detects if it is one of the steps to the solution
+    /// </summary>
+    /// <returns>True or false</returns>
+    private bool DetectIFStepToSolution()
     {
         
         bool IsMatch = false;
@@ -176,11 +200,11 @@ public class CompositionManager : MonoBehaviour
         return IsMatch;
     }
 
-    public void callColorChange(GameObject otherVial)
+    public void CallColorChange(GameObject otherVial)
     {
         //GameObject will be validated before this method is called
         //Take the second vial and mix it using the mix chemicalMethod.
-        otherVial.GetComponent<CompositionManager>().mixChemical(currentColor);
+        otherVial.GetComponent<CompositionManager>().MixChemical(currentColor);
     }
 
 
