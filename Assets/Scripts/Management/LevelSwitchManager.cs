@@ -24,7 +24,7 @@ public class LevelSwitchManager : MonoBehaviour
             return;
         
         lastScene = scene;
-        print(scene);
+        // print(scene);
 
         if (scene == "StartScene")
             InStart();

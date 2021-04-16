@@ -38,6 +38,7 @@ public class ComfortManager : MonoBehaviour
         
         // UpdateUI();
         EventManager.instance.UpdateComfortSettingsUI();
+        Save();
     }
 
     public PointerState GetPointerState()
@@ -73,13 +74,13 @@ public class ComfortManager : MonoBehaviour
     public string Save()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, settingsFile);
-        
+
         try
         {
             Debug.Log(settingsData);
             string json = JsonUtility.ToJson(settingsData);
             Debug.Log(json);
-            
+
             File.WriteAllText(fullPath, json);
 
             // saveText.gameObject.SetActive(true);
@@ -87,13 +88,17 @@ public class ComfortManager : MonoBehaviour
         }
         catch (Exception e)
         {
+#if UNITY_EDITOR
             Debug.LogError($"Failed to write to {fullPath} with exception {e}");
-            
+#endif
+
             // saveText.gameObject.SetActive(true);
             return $"Failed to write to {fullPath} with exception {e}";
         }
-        
-        Invoke("HideSaveText", 5);
+        finally
+        {
+            Invoke("HideSaveText", 5);
+        }
     }
 
     public void Load()
@@ -103,18 +108,20 @@ public class ComfortManager : MonoBehaviour
         try
         {
             string data = File.ReadAllText(fullPath);
-            Debug.Log("Data: " + data);
+            Debug.Log("Comfort Data: " + data);
             
             // JsonUtility.FromJsonOverwrite(data, settingsData);
             settingsData = (ComfortSettingsData) JsonUtility.FromJson(data, typeof(ComfortSettingsData));
-            Debug.Log("Load.settingsData: " + settingsData);
+            Debug.Log("Comfort Load.settingsData: " + settingsData);
             
             // UpdateUI();
             EventManager.instance.UpdateComfortSettingsUI();
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            #if UNITY_EDITOR
+                Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            #endif
             SetDefaults();
         }
     }

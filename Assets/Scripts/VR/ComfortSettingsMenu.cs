@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,19 +28,20 @@ public class ComfortSettingsMenu : MonoBehaviour
     public GameObject startMenu;
     public GameObject optionsMenu;
 
-    void Start()
+    public void Awake()
     {
         EventManager.instance.OnUpdateComfortSettingsUI += UpdateUI;
+        Debug.LogWarning("Comfort event registered");
     }
 
-    private void OnEnable()
-    {
-        ComfortManager.instance.Load();
-    }
+    // private void OnEnable()
+    // {
+    //     ComfortManager.instance.Load();
+    // }
 
     private void UpdateUI()
     {
-        Debug.Log("UpdateUI.settingsData: " + ComfortManager.settingsData);
+        // Debug.Log("UpdateUI.settingsData: " + ComfortManager.settingsData);
         Debug.Log("ComfortManager.settingsData: " + ComfortManager.settingsData);
         OnChangeSpeed(ComfortManager.settingsData.speed);
         
