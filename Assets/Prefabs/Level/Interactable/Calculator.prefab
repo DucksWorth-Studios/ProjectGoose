@@ -100,7 +100,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &2891477438544078769
 Rigidbody:
@@ -187,10 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
+  outlineMode: 5
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: -2678040543600086645, guid: 376ee5f0e6ae22644804f811b3cf4e04, type: 3}
   bakeValues:

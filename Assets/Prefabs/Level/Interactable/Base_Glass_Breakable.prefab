@@ -140,7 +140,6 @@ MonoBehaviour:
   skeletonPoser: {fileID: 0}
   handFollowTransform: 1
   highlightOnHover: 1
-  hideHighlight: []
   hoverPriority: 0
 --- !u!54 &5609096558971541846
 Rigidbody:
@@ -170,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718dc1d756d095e4ba65f832f889d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachmentEnabled: 1
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
@@ -369,8 +369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  outlineDoesntWork: 0
-  backupMaterial: {fileID: 2100000, guid: aa26c346923b3354bb744b0501da55a6, type: 2}
+  throwable: {fileID: 0}
+  rigidbody: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  moveToTarget: 0
+  interrupt: 0
 --- !u!114 &7002970307063846704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,10 +386,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
+  outlineMode: 5
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: 6405055333489277325, guid: 58b37f1ddb79a00419758de2670c136d, type: 3}
   bakeValues:
