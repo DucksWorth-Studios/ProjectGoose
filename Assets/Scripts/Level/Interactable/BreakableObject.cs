@@ -27,6 +27,10 @@ public class BreakableObject : MonoBehaviour
     /// <param name="collision">The object this object is colliding with</param>
     private void OnCollisionEnter(Collision collision)
     {
+        // Stop glass smashing when colliding with player
+        if (collision.gameObject.CompareTag("Player"))
+            return;
+        
         if (collision.relativeVelocity.magnitude < breakingVelocity)
             return;
 
