@@ -24,11 +24,13 @@ public class WaterDropController : MonoBehaviour
     private float audioPlayTime = 0.5f;
 
     private bool canPlayAudio = false;
-
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         vfx = GetComponent<VisualEffect>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = dropletSound;
     }
 
     // Update is called once per frame
@@ -48,7 +50,7 @@ public class WaterDropController : MonoBehaviour
             canPlayAudio = false;
 
             if (dropletSound != null)
-                AudioSource.PlayClipAtPoint(dropletSound, new Vector3(transform.position.x, 0, transform.position.z));
+                audioSource.Play();
         }
     }
 }

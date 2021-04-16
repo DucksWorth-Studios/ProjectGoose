@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ElementEffect : MonoBehaviour
 {
-    private bool HasJumped = true;
-    public bool IsCorrect = false;
+    [Tooltip("Radiation Effect")]
     public GameObject effect;
-    public float amountOfElement;
+    [Tooltip("The holder of the item")]
     public ItemHolder itemHolder;
+    [Tooltip("Is Right amount")]
+    public bool IsCorrect = false;
+    [Tooltip("Has been released")]
     public bool IsReleased = false;
+
+    //Has Been Jumped
+    private bool HasJumped = true;
+    //The Interactable
     private Valve.VR.InteractionSystem.Interactable interactable;
     // Start is called before the first frame update
     void Start()
@@ -29,31 +35,25 @@ public class ElementEffect : MonoBehaviour
                 {
                     //Is Going to Future
                     HasJumped = true;
-                    SetHalfLife(0.5f);
+
                     //DisableEffect
                     effect.SetActive(false);
+                    //Is it right amount
                     IsCorrect = true;
-                    print("True");
                 }
                 else
                 {
                     //Is Going Back
                     HasJumped = false;
-                    SetHalfLife(2f);
+
                     //Enable Effect
                     effect.SetActive(true);
+                    //Is it right amount
                     IsCorrect = false;
-                    print("False");
                 }
             }
         }
 
-    }
-
-    //Set The amount
-    private void SetHalfLife(float Multiplier)
-    {
-        amountOfElement = amountOfElement * Multiplier;
     }
 
     // Update is called once per frame
