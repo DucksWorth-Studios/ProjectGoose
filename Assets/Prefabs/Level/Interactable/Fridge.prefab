@@ -460,7 +460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7757030102411058609}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -469,6 +469,9 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 1
+  blockDisabled: 0
+  colourToRevertTo: {r: 0, g: 0, b: 0, a: 0}
+  modeToRevertTo: 0
   bakeKeys:
   - {fileID: 4493585093827132993, guid: 4c1840fa267fd794a91a1e4ce21037d6, type: 3}
   bakeValues:
