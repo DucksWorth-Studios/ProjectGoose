@@ -15,6 +15,7 @@ public class EventManager : MonoBehaviour
     {
         //Creates a singleton
         instance = this;
+        Debug.LogWarning("Event instance set");
     }
     //All events stored here
     public event Action OnTestEventCall;
@@ -342,17 +343,29 @@ public class EventManager : MonoBehaviour
 
     public virtual void UpdateVideoSettingsUI()
     {
-        OnUpdateVideoSettingsUI?.Invoke();
+        // OnUpdateVideoSettingsUI?.Invoke();
+        if (OnUpdateVideoSettingsUI != null)
+            OnUpdateVideoSettingsUI.Invoke();
+        else
+            Debug.LogError("OnUpdateVideoSettingsUI is Null");
     }
     
     public virtual void ApplyVideoSettings()
     {
-        OnApplyVideoSettings?.Invoke();
+        // OnApplyVideoSettings?.Invoke();
+        if (OnApplyVideoSettings != null)
+            OnApplyVideoSettings.Invoke();
+        else
+            Debug.LogError("OnApplyVideoSettings is Null");
     }
     
     public virtual void UpdateComfortSettingsUI()
     {
-        OnUpdateComfortSettingsUI?.Invoke();
+        // OnUpdateComfortSettingsUI?.Invoke();
+        if (OnUpdateComfortSettingsUI != null)
+            OnUpdateComfortSettingsUI.Invoke();
+        else
+            Debug.LogError("OnUpdateComfortSettingsUI is Null");
     }
 
     public virtual void PauseGame()
