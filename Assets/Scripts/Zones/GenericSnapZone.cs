@@ -73,6 +73,12 @@ public class GenericSnapZone : MonoBehaviour
 
             currentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 
+            var impactScript = currentlyHeldObject.GetComponent<ImpactSoundScript>();
+            if(impactScript != null)
+            {
+                impactScript.isSnappedToZone = true; //stop collision updates in impact script
+            }
+
             currentlyHeldObject.transform.position = snapPosition.position;
             currentlyHeldObject.transform.rotation = Quaternion.identity;
             isHolding = true;
@@ -85,6 +91,12 @@ public class GenericSnapZone : MonoBehaviour
         inter.onAttachedToHand -= DetachObject;
         //Debug.Log(inter.attachedToHand);
         currentlyHeldObject.GetComponent<Rigidbody>().useGravity = true; // enable physics
+
+        var impactScript = currentlyHeldObject.GetComponent<ImpactSoundScript>();
+        if (impactScript != null)
+        {
+            impactScript.isSnappedToZone = false; 
+        }
 
         //isHolding = false;
         currentlyHeldObject = null;

@@ -9,6 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ImpactSoundScript : MonoBehaviour
 {
+    public bool isSnappedToZone = false;
 
     [Tooltip("The magnitude of the velocity that is needed for the object to break")]
     public float breakingVelocity = 2;
@@ -37,7 +38,7 @@ public class ImpactSoundScript : MonoBehaviour
     /// <param name="collision">The object this object is colliding with</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude < breakingVelocity || isOver || collision.gameObject.tag == "RightHand" || collision.gameObject.tag == "Player")
+        if (collision.relativeVelocity.magnitude < breakingVelocity || isOver || collision.gameObject.tag == "RightHand" || collision.gameObject.tag == "Player" || isSnappedToZone)
             return;
 
 
