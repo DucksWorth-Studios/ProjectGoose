@@ -33,6 +33,7 @@ public class ObjectiveBoardManager : MonoBehaviour
                 stage2.SetActive(true);
                 break;
             case STAGE.CHEMICALPUZZLE:
+                stage2.SetActive(true);
                 chemicalCheckMark.SetActive(true);
                 break;
             case STAGE.ELEMENTPUZZLE:
