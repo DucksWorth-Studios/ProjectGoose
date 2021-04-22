@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 /// <summary>
 /// Author: Tomas
 /// Negator is a way to avoid the corruption from time travel. This will be used for the negator microwave machine.
@@ -8,8 +10,8 @@ using UnityEngine;
 /// </summary>
 public class NegatorSender : MonoBehaviour
 {
-    [Tooltip("The Reciever Object")]
-    public GameObject reciever;
+    [FormerlySerializedAs("reciever")] [Tooltip("The Receiver Object")]
+    public GameObject receiver;
 
     [Tooltip("The Effect Object")]
     public GameObject effect;
@@ -27,65 +29,62 @@ public class NegatorSender : MonoBehaviour
     {
         //Find difference between the two zones
         Vector3 senderPos = this.transform.position;
-        Vector3 recieverPos = reciever.transform.position;
+        Vector3 receiverPos = receiver.transform.position;
         positionDifference = new Vector3(
-          recieverPos.x - senderPos.x,
-          recieverPos.y - senderPos.y,
-          recieverPos.z - senderPos.z);
+          receiverPos.x - senderPos.x,
+          receiverPos.y - senderPos.y,
+          receiverPos.z - senderPos.z);
         EventManager.instance.OnButtonPress += SendObject;
     }
 
-    //Send to the reciever via the difference
+    //Send to the receiver via the difference
     private void SendObject(ButtonEnum buttonEnum)
     {
-        if(buttonEnum == ButtonEnum.NEGATOR)
+        if (buttonEnum != ButtonEnum.NEGATOR) 
+            return;
+        
+        bool isReceiverReady = receiver.GetComponent<NegatorReciever>().isNotOccupied();
+            
+        if (objectInZone && entityCount == 1 && isReceiverReady)
         {
-            bool isRecieverReady = reciever.GetComponent<NegatorReciever>().isNotOccupied();
-            if (objectInZone != null && entityCount == 1 && isRecieverReady)
-            {
-                effect.SetActive(false);
-                effect.SetActive(true);
+            effect.SetActive(false);
+            effect.SetActive(true);
 
-                objectInZone.transform.position += positionDifference;
-                EventManager.instance.PlayOneSound(Sound.ItemTeleport, false);
-            }
-            else
-            {
-                EventManager.instance.PlayOneSound(Sound.ItemTeleport, true);
-            }
+            objectInZone.transform.position += positionDifference;
+            EventManager.instance.PlayOneSound(Sound.ItemTeleport, false);
+        }
+        else
+        {
+            EventManager.instance.PlayOneSound(Sound.ItemTeleport, true);
         }
     }
 
     //Tracks multiple objects anything coming in puts up the count.
     private void OnTriggerEnter(Collider other)
     {   
-        if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+        if(!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
         {
             //print("Name " + other.gameObject.name);
             entityCount++;
         }
-        else if(other.tag == AppData.elementTag)
+        else if(other.CompareTag(AppData.elementTag))
         {
             if(other.gameObject.GetComponent<ElementEffect>().IsReleased)
             {
                 entityCount++;
             }
         }
-        else
-        {
-
-        }
     }
     //Anything that leaves the vount drops if the object to send leaves become null
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+        if (!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
         {
             entityCount--;
         }
-        else if (other.tag == AppData.elementTag)
+        else if (other.CompareTag(AppData.elementTag))
         {
-            print("Element has Been Here");
+            // print("Element has Been Here");
             if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
             {
                 entityCount--;
@@ -102,50 +101,56 @@ public class NegatorSender : MonoBehaviour
         
         if(entityCount == 0)
         {
-            if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+            if(!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
             {
-                Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                GameObject obj = other.gameObject;
+                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
                     
                 objRigidbody.useGravity = false;
                 objRigidbody.isKinematic = true;
                 
-                objectInZone = other.gameObject;
+                objectInZone = obj.gameObject;
             }
-            else if (other.tag == AppData.elementTag)
+            else if (other.CompareTag(AppData.elementTag))
             {
-                if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
-                {
-                    Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                GameObject obj = other.gameObject;
+                
+                if (!obj.GetComponent<ElementEffect>().IsReleased) 
+                    return;
+
+                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
                     
-                    objRigidbody.useGravity = false;
-                    objRigidbody.isKinematic = true;
-                    
-                    objectInZone = other.gameObject;
-                }
+                objRigidbody.useGravity = false;
+                objRigidbody.isKinematic = true;
+                
+                objectInZone = obj.gameObject;
             }
         }
         else if(entityCount == 1 && objectInZone == null)
         {
-            if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+            if (!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
             {
-                Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                GameObject obj = other.gameObject;
+                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
                     
                 objRigidbody.useGravity = false;
                 objRigidbody.isKinematic = true;
                 
-                objectInZone = other.gameObject;
+                objectInZone = obj.gameObject;
             }
-            else if (other.tag == AppData.elementTag)
+            else if (other.CompareTag(AppData.elementTag))
             {
-                if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
-                {
-                    Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                GameObject obj = other.gameObject;
+                
+                if (!obj.GetComponent<ElementEffect>().IsReleased) 
+                    return;
+                
+                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
                     
-                    objRigidbody.useGravity = false;
-                    objRigidbody.isKinematic = true;
-                    
-                    objectInZone = other.gameObject;
-                }
+                objRigidbody.useGravity = false;
+                objRigidbody.isKinematic = true;
+                
+                objectInZone = obj.gameObject;
             }
         }
     }
