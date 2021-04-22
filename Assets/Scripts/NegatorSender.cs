@@ -104,11 +104,14 @@ public class NegatorSender : MonoBehaviour
             if(!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
             {
                 GameObject obj = other.gameObject;
-                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
-                    
-                objRigidbody.useGravity = false;
-                objRigidbody.isKinematic = true;
-                
+                LaserPonterReciever lpr = obj.GetComponent<LaserPonterReciever>();
+
+                if (lpr)
+                {
+                    lpr.rigidbody.useGravity = false;
+                    lpr.rigidbody.isKinematic = true;
+                }
+
                 objectInZone = obj.gameObject;
             }
             else if (other.CompareTag(AppData.elementTag))
@@ -118,10 +121,13 @@ public class NegatorSender : MonoBehaviour
                 if (!obj.GetComponent<ElementEffect>().IsReleased) 
                     return;
 
-                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
-                    
-                objRigidbody.useGravity = false;
-                objRigidbody.isKinematic = true;
+                LaserPonterReciever lpr = obj.GetComponent<LaserPonterReciever>();
+
+                if (lpr)
+                {
+                    lpr.rigidbody.useGravity = false;
+                    lpr.rigidbody.isKinematic = true;
+                }
                 
                 objectInZone = obj.gameObject;
             }
@@ -131,10 +137,13 @@ public class NegatorSender : MonoBehaviour
             if (!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
             {
                 GameObject obj = other.gameObject;
-                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
-                    
-                objRigidbody.useGravity = false;
-                objRigidbody.isKinematic = true;
+                LaserPonterReciever lpr = obj.GetComponent<LaserPonterReciever>();
+
+                if (lpr)
+                {
+                    lpr.rigidbody.useGravity = false;
+                    lpr.rigidbody.isKinematic = true;
+                }
                 
                 objectInZone = obj.gameObject;
             }
@@ -145,10 +154,13 @@ public class NegatorSender : MonoBehaviour
                 if (!obj.GetComponent<ElementEffect>().IsReleased) 
                     return;
                 
-                Rigidbody objRigidbody = obj.GetComponent<Rigidbody>();
-                    
-                objRigidbody.useGravity = false;
-                objRigidbody.isKinematic = true;
+                LaserPonterReciever lpr = obj.GetComponent<LaserPonterReciever>();
+
+                if (lpr)
+                {
+                    lpr.rigidbody.useGravity = false;
+                    lpr.rigidbody.isKinematic = true;
+                }
                 
                 objectInZone = obj.gameObject;
             }
