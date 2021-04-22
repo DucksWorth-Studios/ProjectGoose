@@ -104,16 +104,22 @@ public class NegatorSender : MonoBehaviour
         {
             if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
             {
-                other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                    
+                objRigidbody.useGravity = false;
+                objRigidbody.isKinematic = true;
+                
                 objectInZone = other.gameObject;
             }
             else if (other.tag == AppData.elementTag)
             {
                 if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
                 {
-                    other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                    
+                    objRigidbody.useGravity = false;
+                    objRigidbody.isKinematic = true;
+                    
                     objectInZone = other.gameObject;
                 }
             }
@@ -122,16 +128,22 @@ public class NegatorSender : MonoBehaviour
         {
             if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
             {
-                other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                    
+                objRigidbody.useGravity = false;
+                objRigidbody.isKinematic = true;
+                
                 objectInZone = other.gameObject;
             }
             else if (other.tag == AppData.elementTag)
             {
                 if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
                 {
-                    other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    Rigidbody objRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                    
+                    objRigidbody.useGravity = false;
+                    objRigidbody.isKinematic = true;
+                    
                     objectInZone = other.gameObject;
                 }
             }
