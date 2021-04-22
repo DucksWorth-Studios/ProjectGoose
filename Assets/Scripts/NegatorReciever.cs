@@ -16,11 +16,11 @@ public class NegatorReciever : MonoBehaviour
     //Anything enters count goes up
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+        if(!other.CompareTag( AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
         {
             entityCount++;
         }
-        else if (other.tag == AppData.elementTag)
+        else if (other.CompareTag(AppData.elementTag))
         {
             if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
             {
@@ -31,11 +31,11 @@ public class NegatorReciever : MonoBehaviour
     //Anything leaves count goes down
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != AppData.chemicalTag && other.tag != AppData.ignoreTag && other.tag != AppData.elementTag)
+        if (!other.CompareTag(AppData.chemicalTag) && !other.CompareTag(AppData.ignoreTag) && !other.CompareTag(AppData.elementTag))
         {
             entityCount--;
         }
-        else if (other.tag == AppData.elementTag)
+        else if (other.CompareTag(AppData.elementTag))
         {
             if (other.gameObject.GetComponent<ElementEffect>().IsReleased)
             {
