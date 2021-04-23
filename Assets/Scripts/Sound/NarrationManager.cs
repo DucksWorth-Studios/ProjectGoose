@@ -75,6 +75,7 @@ public class NarrationManager : MonoBehaviour
     private AudioQueue activeQueue;
     private List<int> passivePlayed;
     private bool InPast = true;
+    private bool DisableAllButPassive = true;
     void Start()
     {
         passivePlayed = new List<int>();
@@ -101,7 +102,16 @@ public class NarrationManager : MonoBehaviour
                     PlayScene(sceneThree);
                     break;
                 case SCENE.FOUR:
-                    PlayScene(sceneFour);
+                    if(DisableAllButPassive)
+                    {
+                        DisableAllButPassive = false;
+                        PlayScene(sceneFour);
+                        DisableAllButPassive = true;
+                    }
+                    else
+                    {
+                        PlayScene(sceneFour);
+                    }
                     break;
                 case SCENE.FOURP2:
                     PlayScene(sceneFourP2);
@@ -177,6 +187,9 @@ public class NarrationManager : MonoBehaviour
     
     private void PlayScene(AudioQueue queue)
     {
+        if (DisableAllButPassive)
+            return;
+
         if(activeQueue != null)
         {
             StopScene();
