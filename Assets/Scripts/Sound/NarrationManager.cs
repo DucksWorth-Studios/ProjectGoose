@@ -197,6 +197,14 @@ public class NarrationManager : MonoBehaviour
             queue.Play(activeNarration);
             activeQueue = queue;
         }
+        else
+        {
+            activeQueue = queue;
+            queue.Play(activeNarration);
+            queue.Stop();
+            activeQueue.IsFinished = true;
+        }
+        
     }
 
     private void StopScene()
