@@ -187,16 +187,16 @@ public class NarrationManager : MonoBehaviour
     
     private void PlayScene(AudioQueue queue)
     {
-        if (DisableAllButPassive)
-            return;
-
-        if(activeQueue != null)
+        if (!DisableAllButPassive)
         {
-            StopScene();
-        }
+            if (activeQueue != null)
+            {
+                StopScene();
+            }
 
-        queue.Play(activeNarration);
-        activeQueue = queue;
+            queue.Play(activeNarration);
+            activeQueue = queue;
+        }
     }
 
     private void StopScene()
