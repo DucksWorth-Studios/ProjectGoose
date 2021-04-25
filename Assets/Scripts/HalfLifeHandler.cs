@@ -24,11 +24,18 @@ public class HalfLifeHandler : MonoBehaviour
     private bool IsInPast = true;
     private bool IsDone = false;
     private Valve.VR.InteractionSystem.Interactable interactable;
+    private GameObject element;
+    private BoxCollider elemntCollider;
+    private ItemHolder elementHolder;
     void Start()
     {
         //Add To Events
         EventManager.instance.OnTimeJump += DetectChange;
         interactable = GetComponent<Valve.VR.InteractionSystem.Interactable>();
+        elementHolder = elementZone.GetComponent<ItemHolder>();
+        element = elementHolder.objectToHold;
+        elemntCollider = element.GetComponent<BoxCollider>();
+        elemntCollider.enabled = false;
     }
 
     //Unlock Object If Meet Criteria Set Indicator to Green
@@ -37,7 +44,7 @@ public class HalfLifeHandler : MonoBehaviour
         if(!IsDone)
         {
             lidZone.GetComponent<ItemHolder>().SetInteractable();
-            elementZone.GetComponent<ItemHolder>().SetInteractable();
+            elementHolder.SetInteractable();
             lockIndicator.color = new Color(0, 1, 0);
             EventManager.instance.Progress(STAGE.ELEMENTPUZZLE);
         }
@@ -48,7 +55,7 @@ public class HalfLifeHandler : MonoBehaviour
         if(!IsDone)
         {
             lidZone.GetComponent<ItemHolder>().LockInteractable();
-            elementZone.GetComponent<ItemHolder>().LockInteractable();
+            elementHolder.LockInteractable();
             lockIndicator.color = new Color(1, 0, 0);
         }
     }
@@ -108,9 +115,12 @@ public class HalfLifeHandler : MonoBehaviour
         {
             if(!lidZone.GetComponent<ItemHolder>().isHolding)
             {
+                lidZone.SetActive(false);
                 textbox.text = "0";
+                elemntCollider.enabled = true;
                 IsDone = true;
             }
+
         }
     }
 }
