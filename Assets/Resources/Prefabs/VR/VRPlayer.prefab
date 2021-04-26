@@ -6293,6 +6293,12 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1041859971031687069, guid: 047157ac420f9344283db42053d3ffc5,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 1151348757973392123, guid: 047157ac420f9344283db42053d3ffc5,
         type: 3}
       propertyPath: m_fontAsset
@@ -6568,6 +6574,12 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 811e18983fdccea48b47d6095fce3407, type: 2}
+    - target: {fileID: 2781737734532198177, guid: 047157ac420f9344283db42053d3ffc5,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 2851688081322630145, guid: 047157ac420f9344283db42053d3ffc5,
         type: 3}
       propertyPath: m_Material
@@ -7245,6 +7257,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7147285672686622342, guid: 047157ac420f9344283db42053d3ffc5,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 7224750900465194340, guid: 047157ac420f9344283db42053d3ffc5,
         type: 3}
       propertyPath: m_Material
@@ -7328,6 +7346,12 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7749050709525567848, guid: 047157ac420f9344283db42053d3ffc5,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 7769268492454796684, guid: 047157ac420f9344283db42053d3ffc5,
         type: 3}
       propertyPath: m_fontAsset
