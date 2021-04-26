@@ -24,15 +24,23 @@ public class ItemHolder : MonoBehaviour
     //Locks Ability to interact with an object
     public void LockInteractable()
     {
-        objectToHold.GetComponent<Throwable>().attachmentEnabled = false;
-        keepHolding = true;
+        if(isHolding)
+        {
+            objectToHold.GetComponent<Throwable>().attachmentEnabled = false;
+            keepHolding = true;
+        }
+        
     }
     //Allow Pickup
     public void SetInteractable()
     {
-        //set interactable
-        objectToHold.GetComponent<Throwable>().attachmentEnabled = true;
-        keepHolding = false;
+        if(isHolding)
+        {
+            //set interactable
+            objectToHold.GetComponent<Throwable>().attachmentEnabled = true;
+            keepHolding = false;
+        }
+
     }
     //Unset object from zone if meets criteria
     private void OnTriggerExit(Collider other)
